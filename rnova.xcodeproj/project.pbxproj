@@ -14,6 +14,7 @@
 		BB46D2B925B856BC003AD167 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BB46D2B825B856BC003AD167 /* Assets.xcassets */; };
 		BB46D2BC25B856BC003AD167 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB46D2BA25B856BC003AD167 /* LaunchScreen.storyboard */; };
 		BBD2E8A125B9686400A8D092 /* ClinicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD2E8A025B9686400A8D092 /* ClinicViewController.swift */; };
+		BBD2E8A425B9B6F900A8D092 /* ServicesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD2E8A325B9B6F900A8D092 /* ServicesViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		BB46D2BB25B856BC003AD167 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BB46D2BD25B856BC003AD167 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BBD2E8A025B9686400A8D092 /* ClinicViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClinicViewController.swift; sourceTree = "<group>"; };
+		BBD2E8A325B9B6F900A8D092 /* ServicesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServicesViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +68,7 @@
 				BB46D2BA25B856BC003AD167 /* LaunchScreen.storyboard */,
 				BB46D2BD25B856BC003AD167 /* Info.plist */,
 				BBD2E8A025B9686400A8D092 /* ClinicViewController.swift */,
+				BBD2E8A325B9B6F900A8D092 /* ServicesViewController.swift */,
 			);
 			path = rnova;
 			sourceTree = "<group>";
@@ -143,6 +146,7 @@
 				BB46D2B425B856B9003AD167 /* ViewController.swift in Sources */,
 				BB46D2B025B856B9003AD167 /* AppDelegate.swift in Sources */,
 				BBD2E8A125B9686400A8D092 /* ClinicViewController.swift in Sources */,
+				BBD2E8A425B9B6F900A8D092 /* ServicesViewController.swift in Sources */,
 				BB46D2B225B856B9003AD167 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
