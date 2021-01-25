@@ -11,6 +11,7 @@ class ServicesViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     
+    
     let serviseArr = ["Консультация", "Вакцинация", "Хирургически стационар", "Диагностические инструменты", "Лаборатория", "Физиотерапия", "Радиоволновая терапия", "Лазерная терапия", "Комплексные программы", "Оформление меддокументации"]
     override func viewDidLoad() {
         super.viewDidLoad()

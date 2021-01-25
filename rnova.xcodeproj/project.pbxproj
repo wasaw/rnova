@@ -3,10 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		182A98A483399BDEFF4E6317 /* Pods_rnova.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEA0475F7112F150729550A7 /* Pods_rnova.framework */; };
 		BB46D2B025B856B9003AD167 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB46D2AF25B856B9003AD167 /* AppDelegate.swift */; };
 		BB46D2B225B856B9003AD167 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB46D2B125B856B9003AD167 /* SceneDelegate.swift */; };
 		BB46D2B425B856B9003AD167 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB46D2B325B856B9003AD167 /* ViewController.swift */; };
@@ -15,9 +16,15 @@
 		BB46D2BC25B856BC003AD167 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB46D2BA25B856BC003AD167 /* LaunchScreen.storyboard */; };
 		BBD2E8A125B9686400A8D092 /* ClinicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD2E8A025B9686400A8D092 /* ClinicViewController.swift */; };
 		BBD2E8A425B9B6F900A8D092 /* ServicesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD2E8A325B9B6F900A8D092 /* ServicesViewController.swift */; };
+		BBD2E8A725BAB37E00A8D092 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD2E8A625BAB37E00A8D092 /* ProfileViewController.swift */; };
+		BBD2E8B425BAECFB00A8D092 /* SelfDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD2E8B325BAECFB00A8D092 /* SelfDataViewController.swift */; };
+		BBD2E8B725BB0CDA00A8D092 /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD2E8B625BB0CDA00A8D092 /* ResultViewController.swift */; };
+		BBD2E8BA25BEAADF00A8D092 /* HelpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD2E8B925BEAADF00A8D092 /* HelpViewController.swift */; };
+		BBD2E8BD25BEAB9100A8D092 /* ExitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD2E8BC25BEAB9100A8D092 /* ExitViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3231784F51AEC18CFC3EF17F /* Pods-rnova.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-rnova.release.xcconfig"; path = "Target Support Files/Pods-rnova/Pods-rnova.release.xcconfig"; sourceTree = "<group>"; };
 		BB46D2AC25B856B9003AD167 /* rnova.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = rnova.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB46D2AF25B856B9003AD167 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BB46D2B125B856B9003AD167 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -28,6 +35,13 @@
 		BB46D2BD25B856BC003AD167 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BBD2E8A025B9686400A8D092 /* ClinicViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClinicViewController.swift; sourceTree = "<group>"; };
 		BBD2E8A325B9B6F900A8D092 /* ServicesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServicesViewController.swift; sourceTree = "<group>"; };
+		BBD2E8A625BAB37E00A8D092 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		BBD2E8B325BAECFB00A8D092 /* SelfDataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelfDataViewController.swift; sourceTree = "<group>"; };
+		BBD2E8B625BB0CDA00A8D092 /* ResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
+		BBD2E8B925BEAADF00A8D092 /* HelpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpViewController.swift; sourceTree = "<group>"; };
+		BBD2E8BC25BEAB9100A8D092 /* ExitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExitViewController.swift; sourceTree = "<group>"; };
+		BBDB24C03A7147C4A5E52818 /* Pods-rnova.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-rnova.debug.xcconfig"; path = "Target Support Files/Pods-rnova/Pods-rnova.debug.xcconfig"; sourceTree = "<group>"; };
+		CEA0475F7112F150729550A7 /* Pods_rnova.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_rnova.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -35,17 +49,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				182A98A483399BDEFF4E6317 /* Pods_rnova.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5D5AAEC7B4ECC75046E9C552 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CEA0475F7112F150729550A7 /* Pods_rnova.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		9568AA022936D4FE3102FA6A /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				BBDB24C03A7147C4A5E52818 /* Pods-rnova.debug.xcconfig */,
+				3231784F51AEC18CFC3EF17F /* Pods-rnova.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		BB46D2A325B856B9003AD167 = {
 			isa = PBXGroup;
 			children = (
 				BB46D2AE25B856B9003AD167 /* rnova */,
 				BB46D2AD25B856B9003AD167 /* Products */,
+				9568AA022936D4FE3102FA6A /* Pods */,
+				5D5AAEC7B4ECC75046E9C552 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -69,8 +103,21 @@
 				BB46D2BD25B856BC003AD167 /* Info.plist */,
 				BBD2E8A025B9686400A8D092 /* ClinicViewController.swift */,
 				BBD2E8A325B9B6F900A8D092 /* ServicesViewController.swift */,
+				BBD2E8A625BAB37E00A8D092 /* ProfileViewController.swift */,
+				BBD2E8BF25BEABDB00A8D092 /* ProfileViewController */,
 			);
 			path = rnova;
+			sourceTree = "<group>";
+		};
+		BBD2E8BF25BEABDB00A8D092 /* ProfileViewController */ = {
+			isa = PBXGroup;
+			children = (
+				BBD2E8B925BEAADF00A8D092 /* HelpViewController.swift */,
+				BBD2E8B625BB0CDA00A8D092 /* ResultViewController.swift */,
+				BBD2E8B325BAECFB00A8D092 /* SelfDataViewController.swift */,
+				BBD2E8BC25BEAB9100A8D092 /* ExitViewController.swift */,
+			);
+			path = ProfileViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -80,9 +127,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = BB46D2C025B856BC003AD167 /* Build configuration list for PBXNativeTarget "rnova" */;
 			buildPhases = (
+				DFF137E128C32F790BBA6CA4 /* [CP] Check Pods Manifest.lock */,
 				BB46D2A825B856B9003AD167 /* Sources */,
 				BB46D2A925B856B9003AD167 /* Frameworks */,
 				BB46D2AA25B856B9003AD167 /* Resources */,
+				23C80358F6311242F408D123 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -138,14 +187,61 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		23C80358F6311242F408D123 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-rnova/Pods-rnova-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-rnova/Pods-rnova-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-rnova/Pods-rnova-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DFF137E128C32F790BBA6CA4 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-rnova-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		BB46D2A825B856B9003AD167 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BBD2E8A725BAB37E00A8D092 /* ProfileViewController.swift in Sources */,
 				BB46D2B425B856B9003AD167 /* ViewController.swift in Sources */,
 				BB46D2B025B856B9003AD167 /* AppDelegate.swift in Sources */,
+				BBD2E8B725BB0CDA00A8D092 /* ResultViewController.swift in Sources */,
+				BBD2E8BA25BEAADF00A8D092 /* HelpViewController.swift in Sources */,
 				BBD2E8A125B9686400A8D092 /* ClinicViewController.swift in Sources */,
+				BBD2E8BD25BEAB9100A8D092 /* ExitViewController.swift in Sources */,
+				BBD2E8B425BAECFB00A8D092 /* SelfDataViewController.swift in Sources */,
 				BBD2E8A425B9B6F900A8D092 /* ServicesViewController.swift in Sources */,
 				BB46D2B225B856B9003AD167 /* SceneDelegate.swift in Sources */,
 			);
@@ -291,6 +387,7 @@
 		};
 		BB46D2C125B856BC003AD167 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BBDB24C03A7147C4A5E52818 /* Pods-rnova.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -310,6 +407,7 @@
 		};
 		BB46D2C225B856BC003AD167 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3231784F51AEC18CFC3EF17F /* Pods-rnova.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
