@@ -21,6 +21,9 @@
 		BBD2E8B725BB0CDA00A8D092 /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD2E8B625BB0CDA00A8D092 /* ResultViewController.swift */; };
 		BBD2E8BA25BEAADF00A8D092 /* HelpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD2E8B925BEAADF00A8D092 /* HelpViewController.swift */; };
 		BBD2E8BD25BEAB9100A8D092 /* ExitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD2E8BC25BEAB9100A8D092 /* ExitViewController.swift */; };
+		BBD2E8C225BFF77000A8D092 /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD2E8C125BFF77000A8D092 /* Parser.swift */; };
+		BBD2E8C525C0045800A8D092 /* file.json in Resources */ = {isa = PBXBuildFile; fileRef = BBD2E8C425C0045800A8D092 /* file.json */; };
+		BBF8AD6825C8200E009CD35D /* DataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF8AD6725C8200E009CD35D /* DataLoader.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,7 +43,10 @@
 		BBD2E8B625BB0CDA00A8D092 /* ResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
 		BBD2E8B925BEAADF00A8D092 /* HelpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpViewController.swift; sourceTree = "<group>"; };
 		BBD2E8BC25BEAB9100A8D092 /* ExitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExitViewController.swift; sourceTree = "<group>"; };
+		BBD2E8C125BFF77000A8D092 /* Parser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Parser.swift; sourceTree = "<group>"; };
+		BBD2E8C425C0045800A8D092 /* file.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = file.json; sourceTree = "<group>"; };
 		BBDB24C03A7147C4A5E52818 /* Pods-rnova.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-rnova.debug.xcconfig"; path = "Target Support Files/Pods-rnova/Pods-rnova.debug.xcconfig"; sourceTree = "<group>"; };
+		BBF8AD6725C8200E009CD35D /* DataLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataLoader.swift; sourceTree = "<group>"; };
 		CEA0475F7112F150729550A7 /* Pods_rnova.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_rnova.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -95,6 +101,9 @@
 			isa = PBXGroup;
 			children = (
 				BB46D2AF25B856B9003AD167 /* AppDelegate.swift */,
+				BBD2E8C425C0045800A8D092 /* file.json */,
+				BBD2E8C125BFF77000A8D092 /* Parser.swift */,
+				BBF8AD6725C8200E009CD35D /* DataLoader.swift */,
 				BB46D2B125B856B9003AD167 /* SceneDelegate.swift */,
 				BB46D2B325B856B9003AD167 /* ViewController.swift */,
 				BB46D2B525B856B9003AD167 /* Main.storyboard */,
@@ -180,6 +189,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BB46D2BC25B856BC003AD167 /* LaunchScreen.storyboard in Resources */,
+				BBD2E8C525C0045800A8D092 /* file.json in Resources */,
 				BB46D2B925B856BC003AD167 /* Assets.xcassets in Resources */,
 				BB46D2B725B856B9003AD167 /* Main.storyboard in Resources */,
 			);
@@ -235,12 +245,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				BBD2E8A725BAB37E00A8D092 /* ProfileViewController.swift in Sources */,
+				BBD2E8C225BFF77000A8D092 /* Parser.swift in Sources */,
 				BB46D2B425B856B9003AD167 /* ViewController.swift in Sources */,
 				BB46D2B025B856B9003AD167 /* AppDelegate.swift in Sources */,
 				BBD2E8B725BB0CDA00A8D092 /* ResultViewController.swift in Sources */,
 				BBD2E8BA25BEAADF00A8D092 /* HelpViewController.swift in Sources */,
 				BBD2E8A125B9686400A8D092 /* ClinicViewController.swift in Sources */,
 				BBD2E8BD25BEAB9100A8D092 /* ExitViewController.swift in Sources */,
+				BBF8AD6825C8200E009CD35D /* DataLoader.swift in Sources */,
 				BBD2E8B425BAECFB00A8D092 /* SelfDataViewController.swift in Sources */,
 				BBD2E8A425B9B6F900A8D092 /* ServicesViewController.swift in Sources */,
 				BB46D2B225B856B9003AD167 /* SceneDelegate.swift in Sources */,

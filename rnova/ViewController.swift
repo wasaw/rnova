@@ -17,7 +17,10 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         tableView?.dataSource = self
         tableView?.delegate = self
-//        tableView.dataSource = self
+        
+//        let categories = print(parse(pathForFile: Bundle.main.path(forResource: "file", ofType: "json")!))
+//        parse(pathForFile: Bundle.main.path(forResource: "file", ofType: "json")!)
+
     }
 
 }
@@ -39,6 +42,15 @@ extension ViewController: UITableViewDataSource {
 extension ViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        present(SecondViewController(), animated: true)
+    }
+}
+
+class SecondViewController: UIViewController {
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        view.backgroundColor = .blue
     }
 }
 

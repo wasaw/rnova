@@ -31,7 +31,6 @@ class ProfileViewController: UIViewController, MenuControllerDelegate {
     
     @IBAction func sideMenuAction(_ sender: UIButton) {
         present(sideMenu!, animated: true)
-        
     }
     
     private func addChildControllers() {
