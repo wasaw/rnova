@@ -18,16 +18,18 @@ class MenuViewController: UIViewController {
         
         view.backgroundColor = .green
         title = "Выбор услуги"
+//        navigationItem.backBarButtonItem = UIBackBa
+        
         
         let label = UILabel(frame: view.bounds)
         view.addSubview(label)
         label.textAlignment = .center
-        label.text = String(selectedId)
+        label.text = String(selectedId.title)
     }
     
-    private let selectedId: Int
+    private let selectedId: Users
     
-    init(selectedId: Int) {
+    init(selectedId: Users) {
         self.selectedId = selectedId 
         super.init(nibName: nil, bundle: nil )
     }

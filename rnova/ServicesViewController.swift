@@ -11,9 +11,7 @@ class ServicesViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
      
-    let serviseArr = ["Консультация", "Вакцинация", "Хирургически стационар", "Диагностические инструменты", "Лаборатория", "Физиотерапия", "Радиоволновая терапия", "Лазерная терапия", "Комплексные программы", "Оформление меддокументации"]
     
-//    let model = Model()
     let data = DataLoader().userData
 
     override func viewDidLoad() {
@@ -22,22 +20,7 @@ class ServicesViewController: UIViewController {
         tableView.dataSource = self
         tableView.delegate = self
         
-        
-        
-//        NotificationCenter.default.addObserver(forName: Model.nNewsLoaded, object: nil, queue: OperationQueue.main) { (notification) in
-//            self.tableView.reloadData()
-//
-//        }
-//        model.loadNewsJson()
-        
-//          var titleArray = [String]()
-//          titleArray = parse(pathForFile: "https://jsonplaceholder.typicode.com/posts")
-//        print(titleArray.count)
-//        for title in titleArray {
-//            print(title)
-//        }
-//        var users = [Users]()
-//        parse(pathForFile: "https://jsonplaceholder.typicode.com/posts")
+
     }
     
     
@@ -51,11 +34,8 @@ extension ServicesViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: .default, reuseIdentifier: "ServiceCell")
-        
         let text = data[indexPath.row].title
         cell.textLabel?.text = text
-
-//        cell.textLabel?.text = serviseArr[indexPath.row]
         cell.accessoryType = .disclosureIndicator
         return cell
     }
@@ -67,7 +47,7 @@ extension ServicesViewController: UITableViewDataSource {
 extension ServicesViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        let vc = MenuViewController(selectedId: data[indexPath.row].id)
+        let vc = MenuViewController(selectedId: data[indexPath.row])
         
 
 //        let vc = storyboard?.instantiateViewController(identifier: "menu") as! MenuViewController
@@ -79,10 +59,4 @@ extension ServicesViewController: UITableViewDelegate {
     }
 }
 
-//class SecondListViewController: UIViewController {
-//
-//    override func viewDidLoad() {
-//        super.viewDidLoad()
-//
-//    }
-//}
+
