@@ -10,8 +10,7 @@ import UIKit
 class ServicesViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
-    
-    
+     
     let serviseArr = ["Консультация", "Вакцинация", "Хирургически стационар", "Диагностические инструменты", "Лаборатория", "Физиотерапия", "Радиоволновая терапия", "Лазерная терапия", "Комплексные программы", "Оформление меддокументации"]
     
 //    let model = Model()
@@ -42,18 +41,20 @@ class ServicesViewController: UIViewController {
     }
     
     
+    
 }
 
 extension ServicesViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        serviseArr.count
+        return 20
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: .default, reuseIdentifier: "ServiceCell")
         
-        let text = data[indexPath.row].id
-        cell.textLabel?.text = String(text)
+        let text = data[indexPath.row].title
+        cell.textLabel?.text = text
+
 //        cell.textLabel?.text = serviseArr[indexPath.row]
         cell.accessoryType = .disclosureIndicator
         return cell
@@ -66,49 +67,22 @@ extension ServicesViewController: UITableViewDataSource {
 extension ServicesViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        let vc = MenuViewController(selectedId: data[indexPath.row].id)
+        
+
+//        let vc = storyboard?.instantiateViewController(identifier: "menu") as! MenuViewController
+//
+//        let id = data[indexPath.row].id
+        vc.modalPresentationStyle = .fullScreen
+        present(UINavigationController(rootViewController: vc), animated: true)
+
     }
 }
 
-//extension ServicesViewController: UITableViewDelegate {
-//    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-//        tableView.deselectRow(at: indexPath, animated: true)
+//class SecondListViewController: UIViewController {
+//
+//    override func viewDidLoad() {
+//        super.viewDidLoad()
+//
 //    }
-//}
-
-
-//func  parse(pathForFile: String) {
-////    let data = try! Data(contentsOf: URL(fileURLWithPath: pathForFile))
-//
-////    let dictionary = try! JSONSerialization.jsonObject(with: data, options: .allowFragments) as! [String: Any]
-//
-//    guard let url = URL(string: pathForFile) else { return }
-//
-//    URLSession.shared.dataTask(with: url) {(data, response, error) in
-//
-//
-//        do {
-//
-//            let users = try JSONDecoder().decode([Users].self, from: data!)
-//
-//            for user in users {
-////                print("User id: \(user.id), title: \(user.title)")
-////                users.append(user)
-//            }
-//
-//            DispatchQueue.main.async {
-//
-//            }
-//        }
-//        catch {
-//            print("There was an error finding in the data! ")
-//        }
-//    }.resume()
-//
-//
-//}
-//
-//struct Users: Decodable {
-//    let id: Int
-//    let title: String
-//    let body: String
 //}
