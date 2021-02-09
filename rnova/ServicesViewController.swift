@@ -13,6 +13,7 @@ class ServicesViewController: UIViewController {
      
     
     let data = DataLoader().userData
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,7 +21,7 @@ class ServicesViewController: UIViewController {
         tableView.dataSource = self
         tableView.delegate = self
         
-
+        
     }
     
     
