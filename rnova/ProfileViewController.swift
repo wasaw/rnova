@@ -7,7 +7,7 @@
 import SideMenu
 import UIKit
 
-class ProfileViewController: UIViewController, MenuControllerDelegate {
+class ProfileViewController: UIViewController, MenuControllerDelegate, UITextFieldDelegate {
     
     private let selfDataController = SelfDataViewController()
     private let resultController = ResultViewController()
@@ -15,7 +15,13 @@ class ProfileViewController: UIViewController, MenuControllerDelegate {
     private let exitController = ExitViewController()
     
     private var sideMenu: SideMenuNavigationController?
+    
     @IBOutlet weak var surnameOutlete: UITextField!
+    @IBOutlet weak var nameOutlete: UITextField!
+    @IBOutlet weak var midlenameOutlete: UITextField!
+    @IBOutlet weak var dateOutlet: UITextField!
+    let datePicker = UIDatePicker()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         let menu = MenuController(with: ["Личные данные", "Результаты", "Помощь", "Выход"])
@@ -27,6 +33,50 @@ class ProfileViewController: UIViewController, MenuControllerDelegate {
         SideMenuManager.default.addPanGestureToPresent(toView: view)
         
         addChildControllers()
+        
+        surnameOutlete.delegate = self
+        nameOutlete.delegate = self
+        midlenameOutlete.delegate = self
+        
+        surnameOutlete.clearButtonMode = .always
+        nameOutlete.clearButtonMode = .always
+        midlenameOutlete.clearButtonMode = .always
+        
+        dateOutlet.inputView = datePicker
+        datePicker.preferredDatePickerStyle = .wheels
+        datePicker.datePickerMode = .date
+        
+        let toolBar = UIToolbar()
+        toolBar.sizeToFit()
+        let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(doneAction))
+        let flexSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        toolBar.setItems([flexSpace, doneButton], animated: true)
+        dateOutlet.inputAccessoryView = toolBar
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapGestureDone))
+        self.view.addGestureRecognizer(tapGesture)
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        surnameOutlete.resignFirstResponder()
+        nameOutlete.resignFirstResponder()
+        midlenameOutlete.resignFirstResponder()
+        return true
+    }
+    
+    @objc func doneAction() {
+        getDateFromPicker()
+        view.endEditing(true)
+    }
+    
+    func getDateFromPicker() {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "dd:MM:yy"
+        dateOutlet.text = formatter.string(from: datePicker.date)
+    }
+    
+    @objc func tapGestureDone() {
+        view.endEditing(true)
     }
     
     @IBAction func sideMenuAction(_ sender: UIButton) {
@@ -98,10 +148,6 @@ protocol MenuControllerDelegate {
 }
 
 class MenuController: UITableViewController {
-//    override func viewDidLoad() {
-//        super.viewDidLoad()
-//        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
-//    }
     public var delegate: MenuControllerDelegate?
     
     private let menuItems: [String]
@@ -114,7 +160,7 @@ class MenuController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.backgroundColor = .systemOrange
+        tableView.backgroundColor = .white
     }
     
     required init?(coder: NSCoder) {
@@ -128,6 +174,8 @@ class MenuController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         cell.textLabel?.text = menuItems[indexPath.row]
+        cell.tintColor = .black
+        cell.backgroundColor = .white
         return cell
     }
     
