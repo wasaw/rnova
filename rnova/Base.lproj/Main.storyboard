@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="gsx-wg-pZq">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="3Gb-S4-lr7">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
@@ -46,6 +46,22 @@
             </objects>
             <point key="canvasLocation" x="60.869565217391312" y="-342.1875"/>
         </scene>
+        <!--Menu View Controller-->
+        <scene sceneID="OPu-xQ-Mdq">
+            <objects>
+                <viewController id="1xo-i4-Zw0" customClass="MenuViewController" customModule="rnova" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="OCS-kL-60p">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="32P-vB-S4r"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="QGX-1c-ccR"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="f5f-xG-sad" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="832" y="346"/>
+        </scene>
         <!--Профиль-->
         <scene sceneID="hQr-lp-3LB">
             <objects>
@@ -54,28 +70,28 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Имя" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="v0A-sl-6Xg">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Имя" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="v0A-sl-6Xg">
                                 <rect key="frame" x="10" y="182" width="394" height="34"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Отчество" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xbj-qa-mxQ">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Отчество" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xbj-qa-mxQ">
                                 <rect key="frame" x="10" y="231" width="394" height="34"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Дата рождения" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UL2-Xl-c5g">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Дата рождения" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UL2-Xl-c5g">
                                 <rect key="frame" x="10" y="280" width="394" height="34"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Фамилия" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tza-h6-iX3">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Фамилия" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tza-h6-iX3">
                                 <rect key="frame" x="10" y="133" width="394" height="34"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -161,15 +177,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="2Mi-Mp-OAs">
-                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="2Mi-Mp-OAs">
+                                <rect key="frame" x="0.0" y="388" width="414" height="425"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier=" Cell" id="sDK-9w-UNm">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
+                                        <rect key="frame" x="0.0" y="28" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="sDK-9w-UNm" id="ODp-tv-BDo">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                         <connections>
@@ -178,16 +194,21 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="4Cg-0B-8D5">
+                                <rect key="frame" x="62" y="116" width="290" height="32"/>
+                                <color key="backgroundColor" systemColor="systemYellowColor"/>
+                                <segments>
+                                    <segment title="по врачам"/>
+                                    <segment title="по специальностям"/>
+                                </segments>
+                            </segmentedControl>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="E78-As-eWG"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="2Mi-Mp-OAs" firstAttribute="trailing" secondItem="E78-As-eWG" secondAttribute="trailing" id="4h3-CV-0uO"/>
-                            <constraint firstItem="2Mi-Mp-OAs" firstAttribute="top" secondItem="E78-As-eWG" secondAttribute="top" id="6go-6X-ZKH"/>
-                            <constraint firstItem="2Mi-Mp-OAs" firstAttribute="leading" secondItem="E78-As-eWG" secondAttribute="leading" id="Urm-ae-DeY"/>
-                            <constraint firstItem="2Mi-Mp-OAs" firstAttribute="leading" secondItem="E78-As-eWG" secondAttribute="leading" id="cmL-ts-oZb"/>
-                            <constraint firstItem="E78-As-eWG" firstAttribute="trailing" secondItem="2Mi-Mp-OAs" secondAttribute="trailing" id="dBz-1F-kSK"/>
-                            <constraint firstItem="E78-As-eWG" firstAttribute="bottom" secondItem="2Mi-Mp-OAs" secondAttribute="bottom" id="ntL-dT-9ic"/>
+                            <constraint firstItem="4Cg-0B-8D5" firstAttribute="centerX" secondItem="2Mi-Mp-OAs" secondAttribute="centerX" id="YRa-X0-2pP"/>
+                            <constraint firstItem="4Cg-0B-8D5" firstAttribute="centerX" secondItem="Cv5-yM-VSS" secondAttribute="centerX" id="ehb-pJ-qDZ"/>
+                            <constraint firstItem="4Cg-0B-8D5" firstAttribute="leading" secondItem="E78-As-eWG" secondAttribute="leading" constant="62" id="xO2-VO-mJ9"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Запись" image="square.and.pencil" catalog="system" id="9Q1-Cl-7nP"/>
@@ -198,7 +219,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2CZ-C0-bg8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="60.869565217391312" y="-1017.1875"/>
+            <point key="canvasLocation" x="61" y="-1017"/>
         </scene>
         <!--Detail View Controller-->
         <scene sceneID="8Pg-GD-scM">
@@ -291,6 +312,9 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="1xo-i4-Zw0" kind="show" id="wnM-hY-wI7"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -336,6 +360,65 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ifU-qE-Wvq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-830" y="1067"/>
+        </scene>
+        <!--Запись-->
+        <scene sceneID="uhy-2C-cUv">
+            <objects>
+                <viewController id="OJc-26-xE5" customClass="ViewController" customModule="rnova" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="nXn-33-BN5">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="EJL-MV-6yt">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier=" Cell" id="Phb-xJ-9aG">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Phb-xJ-9aG" id="dyC-Xj-O21">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="m98-O6-m1n"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="EJL-MV-6yt" firstAttribute="leading" secondItem="m98-O6-m1n" secondAttribute="leading" id="CNv-Vd-ZVT"/>
+                            <constraint firstItem="EJL-MV-6yt" firstAttribute="top" secondItem="m98-O6-m1n" secondAttribute="top" id="NB8-DQ-LE3"/>
+                            <constraint firstItem="m98-O6-m1n" firstAttribute="trailing" secondItem="EJL-MV-6yt" secondAttribute="trailing" id="mkg-g7-WsW"/>
+                            <constraint firstItem="EJL-MV-6yt" firstAttribute="leading" secondItem="m98-O6-m1n" secondAttribute="leading" id="nv5-C3-vbp"/>
+                            <constraint firstItem="m98-O6-m1n" firstAttribute="bottom" secondItem="EJL-MV-6yt" secondAttribute="bottom" id="oiB-Af-3j7"/>
+                            <constraint firstItem="EJL-MV-6yt" firstAttribute="trailing" secondItem="m98-O6-m1n" secondAttribute="trailing" id="yfN-50-6GJ"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Запись" image="square.and.pencil" catalog="system" id="3gg-YK-22x"/>
+                    <navigationItem key="navigationItem" title="Запись" id="vQr-o0-07m"/>
+                    <connections>
+                        <outlet property="tableView" destination="EJL-MV-6yt" id="bus-RN-6wG"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="R95-u9-YBA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1787" y="-1093"/>
+        </scene>
+        <!--Parser View Controller-->
+        <scene sceneID="QTP-5V-2ea">
+            <objects>
+                <viewController id="5L7-9k-DMR" customClass="ParserViewController" customModule="rnova" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="WiO-ty-G9n">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="AQG-fG-acS"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eZf-og-dBB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-709" y="-1690"/>
         </scene>
     </scenes>
     <resources>

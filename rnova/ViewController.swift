@@ -12,6 +12,14 @@ struct ListCategory {
     let items: [String]
 }
 
+///dataSource
+let nameArray = ["Иван", "Борис", "Любовь", "Феликс", "Марина", "Людмила"]
+let surnameArray = ["Натанович", "Аркадьевич", "Михайловна", "Александрович", "Ивановна", "Петровна"]
+let lastnameArray = ["Купитман", "Левин", "Скрябина", "Тютчев", "Капустина", "Кукушкина"]
+let professionArray = ["Урология", "Терапевтия", "", "Стоматология", "Диагностика", "Гинекология"]
+let experiensArray = [30, 10, 0, 0, 0, 21]
+
+
 class ViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
@@ -33,11 +41,14 @@ class ViewController: UIViewController {
         return searchController.isActive && !searchBarIsEmpty
     }
     
+    let stackView = UIStackView()
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView?.dataSource = self
         tableView?.delegate = self
-
+        tableView.reloadData()
         
 // setup the SearchController
         searchController.searchResultsUpdater = self
@@ -45,6 +56,12 @@ class ViewController: UIViewController {
         searchController.searchBar.placeholder = "Search"
         navigationItem.searchController = searchController
         definesPresentationContext = true
+        
+        stackView.axis = .horizontal
+        stackView.spacing = 5
+        
+        stackView.backgroundColor = .red
+        view.addSubview(stackView)
     }
     
 //    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

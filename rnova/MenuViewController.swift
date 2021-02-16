@@ -27,10 +27,10 @@ class MenuViewController: UIViewController {
         label.text = String(selectedId.title)
     }
     
-    private let selectedId: Users
+    private let selectedId: Doctors
     
-    init(selectedId: Users) {
-        self.selectedId = selectedId 
+    init(selectedId: Doctors) {
+        self.selectedId = selectedId
         super.init(nibName: nil, bundle: nil )
     }
     

@@ -9,14 +9,14 @@ import Foundation
  
 //func  parse(pathForFile: String) -> [String] {
 ////    let data = try! Data(contentsOf: URL(fileURLWithPath: pathForFile))
-//    
+//
 ////    let dictionary = try! JSONSerialization.jsonObject(with: data, options: .allowFragments) as! [String: Any]
 //    var titleArray: [String]
 //    titleArray = []
 //    if let url = URL(string: pathForFile) {
-//        
+//
 //        URLSession.shared.dataTask(with: url) {(data, response, error) in
-//            
+//
 //            do {
 //                let users = try JSONDecoder().decode([Users].self, from: data!)
 //                for user in users {
@@ -28,7 +28,7 @@ import Foundation
 //            }
 //        }.resume()
 //    }
-//    
+//
 //    return titleArray
 //}
 //

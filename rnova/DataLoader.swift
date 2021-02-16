@@ -6,11 +6,14 @@
 //
 
 import Foundation
+import Alamofire
 
 public class  DataLoader {
-
-    @Published var userData = [Users]()
     
+    
+  
+//    @Published var userData = [Users]()
+    @Published var doctorsData = [Doctors]()
     
     
     
@@ -19,33 +22,27 @@ public class  DataLoader {
     }
     
     func load() {
-        
-        if let url = URL(string: "https://jsonplaceholder.typicode.com/posts") {
-//        if let fileLocation = Bundle.main.url(forResource: "file", withExtension: "json") {
-            
-//        URLSession.shared.dataTask(with: url!) {(data, response, error) in
-            
-//            do {
-//                let users = try JSONDecoder().decode([Users].self, from: data!)
-//                self.userData = users
-//            }
+        let urlSourse = "https://rnova-widgets.testinmed.ru/dist/api.php?hacks=on&method=getServiceCategories"
+        if let url = URL(string: urlSourse) {
             do {
                 let data = try Data(contentsOf: url)
                 let jsonDecoder = JSONDecoder()
-                let dataFromJson = try jsonDecoder.decode([Users].self, from: data)
-                self.userData = dataFromJson
+                let dataFromJson = try jsonDecoder.decode([Doctors].self, from: data)
+                self.doctorsData = dataFromJson
             }
             catch {
                 print("There was an error finding in the data! ")
             }
         }
-        
+                
     }
    
 }
 
-struct Users: Decodable {
+
+struct Doctors: Decodable {
     let id: Int
     let title: String
-    let body: String
+    let services_count: Int
+//    let children: String
 }
