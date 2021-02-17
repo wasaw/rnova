@@ -11,10 +11,11 @@ class ServicesViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
      
+//    var data = DataLoader(urlParameter: "&category_id=14264").servicesData
+//    let strRequest = "&category_id=14264"
+    var data = DataLoader(urlParameter: "").servicesData
     
-    var data = DataLoader().doctorsData
-    
-    private var filteredSearchResult = [Doctors]()
+    private var filteredSearchResult = [Services]()
     private var searchController = UISearchController(searchResultsController: nil)
     private var searchBarIsEmpty: Bool {
         guard let text = searchController.searchBar.text else {return false}
@@ -26,7 +27,7 @@ class ServicesViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         tableView.dataSource = self
         tableView.delegate = self
         tableView.reloadData()
@@ -41,8 +42,6 @@ class ServicesViewController: UIViewController {
         definesPresentationContext = true
 
     }
-    
-    
     
 }
 
@@ -67,20 +66,22 @@ extension ServicesViewController: UITableViewDataSource {
         return cell
     }
     
-    
 }
 
 
 extension ServicesViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        let item: Doctors
+        let item: Int
         if isFiltering {
-            item = filteredSearchResult[indexPath.row]
+//            item = filteredSearchResult[indexPath.row]
+            item = filteredSearchResult[indexPath.row].id
         }else {
-            item = data[indexPath.row]
+//            item = data[indexPath.row]
+            item = data[indexPath.row].id
         }
-        let vc = MenuViewController(selectedId: item)
+        let vc = SubServicesViewController(selectedId: item)
+//        let vc = SubServicesViewController()
         navigationController?.pushViewController(vc, animated: true)
     }
 }
@@ -91,7 +92,7 @@ extension ServicesViewController: UISearchResultsUpdating {
     }
     
     private func filterContentForSearchText(_ searchText: String) {
-        filteredSearchResult = data.filter({ (list: Doctors) -> Bool in
+        filteredSearchResult = data.filter({ (list: Services) -> Bool in
             return list.title.lowercased().contains(searchText.lowercased())
         })
         tableView.reloadData()

@@ -27,7 +27,7 @@
 		BBD2E8C225BFF77000A8D092 /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD2E8C125BFF77000A8D092 /* Parser.swift */; };
 		BBD2E8C525C0045800A8D092 /* file.json in Resources */ = {isa = PBXBuildFile; fileRef = BBD2E8C425C0045800A8D092 /* file.json */; };
 		BBF8AD6825C8200E009CD35D /* DataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF8AD6725C8200E009CD35D /* DataLoader.swift */; };
-		BBF8AD6B25C9B9E0009CD35D /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF8AD6A25C9B9E0009CD35D /* MenuViewController.swift */; };
+		BBF8AD6B25C9B9E0009CD35D /* SubServicesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF8AD6A25C9B9E0009CD35D /* SubServicesViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,7 +54,7 @@
 		BBD2E8C425C0045800A8D092 /* file.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = file.json; sourceTree = "<group>"; };
 		BBDB24C03A7147C4A5E52818 /* Pods-rnova.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-rnova.debug.xcconfig"; path = "Target Support Files/Pods-rnova/Pods-rnova.debug.xcconfig"; sourceTree = "<group>"; };
 		BBF8AD6725C8200E009CD35D /* DataLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataLoader.swift; sourceTree = "<group>"; };
-		BBF8AD6A25C9B9E0009CD35D /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
+		BBF8AD6A25C9B9E0009CD35D /* SubServicesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubServicesViewController.swift; sourceTree = "<group>"; };
 		CEA0475F7112F150729550A7 /* Pods_rnova.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_rnova.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -111,7 +111,6 @@
 				BB46D2AF25B856B9003AD167 /* AppDelegate.swift */,
 				BBCE6CD725D6AA8100CC8598 /* OldViewController.swift */,
 				BB7CDE5A25D16E96007B1B1A /* DetailViewController.swift */,
-				BBF8AD6A25C9B9E0009CD35D /* MenuViewController.swift */,
 				BBD2E8C425C0045800A8D092 /* file.json */,
 				BBD2E8C125BFF77000A8D092 /* Parser.swift */,
 				BBF8AD6725C8200E009CD35D /* DataLoader.swift */,
@@ -124,6 +123,7 @@
 				BB46D2BD25B856BC003AD167 /* Info.plist */,
 				BBD2E8A025B9686400A8D092 /* ClinicViewController.swift */,
 				BBD2E8A325B9B6F900A8D092 /* ServicesViewController.swift */,
+				BBF8AD6A25C9B9E0009CD35D /* SubServicesViewController.swift */,
 				BBD2E8A625BAB37E00A8D092 /* ProfileViewController.swift */,
 				BBD2E8BF25BEABDB00A8D092 /* ProfileViewController */,
 			);
@@ -264,7 +264,7 @@
 				BBD2E8B725BB0CDA00A8D092 /* ResultViewController.swift in Sources */,
 				BBD2E8BA25BEAADF00A8D092 /* HelpViewController.swift in Sources */,
 				BBD2E8A125B9686400A8D092 /* ClinicViewController.swift in Sources */,
-				BBF8AD6B25C9B9E0009CD35D /* MenuViewController.swift in Sources */,
+				BBF8AD6B25C9B9E0009CD35D /* SubServicesViewController.swift in Sources */,
 				BBCE6CD825D6AA8100CC8598 /* OldViewController.swift in Sources */,
 				BBD2E8BD25BEAB9100A8D092 /* ExitViewController.swift in Sources */,
 				BBF8AD6825C8200E009CD35D /* DataLoader.swift in Sources */,
