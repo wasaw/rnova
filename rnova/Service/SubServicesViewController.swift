@@ -22,6 +22,7 @@ class SubServicesViewController: UIViewController, UITableViewDelegate, UITableV
         let cell = tableView.dequeueReusableCell(withIdentifier: "cellSubService", for: indexPath)
         if data.count == 0 {
             cell.textLabel?.text = "Нет результатов"
+            noResult = true
         }else if isFiltering {
             cell.textLabel?.text = filteredSearchResult[indexPath.row].title
         }else {
@@ -34,9 +35,11 @@ class SubServicesViewController: UIViewController, UITableViewDelegate, UITableV
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         let item: Int
+        guard !noResult else { return }
         if isFiltering {
             item = filteredSearchResult[indexPath.row].id
         } else {
+            print(noResult)
             item = data[indexPath.row].id
         }
         let vc = SubServicesViewController(selectedId: item)
@@ -51,6 +54,7 @@ class SubServicesViewController: UIViewController, UITableViewDelegate, UITableV
     }()
    
     private let selectedId: Int
+    private var noResult = false
 //    public var strRequest = "&category_id="
     init(selectedId: Int) {
         self.selectedId = selectedId
@@ -79,7 +83,7 @@ class SubServicesViewController: UIViewController, UITableViewDelegate, UITableV
         navigationItem.title = "Выбор услуги"
         
         strReques = "&category_id=" + String(self.selectedId)
-        data = DataLoader(urlParameter: strReques).servicesData
+        data = DataLoader(urlMethod: "&method=getServiceCategories", urlParameter: strReques).servicesData
         view.addSubview(tableView)
         tableView.delegate = self
         tableView.dataSource = self
@@ -103,7 +107,7 @@ class SubServicesViewController: UIViewController, UITableViewDelegate, UITableV
 }
 
 var strReques = ""
-var data = DataLoader(urlParameter: strReques).servicesData
+var data = DataLoader(urlMethod: "&method=getServiceCategories", urlParameter: strReques).servicesData
 
 extension SubServicesViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {

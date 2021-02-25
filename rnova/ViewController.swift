@@ -7,113 +7,135 @@
 
 import UIKit
 
-struct ListCategory {
-    let title: String
-    let items: [String]
-}
-
-///dataSource
-let nameArray = ["Иван", "Борис", "Любовь", "Феликс", "Марина", "Людмила"]
-let surnameArray = ["Натанович", "Аркадьевич", "Михайловна", "Александрович", "Ивановна", "Петровна"]
-let lastnameArray = ["Купитман", "Левин", "Скрябина", "Тютчев", "Капустина", "Кукушкина"]
-let professionArray = ["Урология", "Терапевтия", "", "Стоматология", "Диагностика", "Гинекология"]
-let experiensArray = [30, 10, 0, 0, 0, 21]
-
-
 class ViewController: UIViewController {
+//
+//    let doctorVC = DoctorViewController()
+//    let specialtyVC = SpecialtyViewController()
+//
+    var doctorVC: UIView!
+    var specialtyVC: UIView!
     
-    @IBOutlet weak var tableView: UITableView!
+    var data = DataLoader(urlMethod: "&method=getUsers", urlParameter: "").doctorsData
     
+    @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var layout: UICollectionViewFlowLayout!
     
-    private let data: [ListCategory] = [
-        ListCategory(title: "BMW", items: ["1 series", "2 series", "3 series"]),
-        ListCategory(title: "Mersedes", items: ["A class", "B class", "C class"]),
-        ListCategory(title: "AUDI", items: ["A1", "A2", "A3"])
-    ]
-//    private let list = ["First", "Second", "Third"]
-    private var filteredResult = [ListCategory ]()
-    private let searchController = UISearchController(searchResultsController: nil)
+    let cellID = "RecordCollectionViewCell"
+    let insents = UIEdgeInsets(top: 70, left: 0, bottom: 0, right: 0)
+    
+    private var filteredSearchResult = [Doctors]()
+    private var searchController = UISearchController(searchResultsController: nil)
     private var searchBarIsEmpty: Bool {
-        guard let text = searchController.searchBar.text else {return false}
+        guard let text = searchController.searchBar.text else { return false }
         return text.isEmpty
     }
     private var isFiltering: Bool {
         return searchController.isActive && !searchBarIsEmpty
     }
-    
-    let stackView = UIStackView()
-    
-    
+
+    let dataColor = [
+        UIColor.green,
+        UIColor.yellow
+    ]
+    var checkTapSegment = true
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView?.dataSource = self
-        tableView?.delegate = self
-        tableView.reloadData()
         
-// setup the SearchController
+        doctorVC = DoctorViewController().view
+        specialtyVC = SpecialtyViewController().view
+//        viewContainer.addSubview(specialtyVC)
+//        viewContainer.addSubview(doctorVC)
+        
+        collectonViewSetup()
+        
         searchController.searchResultsUpdater = self
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.searchBar.placeholder = "Search"
-        navigationItem.searchController = searchController
+        collectionView.addSubview(searchController.searchBar)
+//        navigationItem.searchController = searchController
         definesPresentationContext = true
-        
-        stackView.axis = .horizontal
-        stackView.spacing = 5
-        
-        stackView.backgroundColor = .red
-        view.addSubview(stackView)
     }
     
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if segue.identifier == "showDetail" {
-//            if let indexPath = tableView.indexPathForSelectedRow {
-//                let detailVC = segue.destination as! DetailViewController
-////                detailVC.titleList = list[indexPath.row]
-//                
-//                detailVC.itemCategory = data[indexPath.row]
-//            }
-//        }
-//    }
-
+    func collectonViewSetup() {
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        collectionView.register(UINib(nibName: cellID, bundle: nil), forCellWithReuseIdentifier: cellID)
+    }
+    
+    @IBAction func didTapSegment(segment: UISegmentedControl) {
+        if segment.selectedSegmentIndex == 0 {
+            checkTapSegment = true
+            collectionView.reloadData()
+//            viewContainer.bringSubviewToFront(doctorVC)
+        }else {
+            checkTapSegment = false
+            collectionView.reloadData()
+//            viewContainer.bringSubviewToFront(specialtyVC)
+            
+        }
+    }
 }
-// MARK: - UITableViewDataSourse
-extension ViewController: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+
+extension ViewController: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if isFiltering {
-            return filteredResult.count
+            return filteredSearchResult.count
         }
         return data.count
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: .default, reuseIdentifier: "Cell")
-        if isFiltering {
-            cell.textLabel?.text = filteredResult[indexPath.row].title
-        }else {
-            cell.textLabel?.text = data[indexPath.row].title
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellID, for: indexPath) as? RecordCollectionViewCell else {
+            return UICollectionViewCell()
         }
+        cell.layer.cornerRadius = 10
+        cell.layer.shadowColor = UIColor.black.cgColor
+        cell.layer.shadowOffset = CGSize(width: 0, height: 1)
+        cell.layer.shadowOpacity = 1
+        cell.layer.shadowRadius = 1.0
+        cell.clipsToBounds = false
+        cell.layer.masksToBounds = false
+        
+        if checkTapSegment {
+            if isFiltering {
+                cell.label.text = filteredSearchResult[indexPath[1]].name
+            }else {
+                cell.setup(color: dataColor[0])
+                cell.label.text = data[indexPath[1]].name
+            }
+        }else {
+            cell.setup(color: dataColor[1])
+        }
+        
         return cell
     }
     
     
 }
 
-extension ViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
-        let vc = DetailViewController()
-        let item: ListCategory
-        
+extension ViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if isFiltering {
-            item = filteredResult[indexPath.row]
+            print(filteredSearchResult[indexPath[1]].name)
         }else {
-            item = data[indexPath.row]
+            print(indexPath)
         }
-        vc.itemCategory = item
-       // vc.title = data[indexPath.row].title
-        navigationController?.pushViewController(vc, animated: true)
-//        performSegue(withIdentifier: "showDetail", sender: self)
-        //         present(SecondViewController(), animated: true)
+    }
+}
+
+extension ViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let width: CGFloat = collectionView.frame.width - 20
+        let height: CGFloat = width / 4
+        return CGSize(width: width, height: height)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 20
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return insents
     }
 }
 
@@ -121,14 +143,109 @@ extension ViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
         filterContentForSearchText(searchController.searchBar.text!)
     }
-
+    
     private func filterContentForSearchText(_ searchText: String) {
-        filteredResult = data.filter({(list: ListCategory) -> Bool in
-            return list.title.lowercased().contains(searchText.lowercased())
+        filteredSearchResult = data.filter({ (list: Doctors) -> Bool in
+            return list.name.lowercased().contains(searchText.lowercased())
         })
-
-        tableView.reloadData()
+        collectionView.reloadData()
     }
 }
+
+
+//class ViewController: UIViewController {
+//
+//    @IBOutlet weak var tableView: UITableView!
+//
+//
+////    private let list = ["First", "Second", "Third"]
+////    private var filteredResult = [ListCategory ]()
+//    private let searchController = UISearchController(searchResultsController: nil)
+//    private var searchBarIsEmpty: Bool {
+//        guard let text = searchController.searchBar.text else {return false}
+//        return text.isEmpty
+//    }
+//    private var isFiltering: Bool {
+//        return searchController.isActive && !searchBarIsEmpty
+//    }
+//
+//    let stackView = UIStackView()
+//
+//
+//    override func viewDidLoad() {
+//        super.viewDidLoad()
+//        tableView?.dataSource = self
+//        tableView?.delegate = self
+//        tableView.reloadData()
+//
+//// setup the SearchController
+//        searchController.searchResultsUpdater = self
+//        searchController.obscuresBackgroundDuringPresentation = false
+//        searchController.searchBar.placeholder = "Search"
+//        navigationItem.searchController = searchController
+//        definesPresentationContext = true
+//
+//        stackView.axis = .horizontal
+//        stackView.spacing = 5
+//
+//        stackView.backgroundColor = .red
+//        view.addSubview(stackView)
+//    }
+//
+//}
+//// MARK: - UITableViewDataSourse
+//extension ViewController: UITableViewDataSource {
+//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+//        if isFiltering {
+////            return filteredResult.count
+//            return 3
+//        }
+//        return data.count
+//    }
+//
+//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+//        let cell = UITableViewCell(style: .default, reuseIdentifier: "Cell")
+//        if isFiltering {
+////            cell.textLabel?.text = filteredResult[indexPath.row].title
+//            cell.textLabel?.text = "Filter"
+//        }else {
+////            cell.textLabel?.text = data[indexPath.row].title
+//            cell.textLabel?.text = "data"
+//        }
+//        return cell
+//    }
+//
+//
+//}
+//
+//extension ViewController: UITableViewDelegate {
+//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        tableView.deselectRow(at: indexPath, animated: true)
+//        let vc = DetailViewController()
+////        let item: ListCategory
+//
+////        if isFiltering {
+////            item = filteredResult[indexPath.row]
+////        }else {
+////            item = data[indexPath.row]
+////        }
+////        vc.itemCategory = item
+//        navigationController?.pushViewController(vc, animated: true)
+//    }
+//}
+//
+//extension ViewController: UISearchResultsUpdating {
+//    func updateSearchResults(for searchController: UISearchController) {
+//        filterContentForSearchText(searchController.searchBar.text!)
+//    }
+//
+//    private func filterContentForSearchText(_ searchText: String) {
+//        filteredResult = data.filter({(list: ListCategory) -> Bool in
+//            return list.title.lowercased().contains(searchText.lowercased())
+//        })
+//
+//        tableView.reloadData()
+//    }
+//}
 
 

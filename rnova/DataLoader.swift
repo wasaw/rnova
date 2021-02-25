@@ -11,25 +11,39 @@ import Foundation
 public class  DataLoader {
     
     @Published var servicesData = [Services]()
+    @Published var doctorsData = [Doctors]()
     
-    init(urlParameter: String) {
+    init(urlMethod:String, urlParameter: String) {
+        self.urlMethod = urlMethod
         self.urlParameter = urlParameter
         load()
     }
     
     private let urlSourse = "https://rnova-widgets.testinmed.ru/dist/api.php?hacks=on"
-    private let urlMethod = "&method=getServiceCategories"
+//    private let urlMethod = "&method=getServiceCategories"
+    private var urlMethod: String
     private var urlParameter: String
     
     func load() {
-//        let urlFull = "https://rnova-widgets.testinmed.ru/dist/api.php?hacks=on&method=getServiceCategories&category_id=14264"
         let urlFull = urlSourse + urlMethod + urlParameter
         if let url = URL(string: urlFull) {
             do {
                 let data = try Data(contentsOf: url)
                 let jsonDecoder = JSONDecoder()
-                let dataFromJson = try jsonDecoder.decode([Services].self, from: data)
-                self.servicesData = dataFromJson
+                switch urlMethod {
+                case "&method=getUsers":
+                    let dataFromJson = try jsonDecoder.decode([Doctors].self, from: data)
+                    self.doctorsData = dataFromJson
+                case "&method=getServiceCategories":
+                    let dataFromJson = try jsonDecoder.decode([Services].self, from: data)
+                    self.servicesData = dataFromJson
+                default:
+                    return
+                }
+////                let dataFromJson = try jsonDecoder.decode([Services].self, from: data)
+//                let dataFromJson = try jsonDecoder.decode([Doctors].self, from: data)
+////                self.servicesData = dataFromJson
+//                self.doctorsData = dataFromJson
 //                print(dataFromJson)
 //                for item in servicesData {
 //                    print("Title: \(item.title), count: \(item.services_count)")
@@ -49,4 +63,9 @@ struct Services: Decodable {
     let title: String
     let services_count: Int
 //    let children: [Float]
+}
+
+struct Doctors: Decodable {
+    let id: Int
+    let name: String
 }

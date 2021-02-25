@@ -13,7 +13,7 @@ class ServicesViewController: UIViewController {
      
 //    var data = DataLoader(urlParameter: "&category_id=14264").servicesData
 //    let strRequest = "&category_id=14264"
-    var data = DataLoader(urlParameter: "").servicesData
+    var data = DataLoader(urlMethod: "&method=getServiceCategories", urlParameter: "").servicesData
     
     private var filteredSearchResult = [Services]()
     private var searchController = UISearchController(searchResultsController: nil)
