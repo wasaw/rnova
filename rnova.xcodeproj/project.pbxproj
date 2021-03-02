@@ -21,6 +21,7 @@
 		BBCE6CE725DFA8B200CC8598 /* SpecialtyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCE6CE625DFA8B200CC8598 /* SpecialtyViewController.swift */; };
 		BBCE6CFA25E672B700CC8598 /* RecordCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCE6CF825E672B700CC8598 /* RecordCollectionViewCell.swift */; };
 		BBCE6CFB25E672B700CC8598 /* RecordCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BBCE6CF925E672B700CC8598 /* RecordCollectionViewCell.xib */; };
+		BBCE6D0625E8F62100CC8598 /* SubViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCE6D0525E8F62100CC8598 /* SubViewController.swift */; };
 		BBD2E8A125B9686400A8D092 /* ClinicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD2E8A025B9686400A8D092 /* ClinicViewController.swift */; };
 		BBD2E8A425B9B6F900A8D092 /* ServicesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD2E8A325B9B6F900A8D092 /* ServicesViewController.swift */; };
 		BBD2E8A725BAB37E00A8D092 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD2E8A625BAB37E00A8D092 /* ProfileViewController.swift */; };
@@ -51,6 +52,7 @@
 		BBCE6CE625DFA8B200CC8598 /* SpecialtyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecialtyViewController.swift; sourceTree = "<group>"; };
 		BBCE6CF825E672B700CC8598 /* RecordCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordCollectionViewCell.swift; sourceTree = "<group>"; };
 		BBCE6CF925E672B700CC8598 /* RecordCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecordCollectionViewCell.xib; sourceTree = "<group>"; };
+		BBCE6D0525E8F62100CC8598 /* SubViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubViewController.swift; sourceTree = "<group>"; };
 		BBD2E8A025B9686400A8D092 /* ClinicViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClinicViewController.swift; sourceTree = "<group>"; };
 		BBD2E8A325B9B6F900A8D092 /* ServicesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServicesViewController.swift; sourceTree = "<group>"; };
 		BBD2E8A625BAB37E00A8D092 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
@@ -124,9 +126,6 @@
 				BBF8AD6725C8200E009CD35D /* DataLoader.swift */,
 				BBCE6CDE25DA702700CC8598 /* ParserViewController.swift */,
 				BB46D2B125B856B9003AD167 /* SceneDelegate.swift */,
-				BB46D2B325B856B9003AD167 /* ViewController.swift */,
-				BBCE6CF825E672B700CC8598 /* RecordCollectionViewCell.swift */,
-				BBCE6CF925E672B700CC8598 /* RecordCollectionViewCell.xib */,
 				BBCE6CFE25E7A30500CC8598 /* Record */,
 				BBCE6CE325DFA88900CC8598 /* DoctorViewController.swift */,
 				BBCE6CE625DFA8B200CC8598 /* SpecialtyViewController.swift */,
@@ -145,6 +144,10 @@
 		BBCE6CFE25E7A30500CC8598 /* Record */ = {
 			isa = PBXGroup;
 			children = (
+				BB46D2B325B856B9003AD167 /* ViewController.swift */,
+				BBCE6D0525E8F62100CC8598 /* SubViewController.swift */,
+				BBCE6CF825E672B700CC8598 /* RecordCollectionViewCell.swift */,
+				BBCE6CF925E672B700CC8598 /* RecordCollectionViewCell.xib */,
 			);
 			path = Record;
 			sourceTree = "<group>";
@@ -292,6 +295,7 @@
 				BB46D2B025B856B9003AD167 /* AppDelegate.swift in Sources */,
 				BBD2E8B725BB0CDA00A8D092 /* ResultViewController.swift in Sources */,
 				BBD2E8BA25BEAADF00A8D092 /* HelpViewController.swift in Sources */,
+				BBCE6D0625E8F62100CC8598 /* SubViewController.swift in Sources */,
 				BBCE6CFA25E672B700CC8598 /* RecordCollectionViewCell.swift in Sources */,
 				BBCE6CE725DFA8B200CC8598 /* SpecialtyViewController.swift in Sources */,
 				BBD2E8A125B9686400A8D092 /* ClinicViewController.swift in Sources */,

@@ -15,7 +15,8 @@ class ViewController: UIViewController {
     var doctorVC: UIView!
     var specialtyVC: UIView!
     
-    var data = DataLoader(urlMethod: "&method=getUsers", urlParameter: "").doctorsData
+    var doctorsData = DataLoader(urlMethod: "&method=getUsers", urlParameter: "").doctorsData
+    var professionsData = DataLoader(urlMethod: "&method=getProfessions", urlParameter: "").professionsData
     
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var layout: UICollectionViewFlowLayout!
@@ -23,7 +24,8 @@ class ViewController: UIViewController {
     let cellID = "RecordCollectionViewCell"
     let insents = UIEdgeInsets(top: 70, left: 0, bottom: 0, right: 0)
     
-    private var filteredSearchResult = [Doctors]()
+    private var filteredSearchResultDoctors = [Doctors]()
+    private var filteredSearchResultProfessions = [Professions]()
     private var searchController = UISearchController(searchResultsController: nil)
     private var searchBarIsEmpty: Bool {
         guard let text = searchController.searchBar.text else { return false }
@@ -34,9 +36,9 @@ class ViewController: UIViewController {
     }
 
     let dataColor = [
-        UIColor.green,
-        UIColor.yellow
+        UIColor.white
     ]
+    
     var checkTapSegment = true
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -78,10 +80,19 @@ class ViewController: UIViewController {
 
 extension ViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if isFiltering {
-            return filteredSearchResult.count
+        if checkTapSegment {
+            if isFiltering {
+                return filteredSearchResultDoctors.count
+            }else {
+                return doctorsData.count
+            }
+        }else {
+            if isFiltering {
+                return filteredSearchResultProfessions.count
+            }else {
+                return professionsData.count
+            }
         }
-        return data.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -98,13 +109,18 @@ extension ViewController: UICollectionViewDataSource {
         
         if checkTapSegment {
             if isFiltering {
-                cell.label.text = filteredSearchResult[indexPath[1]].name
+                cell.label.text = filteredSearchResultDoctors[indexPath[1]].name
             }else {
                 cell.setup(color: dataColor[0])
-                cell.label.text = data[indexPath[1]].name
+                cell.label.text = doctorsData[indexPath[1]].name
             }
         }else {
-            cell.setup(color: dataColor[1])
+            if isFiltering {
+                cell.label.text = filteredSearchResultProfessions[indexPath[1]].name
+            }else {
+                cell.setup(color: dataColor[0])
+                cell.label.text = professionsData[indexPath[1]].name
+            }
         }
         
         return cell
@@ -115,11 +131,22 @@ extension ViewController: UICollectionViewDataSource {
 
 extension ViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if isFiltering {
-            print(filteredSearchResult[indexPath[1]].name)
+        let id: Int
+        if checkTapSegment {
+            if isFiltering {
+                id = filteredSearchResultDoctors[indexPath[1]].id
+            }else {
+                id = doctorsData[indexPath[1]].id
+            }
         }else {
-            print(indexPath)
+            if isFiltering {
+                id = filteredSearchResultProfessions[indexPath[1]].id
+            }else {
+                id = professionsData[indexPath[1]].id
+            }
         }
+        let vc = SubViewController(id: id)
+        navigationController?.pushViewController(vc, animated: true)
     }
 }
 
@@ -145,9 +172,15 @@ extension ViewController: UISearchResultsUpdating {
     }
     
     private func filterContentForSearchText(_ searchText: String) {
-        filteredSearchResult = data.filter({ (list: Doctors) -> Bool in
-            return list.name.lowercased().contains(searchText.lowercased())
-        })
+        if checkTapSegment {
+            filteredSearchResultDoctors = doctorsData.filter({ (list: Doctors) -> Bool in
+                return list.name.lowercased().contains(searchText.lowercased())
+            })
+        }else {
+            filteredSearchResultProfessions = professionsData.filter({ (list: Professions) -> Bool in
+                return list.name.lowercased().contains(searchText.lowercased())
+            })
+        }
         collectionView.reloadData()
     }
 }
