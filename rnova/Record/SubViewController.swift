@@ -48,6 +48,13 @@ class SubViewController: UIViewController, UITableViewDelegate, UITableViewDataS
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: false)
+        if checkTapSegment {
+            let vc = DoctorChoiceViewController(id: doctor_id, clinicId: clinicsData[indexPath.row].id)
+            navigationController?.pushViewController(vc, animated: true)
+        }else {
+            let vc = SpecialtyChoiceViewController()
+            navigationController?.pushViewController(vc, animated: true)
+        }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -71,6 +78,7 @@ class SubViewController: UIViewController, UITableViewDelegate, UITableViewDataS
     
     
     let doctor_id: Int
+    let checkTapSegment: Bool
 //    let label = UILabel()
     
     override func viewDidLoad() {
@@ -91,8 +99,9 @@ class SubViewController: UIViewController, UITableViewDelegate, UITableViewDataS
         tableView.frame = view.bounds
     }
     
-    init(id: Int) {
+    init(id: Int, checkTapSegment: Bool) {
         self.doctor_id = id
+        self.checkTapSegment = checkTapSegment
         super.init(nibName: nil, bundle: nil)
     }
     

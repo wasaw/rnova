@@ -145,7 +145,7 @@ extension ViewController: UICollectionViewDelegate {
                 id = professionsData[indexPath[1]].id
             }
         }
-        let vc = SubViewController(id: id)
+        let vc = SubViewController(id: id, checkTapSegment: checkTapSegment)
         navigationController?.pushViewController(vc, animated: true)
     }
 }
