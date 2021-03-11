@@ -9,122 +9,156 @@ import UIKit
 
 class ClinicViewController: UIViewController {
     
+    let firstView = UIView()
+    let secondView = UIView()
     override func viewDidLoad() {
         super.viewDidLoad()
-  
-// MARK: - UILabelFirst
-        let label = UIView(frame: CGRect(x: 10, y: 95, width: 390, height: 210))
-//        label.layer.shadowOffset = CGSize(width: 2, height: 2)
-        label.layer.borderWidth = 3.0
-        label.layer.borderColor = UIColor.black.cgColor
-        label.layer.shadowColor = UIColor.black.cgColor
-        label.layer.shadowOffset = CGSize(width: 3, height: 3)
-        label.layer.masksToBounds = false
-        label.layer.shadowOpacity = 0.7
-        label.layer.shadowRadius = 4.0
-
+//        buttonTopLeft.addTarget(self, action: #selector(callButtonAction(_:)), for: .touchUpInside)
+    
+//    MARK: - firstView
+        firstView.translatesAutoresizingMaskIntoConstraints = false
+        firstView.layer.cornerRadius = 5
         
-        let labelClinicName = UILabel(frame: CGRect(x: 20, y: 110, width: 270, height: 20))
-        labelClinicName.text = "Семейная клиника"
-        labelClinicName.font = UIFont.boldSystemFont(ofSize: 18)
-        view.addSubview(labelClinicName)
+        firstView.layer.shadowOffset = CGSize(width: 0, height: 1)
+        firstView.layer.shadowOpacity = 0.6
+        firstView.layer.shadowRadius = 1.0
+        firstView.clipsToBounds = false
+        firstView.layer.masksToBounds = false
+        firstView.backgroundColor = .white
+        view.addSubview(firstView)
         
-        let labelAdress = UILabel(frame: CGRect(x: 20, y: 140, width: 370, height: 50))
-        labelAdress.text = "г. Санкт-Петербург, ул. Матроса Железняка, д. 57, к. А"
-        labelAdress.numberOfLines = 2
-//        labelAdress.layer.borderColor = .init(red: 0, green: 0, blue: 254, alpha: 1)
-//        labelAdress.layer.borderWidth = 3
-        view.addSubview(labelAdress)
+        var constraints = [NSLayoutConstraint]()
+        constraints.append(firstView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20))
+        constraints.append(firstView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 10))
+        constraints.append(firstView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 220))
+        constraints.append(firstView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -10))
+        NSLayoutConstraint.activate(constraints)
         
-        let labelEmail = UITextField(frame: CGRect(x: 20, y: 200, width: 370, height: 20))
-        labelEmail.text = "family.clinic@rnova.org"
-        view.addSubview(labelEmail)
+        let firstTitleLabel = UILabel(frame: CGRect(x: 15, y: 15, width: 300, height: 20))
+        firstTitleLabel.font = UIFont.boldSystemFont(ofSize: 16)
+        firstTitleLabel.textColor = .black
+        firstTitleLabel.text = "ООО \"Клиника Преображенская\""
+        firstView.addSubview(firstTitleLabel)
         
-        let labelLine = UITextField(frame: CGRect(x: 20, y: 230, width: 370, height: 10))
-        labelLine.text = "------------------------------------------------"
-        view.addSubview(labelLine)
+        let firstAdressLabel = UILabel(frame: CGRect(x: 15, y: 45, width: 350, height: 50))
+        firstAdressLabel.textColor = .gray
+        firstAdressLabel.font = UIFont.systemFont(ofSize: 14)
+        firstAdressLabel.numberOfLines = 2
+        firstAdressLabel.text = "350001, Краснодарский край, г. Краснодар, ул. Ставропольская, д. 210, к. Д, кв. 1"
+        firstView.addSubview(firstAdressLabel)
         
-        let buttonTopLeft = UIButton(frame: CGRect(x: 20, y: 250, width: 140, height: 30))
-        buttonTopLeft.setTitle("Позвонить", for: .normal)
-        buttonTopLeft.setTitleColor(.black, for: .normal)
-        buttonTopLeft.titleLabel?.font = UIFont.systemFont(ofSize: 18)
-        buttonTopLeft.backgroundColor = .yellow
-        buttonTopLeft.setImage(UIImage(systemName: "teletype.answer"), for: .normal)
-        buttonTopLeft.tintColor = .systemOrange
-//        buttonTopLeft.contentEdgeInsets = UIEdgeInsets(top: 2, left: 5, bottom: 2, right: 10)
-        buttonTopLeft.titleEdgeInsets = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 5)
-        buttonTopLeft.layer.cornerRadius = 0.05 * buttonTopLeft.bounds.size.width
-        buttonTopLeft.addTarget(self, action: #selector(callButtonAction(_:)), for: .touchUpInside)
-        view.addSubview(buttonTopLeft)
+        let firstEmailLabel = UILabel(frame: CGRect(x: 15, y: 95, width: 350, height: 20))
+        firstEmailLabel.font = UIFont.systemFont(ofSize: 14)
+        firstEmailLabel.textColor = .systemOrange
+        firstEmailLabel.text = "klipre-rcp@mail.ru"
+        let firstTap = UITapGestureRecognizer(target: self, action: #selector(firstSendEmail))
+        firstEmailLabel.isUserInteractionEnabled = true
+        firstEmailLabel.addGestureRecognizer(firstTap)
+        firstView.addSubview(firstEmailLabel)
         
-        let buttonTopRight = UIButton(frame: CGRect(x: 170, y: 250, width: 120, height: 30))
-        buttonTopRight.setTitle("На карте", for: .normal)
-        buttonTopRight.setTitleColor(.black, for: .normal)
-        buttonTopRight.titleLabel?.font = UIFont.systemFont(ofSize: 18)
-        buttonTopRight.backgroundColor = .yellow
-        buttonTopRight.setImage(UIImage(systemName: "mappin"), for: .normal)
-        buttonTopRight.tintColor = .systemOrange
-//        buttonTopRight.contentEdgeInsets = UIEdgeInsets(top: 2, left: 5, bottom: 2, right: 10)
-        buttonTopRight.titleEdgeInsets = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 5)
-        buttonTopRight.layer.cornerRadius = 0.05 * buttonTopRight.bounds.size.width
-//        buttonTopRight.addTarget(self, action: #selector(callButtonAction(_:)), for: .touchUpInside)
-        view.addSubview(buttonTopRight)
+        let firstPhoneLabel = UILabel(frame: CGRect(x: 15, y: 115, width: 350, height: 20))
+        firstPhoneLabel.font = UIFont.systemFont(ofSize: 14)
+        firstPhoneLabel.textColor = .gray
+        firstPhoneLabel.text = "+7(862)212-7-212"
+        firstView.addSubview(firstPhoneLabel)
         
-        
-// MARK: - UILabelButtom
-        let labelBottom = UILabel(frame: CGRect(x: 10, y: 320, width: 390, height: 210))
-        view.addSubview(labelBottom)
-        
-        let labelBottomClinicName = UILabel(frame: CGRect(x: 20, y: 345, width: 270, height: 20))
-        labelBottomClinicName.text = "Фиилиал стационара"
-        labelBottomClinicName.font = UIFont.boldSystemFont(ofSize: 18)
-        view.addSubview(labelBottomClinicName)
-        
-        let labelBottomLine = UITextField(frame: CGRect(x: 20, y: 395, width: 370, height: 10))
-        labelBottomLine.text = "------------------------------------------------"
-        view.addSubview(labelBottomLine)
-        
-        let buttonBottomTopLeft = UIButton(frame: CGRect(x: 20, y: 415, width: 140, height: 30))
-        buttonBottomTopLeft.setTitle("Позвонить", for: .normal)
-        buttonBottomTopLeft.setTitleColor(.black, for: .normal)
-        buttonBottomTopLeft.titleLabel?.font = UIFont.systemFont(ofSize: 18)
-        buttonBottomTopLeft.backgroundColor = .yellow
-        buttonBottomTopLeft.setImage(UIImage(systemName: "teletype.answer"), for: .normal)
-        buttonBottomTopLeft.tintColor = .systemOrange
-//        buttonTopLeft.contentEdgeInsets = UIEdgeInsets(top: 2, left: 5, bottom: 2, right: 10)
-        buttonBottomTopLeft.titleEdgeInsets = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 5)
-        buttonBottomTopLeft.layer.cornerRadius = 0.05 * buttonBottomTopLeft.bounds.size.width
-        buttonBottomTopLeft.addTarget(self, action: #selector(callButtonAction(_:)), for: .touchUpInside)
-        view.addSubview(buttonBottomTopLeft)
-        
-        let buttonBottomTopRight = UIButton(frame: CGRect(x: 170, y: 415, width: 120, height: 30))
-        buttonBottomTopRight.setTitle("На карте", for: .normal)
-        buttonBottomTopRight.setTitleColor(.black, for: .normal)
-        buttonBottomTopRight.titleLabel?.font = UIFont.systemFont(ofSize: 18)
-        buttonBottomTopRight.backgroundColor = .yellow
-        buttonBottomTopRight.setImage(UIImage(systemName: "mappin"), for: .normal)
-        buttonBottomTopRight.tintColor = .systemOrange
-//        buttonTopRight.contentEdgeInsets = UIEdgeInsets(top: 2, left: 5, bottom: 2, right: 10)
-        buttonBottomTopRight.titleEdgeInsets = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 5)
-        buttonBottomTopRight.layer.cornerRadius = 0.05 * buttonBottomTopRight.bounds.size.width
-//        buttonTopRight.addTarget(self, action: #selector(callButtonAction(_:)), for: .touchUpInside)
-        view.addSubview(buttonBottomTopRight)
+        let firstButton = UIButton(frame: CGRect(x: 15, y: 145, width: 140, height: 30))
+        firstButton.setTitle("   Позвонить", for: .normal)
+        firstButton.titleLabel?.font = UIFont(name: "System", size: 16)
+        firstButton.setImage(UIImage(systemName: "phone"), for: .normal)
+//        firstButton.contentHorizontalAlignment = .right
+        firstButton.setTitleColor(.black, for: .normal)
+        firstButton.layer.cornerRadius = 5
+        firstButton.backgroundColor = .systemYellow
+        firstButton.addTarget(self, action: #selector(callButtonAction), for: .touchUpInside)
+        firstView.addSubview(firstButton)
         
         
-//        buttonOutlet.layer.cornerRadius = 0.05 * buttonOutlet.bounds.size.width
-//        buttonOutletLow.layer.cornerRadius = 0.05 * buttonOutletLow.bounds.size.width
-////        buttonOutlet.clipsToBounds = true
+//  MARK: - secondView
+        secondView.translatesAutoresizingMaskIntoConstraints = false
+        secondView.layer.cornerRadius = 5
+        
+        secondView.layer.shadowOffset = CGSize(width: 0, height: 1)
+        secondView.layer.shadowOpacity = 0.6
+        secondView.layer.shadowRadius = 1.0
+        secondView.clipsToBounds = false
+        secondView.layer.masksToBounds = false
+        secondView.backgroundColor = .white
+        view.addSubview(secondView)
+        
+        var constraintsSecond = [NSLayoutConstraint]()
+        constraintsSecond.append(secondView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 240))
+        constraintsSecond.append(secondView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 10))
+        constraintsSecond.append(secondView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 440))
+        constraintsSecond.append(secondView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -10))
+        NSLayoutConstraint.activate(constraintsSecond)
+        
+        let secondTitleLabel = UILabel(frame: CGRect(x: 15, y: 15, width: 300, height: 20))
+        secondTitleLabel.font = UIFont.boldSystemFont(ofSize: 16)
+        secondTitleLabel.textColor = .black
+        secondTitleLabel.text = "ООО ЛДЦ \"Клиника Солнечная\""
+        secondView.addSubview(secondTitleLabel)
+        
+        let secondAdressLabel = UILabel(frame: CGRect(x: 15, y: 45, width: 350, height: 50))
+        secondAdressLabel.textColor = .gray
+        secondAdressLabel.font = UIFont.systemFont(ofSize: 14)
+        secondAdressLabel.numberOfLines = 2
+        secondAdressLabel.text = "350049, Краснодарский край, г. Краснодар, ул. Красных Партизан, д. 128"
+        secondView.addSubview(secondAdressLabel)
+        
+        let secondEmailLabel = UILabel(frame: CGRect(x: 15, y: 95, width: 350, height: 20))
+        secondEmailLabel.font = UIFont.systemFont(ofSize: 14)
+        secondEmailLabel.textColor = .systemOrange
+        secondEmailLabel.text = "solnechnaya.klinika@mail.ru"
+        let secondTap = UITapGestureRecognizer(target: self, action: #selector(secondSendEmail))
+        secondEmailLabel.isUserInteractionEnabled = true
+        secondEmailLabel.addGestureRecognizer(secondTap)
+        secondView.addSubview(secondEmailLabel)
+        
+        let secondPhoneLabel = UILabel(frame: CGRect(x: 15, y: 115, width: 350, height: 20))
+        secondPhoneLabel.font = UIFont.systemFont(ofSize: 14)
+        secondPhoneLabel.textColor = .gray
+        secondPhoneLabel.text = "+7(862)212-7-212"
+        secondView.addSubview(secondPhoneLabel)
+        
+        let secondButton = UIButton(frame: CGRect(x: 15, y: 145, width: 140, height: 30))
+        secondButton.setTitle("   Позвонить", for: .normal)
+        secondButton.titleLabel?.font = UIFont(name: "System", size: 16)
+        secondButton.setImage(UIImage(systemName: "phone"), for: .normal)
+//        firstButton.contentHorizontalAlignment = .right
+        secondButton.setTitleColor(.black, for: .normal)
+        secondButton.layer.cornerRadius = 5
+        secondButton.backgroundColor = .systemYellow
+        secondButton.addTarget(self, action: #selector(callButtonAction), for: .touchUpInside)
+        secondView.addSubview(secondButton)
+    
     }
     
-    @IBAction func callButtonAction(_ sender: UIButton) {
+//    MARK: - selectors
+    
+    @objc func firstSendEmail() {
+        let email = "klipre-rcp@mail.ru"
+        if let url = URL(string: "mailto:\(email)") {
+            UIApplication.shared.open(url)
+        }
+    }
+    
+    @objc func secondSendEmail() {
+        let email = "solnechnaya.klinika@mail.ru"
+        if let url = URL(string: "mailto:\(email)") {
+            UIApplication.shared.open(url)
+        }
+    }
+    
+    @objc func callButtonAction() {
         let phoneNumber = "+7(862)212-7-212"
-        if let phoneCallURL = URL(string: "tel://\(phoneNumber)") {
-
-            let application:UIApplication = UIApplication.shared
-            if (application.canOpenURL(phoneCallURL)) {
-                application.open(phoneCallURL, options: [:], completionHandler: nil)
-            }
-          } 
+            if let phoneCallURL = URL(string: "tel://\(phoneNumber)") {
+    
+                let application:UIApplication = UIApplication.shared
+                if (application.canOpenURL(phoneCallURL)) {
+                    application.open(phoneCallURL, options: [:], completionHandler: nil)
+                }
+          }
     }
     
 }
