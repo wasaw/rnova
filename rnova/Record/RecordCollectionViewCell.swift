@@ -11,7 +11,7 @@ class RecordCollectionViewCell: UICollectionViewCell {
     
     
     let label = UILabel()
-    let proileImageView = UIImageView()
+    let profileImageView = UIImageView()
     let profileImage = UIImage(systemName: "person")
     
     
@@ -20,9 +20,9 @@ class RecordCollectionViewCell: UICollectionViewCell {
         label.frame = CGRect(x: 80, y: 20, width: 250, height: 40)
         self.addSubview(label)
         
-        proileImageView.frame = CGRect(x: 20, y: 20, width: 40, height: 40)
-        proileImageView.image = profileImage
-        self.addSubview(proileImageView)
+        profileImageView.frame = CGRect(x: 20, y: 20, width: 40, height: 40)
+        profileImageView.image = profileImage
+        self.addSubview(profileImageView)
     }
 
     func setup(color: UIColor) {

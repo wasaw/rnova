@@ -9,9 +9,8 @@ import UIKit
 
 class ProfileViewController: UIViewController, MenuControllerDelegate, UITextFieldDelegate {
     
-    private let selfDataController = SelfDataViewController()
-    private let resultController = ResultViewController()
-    private let helpController = HelpViewController()
+//    private let selfDataController = ProfileViewController()
+    private let visitController = VisitViewController()
     private let exitController = ExitViewController()
     
     private var sideMenu: SideMenuNavigationController?
@@ -24,9 +23,11 @@ class ProfileViewController: UIViewController, MenuControllerDelegate, UITextFie
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        let menu = MenuController(with: ["Личные данные", "Результаты", "Помощь", "Выход"])
+        let imageSelfData = UIImage(systemName: "person.fill")
+        let menu = MenuController(with: ["\(imageSelfData!) Личные данные", "Визиты", "Выход"])
         menu.delegate = self
         sideMenu = SideMenuNavigationController(rootViewController: menu)
+        sideMenu?.navigationBar.barTintColor = .systemOrange
 
         sideMenu?.leftSide = true
         SideMenuManager.default.leftMenuNavigationController = sideMenu
@@ -41,6 +42,26 @@ class ProfileViewController: UIViewController, MenuControllerDelegate, UITextFie
         surnameOutlete.clearButtonMode = .always
         nameOutlete.clearButtonMode = .always
         midlenameOutlete.clearButtonMode = .always
+        
+        let bottomLineSurname = CALayer()
+        bottomLineSurname.frame = CGRect(x: 0.0, y: surnameOutlete.frame.height - 5, width: surnameOutlete.frame.width, height: 1.0)
+        bottomLineSurname.backgroundColor = UIColor.black.cgColor
+        surnameOutlete.layer.addSublayer(bottomLineSurname)
+        
+        let bottomLineName = CALayer()
+        bottomLineName.frame = CGRect(x: 0.0, y: nameOutlete.frame.height - 5, width: surnameOutlete.frame.width, height: 1.0)
+        bottomLineName.backgroundColor = UIColor.black.cgColor
+        nameOutlete.layer.addSublayer(bottomLineName)
+        
+        let bottomLineMidlename = CALayer()
+        bottomLineMidlename.frame = CGRect(x: 0.0, y: midlenameOutlete.frame.height - 5, width: midlenameOutlete.frame.width, height: 1.0)
+        bottomLineMidlename.backgroundColor = UIColor.black.cgColor
+        midlenameOutlete.layer.addSublayer(bottomLineMidlename)
+        
+        let bottomLineDate = CALayer()
+        bottomLineDate.frame = CGRect(x: 0.0, y: dateOutlet.frame.height - 5, width: dateOutlet.frame.width, height: 1.0)
+        bottomLineDate.backgroundColor = UIColor.black.cgColor
+        dateOutlet.layer.addSublayer(bottomLineDate)
         
         dateOutlet.inputView = datePicker
         datePicker.preferredDatePickerStyle = .wheels
@@ -57,6 +78,8 @@ class ProfileViewController: UIViewController, MenuControllerDelegate, UITextFie
         self.view.addGestureRecognizer(tapGesture)
     }
     
+ 
+//  MARK: - side menu
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         surnameOutlete.resignFirstResponder()
         nameOutlete.resignFirstResponder()
@@ -84,29 +107,24 @@ class ProfileViewController: UIViewController, MenuControllerDelegate, UITextFie
     }
     
     private func addChildControllers() {
-        addChild(selfDataController)
-        addChild(resultController)
-        addChild(helpController)
+//        addChild(selfDataController)
+        addChild(visitController)
         addChild(exitController)
         
-        view.addSubview(selfDataController.view)
-        view.addSubview(resultController.view)
-        view.addSubview(helpController.view)
+//        view.addSubview(selfDataController.view)
+        view.addSubview(visitController.view)
         view.addSubview(exitController.view)
         
-        selfDataController.view.frame = view.bounds
-        resultController.view.frame = view.frame
-        helpController.view.frame = view.frame
+//        selfDataController.view.frame = view.bounds
+        visitController.view.frame = view.frame
         exitController.view.frame = view.frame
         
-        selfDataController.didMove(toParent: self)
-        resultController.didMove(toParent: self)
-        helpController.didMove(toParent: self)
+//        selfDataController.didMove(toParent: self)
+        visitController.didMove(toParent: self)
         exitController.didMove(toParent: self)
         
-        selfDataController.view.isHidden = true
-        resultController.view.isHidden = true
-        helpController.view.isHidden = true
+//        selfDataController.view.isHidden = true
+        visitController.view.isHidden = true
         exitController.view.isHidden = true
     }
     
@@ -116,25 +134,21 @@ class ProfileViewController: UIViewController, MenuControllerDelegate, UITextFie
             
             switch named {
             case  "Личные данные":
-                self?.selfDataController.view.isHidden = false
-                self?.resultController.view.isHidden = true
-                self?.helpController.view.isHidden = true
+                self?.view.isHidden = false
+//                self?.selfDataController.view.isHidden = false
+                self?.visitController.view.isHidden = true
                 self?.exitController.view.isHidden = true
-            case "Результаты":
-                self?.selfDataController.view.isHidden = true
-                self?.resultController.view.isHidden = false
-                self?.helpController.view.isHidden = true
-                self?.exitController.view.isHidden = true
-            case "Помощь":
-                self?.selfDataController.view.isHidden = true
-                self?.resultController.view.isHidden = true
-                self?.helpController.view.isHidden = false
+            case "Визиты":
+                self?.visitController.view.isHidden = false
+                self?.view.isHidden = false
+//                self?.selfDataController.view.isHidden = true
                 self?.exitController.view.isHidden = true
             case "Выход":
-                self?.selfDataController.view.isHidden = true
-                self?.resultController.view.isHidden = true
-                self?.helpController.view.isHidden = true
                 self?.exitController.view.isHidden = false
+                self?.view.isHidden = false
+//                self?.selfDataController.view.isHidden = true
+                self?.visitController.view.isHidden = true
+                
             default:
                 return
             }

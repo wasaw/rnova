@@ -16,6 +16,8 @@
 		BB46D2BC25B856BC003AD167 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB46D2BA25B856BC003AD167 /* LaunchScreen.storyboard */; };
 		BB4C554B25F0D5C600A616D6 /* SpecialtyChoiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB4C554A25F0D5C600A616D6 /* SpecialtyChoiceViewController.swift */; };
 		BB7CDE5B25D16E96007B1B1A /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB7CDE5A25D16E96007B1B1A /* DetailViewController.swift */; };
+		BBA245B9260BA14900BF12E7 /* ServicesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA245B7260BA14900BF12E7 /* ServicesCell.swift */; };
+		BBA245BA260BA14900BF12E7 /* ServicesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BBA245B8260BA14900BF12E7 /* ServicesCell.xib */; };
 		BBB5B1F825EE7C3C00A33761 /* DoctorChoiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB5B1F725EE7C3C00A33761 /* DoctorChoiceViewController.swift */; };
 		BBCE6CD825D6AA8100CC8598 /* OldViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCE6CD725D6AA8100CC8598 /* OldViewController.swift */; };
 		BBCE6CDF25DA702700CC8598 /* ParserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCE6CDE25DA702700CC8598 /* ParserViewController.swift */; };
@@ -28,8 +30,7 @@
 		BBD2E8A425B9B6F900A8D092 /* ServicesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD2E8A325B9B6F900A8D092 /* ServicesViewController.swift */; };
 		BBD2E8A725BAB37E00A8D092 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD2E8A625BAB37E00A8D092 /* ProfileViewController.swift */; };
 		BBD2E8B425BAECFB00A8D092 /* SelfDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD2E8B325BAECFB00A8D092 /* SelfDataViewController.swift */; };
-		BBD2E8B725BB0CDA00A8D092 /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD2E8B625BB0CDA00A8D092 /* ResultViewController.swift */; };
-		BBD2E8BA25BEAADF00A8D092 /* HelpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD2E8B925BEAADF00A8D092 /* HelpViewController.swift */; };
+		BBD2E8B725BB0CDA00A8D092 /* VisitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD2E8B625BB0CDA00A8D092 /* VisitViewController.swift */; };
 		BBD2E8BD25BEAB9100A8D092 /* ExitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD2E8BC25BEAB9100A8D092 /* ExitViewController.swift */; };
 		BBD2E8C225BFF77000A8D092 /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD2E8C125BFF77000A8D092 /* Parser.swift */; };
 		BBD2E8C525C0045800A8D092 /* file.json in Resources */ = {isa = PBXBuildFile; fileRef = BBD2E8C425C0045800A8D092 /* file.json */; };
@@ -49,6 +50,8 @@
 		BB46D2BD25B856BC003AD167 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BB4C554A25F0D5C600A616D6 /* SpecialtyChoiceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecialtyChoiceViewController.swift; sourceTree = "<group>"; };
 		BB7CDE5A25D16E96007B1B1A /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		BBA245B7260BA14900BF12E7 /* ServicesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServicesCell.swift; sourceTree = "<group>"; };
+		BBA245B8260BA14900BF12E7 /* ServicesCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ServicesCell.xib; sourceTree = "<group>"; };
 		BBB5B1F725EE7C3C00A33761 /* DoctorChoiceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoctorChoiceViewController.swift; sourceTree = "<group>"; };
 		BBCE6CD725D6AA8100CC8598 /* OldViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OldViewController.swift; sourceTree = "<group>"; };
 		BBCE6CDE25DA702700CC8598 /* ParserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParserViewController.swift; sourceTree = "<group>"; };
@@ -61,8 +64,7 @@
 		BBD2E8A325B9B6F900A8D092 /* ServicesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServicesViewController.swift; sourceTree = "<group>"; };
 		BBD2E8A625BAB37E00A8D092 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		BBD2E8B325BAECFB00A8D092 /* SelfDataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelfDataViewController.swift; sourceTree = "<group>"; };
-		BBD2E8B625BB0CDA00A8D092 /* ResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
-		BBD2E8B925BEAADF00A8D092 /* HelpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpViewController.swift; sourceTree = "<group>"; };
+		BBD2E8B625BB0CDA00A8D092 /* VisitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisitViewController.swift; sourceTree = "<group>"; };
 		BBD2E8BC25BEAB9100A8D092 /* ExitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExitViewController.swift; sourceTree = "<group>"; };
 		BBD2E8C125BFF77000A8D092 /* Parser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Parser.swift; sourceTree = "<group>"; };
 		BBD2E8C425C0045800A8D092 /* file.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = file.json; sourceTree = "<group>"; };
@@ -139,7 +141,6 @@
 				BB46D2BD25B856BC003AD167 /* Info.plist */,
 				BBD2E8A025B9686400A8D092 /* ClinicViewController.swift */,
 				BBCE6D0025E7A92300CC8598 /* Service */,
-				BBD2E8A625BAB37E00A8D092 /* ProfileViewController.swift */,
 				BBD2E8BF25BEABDB00A8D092 /* ProfileViewController */,
 			);
 			path = rnova;
@@ -162,6 +163,8 @@
 			isa = PBXGroup;
 			children = (
 				BBD2E8A325B9B6F900A8D092 /* ServicesViewController.swift */,
+				BBA245B7260BA14900BF12E7 /* ServicesCell.swift */,
+				BBA245B8260BA14900BF12E7 /* ServicesCell.xib */,
 				BBF8AD6A25C9B9E0009CD35D /* SubServicesViewController.swift */,
 			);
 			path = Service;
@@ -170,8 +173,8 @@
 		BBD2E8BF25BEABDB00A8D092 /* ProfileViewController */ = {
 			isa = PBXGroup;
 			children = (
-				BBD2E8B925BEAADF00A8D092 /* HelpViewController.swift */,
-				BBD2E8B625BB0CDA00A8D092 /* ResultViewController.swift */,
+				BBD2E8A625BAB37E00A8D092 /* ProfileViewController.swift */,
+				BBD2E8B625BB0CDA00A8D092 /* VisitViewController.swift */,
 				BBD2E8B325BAECFB00A8D092 /* SelfDataViewController.swift */,
 				BBD2E8BC25BEAB9100A8D092 /* ExitViewController.swift */,
 			);
@@ -242,6 +245,7 @@
 				BB46D2B925B856BC003AD167 /* Assets.xcassets in Resources */,
 				BB46D2B725B856B9003AD167 /* Main.storyboard in Resources */,
 				BBCE6CFB25E672B700CC8598 /* RecordCollectionViewCell.xib in Resources */,
+				BBA245BA260BA14900BF12E7 /* ServicesCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -301,8 +305,7 @@
 				BBD2E8C225BFF77000A8D092 /* Parser.swift in Sources */,
 				BB46D2B425B856B9003AD167 /* ViewController.swift in Sources */,
 				BB46D2B025B856B9003AD167 /* AppDelegate.swift in Sources */,
-				BBD2E8B725BB0CDA00A8D092 /* ResultViewController.swift in Sources */,
-				BBD2E8BA25BEAADF00A8D092 /* HelpViewController.swift in Sources */,
+				BBD2E8B725BB0CDA00A8D092 /* VisitViewController.swift in Sources */,
 				BBCE6D0625E8F62100CC8598 /* SubViewController.swift in Sources */,
 				BBCE6CFA25E672B700CC8598 /* RecordCollectionViewCell.swift in Sources */,
 				BBCE6CE725DFA8B200CC8598 /* SpecialtyViewController.swift in Sources */,
@@ -310,6 +313,7 @@
 				BBF8AD6B25C9B9E0009CD35D /* SubServicesViewController.swift in Sources */,
 				BBCE6CD825D6AA8100CC8598 /* OldViewController.swift in Sources */,
 				BBD2E8BD25BEAB9100A8D092 /* ExitViewController.swift in Sources */,
+				BBA245B9260BA14900BF12E7 /* ServicesCell.swift in Sources */,
 				BBCE6CE425DFA88A00CC8598 /* DoctorViewController.swift in Sources */,
 				BBF8AD6825C8200E009CD35D /* DataLoader.swift in Sources */,
 				BBD2E8B425BAECFB00A8D092 /* SelfDataViewController.swift in Sources */,
