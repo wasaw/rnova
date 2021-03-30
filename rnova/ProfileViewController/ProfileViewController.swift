@@ -23,8 +23,8 @@ class ProfileViewController: UIViewController, MenuControllerDelegate, UITextFie
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        let imageSelfData = UIImage(systemName: "person.fill")
-        let menu = MenuController(with: ["\(imageSelfData!) Личные данные", "Визиты", "Выход"])
+//        let imageSelfData = UIImage(systemName: "person.fill")
+        let menu = MenuController(with: ["Личные данные", "Визиты", "Выход"])
         menu.delegate = self
         sideMenu = SideMenuNavigationController(rootViewController: menu)
         sideMenu?.navigationBar.barTintColor = .systemOrange
