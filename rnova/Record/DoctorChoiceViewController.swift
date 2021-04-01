@@ -28,7 +28,7 @@ class DoctorChoiceViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         let width = view.bounds.width
         let widthLabel = width - 40
 //        let urlParemeter = "&clinic_id=" + String(clinicId)

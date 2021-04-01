@@ -42,7 +42,7 @@ class ViewController: UIViewController {
     var checkTapSegment = true
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         doctorVC = DoctorViewController().view
         specialtyVC = SpecialtyViewController().view
 //        viewContainer.addSubview(specialtyVC)

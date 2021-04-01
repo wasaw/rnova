@@ -1,21 +1,20 @@
 //
-//  CustomCollectionViewCell.swift
+//  DoctorCustomCollectionViewCell.swift
 //  rnova
 //
-//  Created by Александр Меренков on 3/30/21.
+//  Created by Александр Меренков on 3/31/21.
 //
 
 import UIKit
 
-class CustomCollectionViewCell: UICollectionViewCell {
-    static let identifier = "CustomCollectionViewCell"
-   
+class DoctorCustomCollectionViewCell: UICollectionViewCell {
+    static let identifier = "DoctorCustomCollectionViewCell"
+    
     let label = UILabel()
     
-    override init(frame:CGRect) {
+    override init(frame: CGRect) {
         super.init(frame: frame)
         
-//        label.frame = CGRect(x: 20, y: 20, width: 300, height: 40)
         label.font = label.font.withSize(20)
         contentView.addSubview(label)
         contentView.layer.cornerRadius = 10
