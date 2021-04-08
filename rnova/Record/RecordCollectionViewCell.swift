@@ -18,6 +18,7 @@ class RecordCollectionViewCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         label.frame = CGRect(x: 80, y: 20, width: 250, height: 40)
+        label.textColor = .black
         self.addSubview(label)
         
         profileImageView.frame = CGRect(x: 20, y: 20, width: 40, height: 40)

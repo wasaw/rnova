@@ -17,6 +17,7 @@ class CustomCollectionViewCell: UICollectionViewCell {
         
 //        label.frame = CGRect(x: 20, y: 20, width: 300, height: 40)
         label.font = label.font.withSize(20)
+        label.textColor = .black
         contentView.addSubview(label)
         contentView.layer.cornerRadius = 10
         contentView.layer.shadowColor = UIColor.black.cgColor

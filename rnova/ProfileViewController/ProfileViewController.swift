@@ -42,7 +42,7 @@ class ProfileViewController: UIViewController, MenuControllerDelegate, UITextFie
         surnameOutlete.clearButtonMode = .always
         nameOutlete.clearButtonMode = .always
         midlenameOutlete.clearButtonMode = .always
-        
+                
         let bottomLineSurname = CALayer()
         bottomLineSurname.frame = CGRect(x: 0.0, y: surnameOutlete.frame.height - 5, width: surnameOutlete.frame.width, height: 1.0)
         bottomLineSurname.backgroundColor = UIColor.black.cgColor
@@ -175,6 +175,7 @@ class MenuController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.backgroundColor = .white
+        
     }
     
     required init?(coder: NSCoder) {
@@ -188,6 +189,7 @@ class MenuController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         cell.textLabel?.text = menuItems[indexPath.row]
+        cell.textLabel?.textColor = .black
         cell.tintColor = .black
         cell.backgroundColor = .white
         return cell

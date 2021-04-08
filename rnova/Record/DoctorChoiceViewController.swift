@@ -13,6 +13,7 @@ class DoctorChoiceViewController: UIViewController {
     let clinicId: Int
     let datePicker = UIDatePicker()
     let textFieldDate = UITextField(frame: CGRect(x: 80, y: 250, width: 250, height: 40))
+    var dateChoise = Date.init()
 
     
     init(id: Int, clinicId: Int) {
@@ -41,17 +42,19 @@ class DoctorChoiceViewController: UIViewController {
         labelName.font = UIFont.boldSystemFont(ofSize: 32)
         labelName.textAlignment = .center
         labelName.text = String(doctorData[0].name)
+        labelName.textColor = .black
         view.addSubview(labelName)
         
         let labelTextData = UILabel(frame: CGRect(x: 20, y: 200, width: widthLabel, height: 40))
         labelTextData.font = UIFont.boldSystemFont(ofSize: 18)
         labelTextData.textAlignment = .left
         labelTextData.text = "Выбрать дату:"
+        labelTextData.textColor = .black
         view.addSubview(labelTextData)
         
         textFieldDate.layer.borderWidth = 1
         textFieldDate.textAlignment = .center
-        
+        textFieldDate.textColor = .black
 
         let formatterDate = DateFormatter()
         formatterDate.dateFormat = .none
@@ -69,12 +72,20 @@ class DoctorChoiceViewController: UIViewController {
         datePicker.preferredDatePickerStyle = .wheels
         
         let buttonLeft = UIButton(frame: CGRect(x: 20, y: 250, width: 40, height: 40))
-        buttonLeft.backgroundColor = .systemOrange
+        buttonLeft.tintColor = UIColor.systemOrange
+        buttonLeft.layer.borderWidth = 1
+        buttonLeft.layer.borderColor = UIColor.systemOrange.cgColor
+        let imgLeft = UIImage(systemName: "chevron.left")
+        buttonLeft.setImage(imgLeft, for: .normal)
         buttonLeft.addTarget(self, action: #selector(pressLeftButton), for: .touchUpInside)
         view.addSubview(buttonLeft)
         
         let buttonRight = UIButton(frame: CGRect(x: 350, y: 250, width: 40, height: 40))
-        buttonRight.backgroundColor = .systemOrange
+        buttonRight.tintColor = UIColor.systemOrange
+        buttonRight.layer.borderWidth = 1
+        buttonRight.layer.borderColor = UIColor.systemOrange.cgColor
+        let imgRight = UIImage(systemName: "chevron.right")
+        buttonRight.setImage(imgRight, for: .normal)
         buttonRight.addTarget(self, action: #selector(pressRightButton), for: .touchUpInside)
         view.addSubview(buttonRight)
         
@@ -82,12 +93,14 @@ class DoctorChoiceViewController: UIViewController {
         labelTime.font = UIFont.boldSystemFont(ofSize: 18)
         labelTime.textAlignment = .left
         labelTime.text = "Выбрать время:"
+        labelTime.textColor = .black
         view.addSubview(labelTime)
         
         let labelTimeText = UILabel(frame: CGRect(x: 20, y: 350, width: widthLabel, height: 40))
         labelTimeText.font = UIFont.systemFont(ofSize: 14)
         labelTimeText.textAlignment = .left
         labelTimeText.text = "Нет свободного времени"
+        labelTimeText.textColor = .black
         view.addSubview(labelTimeText)
         
         view.backgroundColor = .white
@@ -95,11 +108,21 @@ class DoctorChoiceViewController: UIViewController {
     }
 
     @objc func pressLeftButton(sender: UIButton!) {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .medium
+        formatter.timeStyle = .none
         
+        dateChoise.addTimeInterval(-86400)
+        textFieldDate.text = formatter.string(from: dateChoise)
     }
     
     @objc func pressRightButton(sender: UIButton!) {
-         
+        let formatter = DateFormatter()
+        formatter.dateStyle = .medium
+        formatter.timeStyle = .none
+        
+        dateChoise.addTimeInterval(86400)
+        textFieldDate.text = formatter.string(from: dateChoise)
     }
     
     @objc func donePress() {
@@ -107,7 +130,12 @@ class DoctorChoiceViewController: UIViewController {
         formatter.dateStyle = .medium
         formatter.timeStyle = .none
         
-        textFieldDate.text = formatter.string(from: datePicker.date)
+//        var dateT = datePicker.date
+//        dateT.addTimeInterval(86400)
+//        textFieldDate.text = formatter.string(from: dateT)
+        dateChoise = datePicker.date
+        textFieldDate.text = formatter.string(from: dateChoise)
+//        textFieldDate.text = formatter.string(from: datePicker.date)
         self.view.endEditing(true)
     }
     

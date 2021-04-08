@@ -22,6 +22,7 @@ class VisitViewController: UIViewController {
         
         let labelAnswer = UILabel(frame: CGRect(x: 10, y: 170, width: 170, height: 20))
         labelAnswer.text = "Нет результатов"
+        labelAnswer.textColor = .black
         view.addSubview(labelAnswer)
         
     }

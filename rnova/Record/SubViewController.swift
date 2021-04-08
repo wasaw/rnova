@@ -57,6 +57,7 @@ class SubViewController: UIViewController, UICollectionViewDelegate, UICollectio
         searchController.searchResultsUpdater = self
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.searchBar.placeholder = "Search"
+        searchController.searchBar.barTintColor = .white
         definesPresentationContext = true
         collectionView.addSubview(searchController.searchBar)
     }
@@ -89,16 +90,18 @@ class SubViewController: UIViewController, UICollectionViewDelegate, UICollectio
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let id: Int
-        if isFiltering {
-            id = doctor_id
-        }else {
-            id = doctor_id
-        }
+//        if isFiltering {
+//            id = doctor_id
+//        }else {
+//            id = doctor_id
+//        }
         if checkTapSegment {
+            id = doctor_id
             let vc = DoctorChoiceViewController(id: id, clinicId: clinicsData[indexPath.row].id)
             navigationController?.pushViewController(vc, animated: true)
         }else {
-            let vc = SpecialtyChoiceViewController()
+            id = doctor_id
+            let vc = SpecialtyChoiceViewController(id: id)
             navigationController?.pushViewController(vc, animated: true)
         }
     }

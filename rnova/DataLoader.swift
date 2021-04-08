@@ -76,6 +76,7 @@ struct Services: Decodable {
 struct Doctors: Decodable {
     let id: Int
     let name: String
+    let profession: [String]?
 }
 
 struct Professions: Decodable {

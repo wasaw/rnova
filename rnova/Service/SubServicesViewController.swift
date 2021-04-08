@@ -13,11 +13,15 @@ class SubServicesViewController: UIViewController, UICollectionViewDelegate, UIC
     private var collectionView: UICollectionView?
     private let selectedId: Int
     private var noResult = false
+//    private var downloadData: Bool
+//    private var pastId: Int
     let insents = UIEdgeInsets(top: 70, left: 20, bottom: 10, right: 20)
 
 
     init(selectedId: Int) {
         self.selectedId = selectedId
+//        self.downloadData = false
+//        self.pastId = pastId
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -42,13 +46,15 @@ class SubServicesViewController: UIViewController, UICollectionViewDelegate, UIC
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = "Выбор услуги"
-        
+
         strReques = "&category_id=" + String(self.selectedId)
         data = DataLoader(urlMethod: "&method=getServiceCategories", urlParameter: strReques).servicesData
         data.sort { (lth, rth) -> Bool in
             return lth.title < rth.title
         }
         
+        print("Data: \(data)")
+
         
                 
         let layout = UICollectionViewFlowLayout()
@@ -65,8 +71,30 @@ class SubServicesViewController: UIViewController, UICollectionViewDelegate, UIC
         searchController.searchResultsUpdater = self
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.searchBar.placeholder = "Search"
+        searchController.searchBar.barTintColor = .white
         definesPresentationContext = true
         collectionView.addSubview(searchController.searchBar)
+    }
+    
+//    override func viewWillAppear(_ animated: Bool) {
+//        super.viewWillAppear(true)
+//
+//        collectionView?.reloadData()
+//    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(true)
+        
+//        if !downloadData {
+//            strReques = "&category_id=" + String(self.selectedId)
+//            data = DataLoader(urlMethod: "&method=getServiceCategories", urlParameter: strReques).servicesData
+//            self.downloadData = true
+//        }
+//
+        
+//        if self.isMovingFromParent {
+//            print("ololo")
+//        }
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -107,6 +135,13 @@ class SubServicesViewController: UIViewController, UICollectionViewDelegate, UIC
         if isFiltering {
             item = filteredSearchResult[indexPath.row].id
         }else {
+            if (data.count == 0) {
+                strReques = "&category_id=" + String(self.selectedId)
+                data = DataLoader(urlMethod: "&method=getServiceCategories", urlParameter: strReques).servicesData
+                data.sort { (lth, rth) -> Bool in
+                    return lth.title < rth.title
+                }
+            }
             item = data[indexPath.row].id
         }
         let vc = SubServicesViewController(selectedId: item)

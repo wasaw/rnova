@@ -31,15 +31,18 @@ class ServicesViewController: UIViewController {
         collectoinView.delegate = self
         collectoinView.dataSource = self
         collectoinView.register(UINib(nibName: cellID, bundle: nil), forCellWithReuseIdentifier: cellID)
+        collectoinView.backgroundColor = .white
         
         searchController.searchResultsUpdater = self
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.searchBar.placeholder = "Search"
+        searchController.searchBar.barTintColor = .white
         collectoinView.addSubview(searchController.searchBar)
         definesPresentationContext = true
 
         
         data.sort {(lhs, rhs)  in return lhs.title < rhs.title}
+        
     }
     
 }

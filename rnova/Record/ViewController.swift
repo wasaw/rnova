@@ -53,6 +53,8 @@ class ViewController: UIViewController {
         searchController.searchResultsUpdater = self
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.searchBar.placeholder = "Search"
+        searchController.searchBar.barTintColor = .white
+        searchController.searchBar.frame = CGRect(x: 0, y: 0, width: collectionView.bounds.width - 5, height: 50)
         collectionView.addSubview(searchController.searchBar)
 //        navigationItem.searchController = searchController
         definesPresentationContext = true
