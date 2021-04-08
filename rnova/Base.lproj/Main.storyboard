@@ -36,11 +36,34 @@
                     <view key="view" contentMode="scaleToFill" id="rhz-Bm-zlM">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="jgU-U2-MIe">
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Wp1-co-PBP">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells/>
+                            </collectionView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="MkD-cl-vNo"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="jgU-U2-MIe" firstAttribute="leading" secondItem="MkD-cl-vNo" secondAttribute="leading" id="76A-rs-afl"/>
+                            <constraint firstItem="MkD-cl-vNo" firstAttribute="trailing" secondItem="jgU-U2-MIe" secondAttribute="trailing" id="9FZ-cd-8FK"/>
+                            <constraint firstItem="MkD-cl-vNo" firstAttribute="bottom" secondItem="jgU-U2-MIe" secondAttribute="bottom" id="OLg-O6-8FB"/>
+                            <constraint firstItem="jgU-U2-MIe" firstAttribute="top" secondItem="MkD-cl-vNo" secondAttribute="top" id="oXS-e3-XbG"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Клиники" image="house" catalog="system" id="jZu-w8-Yzp"/>
                     <navigationItem key="navigationItem" title="Клиники" id="LGK-eu-e0Y"/>
+                    <connections>
+                        <outlet property="collectionView" destination="jgU-U2-MIe" id="qhx-Vb-aSv"/>
+                        <outlet property="layout" destination="Wp1-co-PBP" id="ar8-yF-61z"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lIa-V0-5Vi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

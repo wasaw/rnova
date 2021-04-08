@@ -4,7 +4,6 @@
 //
 //  Created by Александр Меренков on 2/19/21.
 //
-
 import UIKit
 
 class DoctorViewController: UIViewController {
@@ -17,4 +16,3 @@ class DoctorViewController: UIViewController {
 
 
 }
-
