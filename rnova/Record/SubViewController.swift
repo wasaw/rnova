@@ -73,15 +73,25 @@ class SubViewController: UIViewController, UICollectionViewDelegate, UICollectio
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DoctorCustomCollectionViewCell.identifier, for: indexPath) as? DoctorCustomCollectionViewCell else { return UICollectionViewCell()}
         if isFiltering {
-            cell.label.text = filteredSearchResult[indexPath.row].title
+            cell.titleLable.text = filteredSearchResult[indexPath.row].title
+            cell.addressLabel.text = filteredSearchResult[indexPath.row].address
         }else {
-            cell.label.text = clinicsData[indexPath.row].title
+            cell.titleLable.text = clinicsData[indexPath.row].title
+            cell.addressLabel.text = clinicsData[indexPath.row].address
+            cell.emailLabel.text = clinicsData[indexPath.row].email
+            cell.phoneLabel.text = clinicsData[indexPath.row].mobile
         }
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: view.frame.width - 50, height: 80)
+        let height: CGFloat
+        if clinicsData[indexPath.row].address == nil {
+            height = 60
+        }else {
+            height = 160
+        }
+        return CGSize(width: view.frame.width - 50, height: height)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {

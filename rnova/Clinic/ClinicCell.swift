@@ -10,7 +10,7 @@ import UIKit
 class ClinicCell: UICollectionViewCell {
 
     let titleLabel = UILabel()
-    let adressLabel = UILabel()
+    let addressLabel = UILabel()
     let emailLabel = UILabel()
     let phoneLabel = UILabel()
     let button = UIButton()
@@ -26,11 +26,11 @@ class ClinicCell: UICollectionViewCell {
         titleLabel.textColor = .black
         self.addSubview(titleLabel)
         
-        adressLabel.frame = CGRect(x: 15, y: 45, width: 350, height: 50)
-        adressLabel.textColor = .gray
-        adressLabel.font = UIFont.systemFont(ofSize: 14)
-        adressLabel.numberOfLines = 2
-        self.addSubview(adressLabel)
+        addressLabel.frame = CGRect(x: 15, y: 45, width: 350, height: 50)
+        addressLabel.textColor = .gray
+        addressLabel.font = UIFont.systemFont(ofSize: 14)
+        addressLabel.numberOfLines = 2
+        self.addSubview(addressLabel)
         
         emailLabel.frame = CGRect(x: 15, y: 95, width: 350, height: 20)
         emailLabel.font = UIFont.systemFont(ofSize: 14)

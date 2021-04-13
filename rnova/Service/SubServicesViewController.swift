@@ -135,7 +135,7 @@ class SubServicesViewController: UIViewController, UICollectionViewDelegate, UIC
         if isFiltering {
             item = filteredSearchResult[indexPath.row].id
         }else {
-            if (data.count == 0) {
+            if (data.isEmpty) {
                 strReques = "&category_id=" + String(self.selectedId)
                 data = DataLoader(urlMethod: "&method=getServiceCategories", urlParameter: strReques).servicesData
                 data.sort { (lth, rth) -> Bool in

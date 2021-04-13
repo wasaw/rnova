@@ -38,12 +38,30 @@ class DoctorChoiceViewController: UIViewController {
         let urlStr = "&user_id=" + String(self.doctorId)
         let doctorData = DataLoader(urlMethod: "&method=getUsers", urlParameter: urlStr).doctorsData
         
-        let labelName = UILabel(frame: CGRect(x: 20, y: 140, width: widthLabel, height: 60))
-        labelName.font = UIFont.boldSystemFont(ofSize: 32)
+        let textView = UITextView()
+        textView.frame = CGRect(x: 20, y: 120, width: view.frame.width - 40, height: 80)
+        textView.layer.cornerRadius = 10
+        textView.layer.shadowColor = UIColor.black.cgColor
+        textView.layer.shadowOffset = CGSize(width: 0, height: 1)
+        textView.layer.shadowOpacity = 1
+        textView.layer.shadowRadius = 1.0
+        textView.clipsToBounds = false
+        textView.layer.masksToBounds = false
+        view.addSubview(textView)
+        
+        let profileImageView = UIImageView()
+        let profileImage = UIImage(systemName: "person")
+        profileImageView.frame = CGRect(x: 20, y: 20, width: 40, height: 40)
+        profileImageView.image = profileImage
+        textView.addSubview(profileImageView)
+        
+        
+        let labelName = UILabel(frame: CGRect(x: 50, y: 20, width: textView.frame.width - 60, height: 30))
+        labelName.font = UIFont.boldSystemFont(ofSize: 20)
         labelName.textAlignment = .center
         labelName.text = String(doctorData[0].name)
         labelName.textColor = .black
-        view.addSubview(labelName)
+        textView.addSubview(labelName)
         
         let labelTextData = UILabel(frame: CGRect(x: 20, y: 200, width: widthLabel, height: 40))
         labelTextData.font = UIFont.boldSystemFont(ofSize: 18)
@@ -52,7 +70,6 @@ class DoctorChoiceViewController: UIViewController {
         labelTextData.textColor = .black
         view.addSubview(labelTextData)
         
-        textFieldDate.layer.borderWidth = 1
         textFieldDate.textAlignment = .center
         textFieldDate.textColor = .black
 

@@ -59,7 +59,7 @@ extension ClinicViewController: UICollectionViewDataSource {
 //        let firstTap = UITapGestureRecognizer(target: self, action: #selector(sendEmail))
 //        cell.emailLabel.isUserInteractionEnabled = true
 //        cell.emailLabel.addGestureRecognizer(firstTap)
-        cell.adressLabel.text = adress
+        cell.addressLabel.text = adress
         let phone = clinicsData[indexPath.row].mobile ?? ""
         cell.phoneLabel.text = phone
         if cell.frame.height == 50 {
