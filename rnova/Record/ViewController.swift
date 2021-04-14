@@ -110,6 +110,8 @@ extension ViewController: UICollectionViewDataSource {
         cell.layer.masksToBounds = false
         
         if checkTapSegment {
+            cell.profileImageView.isHidden = false
+            cell.label.frame = CGRect(x: 80, y: 20, width: cell.frame.width - 105, height: 40)
             if isFiltering {
                 cell.label.text = filteredSearchResultDoctors[indexPath[1]].name
             }else {
@@ -117,11 +119,27 @@ extension ViewController: UICollectionViewDataSource {
                 cell.label.text = doctorsData[indexPath[1]].name
             }
         }else {
+            //counting the number of doctors by profession
+            let id = professionsData[indexPath.row].id
+            var commonCount = 0
+            for item in 0...doctorsData.count - 1 {
+                guard let str = doctorsData[item].profession else { continue }
+                if str.count > 0 {
+                    for i in 0...str.count - 1 {
+                        if id == Int(str[i]) {
+                            commonCount += 1
+                        }
+                    }
+                }
+            }
+           
+            cell.profileImageView.isHidden = true
+            cell.label.frame = CGRect(x: 15, y: 5, width: cell.frame.width - 30, height: 50)
             if isFiltering {
                 cell.label.text = filteredSearchResultProfessions[indexPath[1]].name
             }else {
                 cell.setup(color: dataColor[0])
-                cell.label.text = professionsData[indexPath[1]].name
+                cell.label.text = "\(professionsData[indexPath[1]].name) (\(commonCount))"
             }
         }
         
@@ -155,7 +173,12 @@ extension ViewController: UICollectionViewDelegate {
 extension ViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width: CGFloat = collectionView.frame.width - 20
-        let height: CGFloat = width / 4
+        let height: CGFloat
+        if checkTapSegment {
+            height = width / 4
+        }else {
+            height = 60
+        }
         return CGSize(width: width, height: height)
     }
     

@@ -12,7 +12,7 @@ class DoctorChoiceViewController: UIViewController {
     let doctorId: Int
     let clinicId: Int
     let datePicker = UIDatePicker()
-    let textFieldDate = UITextField(frame: CGRect(x: 80, y: 250, width: 250, height: 40))
+    let textFieldDate = UITextField(frame: CGRect(x: 80, y: 270, width: 250, height: 40))
     var dateChoise = Date.init()
 
     
@@ -63,7 +63,7 @@ class DoctorChoiceViewController: UIViewController {
         labelName.textColor = .black
         textView.addSubview(labelName)
         
-        let labelTextData = UILabel(frame: CGRect(x: 20, y: 200, width: widthLabel, height: 40))
+        let labelTextData = UILabel(frame: CGRect(x: 20, y: 220, width: widthLabel, height: 40))
         labelTextData.font = UIFont.boldSystemFont(ofSize: 18)
         labelTextData.textAlignment = .left
         labelTextData.text = "Выбрать дату:"
@@ -88,7 +88,7 @@ class DoctorChoiceViewController: UIViewController {
         datePicker.datePickerMode = .date
         datePicker.preferredDatePickerStyle = .wheels
         
-        let buttonLeft = UIButton(frame: CGRect(x: 20, y: 250, width: 40, height: 40))
+        let buttonLeft = UIButton(frame: CGRect(x: 20, y: 270, width: 40, height: 40))
         buttonLeft.tintColor = UIColor.systemOrange
         buttonLeft.layer.borderWidth = 1
         buttonLeft.layer.borderColor = UIColor.systemOrange.cgColor
@@ -97,7 +97,7 @@ class DoctorChoiceViewController: UIViewController {
         buttonLeft.addTarget(self, action: #selector(pressLeftButton), for: .touchUpInside)
         view.addSubview(buttonLeft)
         
-        let buttonRight = UIButton(frame: CGRect(x: 350, y: 250, width: 40, height: 40))
+        let buttonRight = UIButton(frame: CGRect(x: 350, y: 270, width: 40, height: 40))
         buttonRight.tintColor = UIColor.systemOrange
         buttonRight.layer.borderWidth = 1
         buttonRight.layer.borderColor = UIColor.systemOrange.cgColor
@@ -106,14 +106,14 @@ class DoctorChoiceViewController: UIViewController {
         buttonRight.addTarget(self, action: #selector(pressRightButton), for: .touchUpInside)
         view.addSubview(buttonRight)
         
-        let labelTime = UILabel(frame: CGRect(x: 20, y: 310, width: widthLabel, height: 40))
+        let labelTime = UILabel(frame: CGRect(x: 20, y: 330, width: widthLabel, height: 40))
         labelTime.font = UIFont.boldSystemFont(ofSize: 18)
         labelTime.textAlignment = .left
         labelTime.text = "Выбрать время:"
         labelTime.textColor = .black
         view.addSubview(labelTime)
         
-        let labelTimeText = UILabel(frame: CGRect(x: 20, y: 350, width: widthLabel, height: 40))
+        let labelTimeText = UILabel(frame: CGRect(x: 20, y: 370, width: widthLabel, height: 40))
         labelTimeText.font = UIFont.systemFont(ofSize: 14)
         labelTimeText.textAlignment = .left
         labelTimeText.text = "Нет свободного времени"
