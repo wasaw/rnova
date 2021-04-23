@@ -18,6 +18,7 @@ class ViewController: UIViewController {
     var doctorsData = DataLoader(urlMethod: "&method=getUsers", urlParameter: "").doctorsData
     var professionsData = DataLoader(urlMethod: "&method=getProfessions", urlParameter: "").professionsData
     
+    
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var layout: UICollectionViewFlowLayout!
     
@@ -42,7 +43,6 @@ class ViewController: UIViewController {
     var checkTapSegment = true
     override func viewDidLoad() {
         super.viewDidLoad()
-
         doctorVC = DoctorViewController().view
         specialtyVC = SpecialtyViewController().view
 //        viewContainer.addSubview(specialtyVC)

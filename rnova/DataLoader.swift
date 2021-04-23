@@ -14,6 +14,7 @@ public class  DataLoader {
     @Published var doctorsData = [Doctors]()
     @Published var professionsData = [Professions]()
     @Published var clinicsData = [Clinic]()
+    @Published var scheduleData = [String: [Schedule]]()
     
     init(urlMethod:String, urlParameter: String) {
         self.urlMethod = urlMethod
@@ -45,6 +46,10 @@ public class  DataLoader {
                 case "&method=getClinics":
                     let dataFromJson = try jsonDecoder.decode([Clinic].self, from: data)
                     self.clinicsData = dataFromJson
+                case "&method=getSchedule":
+                    let dataFromJson: [String: [Schedule]] = try jsonDecoder.decode([String: [Schedule]].self, from: data)
+                    self.scheduleData = dataFromJson
+//                    print(dataFromJson["1384"])
                 default:
                     return
                 }
@@ -77,6 +82,7 @@ struct Doctors: Decodable {
     let id: Int
     let name: String
     let profession: [String]?
+    let profession_titles: String?
 }
 
 struct Professions: Decodable {
@@ -92,3 +98,15 @@ struct Clinic: Decodable {
     let email: String?
     let address: String?
 }
+
+struct Schedule: Decodable {
+//    let time_start: String
+//    let time_end: String
+    let date: String
+    let time_start_short: String
+    let clinic_id: Int
+    let room: String
+//    let category_id: Int?
+    let is_busy: Bool
+}
+
