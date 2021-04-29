@@ -48,7 +48,7 @@ class SpecialtyChoiceViewController: UIViewController, UICollectionViewDelegate,
         let format = DateFormatter()
         format.dateFormat = "dd.MM.yyyy"
 //        let nowDay = format.string(from: dateFormat)
-        let nowDay = "26.04.2021"
+        let nowDay = "29.04.2021"
         
         for item in 0...doctorsData.count - 1 {
 //            can be more then one
@@ -281,18 +281,24 @@ class SpecialtyChoiceViewController: UIViewController, UICollectionViewDelegate,
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        let compare = arrAllTime[indexPath.row].count
-        let hight: Int
-        switch compare {
-        case 0, 1, 2, 3, 4:
-            hight = 230
-        case 5, 6, 7, 8:
-            hight = 275
-        case 9, 10, 11, 12:
-            hight = 330
-        default:
-            hight = 230
-        }
+//        let compare = arrAllTime[indexPath.row].count
+        let lineCount = CGFloat(arrAllTime[indexPath.row].count) / 4
+        let counter = 50
+        let hight = 180 + counter * Int(lineCount.rounded(.up))
+//        switch compare {
+//        case 0, 1, 2, 3, 4:
+//            hight = 230
+//        case 5, 6, 7, 8:
+//            hight = 275
+//        case 9, 10, 11, 12:
+//            hight = 330
+//        case 13, 14, 15, 16:
+//            hight = 385
+//        case 17, 18, 19, 20:
+//            hight = 430
+//        default:
+//            hight = 230
+//        }
 //        if arrAllTime[indexPath.row].count <= 4 {
 //            let hight = 230
 //        }

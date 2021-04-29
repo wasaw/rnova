@@ -117,8 +117,12 @@ class SpecialtyCollectionViewCell: UICollectionViewCell {
     }
     
     @objc func buttonTap(sender: UIButton) {
-        newView()
+//        let nav = UINavigationController()
+//        nav.pushViewController(PersonalData(), animated: true)
+//        print("press")
     }
+    
+   
 //
 //    func initButton(for item: Int) -> UIButton{
 //        let button = UIButton(type: .system)
