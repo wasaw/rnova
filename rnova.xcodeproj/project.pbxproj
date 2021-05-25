@@ -37,6 +37,8 @@
 		BBD2E8B425BAECFB00A8D092 /* SelfDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD2E8B325BAECFB00A8D092 /* SelfDataViewController.swift */; };
 		BBD2E8B725BB0CDA00A8D092 /* VisitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD2E8B625BB0CDA00A8D092 /* VisitViewController.swift */; };
 		BBD2E8BD25BEAB9100A8D092 /* ExitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD2E8BC25BEAB9100A8D092 /* ExitViewController.swift */; };
+		BBF5F3792653BE4900BF1F66 /* DoctorChoiceViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF5F3772653BE4900BF1F66 /* DoctorChoiceViewCell.swift */; };
+		BBF5F37A2653BE4900BF1F66 /* DoctorChoiceViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BBF5F3782653BE4900BF1F66 /* DoctorChoiceViewCell.xib */; };
 		BBF8AD6825C8200E009CD35D /* DataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF8AD6725C8200E009CD35D /* DataLoader.swift */; };
 		BBF8AD6B25C9B9E0009CD35D /* SubServicesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF8AD6A25C9B9E0009CD35D /* SubServicesViewController.swift */; };
 /* End PBXBuildFile section */
@@ -75,6 +77,8 @@
 		BBD2E8B625BB0CDA00A8D092 /* VisitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisitViewController.swift; sourceTree = "<group>"; };
 		BBD2E8BC25BEAB9100A8D092 /* ExitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExitViewController.swift; sourceTree = "<group>"; };
 		BBDB24C03A7147C4A5E52818 /* Pods-rnova.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-rnova.debug.xcconfig"; path = "Target Support Files/Pods-rnova/Pods-rnova.debug.xcconfig"; sourceTree = "<group>"; };
+		BBF5F3772653BE4900BF1F66 /* DoctorChoiceViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoctorChoiceViewCell.swift; sourceTree = "<group>"; };
+		BBF5F3782653BE4900BF1F66 /* DoctorChoiceViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DoctorChoiceViewCell.xib; sourceTree = "<group>"; };
 		BBF8AD6725C8200E009CD35D /* DataLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataLoader.swift; sourceTree = "<group>"; };
 		BBF8AD6A25C9B9E0009CD35D /* SubServicesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubServicesViewController.swift; sourceTree = "<group>"; };
 		CEA0475F7112F150729550A7 /* Pods_rnova.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_rnova.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -165,6 +169,8 @@
 				BBCE6D0525E8F62100CC8598 /* SubViewController.swift */,
 				BBA245CA26149E0300BF12E7 /* DoctorCustomCollectionViewCell.swift */,
 				BBB5B1F725EE7C3C00A33761 /* DoctorChoiceViewController.swift */,
+				BBF5F3772653BE4900BF1F66 /* DoctorChoiceViewCell.swift */,
+				BBF5F3782653BE4900BF1F66 /* DoctorChoiceViewCell.xib */,
 				BB4C554A25F0D5C600A616D6 /* SpecialtyChoiceViewController.swift */,
 				BBA245DC2629B27000BF12E7 /* SpecialtyCollectionViewCell.swift */,
 				BBA245DD2629B27000BF12E7 /* SpecialtyCollectionViewCell.xib */,
@@ -259,6 +265,7 @@
 			files = (
 				BB46D2BC25B856BC003AD167 /* LaunchScreen.storyboard in Resources */,
 				BB46D2B925B856BC003AD167 /* Assets.xcassets in Resources */,
+				BBF5F37A2653BE4900BF1F66 /* DoctorChoiceViewCell.xib in Resources */,
 				BB46D2B725B856B9003AD167 /* Main.storyboard in Resources */,
 				BBA245DA261EFE7800BF12E7 /* ClinicCell.xib in Resources */,
 				BBCE6CFB25E672B700CC8598 /* RecordCollectionViewCell.xib in Resources */,
@@ -331,6 +338,7 @@
 				BBF8AD6B25C9B9E0009CD35D /* SubServicesViewController.swift in Sources */,
 				BBD2E8BD25BEAB9100A8D092 /* ExitViewController.swift in Sources */,
 				BBA245B9260BA14900BF12E7 /* ServicesCell.swift in Sources */,
+				BBF5F3792653BE4900BF1F66 /* DoctorChoiceViewCell.swift in Sources */,
 				BBA245C826135A9800BF12E7 /* CustomCollectionViewCell.swift in Sources */,
 				BBF8AD6825C8200E009CD35D /* DataLoader.swift in Sources */,
 				BBD2E8B425BAECFB00A8D092 /* SelfDataViewController.swift in Sources */,

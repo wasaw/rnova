@@ -48,7 +48,7 @@ class SpecialtyChoiceViewController: UIViewController, UICollectionViewDelegate,
         let format = DateFormatter()
         format.dateFormat = "dd.MM.yyyy"
 //        let nowDay = format.string(from: dateFormat)
-        let nowDay = "29.04.2021"
+        let nowDay = "19.05.2021"
         
         for item in 0...doctorsData.count - 1 {
 //            can be more then one
