@@ -12,7 +12,7 @@ class DoctorChoiceViewController: UIViewController {
         
     
     let doctorId: Int
-    let clinicId: Int
+//    let clinicId: Int
     let datePicker = UIDatePicker()
     let textFieldDate = UITextField(frame: CGRect(x: 80, y: 270, width: 250, height: 40))
     var dateChoise = Date.init()
@@ -33,9 +33,9 @@ class DoctorChoiceViewController: UIViewController {
 
     let labelTimeText = UILabel()
     
-    init(id: Int, clinicId: Int) {
+    init(id: Int) {
         self.doctorId = id
-        self.clinicId = clinicId
+//        self.clinicId = clinicId
         super.init(nibName: nil, bundle: nil)
     }
     

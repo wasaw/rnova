@@ -107,7 +107,8 @@ class SubViewController: UIViewController, UICollectionViewDelegate, UICollectio
 //        }
         if checkTapSegment {
             id = doctor_id
-            let vc = DoctorChoiceViewController(id: id, clinicId: clinicsData[indexPath.row].id)
+//            let vc = DoctorChoiceViewController(id: id, clinicId: clinicsData[indexPath.row].id)
+            let vc = DoctorChoiceViewController(id: id)
             navigationController?.pushViewController(vc, animated: true)
         }else {
             id = doctor_id

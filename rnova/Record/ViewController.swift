@@ -152,20 +152,26 @@ extension ViewController: UICollectionViewDataSource {
 extension ViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let id: Int
+        let vc: UIViewController
         if checkTapSegment {
             if isFiltering {
                 id = filteredSearchResultDoctors[indexPath[1]].id
+                vc = DoctorChoiceViewController(id: id)
             }else {
                 id = doctorsData[indexPath[1]].id
+                vc = DoctorChoiceViewController(id: id)
             }
         }else {
             if isFiltering {
                 id = filteredSearchResultProfessions[indexPath[1]].id
+                vc = SpecialtyChoiceViewController(id: id)
             }else {
                 id = professionsData[indexPath[1]].id
+                vc = SpecialtyChoiceViewController(id: id)
             }
         }
-        let vc = SubViewController(id: id, checkTapSegment: checkTapSegment)
+//        Delete SubViewController
+//        let vc = SubViewController(id: id, checkTapSegment: checkTapSegment)
         navigationController?.pushViewController(vc, animated: true)
     }
 }
