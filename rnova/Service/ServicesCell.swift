@@ -10,14 +10,18 @@ import UIKit
 class ServicesCell: UICollectionViewCell {
 
     let label = UILabel()
+    let imageView = UIImageView()
+    let image = UIImage(systemName: "chevron.right")
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
-        
-        label.frame = CGRect(x: 20, y: 20, width: 300, height: 40)
-        label.font = label.font.withSize(20)
+
+        label.frame = CGRect(x: 20, y: 12, width: 300, height: 40)
+        label.font = UIFont.boldSystemFont(ofSize: 18)
         label.textColor = .black
         self.addSubview(label)
+
+        shadow()
         backgroundColor = .white
     }
 

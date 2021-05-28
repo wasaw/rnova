@@ -49,18 +49,9 @@ public class  DataLoader {
                 case "&method=getSchedule":
                     let dataFromJson: [String: [Schedule]] = try jsonDecoder.decode([String: [Schedule]].self, from: data)
                     self.scheduleData = dataFromJson
-//                    print(dataFromJson["1384"])
                 default:
                     return
                 }
-////                let dataFromJson = try jsonDecoder.decode([Services].self, from: data)
-//                let dataFromJson = try jsonDecoder.decode([Doctors].self, from: data)
-////                self.servicesData = dataFromJson
-//                self.doctorsData = dataFromJson
-//                print(dataFromJson)
-//                for item in servicesData {
-//                    print("Title: \(item.title), count: \(item.services_count)")
-//                }
             }
             catch {
                 print("There was an error finding in the data! ")
@@ -75,12 +66,12 @@ struct Services: Decodable {
     let id: Int
     let title: String
     let services_count: Int
-//    let children: [Float]
 }
 
 struct Doctors: Decodable {
     let id: Int
     let name: String
+    let avatar_small: String?
     let profession: [String]?
     let profession_titles: String?
 }
@@ -100,13 +91,10 @@ struct Clinic: Decodable {
 }
 
 struct Schedule: Decodable {
-//    let time_start: String
-//    let time_end: String
     let date: String
     let time_start_short: String
     let clinic_id: Int
     let room: String
-//    let category_id: Int?
     let is_busy: Bool
 }
 

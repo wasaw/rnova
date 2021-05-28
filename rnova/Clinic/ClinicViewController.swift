@@ -20,7 +20,6 @@ class ClinicViewController: UIViewController {
     let secondView = UIView()
     override func viewDidLoad() {
         super.viewDidLoad()
-//        buttonTopLeft.addTarget(self, action: #selector(callButtonAction(_:)), for: .touchUpInside)
         
         collectionView.delegate = self
         collectionView.dataSource = self
@@ -44,21 +43,12 @@ extension ClinicViewController: UICollectionViewDataSource {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellID, for: indexPath) as? ClinicCell else {
             return UICollectionViewCell()
         }
-        cell.layer.cornerRadius = 10
-        cell.layer.shadowColor = UIColor.black.cgColor
-        cell.layer.shadowOffset = CGSize(width: 0, height: 1)
-        cell.layer.shadowOpacity = 1
-        cell.layer.shadowRadius = 1.0
-        cell.clipsToBounds = false
-        cell.layer.masksToBounds = false
+        
         cell.titleLabel.text = clinicsData[indexPath.row].title
         let adress = clinicsData[indexPath.row].address ?? ""
         let email = clinicsData[indexPath.row].email ?? ""
         cell.emailLabel.text = email
         cell.emailLabel.tag = indexPath.row
-//        let firstTap = UITapGestureRecognizer(target: self, action: #selector(sendEmail))
-//        cell.emailLabel.isUserInteractionEnabled = true
-//        cell.emailLabel.addGestureRecognizer(firstTap)
         cell.addressLabel.text = adress
         let phone = clinicsData[indexPath.row].mobile ?? ""
         cell.phoneLabel.text = phone
@@ -70,14 +60,6 @@ extension ClinicViewController: UICollectionViewDataSource {
         
         return cell
     }
-    
-//    @objc func sendEmail(sender: UILabel) {
-//        let email = clinicsData[sender.tag].email
-//        print(email)
-//        if let url = URL(string: "mailto:\(email)") {
-//            UIApplication.shared.open(url)
-//        }
-//    }
     
     @objc func callButtonAction(sender: UIButton) {
         guard let phone = clinicsData[sender.tag].mobile else {return}
@@ -92,8 +74,6 @@ extension ClinicViewController: UICollectionViewDataSource {
     }
     
 }
-
-
 
 extension ClinicViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

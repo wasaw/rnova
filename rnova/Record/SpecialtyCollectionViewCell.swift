@@ -10,26 +10,15 @@ import UIKit
 class SpecialtyCollectionViewCell: UICollectionViewCell {
     static let identifier = "SpecialtyCollectionViewCell"
     
+    private let doctorImageView = UIImageView()
+    private let doctorImage = UIImage(systemName: "person")
+    private let labelNoTime = UILabel()
+    private var timeButtons: [UIButton] = []
     let labelDoctorName = UILabel()
     let labelProfession = UILabel()
-    let doctorImageView = UIImageView()
-    let doctorImage = UIImage(systemName: "person")
-    let lineView = UIView()
-    let labelNoTime = UILabel()
-    var timeButtons: [UIButton] = []
-//    var timeButton = UIButton()
     
     override init(frame:CGRect) {
         super.init(frame: frame)
-        
-        contentView.layer.cornerRadius = 10
-        contentView.layer.shadowColor = UIColor.black.cgColor
-        contentView.layer.shadowOffset = CGSize(width: 0, height: 1)
-        contentView.layer.shadowOpacity = 1
-        contentView.layer.shadowRadius = 1.0
-        contentView.clipsToBounds = false
-        contentView.layer.masksToBounds = false
-        contentView.backgroundColor = .white
         
         labelDoctorName.textColor = .black
         labelDoctorName.font = UIFont.boldSystemFont(ofSize: 19)
@@ -46,27 +35,31 @@ class SpecialtyCollectionViewCell: UICollectionViewCell {
         doctorImageView.image = doctorImage
         self.addSubview(doctorImageView)
         
-//        MARK: -line
-        lineView.layer.borderWidth = 1
-        lineView.layer.borderColor = UIColor.lightGray.cgColor
-        self.addSubview(lineView)
-        
         labelNoTime.textColor = .black
         labelNoTime.text = "Нет свободного времени"
         labelNoTime.isHidden = true
         self.addSubview(labelNoTime)
+        
+        contentView.backgroundColor = .white
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        shadow()
+    }
+    
     override func layoutSubviews() {
         super.layoutSubviews()
         labelDoctorName.frame = CGRect(x: 100, y: 10, width: contentView.frame.width - 120, height: 60)
         labelProfession.frame = CGRect(x: 100, y: 60, width: contentView.bounds.width - 120, height: 100)
-        lineView.frame = CGRect(x: 0, y: 160, width: contentView.frame.width, height: 1)
         doctorImageView.frame = CGRect(x: 20, y: 30, width: 60, height: 60)
         labelNoTime.frame = CGRect(x: 20, y: 180, width: 250, height: 20)
+
+        line(y: 160)
     }
     
     
@@ -122,38 +115,5 @@ class SpecialtyCollectionViewCell: UICollectionViewCell {
 //        print("press")
     }
     
-   
-//
-//    func initButton(for item: Int) -> UIButton{
-//        let button = UIButton(type: .system)
-//        button.setTitle("Time", for: .normal)
-//        button.layer.borderWidth = 1
-//        button.layer.borderColor = UIColor.systemOrange.cgColor
-//        button.backgroundColor = UIColor.white
-//        button.layer.cornerRadius = 15
-//        button.clipsToBounds = true
-////        button.addTarget(<#T##target: Any?##Any?#>, action: <#T##Selector#>, for: <#T##UIControl.Event#>)
-//        let startPudding = 20
-//        let padding = 80
-//        let y:CGFloat = 125
-//        let yPadding = 50
-//        let width: CGFloat = 70
-//        let height: CGFloat = 40
-//        let divisor = 3
-//        var count = item
-//        var multiplier = 1
-//        while count > divisor {
-//            count = count - divisor
-//            multiplier += 1
-//        }
-//        if multiplier > 1 {
-//            count = 0
-//        }
-//        print(count)
-//        button.frame = CGRect(x: CGFloat(startPudding + padding * count), y: (y + CGFloat(yPadding * multiplier)), width: width, height: height)
-//
-//        return button
-//    }
-
 }
 

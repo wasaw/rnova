@@ -187,68 +187,6 @@
             <point key="canvasLocation" x="-830" y="-1017"/>
         </scene>
         <!--Запись-->
-        <scene sceneID="Ozr-Ia-Dfj">
-            <objects>
-                <viewController id="xR5-zD-tX9" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Cv5-yM-VSS">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="aY1-Dl-OcN">
-                                <rect key="frame" x="10" y="64" width="394" height="32"/>
-                                <color key="backgroundColor" systemColor="systemOrangeColor"/>
-                                <segments>
-                                    <segment title="Врачи"/>
-                                    <segment title="Специальноти"/>
-                                </segments>
-                                <connections>
-                                    <action selector="didTapSegment:" destination="Xih-5d-V8V" eventType="valueChanged" id="dhq-rB-Jqv"/>
-                                    <action selector="didTapSegmenttWithSegment:" destination="xR5-zD-tX9" eventType="valueChanged" id="61h-gQ-rwA"/>
-                                </connections>
-                            </segmentedControl>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f9T-p4-uHo">
-                                <rect key="frame" x="0.0" y="115" width="414" height="747"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NE2-di-XxS">
-                                        <rect key="frame" x="117" y="209" width="42" height="21"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="chevron.left" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="oXs-ot-rdE">
-                                        <rect key="frame" x="87" y="261" width="240" height="128"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="tintColor" systemColor="systemOrangeColor"/>
-                                    </imageView>
-                                </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                            </view>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="E78-As-eWG"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="f9T-p4-uHo" firstAttribute="top" secondItem="aY1-Dl-OcN" secondAttribute="bottom" constant="20" id="4RC-Fh-5bR"/>
-                            <constraint firstItem="f9T-p4-uHo" firstAttribute="leading" secondItem="E78-As-eWG" secondAttribute="leading" id="CCv-sD-0le"/>
-                            <constraint firstItem="aY1-Dl-OcN" firstAttribute="top" secondItem="E78-As-eWG" secondAttribute="top" constant="20" id="U7u-N9-1aq"/>
-                            <constraint firstItem="E78-As-eWG" firstAttribute="bottom" secondItem="f9T-p4-uHo" secondAttribute="bottom" id="dXg-fD-zdp"/>
-                            <constraint firstItem="E78-As-eWG" firstAttribute="trailing" secondItem="aY1-Dl-OcN" secondAttribute="trailing" constant="10" id="gS5-U3-QEG"/>
-                            <constraint firstItem="aY1-Dl-OcN" firstAttribute="leading" secondItem="E78-As-eWG" secondAttribute="leading" constant="10" id="oF4-Ff-kCQ"/>
-                            <constraint firstItem="E78-As-eWG" firstAttribute="trailing" secondItem="f9T-p4-uHo" secondAttribute="trailing" id="tmc-zw-MNE"/>
-                        </constraints>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="Запись" image="square.and.pencil" catalog="system" id="9Q1-Cl-7nP"/>
-                    <navigationItem key="navigationItem" title="Запись" id="qbR-nk-oBI"/>
-                    <connections>
-                        <outlet property="viewContainer" destination="f9T-p4-uHo" id="RJn-lk-N3V"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="2CZ-C0-bg8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <exit id="Xih-5d-V8V" userLabel="Exit" sceneMemberID="exit"/>
-            </objects>
-            <point key="canvasLocation" x="12" y="-1689"/>
-        </scene>
-        <!--Запись-->
         <scene sceneID="JTP-WL-Xu1">
             <objects>
                 <viewController id="8On-hx-aya" customClass="ViewController" customModule="rnova" customModuleProvider="target" sceneMemberID="viewController">
@@ -263,10 +201,9 @@
                                     <segment title="Врачи"/>
                                     <segment title="Специальности"/>
                                 </segments>
+                                <color key="selectedSegmentTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
-                                    <action selector="didTapSegment:" destination="Xih-5d-V8V" eventType="valueChanged" id="g7I-Mr-wdx"/>
                                     <action selector="didTapSegmentWithSegment:" destination="8On-hx-aya" eventType="valueChanged" id="0iV-2c-1KG"/>
-                                    <action selector="didTapSegmenttWithSegment:" destination="xR5-zD-tX9" eventType="valueChanged" id="7Hj-KM-dZe"/>
                                 </connections>
                             </segmentedControl>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="0sk-P3-oA7">
@@ -411,7 +348,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="chevron.left" catalog="system" width="96" height="128"/>
         <image name="house" catalog="system" width="128" height="106"/>
         <image name="line.horizontal.3" catalog="system" width="128" height="64"/>
         <image name="list.dash" catalog="system" width="128" height="85"/>

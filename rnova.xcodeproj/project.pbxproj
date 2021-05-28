@@ -19,26 +19,20 @@
 		BBA245B9260BA14900BF12E7 /* ServicesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA245B7260BA14900BF12E7 /* ServicesCell.swift */; };
 		BBA245BA260BA14900BF12E7 /* ServicesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BBA245B8260BA14900BF12E7 /* ServicesCell.xib */; };
 		BBA245C826135A9800BF12E7 /* CustomCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA245C726135A9800BF12E7 /* CustomCollectionViewCell.swift */; };
-		BBA245CB26149E0300BF12E7 /* DoctorCustomCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA245CA26149E0300BF12E7 /* DoctorCustomCollectionViewCell.swift */; };
-		BBA245D326179A4700BF12E7 /* DoctorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA245D226179A4700BF12E7 /* DoctorViewController.swift */; };
 		BBA245D9261EFE7800BF12E7 /* ClinicCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA245D7261EFE7800BF12E7 /* ClinicCell.swift */; };
 		BBA245DA261EFE7800BF12E7 /* ClinicCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BBA245D8261EFE7800BF12E7 /* ClinicCell.xib */; };
 		BBA245DE2629B27100BF12E7 /* SpecialtyCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA245DC2629B27000BF12E7 /* SpecialtyCollectionViewCell.swift */; };
 		BBA245DF2629B27200BF12E7 /* SpecialtyCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BBA245DD2629B27000BF12E7 /* SpecialtyCollectionViewCell.xib */; };
-		BBA97AA32631A6A2005DF585 /* PersonalData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA97AA22631A6A2005DF585 /* PersonalData.swift */; };
 		BBB5B1F825EE7C3C00A33761 /* DoctorChoiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB5B1F725EE7C3C00A33761 /* DoctorChoiceViewController.swift */; };
-		BBCE6CE725DFA8B200CC8598 /* SpecialtyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCE6CE625DFA8B200CC8598 /* SpecialtyViewController.swift */; };
 		BBCE6CFA25E672B700CC8598 /* RecordCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCE6CF825E672B700CC8598 /* RecordCollectionViewCell.swift */; };
 		BBCE6CFB25E672B700CC8598 /* RecordCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BBCE6CF925E672B700CC8598 /* RecordCollectionViewCell.xib */; };
-		BBCE6D0625E8F62100CC8598 /* SubViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCE6D0525E8F62100CC8598 /* SubViewController.swift */; };
 		BBD2E8A125B9686400A8D092 /* ClinicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD2E8A025B9686400A8D092 /* ClinicViewController.swift */; };
 		BBD2E8A425B9B6F900A8D092 /* ServicesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD2E8A325B9B6F900A8D092 /* ServicesViewController.swift */; };
 		BBD2E8A725BAB37E00A8D092 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD2E8A625BAB37E00A8D092 /* ProfileViewController.swift */; };
 		BBD2E8B425BAECFB00A8D092 /* SelfDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD2E8B325BAECFB00A8D092 /* SelfDataViewController.swift */; };
 		BBD2E8B725BB0CDA00A8D092 /* VisitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD2E8B625BB0CDA00A8D092 /* VisitViewController.swift */; };
 		BBD2E8BD25BEAB9100A8D092 /* ExitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD2E8BC25BEAB9100A8D092 /* ExitViewController.swift */; };
-		BBF5F3792653BE4900BF1F66 /* DoctorChoiceViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF5F3772653BE4900BF1F66 /* DoctorChoiceViewCell.swift */; };
-		BBF5F37A2653BE4900BF1F66 /* DoctorChoiceViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BBF5F3782653BE4900BF1F66 /* DoctorChoiceViewCell.xib */; };
+		BBF5F37F265E7F4F00BF1F66 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF5F37E265E7F4F00BF1F66 /* Extensions.swift */; };
 		BBF8AD6825C8200E009CD35D /* DataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF8AD6725C8200E009CD35D /* DataLoader.swift */; };
 		BBF8AD6B25C9B9E0009CD35D /* SubServicesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF8AD6A25C9B9E0009CD35D /* SubServicesViewController.swift */; };
 /* End PBXBuildFile section */
@@ -58,18 +52,13 @@
 		BBA245B7260BA14900BF12E7 /* ServicesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServicesCell.swift; sourceTree = "<group>"; };
 		BBA245B8260BA14900BF12E7 /* ServicesCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ServicesCell.xib; sourceTree = "<group>"; };
 		BBA245C726135A9800BF12E7 /* CustomCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCollectionViewCell.swift; sourceTree = "<group>"; };
-		BBA245CA26149E0300BF12E7 /* DoctorCustomCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoctorCustomCollectionViewCell.swift; sourceTree = "<group>"; };
-		BBA245D226179A4700BF12E7 /* DoctorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoctorViewController.swift; sourceTree = "<group>"; };
 		BBA245D7261EFE7800BF12E7 /* ClinicCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClinicCell.swift; sourceTree = "<group>"; };
 		BBA245D8261EFE7800BF12E7 /* ClinicCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ClinicCell.xib; sourceTree = "<group>"; };
 		BBA245DC2629B27000BF12E7 /* SpecialtyCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecialtyCollectionViewCell.swift; sourceTree = "<group>"; };
 		BBA245DD2629B27000BF12E7 /* SpecialtyCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SpecialtyCollectionViewCell.xib; sourceTree = "<group>"; };
-		BBA97AA22631A6A2005DF585 /* PersonalData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalData.swift; sourceTree = "<group>"; };
 		BBB5B1F725EE7C3C00A33761 /* DoctorChoiceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoctorChoiceViewController.swift; sourceTree = "<group>"; };
-		BBCE6CE625DFA8B200CC8598 /* SpecialtyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecialtyViewController.swift; sourceTree = "<group>"; };
 		BBCE6CF825E672B700CC8598 /* RecordCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordCollectionViewCell.swift; sourceTree = "<group>"; };
 		BBCE6CF925E672B700CC8598 /* RecordCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecordCollectionViewCell.xib; sourceTree = "<group>"; };
-		BBCE6D0525E8F62100CC8598 /* SubViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubViewController.swift; sourceTree = "<group>"; };
 		BBD2E8A025B9686400A8D092 /* ClinicViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClinicViewController.swift; sourceTree = "<group>"; };
 		BBD2E8A325B9B6F900A8D092 /* ServicesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServicesViewController.swift; sourceTree = "<group>"; };
 		BBD2E8A625BAB37E00A8D092 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
@@ -77,8 +66,7 @@
 		BBD2E8B625BB0CDA00A8D092 /* VisitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisitViewController.swift; sourceTree = "<group>"; };
 		BBD2E8BC25BEAB9100A8D092 /* ExitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExitViewController.swift; sourceTree = "<group>"; };
 		BBDB24C03A7147C4A5E52818 /* Pods-rnova.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-rnova.debug.xcconfig"; path = "Target Support Files/Pods-rnova/Pods-rnova.debug.xcconfig"; sourceTree = "<group>"; };
-		BBF5F3772653BE4900BF1F66 /* DoctorChoiceViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoctorChoiceViewCell.swift; sourceTree = "<group>"; };
-		BBF5F3782653BE4900BF1F66 /* DoctorChoiceViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DoctorChoiceViewCell.xib; sourceTree = "<group>"; };
+		BBF5F37E265E7F4F00BF1F66 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		BBF8AD6725C8200E009CD35D /* DataLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataLoader.swift; sourceTree = "<group>"; };
 		BBF8AD6A25C9B9E0009CD35D /* SubServicesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubServicesViewController.swift; sourceTree = "<group>"; };
 		CEA0475F7112F150729550A7 /* Pods_rnova.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_rnova.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -136,11 +124,8 @@
 			children = (
 				BB46D2AF25B856B9003AD167 /* AppDelegate.swift */,
 				BB7CDE5A25D16E96007B1B1A /* DetailViewController.swift */,
-				BBF8AD6725C8200E009CD35D /* DataLoader.swift */,
-				BBA245D226179A4700BF12E7 /* DoctorViewController.swift */,
 				BB46D2B125B856B9003AD167 /* SceneDelegate.swift */,
 				BBCE6CFE25E7A30500CC8598 /* Record */,
-				BBCE6CE625DFA8B200CC8598 /* SpecialtyViewController.swift */,
 				BB46D2B525B856B9003AD167 /* Main.storyboard */,
 				BB46D2B825B856BC003AD167 /* Assets.xcassets */,
 				BB46D2BA25B856BC003AD167 /* LaunchScreen.storyboard */,
@@ -148,6 +133,7 @@
 				BBA245D5261EFCC200BF12E7 /* Clinic */,
 				BBCE6D0025E7A92300CC8598 /* Service */,
 				BBD2E8BF25BEABDB00A8D092 /* ProfileViewController */,
+				BBF5F37D265E7F2E00BF1F66 /* Utilies */,
 			);
 			path = rnova;
 			sourceTree = "<group>";
@@ -166,17 +152,12 @@
 			isa = PBXGroup;
 			children = (
 				BB46D2B325B856B9003AD167 /* ViewController.swift */,
-				BBCE6D0525E8F62100CC8598 /* SubViewController.swift */,
-				BBA245CA26149E0300BF12E7 /* DoctorCustomCollectionViewCell.swift */,
+				BBCE6CF825E672B700CC8598 /* RecordCollectionViewCell.swift */,
+				BBCE6CF925E672B700CC8598 /* RecordCollectionViewCell.xib */,
 				BBB5B1F725EE7C3C00A33761 /* DoctorChoiceViewController.swift */,
-				BBF5F3772653BE4900BF1F66 /* DoctorChoiceViewCell.swift */,
-				BBF5F3782653BE4900BF1F66 /* DoctorChoiceViewCell.xib */,
 				BB4C554A25F0D5C600A616D6 /* SpecialtyChoiceViewController.swift */,
 				BBA245DC2629B27000BF12E7 /* SpecialtyCollectionViewCell.swift */,
 				BBA245DD2629B27000BF12E7 /* SpecialtyCollectionViewCell.xib */,
-				BBA97AA22631A6A2005DF585 /* PersonalData.swift */,
-				BBCE6CF825E672B700CC8598 /* RecordCollectionViewCell.swift */,
-				BBCE6CF925E672B700CC8598 /* RecordCollectionViewCell.xib */,
 			);
 			path = Record;
 			sourceTree = "<group>";
@@ -202,6 +183,15 @@
 				BBD2E8BC25BEAB9100A8D092 /* ExitViewController.swift */,
 			);
 			path = ProfileViewController;
+			sourceTree = "<group>";
+		};
+		BBF5F37D265E7F2E00BF1F66 /* Utilies */ = {
+			isa = PBXGroup;
+			children = (
+				BBF8AD6725C8200E009CD35D /* DataLoader.swift */,
+				BBF5F37E265E7F4F00BF1F66 /* Extensions.swift */,
+			);
+			path = Utilies;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -265,7 +255,6 @@
 			files = (
 				BB46D2BC25B856BC003AD167 /* LaunchScreen.storyboard in Resources */,
 				BB46D2B925B856BC003AD167 /* Assets.xcassets in Resources */,
-				BBF5F37A2653BE4900BF1F66 /* DoctorChoiceViewCell.xib in Resources */,
 				BB46D2B725B856B9003AD167 /* Main.storyboard in Resources */,
 				BBA245DA261EFE7800BF12E7 /* ClinicCell.xib in Resources */,
 				BBCE6CFB25E672B700CC8598 /* RecordCollectionViewCell.xib in Resources */,
@@ -325,24 +314,19 @@
 			files = (
 				BBB5B1F825EE7C3C00A33761 /* DoctorChoiceViewController.swift in Sources */,
 				BBD2E8A725BAB37E00A8D092 /* ProfileViewController.swift in Sources */,
-				BBA245D326179A4700BF12E7 /* DoctorViewController.swift in Sources */,
 				BB4C554B25F0D5C600A616D6 /* SpecialtyChoiceViewController.swift in Sources */,
 				BB46D2B425B856B9003AD167 /* ViewController.swift in Sources */,
 				BB46D2B025B856B9003AD167 /* AppDelegate.swift in Sources */,
 				BBD2E8B725BB0CDA00A8D092 /* VisitViewController.swift in Sources */,
-				BBCE6D0625E8F62100CC8598 /* SubViewController.swift in Sources */,
 				BBCE6CFA25E672B700CC8598 /* RecordCollectionViewCell.swift in Sources */,
-				BBCE6CE725DFA8B200CC8598 /* SpecialtyViewController.swift in Sources */,
+				BBF5F37F265E7F4F00BF1F66 /* Extensions.swift in Sources */,
 				BBD2E8A125B9686400A8D092 /* ClinicViewController.swift in Sources */,
-				BBA97AA32631A6A2005DF585 /* PersonalData.swift in Sources */,
 				BBF8AD6B25C9B9E0009CD35D /* SubServicesViewController.swift in Sources */,
 				BBD2E8BD25BEAB9100A8D092 /* ExitViewController.swift in Sources */,
 				BBA245B9260BA14900BF12E7 /* ServicesCell.swift in Sources */,
-				BBF5F3792653BE4900BF1F66 /* DoctorChoiceViewCell.swift in Sources */,
 				BBA245C826135A9800BF12E7 /* CustomCollectionViewCell.swift in Sources */,
 				BBF8AD6825C8200E009CD35D /* DataLoader.swift in Sources */,
 				BBD2E8B425BAECFB00A8D092 /* SelfDataViewController.swift in Sources */,
-				BBA245CB26149E0300BF12E7 /* DoctorCustomCollectionViewCell.swift in Sources */,
 				BBD2E8A425B9B6F900A8D092 /* ServicesViewController.swift in Sources */,
 				BBA245D9261EFE7800BF12E7 /* ClinicCell.swift in Sources */,
 				BB46D2B225B856B9003AD167 /* SceneDelegate.swift in Sources */,

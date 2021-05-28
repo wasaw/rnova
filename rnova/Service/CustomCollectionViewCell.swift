@@ -15,18 +15,12 @@ class CustomCollectionViewCell: UICollectionViewCell {
     override init(frame:CGRect) {
         super.init(frame: frame)
         
-//        label.frame = CGRect(x: 20, y: 20, width: 300, height: 40)
         label.font = label.font.withSize(20)
         label.textColor = .black
         contentView.addSubview(label)
-        contentView.layer.cornerRadius = 10
-        contentView.layer.shadowColor = UIColor.black.cgColor
-        contentView.layer.shadowOffset = CGSize(width: 0, height: 1)
-        contentView.layer.shadowOpacity = 1
-        contentView.layer.shadowRadius = 1.0
-        contentView.clipsToBounds = false
-        contentView.layer.masksToBounds = false
-        contentView.backgroundColor = .white
+        
+        shadow()
+        backgroundColor = .white
     }
     
     required init?(coder: NSCoder) {
