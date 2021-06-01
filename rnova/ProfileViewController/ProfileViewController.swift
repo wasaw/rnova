@@ -7,84 +7,88 @@
 import SideMenu
 import UIKit
 
-class ProfileViewController: UIViewController, MenuControllerDelegate, UITextFieldDelegate {
-    
-//    private let selfDataController = ProfileViewController()
-    private let visitController = VisitViewController()
-    private let exitController = ExitViewController()
-    
-    private var sideMenu: SideMenuNavigationController?
-    
-    @IBOutlet weak var surnameOutlete: UITextField!
-    @IBOutlet weak var nameOutlete: UITextField!
-    @IBOutlet weak var midlenameOutlete: UITextField!
-    @IBOutlet weak var dateOutlet: UITextField!
-    let datePicker = UIDatePicker()
+class ProfileViewController: UIViewController {
 
+    private let firstNameField = UITextField()
+    private let secondNameField = UITextField()
+    private let surnameField = UITextField()
+    private let dateField = UITextField()
+    
+    private let datePicker = UIDatePicker()
+    
+    private let saveButton = UIButton()
+    
+    private var menu: SideMenuNavigationController?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-//        let imageSelfData = UIImage(systemName: "person.fill")
-        let menu = MenuController(with: ["Личные данные", "Визиты", "Выход"])
-        menu.delegate = self
-        sideMenu = SideMenuNavigationController(rootViewController: menu)
-        sideMenu?.navigationBar.barTintColor = .systemOrange
-
-        sideMenu?.leftSide = true
-        SideMenuManager.default.leftMenuNavigationController = sideMenu
+        let imageBar = UIImage(systemName: "line.horizontal.3")
+        navigationController?.navigationBar.tintColor = .white
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: imageBar, style: .plain, target: self, action: #selector(sideMenu))
+        
+        menu = SideMenuNavigationController(rootViewController: MenuListController())
+        menu?.leftSide = true
+        menu?.navigationBar.backgroundColor = .systemOrange
+        //        menu?.navigationController?.navigationBar.backgroundColor = .systemOrange
+        
+        SideMenuManager.default.leftMenuNavigationController = menu
         SideMenuManager.default.addPanGestureToPresent(toView: view)
         
-        addChildControllers()
+        firstNameField.frame = CGRect(x: 20, y: 130, width: view.bounds.width - 40, height: 40)
+        firstNameField.text = "Фамилия"
+        firstNameField.clearButtonMode = .always
+        line(y: 170)
+        view.addSubview(firstNameField)
         
-        surnameOutlete.delegate = self
-        nameOutlete.delegate = self
-        midlenameOutlete.delegate = self
+        secondNameField.frame = CGRect(x: 20, y: 200, width: view.bounds.width - 40, height: 40)
+        secondNameField.text = "Имя"
+        secondNameField.clearButtonMode = .always
+        line(y: 240)
+        view.addSubview(secondNameField)
         
-        surnameOutlete.clearButtonMode = .always
-        nameOutlete.clearButtonMode = .always
-        midlenameOutlete.clearButtonMode = .always
-                
-        let bottomLineSurname = CALayer()
-        bottomLineSurname.frame = CGRect(x: 0.0, y: surnameOutlete.frame.height - 5, width: surnameOutlete.frame.width, height: 1.0)
-        bottomLineSurname.backgroundColor = UIColor.black.cgColor
-        surnameOutlete.layer.addSublayer(bottomLineSurname)
+        surnameField.frame = CGRect(x: 20, y: 270, width: view.bounds.width - 40, height: 40)
+        surnameField.text = "Отчество"
+        surnameField.clearButtonMode = .always
+        line(y: 310)
+        view.addSubview(surnameField)
         
-        let bottomLineName = CALayer()
-        bottomLineName.frame = CGRect(x: 0.0, y: nameOutlete.frame.height - 5, width: surnameOutlete.frame.width, height: 1.0)
-        bottomLineName.backgroundColor = UIColor.black.cgColor
-        nameOutlete.layer.addSublayer(bottomLineName)
-        
-        let bottomLineMidlename = CALayer()
-        bottomLineMidlename.frame = CGRect(x: 0.0, y: midlenameOutlete.frame.height - 5, width: midlenameOutlete.frame.width, height: 1.0)
-        bottomLineMidlename.backgroundColor = UIColor.black.cgColor
-        midlenameOutlete.layer.addSublayer(bottomLineMidlename)
-        
-        let bottomLineDate = CALayer()
-        bottomLineDate.frame = CGRect(x: 0.0, y: dateOutlet.frame.height - 5, width: dateOutlet.frame.width, height: 1.0)
-        bottomLineDate.backgroundColor = UIColor.black.cgColor
-        dateOutlet.layer.addSublayer(bottomLineDate)
-        
-        dateOutlet.inputView = datePicker
+        dateField.frame = CGRect(x: 20, y: 340, width: view.bounds.width - 40, height: 40)
+        dateField.text = "Дата рождения"
+        dateField.inputView = datePicker
         datePicker.preferredDatePickerStyle = .wheels
         datePicker.datePickerMode = .date
+        line(y: 380)
+        view.addSubview(dateField)
         
         let toolBar = UIToolbar()
         toolBar.sizeToFit()
+        dateField.inputAccessoryView = toolBar
         let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(doneAction))
         let flexSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
-        toolBar.setItems([flexSpace, doneButton], animated: true)
-        dateOutlet.inputAccessoryView = toolBar
-        
+        let cancelButton = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancelAction))
+        toolBar.setItems([cancelButton, flexSpace, doneButton], animated: true)
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapGestureDone))
-        self.view.addGestureRecognizer(tapGesture)
+        view.addGestureRecognizer(tapGesture)
+        
+        saveButton.frame = CGRect(x: 20, y: 410, width: view.bounds.width - 40, height: 60)
+        saveButton.layer.cornerRadius = 10
+        saveButton.layer.shadowColor = UIColor.black.cgColor
+        saveButton.layer.shadowOffset = CGSize(width: 0, height: 1)
+        saveButton.layer.shadowOpacity = 0.3
+        saveButton.layer.shadowRadius = 4
+        saveButton.layer.masksToBounds = false
+        saveButton.clipsToBounds = false
+        saveButton.backgroundColor = .systemOrange
+        saveButton.setTitle("Сохранить", for: .normal)
+        saveButton.setTitleColor(.white, for: .normal)
+        view.addSubview(saveButton)
     }
     
- 
-//  MARK: - side menu
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        surnameOutlete.resignFirstResponder()
-        nameOutlete.resignFirstResponder()
-        midlenameOutlete.resignFirstResponder()
-        return true
+    func line(y: CGFloat) {
+        let line = UIView()
+        line.frame = CGRect(x: 20, y: y, width: view.bounds.width - 40, height: 1)
+        line.backgroundColor = UIColor.lightGray
+        view.addSubview(line)
     }
     
     @objc func doneAction() {
@@ -92,112 +96,53 @@ class ProfileViewController: UIViewController, MenuControllerDelegate, UITextFie
         view.endEditing(true)
     }
     
-    func getDateFromPicker() {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "dd:MM:yy"
-        dateOutlet.text = formatter.string(from: datePicker.date)
-    }
-    
     @objc func tapGestureDone() {
         view.endEditing(true)
     }
     
-    @IBAction func sideMenuAction(_ sender: UIButton) {
-        present(sideMenu!, animated: true)
+    @objc func cancelAction() {
+        dateField.text = "Дата рождения"
+        view.endEditing(true)
     }
     
-    private func addChildControllers() {
-//        addChild(selfDataController)
-        addChild(visitController)
-        addChild(exitController)
-        
-//        view.addSubview(selfDataController.view)
-        view.addSubview(visitController.view)
-        view.addSubview(exitController.view)
-        
-//        selfDataController.view.frame = view.bounds
-        visitController.view.frame = view.frame
-        exitController.view.frame = view.frame
-        
-//        selfDataController.didMove(toParent: self)
-        visitController.didMove(toParent: self)
-        exitController.didMove(toParent: self)
-        
-//        selfDataController.view.isHidden = true
-        visitController.view.isHidden = true
-        exitController.view.isHidden = true
+    func getDateFromPicker() {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "dd:MM:yy"
+        dateField.text = formatter.string(from: datePicker.date)
     }
     
-    func didSelectMenuItem(named: String) {
-        sideMenu?.dismiss(animated: true, completion: { [weak self] in
-            self?.title = named
-            
-            switch named {
-            case  "Личные данные":
-                self?.view.isHidden = false
-//                self?.selfDataController.view.isHidden = false
-                self?.visitController.view.isHidden = true
-                self?.exitController.view.isHidden = true
-            case "Визиты":
-                self?.visitController.view.isHidden = false
-                self?.view.isHidden = false
-//                self?.selfDataController.view.isHidden = true
-                self?.exitController.view.isHidden = true
-            case "Выход":
-                self?.exitController.view.isHidden = false
-                self?.view.isHidden = false
-//                self?.selfDataController.view.isHidden = true
-                self?.visitController.view.isHidden = true
-                
-            default:
-                return
-            }
-        })
+    @objc func sideMenu() {
+        guard let menu = menu else { return }
+        present(menu, animated: true)
     }
-    
 }
 
-protocol MenuControllerDelegate {
-    func didSelectMenuItem(named: String)
-}
-
-class MenuController: UITableViewController {
-    public var delegate: MenuControllerDelegate?
-    
-    private let menuItems: [String]
-    
-    init(with menuItems: [String]) {
-        self.menuItems = menuItems
-        super.init(nibName: nil, bundle: nil)
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
-    }
+class MenuListController: UITableViewController {
+    let items = ["Личные данные", "Визиты", "Выход"]
+    let vc = [VisitViewController(), SelfDataViewController(), ExitViewController()]
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.backgroundColor = .white
-        
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return menuItems.count
+        return items.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.textLabel?.text = menuItems[indexPath.row]
-        cell.textLabel?.textColor = .black
-        cell.tintColor = .black
-        cell.backgroundColor = .white
+        cell.textLabel?.text = items[indexPath.row]
+        
+        let backgroundView = UIView()
+        backgroundView.backgroundColor = .systemOrange
+        cell.selectedBackgroundView = backgroundView
         return cell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        let selectItem = menuItems[indexPath.row]
-        delegate?.didSelectMenuItem(named: selectItem)
+        navigationController?.pushViewController(vc[indexPath.row], animated: true)
     }
 }
+
