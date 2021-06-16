@@ -16,6 +16,8 @@
 		BB46D2BC25B856BC003AD167 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB46D2BA25B856BC003AD167 /* LaunchScreen.storyboard */; };
 		BB4C554B25F0D5C600A616D6 /* SpecialtyChoiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB4C554A25F0D5C600A616D6 /* SpecialtyChoiceViewController.swift */; };
 		BB7CDE5B25D16E96007B1B1A /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB7CDE5A25D16E96007B1B1A /* DetailViewController.swift */; };
+		BB9BD83226722E7D00FA2DCF /* Registration.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB9BD83126722E7D00FA2DCF /* Registration.swift */; };
+		BB9BD8342676679900FA2DCF /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB9BD8332676679900FA2DCF /* Login.swift */; };
 		BBA245B9260BA14900BF12E7 /* ServicesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA245B7260BA14900BF12E7 /* ServicesCell.swift */; };
 		BBA245BA260BA14900BF12E7 /* ServicesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BBA245B8260BA14900BF12E7 /* ServicesCell.xib */; };
 		BBA245C826135A9800BF12E7 /* CustomCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA245C726135A9800BF12E7 /* CustomCollectionViewCell.swift */; };
@@ -29,9 +31,9 @@
 		BBD2E8A125B9686400A8D092 /* ClinicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD2E8A025B9686400A8D092 /* ClinicViewController.swift */; };
 		BBD2E8A425B9B6F900A8D092 /* ServicesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD2E8A325B9B6F900A8D092 /* ServicesViewController.swift */; };
 		BBD2E8A725BAB37E00A8D092 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD2E8A625BAB37E00A8D092 /* ProfileViewController.swift */; };
-		BBD2E8B425BAECFB00A8D092 /* SelfDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD2E8B325BAECFB00A8D092 /* SelfDataViewController.swift */; };
 		BBD2E8B725BB0CDA00A8D092 /* VisitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD2E8B625BB0CDA00A8D092 /* VisitViewController.swift */; };
 		BBD2E8BD25BEAB9100A8D092 /* ExitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD2E8BC25BEAB9100A8D092 /* ExitViewController.swift */; };
+		BBD920D62670A312000073FC /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BBD920D42670A312000073FC /* Model.xcdatamodeld */; };
 		BBF5F37F265E7F4F00BF1F66 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF5F37E265E7F4F00BF1F66 /* Extensions.swift */; };
 		BBF8AD6825C8200E009CD35D /* DataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF8AD6725C8200E009CD35D /* DataLoader.swift */; };
 		BBF8AD6B25C9B9E0009CD35D /* SubServicesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF8AD6A25C9B9E0009CD35D /* SubServicesViewController.swift */; };
@@ -49,6 +51,8 @@
 		BB46D2BD25B856BC003AD167 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BB4C554A25F0D5C600A616D6 /* SpecialtyChoiceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecialtyChoiceViewController.swift; sourceTree = "<group>"; };
 		BB7CDE5A25D16E96007B1B1A /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		BB9BD83126722E7D00FA2DCF /* Registration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Registration.swift; sourceTree = "<group>"; };
+		BB9BD8332676679900FA2DCF /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
 		BBA245B7260BA14900BF12E7 /* ServicesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServicesCell.swift; sourceTree = "<group>"; };
 		BBA245B8260BA14900BF12E7 /* ServicesCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ServicesCell.xib; sourceTree = "<group>"; };
 		BBA245C726135A9800BF12E7 /* CustomCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -62,9 +66,9 @@
 		BBD2E8A025B9686400A8D092 /* ClinicViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClinicViewController.swift; sourceTree = "<group>"; };
 		BBD2E8A325B9B6F900A8D092 /* ServicesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServicesViewController.swift; sourceTree = "<group>"; };
 		BBD2E8A625BAB37E00A8D092 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
-		BBD2E8B325BAECFB00A8D092 /* SelfDataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelfDataViewController.swift; sourceTree = "<group>"; };
 		BBD2E8B625BB0CDA00A8D092 /* VisitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisitViewController.swift; sourceTree = "<group>"; };
 		BBD2E8BC25BEAB9100A8D092 /* ExitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExitViewController.swift; sourceTree = "<group>"; };
+		BBD920D52670A312000073FC /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		BBDB24C03A7147C4A5E52818 /* Pods-rnova.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-rnova.debug.xcconfig"; path = "Target Support Files/Pods-rnova/Pods-rnova.debug.xcconfig"; sourceTree = "<group>"; };
 		BBF5F37E265E7F4F00BF1F66 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		BBF8AD6725C8200E009CD35D /* DataLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataLoader.swift; sourceTree = "<group>"; };
@@ -104,6 +108,7 @@
 		BB46D2A325B856B9003AD167 = {
 			isa = PBXGroup;
 			children = (
+				BBD920D42670A312000073FC /* Model.xcdatamodeld */,
 				BB46D2AE25B856B9003AD167 /* rnova */,
 				BB46D2AD25B856B9003AD167 /* Products */,
 				9568AA022936D4FE3102FA6A /* Pods */,
@@ -177,9 +182,10 @@
 		BBD2E8BF25BEABDB00A8D092 /* ProfileViewController */ = {
 			isa = PBXGroup;
 			children = (
+				BB9BD83126722E7D00FA2DCF /* Registration.swift */,
+				BB9BD8332676679900FA2DCF /* Login.swift */,
 				BBD2E8A625BAB37E00A8D092 /* ProfileViewController.swift */,
 				BBD2E8B625BB0CDA00A8D092 /* VisitViewController.swift */,
-				BBD2E8B325BAECFB00A8D092 /* SelfDataViewController.swift */,
 				BBD2E8BC25BEAB9100A8D092 /* ExitViewController.swift */,
 			);
 			path = ProfileViewController;
@@ -324,11 +330,13 @@
 				BBF8AD6B25C9B9E0009CD35D /* SubServicesViewController.swift in Sources */,
 				BBD2E8BD25BEAB9100A8D092 /* ExitViewController.swift in Sources */,
 				BBA245B9260BA14900BF12E7 /* ServicesCell.swift in Sources */,
+				BB9BD83226722E7D00FA2DCF /* Registration.swift in Sources */,
+				BB9BD8342676679900FA2DCF /* Login.swift in Sources */,
 				BBA245C826135A9800BF12E7 /* CustomCollectionViewCell.swift in Sources */,
 				BBF8AD6825C8200E009CD35D /* DataLoader.swift in Sources */,
-				BBD2E8B425BAECFB00A8D092 /* SelfDataViewController.swift in Sources */,
 				BBD2E8A425B9B6F900A8D092 /* ServicesViewController.swift in Sources */,
 				BBA245D9261EFE7800BF12E7 /* ClinicCell.swift in Sources */,
+				BBD920D62670A312000073FC /* Model.xcdatamodeld in Sources */,
 				BB46D2B225B856B9003AD167 /* SceneDelegate.swift in Sources */,
 				BBA245DE2629B27100BF12E7 /* SpecialtyCollectionViewCell.swift in Sources */,
 				BB7CDE5B25D16E96007B1B1A /* DetailViewController.swift in Sources */,
@@ -535,6 +543,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		BBD920D42670A312000073FC /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				BBD920D52670A312000073FC /* Model.xcdatamodel */,
+			);
+			currentVersion = BBD920D52670A312000073FC /* Model.xcdatamodel */;
+			path = Model.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = BB46D2A425B856B9003AD167 /* Project object */;
 }

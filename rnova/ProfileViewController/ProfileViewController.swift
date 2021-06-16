@@ -6,22 +6,37 @@
 //
 import SideMenu
 import UIKit
+import CoreData
 
 class ProfileViewController: UIViewController {
 
-    private let firstNameField = UITextField()
-    private let secondNameField = UITextField()
-    private let surnameField = UITextField()
-    private let dateField = UITextField()
-    
-    private let datePicker = UIDatePicker()
-    
-    private let saveButton = UIButton()
+    private let lastNameLabel = UILabel()
+    private let firstNameLabel = UILabel()
     
     private var menu: SideMenuNavigationController?
     
+    private let appDelegate = UIApplication.shared.delegate as! AppDelegate
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if !checkRegistration() {
+            let vc = Registration()
+            navigationController?.pushViewController(vc, animated: true)
+            print("DEBUG: we don'n have person")
+        } else {
+            if checkLogIn() {
+                
+                print("DEBUG: person login")
+            } else {
+                let vc = Login()
+                navigationController?.pushViewController(vc, animated: true)
+                print("DEBUG: person logout")
+            }
+        }
+        
+        getPersonInformation()
+        
         let imageBar = UIImage(systemName: "line.horizontal.3")
         navigationController?.navigationBar.tintColor = .white
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: imageBar, style: .plain, target: self, action: #selector(sideMenu))
@@ -34,96 +49,108 @@ class ProfileViewController: UIViewController {
         SideMenuManager.default.leftMenuNavigationController = menu
         SideMenuManager.default.addPanGestureToPresent(toView: view)
         
-        firstNameField.frame = CGRect(x: 20, y: 130, width: view.bounds.width - 40, height: 40)
-        firstNameField.text = "Фамилия"
-        firstNameField.clearButtonMode = .always
-        line(y: 170)
-        view.addSubview(firstNameField)
+        lastNameLabel.frame = CGRect(x: 20, y: 100, width: view.bounds.width - 40, height: 40)
+        lastNameLabel.font = UIFont.boldSystemFont(ofSize: 25)
+        lastNameLabel.textAlignment = .center
+//        line(y: 170)
+        view.addSubview(lastNameLabel)
         
-        secondNameField.frame = CGRect(x: 20, y: 200, width: view.bounds.width - 40, height: 40)
-        secondNameField.text = "Имя"
-        secondNameField.clearButtonMode = .always
-        line(y: 240)
-        view.addSubview(secondNameField)
+        firstNameLabel.frame = CGRect(x: 20, y: 140, width: view.bounds.width - 40, height: 40)
+        firstNameLabel.font = UIFont.systemFont(ofSize: 23)
+        firstNameLabel.textAlignment = .center
+        view.addSubview(firstNameLabel)
         
-        surnameField.frame = CGRect(x: 20, y: 270, width: view.bounds.width - 40, height: 40)
-        surnameField.text = "Отчество"
-        surnameField.clearButtonMode = .always
-        line(y: 310)
-        view.addSubview(surnameField)
+        view.backgroundColor = .white
+    }
         
-        dateField.frame = CGRect(x: 20, y: 340, width: view.bounds.width - 40, height: 40)
-        dateField.text = "Дата рождения"
-        dateField.inputView = datePicker
-        datePicker.preferredDatePickerStyle = .wheels
-        datePicker.datePickerMode = .date
-        line(y: 380)
-        view.addSubview(dateField)
+    func checkRegistration() -> Bool {
+        let context = appDelegate.persistentContainer.viewContext
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Person")
         
-        let toolBar = UIToolbar()
-        toolBar.sizeToFit()
-        dateField.inputAccessoryView = toolBar
-        let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(doneAction))
-        let flexSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
-        let cancelButton = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancelAction))
-        toolBar.setItems([cancelButton, flexSpace, doneButton], animated: true)
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapGestureDone))
-        view.addGestureRecognizer(tapGesture)
-        
-        saveButton.frame = CGRect(x: 20, y: 410, width: view.bounds.width - 40, height: 60)
-        saveButton.layer.cornerRadius = 10
-        saveButton.layer.shadowColor = UIColor.black.cgColor
-        saveButton.layer.shadowOffset = CGSize(width: 0, height: 1)
-        saveButton.layer.shadowOpacity = 0.3
-        saveButton.layer.shadowRadius = 4
-        saveButton.layer.masksToBounds = false
-        saveButton.clipsToBounds = false
-        saveButton.backgroundColor = .systemOrange
-        saveButton.setTitle("Сохранить", for: .normal)
-        saveButton.setTitleColor(.white, for: .normal)
-        view.addSubview(saveButton)
+        do {
+            let result = try context.fetch(fetchRequest)
+            if result.isEmpty {
+                print("DEBUG: result is empty")
+                return false
+            }
+        } catch {
+            print(error)
+        }
+        return true
     }
     
-    func line(y: CGFloat) {
-        let line = UIView()
-        line.frame = CGRect(x: 20, y: y, width: view.bounds.width - 40, height: 1)
-        line.backgroundColor = UIColor.lightGray
-        view.addSubview(line)
+    func checkLogIn() -> Bool {
+        let context = appDelegate.persistentContainer.viewContext
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Person")
+        
+        do {
+            let result = try context.fetch(fetchRequest)
+            if let user = result.first as? NSManagedObject {
+                let checkLogIn = user.value(forKey: "login") as? Bool ?? false
+                print("DEBUG: checkLogIn \(checkLogIn)")
+                if checkLogIn {
+                    return true
+                }
+            }
+        } catch {
+            print(error)
+        }
+        return false
     }
     
-    @objc func doneAction() {
-        getDateFromPicker()
-        view.endEditing(true)
-    }
-    
-    @objc func tapGestureDone() {
-        view.endEditing(true)
-    }
-    
-    @objc func cancelAction() {
-        dateField.text = "Дата рождения"
-        view.endEditing(true)
-    }
-    
-    func getDateFromPicker() {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "dd:MM:yy"
-        dateField.text = formatter.string(from: datePicker.date)
-    }
+//    func checkLogIn() -> Bool {
+//        let context = appDelegate.persistentContainer.viewContext
+//        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Person")
+//
+//        do {
+//            let result = try context.fetch(fetchRequest)
+//            guard let user = result.first as? NSManagedObject else { return false}
+//            let check = user.value(forKey: "login") as? Bool ?? false
+//            if check { return true}
+//        } catch {
+//            print(error)
+//        }
+//        return false
+//    }
     
     @objc func sideMenu() {
         guard let menu = menu else { return }
         present(menu, animated: true)
     }
+    
+    func getPersonInformation() {
+        let context = appDelegate.persistentContainer.viewContext
+        
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Person")
+        
+        do {
+            let result = try context.fetch(fetchRequest)
+            for data in result {
+                if let data = data as? NSManagedObject {
+//                    print(data.value(forKey: "login") as? Bool)
+                    lastNameLabel.text = data.value(forKey: "lastname") as? String ?? ""
+                    let name = data.value(forKey: "firstname") as? String ?? ""
+                    let surname = data.value(forKey: "surname") as? String ?? ""
+                    firstNameLabel.text = name + " " + surname
+//                    print(data.value(forKey: "lastname") as? String ?? "")
+                }
+            }
+        } catch {
+            print(error)
+        }
+    }
+    
+    
 }
 
 class MenuListController: UITableViewController {
-    let items = ["Личные данные", "Визиты", "Выход"]
-    let vc = [VisitViewController(), SelfDataViewController(), ExitViewController()]
+    let items = ["Профиль", "Визиты", "Выход"]
+    let vc = [ProfileViewController(), VisitViewController(), ExitViewController()]
     
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        tableView.backgroundColor = .white
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -133,7 +160,8 @@ class MenuListController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         cell.textLabel?.text = items[indexPath.row]
-        
+        cell.textLabel?.textColor = .black
+        cell.backgroundColor = .white
         let backgroundView = UIView()
         backgroundView.backgroundColor = .systemOrange
         cell.selectedBackgroundView = backgroundView
