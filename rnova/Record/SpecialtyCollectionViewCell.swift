@@ -40,7 +40,7 @@ class SpecialtyCollectionViewCell: UICollectionViewCell {
         labelNoTime.isHidden = true
         self.addSubview(labelNoTime)
         
-        contentView.backgroundColor = .white
+//        contentView.backgroundColor = .white
     }
     
     required init?(coder: NSCoder) {

@@ -87,7 +87,6 @@ class ProfileViewController: UIViewController {
             let result = try context.fetch(fetchRequest)
             if let user = result.first as? NSManagedObject {
                 let checkLogIn = user.value(forKey: "login") as? Bool ?? false
-                print("DEBUG: checkLogIn \(checkLogIn)")
                 if checkLogIn {
                     return true
                 }

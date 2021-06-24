@@ -14,8 +14,7 @@ class ViewController: UIViewController {
     
     var doctorsData = DataLoader(urlMethod: "&method=getUsers", urlParameter: "").doctorsData
     var professionsData = DataLoader(urlMethod: "&method=getProfessions", urlParameter: "").professionsData
-    
-    
+        
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var layout: UICollectionViewFlowLayout!
     
@@ -126,7 +125,6 @@ extension ViewController: UICollectionViewDataSource {
                 cell.label.text = "\(professionsData[indexPath.row].name) (\(commonCount))"
             }
         }
-        
         return cell
     }
     

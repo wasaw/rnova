@@ -32,8 +32,14 @@ class DoctorChoiceViewController: UIViewController {
 
     private let labelTimeText = UILabel()
     
+    private var recordTime: [String]
+    
+    private var doctorData: [Doctors]
+    
     init(id: Int) {
         self.doctorId = id
+        self.recordTime = []
+        self.doctorData = []
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -62,7 +68,7 @@ class DoctorChoiceViewController: UIViewController {
         }
         
         let urlStr = "&user_id=" + String(self.doctorId)
-        let doctorData = DataLoader(urlMethod: "&method=getUsers", urlParameter: urlStr).doctorsData
+        doctorData = DataLoader(urlMethod: "&method=getUsers", urlParameter: urlStr).doctorsData
         
         let textView = UITextView()
         textView.frame = CGRect(x: 20, y: 120, width: view.frame.width - 40, height: 80)
@@ -176,6 +182,7 @@ class DoctorChoiceViewController: UIViewController {
             labelTimeText.isHidden = false
         }
         
+        navigationItem.title = "Выбор времени"
         view.backgroundColor = .white
     }
 
@@ -221,6 +228,7 @@ class DoctorChoiceViewController: UIViewController {
                 button.layer.cornerRadius = 18
                 button.clipsToBounds = true
                 button.tintColor = .black
+                recordTime.append(timeArr[item])
                 button.tag = item
                 button.addTarget(self, action: #selector(self.buttonTap), for: .touchUpInside)
                 
@@ -242,7 +250,9 @@ class DoctorChoiceViewController: UIViewController {
     }
     
     @objc func buttonTap(sender: UIButton) {
-        print("Press button №\(sender.tag)")
+        let vc = EnteringInformation(id: doctorId, name: doctorData[0].name, time: recordTime[sender.tag])
+        navigationController?.pushViewController(vc, animated: true)
+//        print("Press button №\(sender.tag), time: \(recordTime[sender.tag])")
     }
     
 }
