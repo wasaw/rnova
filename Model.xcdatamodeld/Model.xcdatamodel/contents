@@ -8,7 +8,15 @@
         <attribute name="phone" optional="YES" attributeType="String"/>
         <attribute name="surname" optional="YES" attributeType="String"/>
     </entity>
+    <entity name="Record" representedClassName="Record" syncable="YES" codeGenerationType="class">
+        <attribute name="clinic" optional="YES" attributeType="String"/>
+        <attribute name="comment" optional="YES" attributeType="String"/>
+        <attribute name="date" optional="YES" attributeType="String"/>
+        <attribute name="doctor" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <relationship name="owner" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Person"/>
+    </entity>
     <elements>
         <element name="Person" positionX="-63" positionY="-18" width="128" height="133"/>
+        <element name="Record" positionX="-288.674072265625" positionY="142.4601135253906" width="128" height="118"/>
     </elements>
 </model>

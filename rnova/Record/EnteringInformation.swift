@@ -254,6 +254,7 @@ class EnteringInformation: UIViewController, UICollectionViewDelegate, UICollect
                 let result = try context.fetch(fetchRequest)
                 guard let user = result.first as? NSManagedObject else { return }
                 newRecord.setValue(user, forKey: "owner")
+                try context.save()
                 let vc = VisitViewController()
                 navigationController?.pushViewController(vc, animated: true)
             } catch {
@@ -275,7 +276,6 @@ class EnteringInformation: UIViewController, UICollectionViewDelegate, UICollect
     }
     
     @objc func registration() {
-        
         if firstNameField.text == "" && surnameField.text == "" && lastNameField.text == "" {
             let alert = UIAlertController(title: "Внимание", message: "Все поля обязательны для заполнения", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))

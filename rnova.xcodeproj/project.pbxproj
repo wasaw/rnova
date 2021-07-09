@@ -21,6 +21,8 @@
 		BB9BD83A267CC8F800FA2DCF /* EnteringInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB9BD839267CC8F800FA2DCF /* EnteringInformation.swift */; };
 		BB9BD83D267CCB2F00FA2DCF /* EnteringInformationViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB9BD83B267CCB2F00FA2DCF /* EnteringInformationViewCell.swift */; };
 		BB9BD83E267CCB2F00FA2DCF /* EnteringInformationViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB9BD83C267CCB2F00FA2DCF /* EnteringInformationViewCell.xib */; };
+		BB9BD84326948B9D00FA2DCF /* VisitCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB9BD84126948B9D00FA2DCF /* VisitCollectionViewCell.swift */; };
+		BB9BD84426948B9D00FA2DCF /* VisitCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB9BD84226948B9D00FA2DCF /* VisitCollectionViewCell.xib */; };
 		BBA245B9260BA14900BF12E7 /* ServicesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA245B7260BA14900BF12E7 /* ServicesCell.swift */; };
 		BBA245BA260BA14900BF12E7 /* ServicesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BBA245B8260BA14900BF12E7 /* ServicesCell.xib */; };
 		BBA245C826135A9800BF12E7 /* CustomCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA245C726135A9800BF12E7 /* CustomCollectionViewCell.swift */; };
@@ -59,6 +61,8 @@
 		BB9BD839267CC8F800FA2DCF /* EnteringInformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnteringInformation.swift; sourceTree = "<group>"; };
 		BB9BD83B267CCB2F00FA2DCF /* EnteringInformationViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnteringInformationViewCell.swift; sourceTree = "<group>"; };
 		BB9BD83C267CCB2F00FA2DCF /* EnteringInformationViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EnteringInformationViewCell.xib; sourceTree = "<group>"; };
+		BB9BD84126948B9D00FA2DCF /* VisitCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisitCollectionViewCell.swift; sourceTree = "<group>"; };
+		BB9BD84226948B9D00FA2DCF /* VisitCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VisitCollectionViewCell.xib; sourceTree = "<group>"; };
 		BBA245B7260BA14900BF12E7 /* ServicesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServicesCell.swift; sourceTree = "<group>"; };
 		BBA245B8260BA14900BF12E7 /* ServicesCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ServicesCell.xib; sourceTree = "<group>"; };
 		BBA245C726135A9800BF12E7 /* CustomCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -195,6 +199,8 @@
 				BB9BD8332676679900FA2DCF /* Login.swift */,
 				BBD2E8A625BAB37E00A8D092 /* ProfileViewController.swift */,
 				BBD2E8B625BB0CDA00A8D092 /* VisitViewController.swift */,
+				BB9BD84126948B9D00FA2DCF /* VisitCollectionViewCell.swift */,
+				BB9BD84226948B9D00FA2DCF /* VisitCollectionViewCell.xib */,
 				BBD2E8BC25BEAB9100A8D092 /* ExitViewController.swift */,
 			);
 			path = ProfileViewController;
@@ -275,6 +281,7 @@
 				BBCE6CFB25E672B700CC8598 /* RecordCollectionViewCell.xib in Resources */,
 				BB9BD83E267CCB2F00FA2DCF /* EnteringInformationViewCell.xib in Resources */,
 				BBA245BA260BA14900BF12E7 /* ServicesCell.xib in Resources */,
+				BB9BD84426948B9D00FA2DCF /* VisitCollectionViewCell.xib in Resources */,
 				BBA245DF2629B27200BF12E7 /* SpecialtyCollectionViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -338,6 +345,7 @@
 				BBF5F37F265E7F4F00BF1F66 /* Extensions.swift in Sources */,
 				BBD2E8A125B9686400A8D092 /* ClinicViewController.swift in Sources */,
 				BBF8AD6B25C9B9E0009CD35D /* SubServicesViewController.swift in Sources */,
+				BB9BD84326948B9D00FA2DCF /* VisitCollectionViewCell.swift in Sources */,
 				BBD2E8BD25BEAB9100A8D092 /* ExitViewController.swift in Sources */,
 				BBA245B9260BA14900BF12E7 /* ServicesCell.swift in Sources */,
 				BB9BD83226722E7D00FA2DCF /* Registration.swift in Sources */,
