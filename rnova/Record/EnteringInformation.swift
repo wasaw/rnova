@@ -28,7 +28,7 @@ class EnteringInformation: UIViewController, UICollectionViewDelegate, UICollect
     
     private let doctorId: Int
     private let doctorName: String
-    private let recordTime: String
+    private let recordTime: Date
     
 //    private let professionsData = DataLoader(urlMethod: "&method=getProfessions", urlParameter: "").professionsData
     
@@ -36,7 +36,7 @@ class EnteringInformation: UIViewController, UICollectionViewDelegate, UICollect
     
     private let appDelegate = UIApplication.shared.delegate as! AppDelegate
     
-    init(id: Int, name: String, time: String) {
+    init(id: Int, name: String, time: Date) {
         self.doctorId = id
         self.doctorName = name
         self.recordTime = time
@@ -181,7 +181,10 @@ class EnteringInformation: UIViewController, UICollectionViewDelegate, UICollect
         let specialtyAttributedString = boldFont(title: "Специальность: ", text: specialtyText)
         cell.specialtyLabel.attributedText = specialtyAttributedString
         
-        let dateAttributedString = boldFont(title: "Дата: ", text: recordTime)
+        let formatter = DateFormatter()
+        formatter.dateFormat = "dd.MM.yy HH:mm"
+        let recordTimeText = formatter.string(from: recordTime)
+        let dateAttributedString = boldFont(title: "Дата: ", text: recordTimeText)
         cell.dateLabel.attributedText = dateAttributedString
         
         let clinicAttributedString = boldFont(title: "Клиника: ", text: "Семейная клиника")

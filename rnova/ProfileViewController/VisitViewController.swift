@@ -11,11 +11,11 @@ import CoreData
 
 struct Records {
     var doctor: String
-    var date: String
+    var date: Date
     var clinic: String
     var comment: String
     
-    init(doctor: String, date: String, clinic: String, comment: String) {
+    init(doctor: String, date: Date, clinic: String, comment: String) {
         self.doctor = doctor
         self.date = date
         self.clinic = clinic
@@ -111,7 +111,7 @@ class VisitViewController: UIViewController, UICollectionViewDelegate, UICollect
                     }
                     let itemRecord = Records(
                         doctor: doctorName,
-                        date: visit.value(forKey: "date") as? String ?? "",
+                        date: visit.value(forKey: "date") as? Date ?? Date(),
                         clinic: visit.value(forKey: "clinic") as? String ?? "",
                         comment: visit.value(forKey: "comment") as? String ?? ""
                     )
@@ -136,7 +136,10 @@ class VisitViewController: UIViewController, UICollectionViewDelegate, UICollect
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: VisitCollectionViewCell.identifier, for: indexPath) as? VisitCollectionViewCell else { return UICollectionViewCell() }
         
-        cell.dateLabel.text = arrayRecords[indexPath.row].date
+        let formatter = DateFormatter()
+        formatter.dateFormat = "dd.MM.yyyy HH:mm"
+        let dateString = formatter.string(from: arrayRecords[indexPath.row].date)
+        cell.dateLabel.text = dateString
         cell.doctorLabel.text = arrayRecords[indexPath.row].doctor
         cell.clinicLabel.text = arrayRecords[indexPath.row].clinic
         

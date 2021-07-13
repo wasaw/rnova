@@ -20,7 +20,7 @@ class DoctorChoiceViewController: UIViewController {
     private var formatter = DateFormatter()
     private var formatterWeek = DateFormatter()
     private var scheduleData = DataLoader(urlMethod: "&method=getSchedule", urlParameter: "").scheduleData
-    private var arrTimeForDoctor: [String] = []
+    private var arrTimeForDoctor: [Date] = []
     private var timeButtons: [UIButton] = []
     private let monthName = [1: "январь", 2: "февраль", 3: "март", 4: "апрель", 5: "май", 6: "июнь", 7: "июль", 8: "август", 9: "сентябрь", 10: "октябрь", 11: "ноябрь", 12: "декабрь"]
     
@@ -32,7 +32,7 @@ class DoctorChoiceViewController: UIViewController {
 
     private let labelTimeText = UILabel()
     
-    private var recordTime: [String]
+    private var recordTime: [Date]
     
     private var doctorData: [Doctors]
     
@@ -60,7 +60,11 @@ class DoctorChoiceViewController: UIViewController {
         if let strTime = scheduleData[String(doctorId)] {
             for i in 0...strTime.count - 1 {
                 if nowDay == strTime[i].date {
-                    arrTimeForDoctor.append(strTime[i].time_start_short)
+                    let formatter = DateFormatter()
+                    formatter.dateFormat = "dd.MM.yyyy HH:mm"
+                    let nowDayTimeShort = nowDay + " " + strTime[i].time_start_short
+                    guard let timeStartShort = formatter.date(from: nowDayTimeShort) else { return }
+                    arrTimeForDoctor.append(timeStartShort)
                 }
             }
         } else {
@@ -207,7 +211,7 @@ class DoctorChoiceViewController: UIViewController {
         calendar.setCurrentPage(startDate, animated: true)
     }
     
-    func createButton(timeArr: [String]) {
+    func createButton(timeArr: [Date]) {
         var countX = 0
         var countY = 0
         var multiplier = 1
@@ -216,13 +220,17 @@ class DoctorChoiceViewController: UIViewController {
         let startY = 420
         let paddingX = 95
         let paddingY = 50
+        recordTime = []
         if timeArr.count == 0 {
 //            not time for record
             labelTimeText.isHidden = false
         } else {
             for item in 0...timeArr.count - 1 {
                 let button = UIButton(type: .system)
-                button.setTitle(timeArr[item], for: .normal)
+                let formatter = DateFormatter()
+                formatter.dateFormat = "HH:mm"
+                let titleText = formatter.string(from: timeArr[item])
+                button.setTitle(titleText, for: .normal)
                 button.layer.backgroundColor = UIColor.black.cgColor
                 button.backgroundColor = UIColor.systemOrange
                 button.layer.cornerRadius = 18
@@ -251,6 +259,7 @@ class DoctorChoiceViewController: UIViewController {
     
     @objc func buttonTap(sender: UIButton) {
         let vc = EnteringInformation(id: doctorId, name: doctorData[0].name, time: recordTime[sender.tag])
+        print("DEBUG: record time: \(recordTime[sender.tag])")
         navigationController?.pushViewController(vc, animated: true)
 //        print("Press button №\(sender.tag), time: \(recordTime[sender.tag])")
     }
@@ -262,14 +271,17 @@ extension DoctorChoiceViewController: FSCalendarDelegate {
         timeButtons.forEach { $0.removeFromSuperview() }
         timeButtons.removeAll()
         calendar.today = nil
-        
         formatter.dateFormat = "dd.MM.yyyy"
         arrTimeForDoctor = []
         let nowDay = formatter.string(from: date)
         if let strTime = scheduleData[String(doctorId)] {
             for i in 0...strTime.count - 1 {
                 if nowDay == strTime[i].date {
-                    arrTimeForDoctor.append(strTime[i].time_start_short)
+                    let formatter = DateFormatter()
+                    formatter.dateFormat = "dd.MM.yyyy HH:mm"
+                    let nowDayTimeShort = nowDay + " " + strTime[i].time_start_short
+                    guard let strTime = formatter.date(from: nowDayTimeShort) else { return }
+                    arrTimeForDoctor.append(strTime)
                 }
             }
         } else {

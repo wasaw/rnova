@@ -11,7 +11,7 @@
     <entity name="Record" representedClassName="Record" syncable="YES" codeGenerationType="class">
         <attribute name="clinic" optional="YES" attributeType="String"/>
         <attribute name="comment" optional="YES" attributeType="String"/>
-        <attribute name="date" optional="YES" attributeType="String"/>
+        <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="doctor" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <relationship name="owner" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Person"/>
     </entity>
