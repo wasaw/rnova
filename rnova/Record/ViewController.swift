@@ -42,7 +42,7 @@ class ViewController: UIViewController {
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.searchBar.placeholder = "Поиск"
         searchController.searchBar.barTintColor = .white
-        searchController.searchBar.frame = CGRect(x: 0, y: 0, width:    collectionView.bounds.width - 5, height: 50)
+        searchController.searchBar.frame = CGRect(x: 0, y: 0, width:  collectionView.bounds.width - 5, height: 50)
         collectionView.addSubview(searchController.searchBar)
 
         definesPresentationContext = true

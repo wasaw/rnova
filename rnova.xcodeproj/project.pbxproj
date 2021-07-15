@@ -17,12 +17,12 @@
 		BB4C554B25F0D5C600A616D6 /* SpecialtyChoiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB4C554A25F0D5C600A616D6 /* SpecialtyChoiceViewController.swift */; };
 		BB7CDE5B25D16E96007B1B1A /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB7CDE5A25D16E96007B1B1A /* DetailViewController.swift */; };
 		BB9BD83226722E7D00FA2DCF /* Registration.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB9BD83126722E7D00FA2DCF /* Registration.swift */; };
-		BB9BD8342676679900FA2DCF /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB9BD8332676679900FA2DCF /* Login.swift */; };
 		BB9BD83A267CC8F800FA2DCF /* EnteringInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB9BD839267CC8F800FA2DCF /* EnteringInformation.swift */; };
 		BB9BD83D267CCB2F00FA2DCF /* EnteringInformationViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB9BD83B267CCB2F00FA2DCF /* EnteringInformationViewCell.swift */; };
 		BB9BD83E267CCB2F00FA2DCF /* EnteringInformationViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB9BD83C267CCB2F00FA2DCF /* EnteringInformationViewCell.xib */; };
 		BB9BD84326948B9D00FA2DCF /* VisitCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB9BD84126948B9D00FA2DCF /* VisitCollectionViewCell.swift */; };
 		BB9BD84426948B9D00FA2DCF /* VisitCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB9BD84226948B9D00FA2DCF /* VisitCollectionViewCell.xib */; };
+		BB9BD84626A0261B00FA2DCF /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB9BD84526A0261B00FA2DCF /* Login.swift */; };
 		BBA245B9260BA14900BF12E7 /* ServicesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA245B7260BA14900BF12E7 /* ServicesCell.swift */; };
 		BBA245BA260BA14900BF12E7 /* ServicesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BBA245B8260BA14900BF12E7 /* ServicesCell.xib */; };
 		BBA245C826135A9800BF12E7 /* CustomCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA245C726135A9800BF12E7 /* CustomCollectionViewCell.swift */; };
@@ -57,12 +57,12 @@
 		BB4C554A25F0D5C600A616D6 /* SpecialtyChoiceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecialtyChoiceViewController.swift; sourceTree = "<group>"; };
 		BB7CDE5A25D16E96007B1B1A /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		BB9BD83126722E7D00FA2DCF /* Registration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Registration.swift; sourceTree = "<group>"; };
-		BB9BD8332676679900FA2DCF /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
 		BB9BD839267CC8F800FA2DCF /* EnteringInformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnteringInformation.swift; sourceTree = "<group>"; };
 		BB9BD83B267CCB2F00FA2DCF /* EnteringInformationViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnteringInformationViewCell.swift; sourceTree = "<group>"; };
 		BB9BD83C267CCB2F00FA2DCF /* EnteringInformationViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EnteringInformationViewCell.xib; sourceTree = "<group>"; };
 		BB9BD84126948B9D00FA2DCF /* VisitCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisitCollectionViewCell.swift; sourceTree = "<group>"; };
 		BB9BD84226948B9D00FA2DCF /* VisitCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VisitCollectionViewCell.xib; sourceTree = "<group>"; };
+		BB9BD84526A0261B00FA2DCF /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
 		BBA245B7260BA14900BF12E7 /* ServicesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServicesCell.swift; sourceTree = "<group>"; };
 		BBA245B8260BA14900BF12E7 /* ServicesCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ServicesCell.xib; sourceTree = "<group>"; };
 		BBA245C726135A9800BF12E7 /* CustomCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -196,9 +196,9 @@
 			isa = PBXGroup;
 			children = (
 				BB9BD83126722E7D00FA2DCF /* Registration.swift */,
-				BB9BD8332676679900FA2DCF /* Login.swift */,
 				BBD2E8A625BAB37E00A8D092 /* ProfileViewController.swift */,
 				BBD2E8B625BB0CDA00A8D092 /* VisitViewController.swift */,
+				BB9BD84526A0261B00FA2DCF /* Login.swift */,
 				BB9BD84126948B9D00FA2DCF /* VisitCollectionViewCell.swift */,
 				BB9BD84226948B9D00FA2DCF /* VisitCollectionViewCell.xib */,
 				BBD2E8BC25BEAB9100A8D092 /* ExitViewController.swift */,
@@ -349,7 +349,6 @@
 				BBD2E8BD25BEAB9100A8D092 /* ExitViewController.swift in Sources */,
 				BBA245B9260BA14900BF12E7 /* ServicesCell.swift in Sources */,
 				BB9BD83226722E7D00FA2DCF /* Registration.swift in Sources */,
-				BB9BD8342676679900FA2DCF /* Login.swift in Sources */,
 				BBA245C826135A9800BF12E7 /* CustomCollectionViewCell.swift in Sources */,
 				BBF8AD6825C8200E009CD35D /* DataLoader.swift in Sources */,
 				BBD2E8A425B9B6F900A8D092 /* ServicesViewController.swift in Sources */,
@@ -357,6 +356,7 @@
 				BBD920D62670A312000073FC /* Model.xcdatamodeld in Sources */,
 				BB9BD83D267CCB2F00FA2DCF /* EnteringInformationViewCell.swift in Sources */,
 				BB46D2B225B856B9003AD167 /* SceneDelegate.swift in Sources */,
+				BB9BD84626A0261B00FA2DCF /* Login.swift in Sources */,
 				BB9BD83A267CC8F800FA2DCF /* EnteringInformation.swift in Sources */,
 				BBA245DE2629B27100BF12E7 /* SpecialtyCollectionViewCell.swift in Sources */,
 				BB7CDE5B25D16E96007B1B1A /* DetailViewController.swift in Sources */,

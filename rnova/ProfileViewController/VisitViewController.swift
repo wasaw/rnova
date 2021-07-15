@@ -14,12 +14,14 @@ struct Records {
     var date: Date
     var clinic: String
     var comment: String
+    var relevance: Bool
     
-    init(doctor: String, date: Date, clinic: String, comment: String) {
+    init(doctor: String, date: Date, clinic: String, comment: String, relevance: Bool) {
         self.doctor = doctor
         self.date = date
         self.clinic = clinic
         self.comment = comment
+        self.relevance = relevance
     }
 }
 
@@ -32,15 +34,17 @@ class VisitViewController: UIViewController, UICollectionViewDelegate, UICollect
     
     private let appDelegate = UIApplication.shared.delegate as! AppDelegate
     
-    private var arrayRecords = [Records]()
+    private var arrayRecordsLoad = [Records]()
+    private var arrayRecordsVisible = [Records]()
     
     private var doctorData: [Doctors] = []
+    
+    private var checkTapSegmen = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         doctorData = DataLoader(urlMethod: "&method=getUsers", urlParameter: "").doctorsData
-        print("DEBUG: doctor count \(doctorData.count)")
         
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
@@ -72,11 +76,10 @@ class VisitViewController: UIViewController, UICollectionViewDelegate, UICollect
         customSC.selectedSegmentIndex = 0
         customSC.backgroundColor = .orange
         customSC.frame = CGRect(x: 10, y: 110, width: view.frame.width - 20, height: 30)
+        customSC.addTarget(self, action: #selector(didTapSegment), for: .valueChanged)
         self.view.addSubview(customSC)
         
-        if loadVisit() {
-            print("DEBUG: We have records")
-        } else {
+        if !loadVisit() {
             let labelAnswer = UILabel(frame: CGRect(x: 10, y: 170, width: 170, height: 20))
             labelAnswer.text = "Нет результатов"
             labelAnswer.textColor = .black
@@ -91,10 +94,19 @@ class VisitViewController: UIViewController, UICollectionViewDelegate, UICollect
         present(menu, animated: true)
     }
     
+    @objc func didTapSegment(sender: UISegmentedControl) {
+        if sender.selectedSegmentIndex == 0 {
+            checkTapSegmen = true
+            collectionView?.reloadData()
+        } else {
+            checkTapSegmen = false
+            collectionView?.reloadData()
+        }
+    }
+    
     func loadVisit() -> Bool {
         let context = appDelegate.persistentContainer.viewContext
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Record")
-        print("DEBUG: load")
         do {
             let result = try context.fetch(fetchRequest)
             if result.count == 0 { return false }
@@ -109,40 +121,62 @@ class VisitViewController: UIViewController, UICollectionViewDelegate, UICollect
                             break
                         }
                     }
+                    
+                    let nowDay = Date()
+                    let checkDate = visit.value(forKey: "date") as? Date ?? Date()
+                    var checkRelevance: Bool
+                    if nowDay < checkDate {
+                        checkRelevance = true
+                    } else {
+                        checkRelevance = false
+                    }
+                    
                     let itemRecord = Records(
                         doctor: doctorName,
                         date: visit.value(forKey: "date") as? Date ?? Date(),
                         clinic: visit.value(forKey: "clinic") as? String ?? "",
-                        comment: visit.value(forKey: "comment") as? String ?? ""
+                        comment: visit.value(forKey: "comment") as? String ?? "",
+                        relevance: checkRelevance
                     )
-
-                    print(itemRecord.doctor)
-                    arrayRecords.append(itemRecord)
+                    arrayRecordsLoad.append(itemRecord)
                 }
-//                else {
-//                    print("Don't have a imformation")
-//                }
             }
         } catch {
             print(error)
         }
+        
         return true
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return arrayRecords.count
+        arrayRecordsVisible = []
+        if checkTapSegmen {
+            for item in arrayRecordsLoad {
+                if item.relevance {
+                    arrayRecordsVisible.append(item)
+                }
+            }
+        } else {
+            for item in arrayRecordsLoad {
+                if !item.relevance {
+                    arrayRecordsVisible.append(item)
+                }
+            }
+        }
+        return arrayRecordsVisible.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: VisitCollectionViewCell.identifier, for: indexPath) as? VisitCollectionViewCell else { return UICollectionViewCell() }
         
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: VisitCollectionViewCell.identifier, for: indexPath) as? VisitCollectionViewCell else { return UICollectionViewCell() }
+       
         let formatter = DateFormatter()
         formatter.dateFormat = "dd.MM.yyyy HH:mm"
-        let dateString = formatter.string(from: arrayRecords[indexPath.row].date)
+        let dateString = formatter.string(from: arrayRecordsVisible[indexPath.row].date)
         cell.dateLabel.text = dateString
-        cell.doctorLabel.text = arrayRecords[indexPath.row].doctor
-        cell.clinicLabel.text = arrayRecords[indexPath.row].clinic
-        
+        cell.doctorLabel.text = arrayRecordsVisible[indexPath.row].doctor
+        cell.clinicLabel.text = arrayRecordsVisible[indexPath.row].clinic
+    
         return cell
     }
     

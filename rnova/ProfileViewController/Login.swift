@@ -39,31 +39,13 @@ class Login: UIViewController {
         line(y: 240)
         view.addSubview(phoneNumberField)
         
-        registrationButton.frame = CGRect(x: 20, y: 340, width: view.bounds.width - 40, height: 60)
-        registrationButton.layer.cornerRadius = 10
-        registrationButton.layer.shadowColor = UIColor.black.cgColor
-        registrationButton.layer.shadowOffset = CGSize(width: 0, height: 1)
-        registrationButton.layer.shadowOpacity = 0.3
-        registrationButton.layer.shadowRadius = 4
-        registrationButton.layer.masksToBounds = false
-        registrationButton.clipsToBounds = false
-        registrationButton.backgroundColor = .systemGreen
-        registrationButton.setTitle("Зарегистрироваться", for: .normal)
-        registrationButton.setTitleColor(.white, for: .normal)
+        let registrationFrame = CGRect(x: 20, y: 340, width: view.bounds.width - 40, height: 60)
+        registrationButton.createButton(frame: registrationFrame, color: UIColor.systemGreen, title: "Зарегистрироваться")
         registrationButton.addTarget(self, action: #selector(registration), for: .touchUpInside)
         view.addSubview(registrationButton)
         
-        enterButton.frame = CGRect(x: 20, y: 270, width: view.bounds.width - 40, height: 60)
-        enterButton.layer.cornerRadius = 10
-        enterButton.layer.shadowColor = UIColor.black.cgColor
-        enterButton.layer.shadowOffset = CGSize(width: 0, height: 1)
-        enterButton.layer.shadowOpacity = 0.3
-        enterButton.layer.shadowRadius = 4
-        enterButton.layer.masksToBounds = false
-        enterButton.clipsToBounds = false
-        enterButton.backgroundColor = .systemOrange
-        enterButton.setTitle("Войти", for: .normal)
-        enterButton.setTitleColor(.white, for: .normal)
+        let enterFrame = CGRect(x: 20, y: 270, width: view.bounds.width - 40, height: 60)
+        enterButton.createButton(frame: enterFrame, color: UIColor.systemOrange, title: "Войти")
         enterButton.addTarget(self, action: #selector(enter), for: .touchUpInside)
         view.addSubview(enterButton)
         

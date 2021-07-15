@@ -17,8 +17,8 @@ class ProfileViewController: UIViewController {
     
     private let appDelegate = UIApplication.shared.delegate as! AppDelegate
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewDidAppear(false)
         
         if !checkRegistration() {
             let vc = Registration()
@@ -34,6 +34,25 @@ class ProfileViewController: UIViewController {
                 print("DEBUG: person logout")
             }
         }
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+//        if !checkRegistration() {
+//            let vc = Registration()
+//            navigationController?.pushViewController(vc, animated: true)
+//            print("DEBUG: we don'n have person")
+//        } else {
+//            if checkLogIn() {
+//
+//                print("DEBUG: person login")
+//            } else {
+//                let vc = Login()
+//                navigationController?.pushViewController(vc, animated: true)
+//                print("DEBUG: person logout")
+//            }
+//        }
         
         getPersonInformation()
         
@@ -88,12 +107,14 @@ class ProfileViewController: UIViewController {
             if let user = result.first as? NSManagedObject {
                 let checkLogIn = user.value(forKey: "login") as? Bool ?? false
                 if checkLogIn {
+                    print("DEBUG: NOW LOGIN")
                     return true
                 }
             }
         } catch {
             print(error)
         }
+        print("DEBUG: NOW LOGOUT")
         return false
     }
     

@@ -279,11 +279,17 @@ class EnteringInformation: UIViewController, UICollectionViewDelegate, UICollect
     }
     
     @objc func registration() {
-        if firstNameField.text == "" && surnameField.text == "" && lastNameField.text == "" {
+        if firstNameField.text == "" || surnameField.text == "" || lastNameField.text == "" {
             let alert = UIAlertController(title: "Внимание", message: "Все поля обязательны для заполнения", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
             self.present(alert, animated: true, completion: nil)
         } else {
+            if !isValidPhoneNumber(number: phoneNumberField.text) {
+                let alert = UIAlertController(title: "Внимание", message: "Введите номер в формате +7ХХХ-ХХХ-XXXХ", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+            }
+            
             let context = appDelegate.persistentContainer.viewContext
             
             let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Person")
@@ -316,6 +322,13 @@ class EnteringInformation: UIViewController, UICollectionViewDelegate, UICollect
                 print(error)
             }
         }
+    }
+    
+    func isValidPhoneNumber(number: String?) -> Bool {
+        guard let number = number else { return false }
+        let regEx = "^\\+7\\d{3}-\\d{3}-\\d{4}$"
+        let phoneCheck = NSPredicate(format: "SELF MATCHES %@", regEx)
+        return phoneCheck.evaluate(with: number)
     }
     
     func checkLogIn() -> Bool {

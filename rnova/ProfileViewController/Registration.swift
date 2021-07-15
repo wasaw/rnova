@@ -82,35 +82,22 @@ class Registration: UIViewController {
         
         let registrationFrame = CGRect(x: 20, y: 480, width: view.bounds.width - 40, height: 60)
         registrationButton.createButton(frame: registrationFrame, color: UIColor.systemGreen, title: "Зарегистрироваться")
-//        registrationButton.layer.cornerRadius = 10
-//        registrationButton.layer.shadowColor = UIColor.black.cgColor
-//        registrationButton.layer.shadowOffset = CGSize(width: 0, height: 1)
-//        registrationButton.layer.shadowOpacity = 0.3
-//        registrationButton.layer.shadowRadius = 4
-//        registrationButton.layer.masksToBounds = false
-//        registrationButton.clipsToBounds = false
-//        registrationButton.backgroundColor = .systemGreen
-//        registrationButton.setTitle("Зарегистрироваться", for: .normal)
-//        registrationButton.setTitleColor(.white, for: .normal)
         registrationButton.addTarget(self, action: #selector(registration), for: .touchUpInside)
         view.addSubview(registrationButton)
         
         let enterFrame = CGRect(x: 20, y: 560, width: view.bounds.width - 40, height: 60)
         enterButton.createButton(frame: enterFrame, color: UIColor.systemOrange, title: "Войти")
-//        enterButton.layer.cornerRadius = 10
-//        enterButton.layer.shadowColor = UIColor.black.cgColor
-//        enterButton.layer.shadowOffset = CGSize(width: 0, height: 1)
-//        enterButton.layer.shadowOpacity = 0.3
-//        enterButton.layer.shadowRadius = 4
-//        enterButton.layer.masksToBounds = false
-//        enterButton.clipsToBounds = false
-//        enterButton.backgroundColor = .systemOrange
-//        enterButton.setTitle("Войти", for: .normal)
-//        enterButton.setTitleColor(.white, for: .normal)
         enterButton.addTarget(self, action: #selector(enter), for: .touchUpInside)
         view.addSubview(enterButton)
         
         view.backgroundColor = .white
+    }
+    
+    func isValidPhoneNumber(number: String?) -> Bool {
+        guard let number = number else { return false }
+        let regEx = "^\\+7\\d{3}-\\d{3}-\\d{4}$"
+        let phoneCheck = NSPredicate(format: "SELF MATCHES %@", regEx)
+        return phoneCheck.evaluate(with: number)
     }
     
     func line(y: CGFloat) {
@@ -135,29 +122,51 @@ class Registration: UIViewController {
     }
     
     @objc func registration() {
-        let context = appDelegate.persistentContainer.viewContext
-        
-        guard let entity = NSEntityDescription.entity(forEntityName: "Person", in: context) else { return }
-        
-        let newPerson = NSManagedObject(entity: entity, insertInto: context)
-        
-        newPerson.setValue(firstNameField.text, forKey: "firstname")
-        newPerson.setValue(surnameField.text, forKey: "surname")
-        newPerson.setValue(lastNameField.text, forKey: "lastname")
-        newPerson.setValue(dateField.text, forKey: "date")
-        newPerson.setValue(phoneNumberField.text, forKey: "phone")
-        newPerson.setValue(true, forKey: "login")
+        if firstNameField.text == "" || surnameField.text == "" || lastNameField.text == "" {
+            let alert = UIAlertController(title: "Внимание", message: "Все поля обязательны для заполнения", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        } else {
+            if !isValidPhoneNumber(number: phoneNumberField.text) {
+                let alert = UIAlertController(title: "Внимание", message: "Введите номер в формате +7ХХХ-ХХХ-XXXХ", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+            }
+            
+            let context = appDelegate.persistentContainer.viewContext
+            
+            let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Person")
+            do {
+                let result = try context.fetch(fetchRequest)
+                if let user = result.first as? NSManagedObject {
+                    let alert = UIAlertController(title: "Внимание", message: "Вы уже регистрировались на этом телефоне", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+                    self.present(alert, animated: true, completion: nil)
+                } else {
+                    guard let entity = NSEntityDescription.entity(forEntityName: "Person", in: context) else { return }
 
-        
-        do {
-            try context.save()
-//            navigationController?.popViewController(animated: true)
-            let vc = ProfileViewController()
-            navigationController?.pushViewController(vc, animated: true)
-        } catch let error as NSError {
-            print(error)
+                    let newPerson = NSManagedObject(entity: entity, insertInto: context)
+
+                    newPerson.setValue(firstNameField.text, forKey: "firstname")
+                    newPerson.setValue(surnameField.text, forKey: "surname")
+                    newPerson.setValue(lastNameField.text, forKey: "lastname")
+                    newPerson.setValue(dateField.text, forKey: "date")
+                    newPerson.setValue(phoneNumberField.text, forKey: "phone")
+                    newPerson.setValue(true, forKey: "login")
+
+
+                    do {
+                        try context.save()
+                        let vc = ProfileViewController()
+                        navigationController?.pushViewController(vc, animated: true)
+                    } catch let error as NSError {
+                        print(error)
+                    }
+                }
+            } catch {
+                print(error)
+            }
         }
-        
     }
     
     @objc func enter() {

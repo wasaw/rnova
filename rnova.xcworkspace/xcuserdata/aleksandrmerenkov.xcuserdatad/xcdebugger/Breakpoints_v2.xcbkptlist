@@ -494,8 +494,8 @@
             filePath = "rnova/ProfileViewController/ProfileViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "71"
-            endingLineNumber = "71"
+            startingLineNumber = "90"
+            endingLineNumber = "90"
             landmarkName = "checkRegistration()"
             landmarkType = "7">
          </BreakpointContent>
@@ -608,22 +608,6 @@
             endingLineNumber = "15"
             landmarkName = "EnteringInformationViewCell"
             landmarkType = "3">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "44F14A40-9DE0-475F-AD9E-920C9A455650"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "rnova/ProfileViewController/Login.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "8"
-            endingLineNumber = "8"
-            landmarkName = "unknown"
-            landmarkType = "0">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
