@@ -23,36 +23,16 @@ class ProfileViewController: UIViewController {
         if !checkRegistration() {
             let vc = Registration()
             navigationController?.pushViewController(vc, animated: true)
-            print("DEBUG: we don'n have person")
         } else {
-            if checkLogIn() {
-                
-                print("DEBUG: person login")
-            } else {
+            if !checkLogIn() {
                 let vc = Login()
                 navigationController?.pushViewController(vc, animated: true)
-                print("DEBUG: person logout")
             }
         }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-//        if !checkRegistration() {
-//            let vc = Registration()
-//            navigationController?.pushViewController(vc, animated: true)
-//            print("DEBUG: we don'n have person")
-//        } else {
-//            if checkLogIn() {
-//
-//                print("DEBUG: person login")
-//            } else {
-//                let vc = Login()
-//                navigationController?.pushViewController(vc, animated: true)
-//                print("DEBUG: person logout")
-//            }
-//        }
         
         getPersonInformation()
         
@@ -63,7 +43,6 @@ class ProfileViewController: UIViewController {
         menu = SideMenuNavigationController(rootViewController: MenuListController())
         menu?.leftSide = true
         menu?.navigationBar.backgroundColor = .systemOrange
-        //        menu?.navigationController?.navigationBar.backgroundColor = .systemOrange
         
         SideMenuManager.default.leftMenuNavigationController = menu
         SideMenuManager.default.addPanGestureToPresent(toView: view)
@@ -71,7 +50,6 @@ class ProfileViewController: UIViewController {
         lastNameLabel.frame = CGRect(x: 20, y: 100, width: view.bounds.width - 40, height: 40)
         lastNameLabel.font = UIFont.boldSystemFont(ofSize: 25)
         lastNameLabel.textAlignment = .center
-//        line(y: 170)
         view.addSubview(lastNameLabel)
         
         firstNameLabel.frame = CGRect(x: 20, y: 140, width: view.bounds.width - 40, height: 40)
@@ -89,7 +67,6 @@ class ProfileViewController: UIViewController {
         do {
             let result = try context.fetch(fetchRequest)
             if result.isEmpty {
-                print("DEBUG: result is empty")
                 return false
             }
         } catch {
@@ -107,31 +84,14 @@ class ProfileViewController: UIViewController {
             if let user = result.first as? NSManagedObject {
                 let checkLogIn = user.value(forKey: "login") as? Bool ?? false
                 if checkLogIn {
-                    print("DEBUG: NOW LOGIN")
                     return true
                 }
             }
         } catch {
             print(error)
         }
-        print("DEBUG: NOW LOGOUT")
         return false
     }
-    
-//    func checkLogIn() -> Bool {
-//        let context = appDelegate.persistentContainer.viewContext
-//        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Person")
-//
-//        do {
-//            let result = try context.fetch(fetchRequest)
-//            guard let user = result.first as? NSManagedObject else { return false}
-//            let check = user.value(forKey: "login") as? Bool ?? false
-//            if check { return true}
-//        } catch {
-//            print(error)
-//        }
-//        return false
-//    }
     
     @objc func sideMenu() {
         guard let menu = menu else { return }
@@ -147,12 +107,10 @@ class ProfileViewController: UIViewController {
             let result = try context.fetch(fetchRequest)
             for data in result {
                 if let data = data as? NSManagedObject {
-//                    print(data.value(forKey: "login") as? Bool)
                     lastNameLabel.text = data.value(forKey: "lastname") as? String ?? ""
                     let name = data.value(forKey: "firstname") as? String ?? ""
                     let surname = data.value(forKey: "surname") as? String ?? ""
                     firstNameLabel.text = name + " " + surname
-//                    print(data.value(forKey: "lastname") as? String ?? "")
                 }
             }
         } catch {

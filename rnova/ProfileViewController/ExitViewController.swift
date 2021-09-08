@@ -27,8 +27,6 @@ class ExitViewController: UIViewController {
             print(error)
         }
         
-        
-//        let vc = ProfileViewController()
         let vc = Login()
         navigationController?.pushViewController(vc, animated: true)
     }

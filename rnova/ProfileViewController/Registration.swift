@@ -170,26 +170,10 @@ class Registration: UIViewController {
     }
     
     @objc func enter() {
-//        let storyboard = UIStoryboard(name: "Enter", bundle: nil)
         let vc = Login()
         navigationController?.pushViewController(vc, animated: true)
     }
-    
-//    func checkRegistration() -> Bool {
-//        let context = appDelegate.persistentContainer.viewContext
-//        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Person")
-//
-//        do {
-//            let result = try context.fetch(fetchRequest)
-//            if result.isEmpty {
-//                return true
-//            }
-//        } catch {
-//            print(error)
-//        }
-//        return false
-//    }
-//
+
     func getDateFromPicker() {
         let formatter = DateFormatter()
         formatter.dateFormat = "dd.MM.yy"

@@ -24,15 +24,11 @@ class EnteringInformation: UIViewController, UICollectionViewDelegate, UICollect
         
     private let recordButton = UIButton()
     private let registrationButton = UIButton()
-//    private let enterButton = UIButton()
     
     private let doctorId: Int
     private let doctorName: String
     private let recordTime: Date
-    
-//    private let professionsData = DataLoader(urlMethod: "&method=getProfessions", urlParameter: "").professionsData
-    
-    private let doctorsData = DataLoader(urlMethod: "&method=getUsers", urlParameter: "").doctorsData
+    private var doctorsData = [Doctors]()
     
     private let appDelegate = UIApplication.shared.delegate as! AppDelegate
     
@@ -49,6 +45,11 @@ class EnteringInformation: UIViewController, UICollectionViewDelegate, UICollect
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        DispatchQueue.main.async {
+            self.doctorsData = DataLoader(urlMethod: "&method=getUsers", urlParameter: "").doctorsData
+            self.collectionView?.reloadData()
+        }
 
         navigationItem.title = "Личные данные"
         
@@ -131,7 +132,7 @@ class EnteringInformation: UIViewController, UICollectionViewDelegate, UICollect
             let flexSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
             let cancelButton = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancelAction))
             toolBar.setItems([cancelButton, flexSpace, doneButton], animated: true)
-            let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapGestureDone))
+            _ = UITapGestureRecognizer(target: self, action: #selector(tapGestureDone))
             
             phoneNumberField.frame = CGRect(x: 20, y: 670, width: view.bounds.width - 40, height: 40)
             phoneNumberField.placeholder = "Телефонный номер"
@@ -156,24 +157,17 @@ class EnteringInformation: UIViewController, UICollectionViewDelegate, UICollect
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: EnteringInformationViewCell.identifire, for: indexPath) as? EnteringInformationViewCell else { return UICollectionViewCell() }
-        
-//        let doctorTitle = "Врач: "
-//        let doctorText = "Баков Андрей Евгеньевич"
-//        let attributedString = NSMutableAttributedString(string: doctorTitle)
-//        let attributes: [NSAttributedString.Key: Any] = [
-//            .font: UIFont.boldSystemFont(ofSize: 16)
-//        ]
-//        let doctorBold = NSMutableAttributedString(string: doctorText, attributes: attributes)
-//        attributedString.append(doctorBold)
         let doctorAttributedString = boldFont(title: "Врач: ", text: doctorName)
         cell.doctorLabel.attributedText = doctorAttributedString
         
         var specialtyText = "Название специальности"
-        for item in 0...doctorsData.count - 1 {
-            if doctorsData[item].id == doctorId {
-                if let specialty = doctorsData[item].profession_titles {
-                    specialtyText = specialty
-                    break
+        if doctorsData.count != 0 {
+            for item in 0...doctorsData.count - 1 {
+                if doctorsData[item].id == doctorId {
+                    if let specialty = doctorsData[item].profession_titles {
+                        specialtyText = specialty
+                        break
+                    }
                 }
             }
         }
@@ -263,16 +257,6 @@ class EnteringInformation: UIViewController, UICollectionViewDelegate, UICollect
             } catch {
                 print(error)
             }
-            
-//            let recordFetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Record")
-//            do {
-//                let result = try context.fetch(recordFetchRequest)
-//                guard let record = result.last as? NSManagedObject else { return }
-//                guard let person = record.value(forKey: "owner") as? NSManagedObject else { return }
-//                print(person.value(forKey: "lastname"))
-//            } catch {
-//
-//            }
         } else {
             print("false")
         }

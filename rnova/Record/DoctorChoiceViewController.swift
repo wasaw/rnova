@@ -19,7 +19,7 @@ class DoctorChoiceViewController: UIViewController {
     private let dataFormat = Date()
     private var formatter = DateFormatter()
     private var formatterWeek = DateFormatter()
-    private var scheduleData = DataLoader(urlMethod: "&method=getSchedule", urlParameter: "").scheduleData
+    private var scheduleData = [String: [Schedule]]()
     private var arrTimeForDoctor: [Date] = []
     private var timeButtons: [UIButton] = []
     private let monthName = [1: "январь", 2: "февраль", 3: "март", 4: "апрель", 5: "май", 6: "июнь", 7: "июль", 8: "август", 9: "сентябрь", 10: "октябрь", 11: "ноябрь", 12: "декабрь"]
@@ -50,6 +50,18 @@ class DoctorChoiceViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let activityIndicator = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.medium)
+        activityIndicator.center = view.center
+        activityIndicator.startAnimating()
+        view.addSubview(activityIndicator)
+        let urlStr = "&user_id=" + String(self.doctorId)
+        DispatchQueue.main.async {
+            self.scheduleData = DataLoader(urlMethod: "&method=getSchedule", urlParameter: "").scheduleData
+            self.doctorData = DataLoader(urlMethod: "&method=getUsers", urlParameter: urlStr).doctorsData
+            self.calendar.reloadData()
+            activityIndicator.stopAnimating()
+        }
+        
         let width = view.bounds.width
         let widthLabel = width - 40
         formatter.dateFormat = "dd.MM.yyyy"
@@ -71,7 +83,7 @@ class DoctorChoiceViewController: UIViewController {
             print("DEBUG: not found")
         }
         
-        let urlStr = "&user_id=" + String(self.doctorId)
+//        let urlStr = "&user_id=" + String(self.doctorId)
         doctorData = DataLoader(urlMethod: "&method=getUsers", urlParameter: urlStr).doctorsData
         
         let textView = UITextView()
@@ -259,9 +271,7 @@ class DoctorChoiceViewController: UIViewController {
     
     @objc func buttonTap(sender: UIButton) {
         let vc = EnteringInformation(id: doctorId, name: doctorData[0].name, time: recordTime[sender.tag])
-        print("DEBUG: record time: \(recordTime[sender.tag])")
         navigationController?.pushViewController(vc, animated: true)
-//        print("Press button №\(sender.tag), time: \(recordTime[sender.tag])")
     }
     
 }

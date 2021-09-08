@@ -40,12 +40,6 @@ class EnteringInformationViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-//        backgroundColor = .white
-    }
-    
-    
     override func layoutSubviews() {
         super.layoutSubviews()
         doctorLabel.frame = CGRect(x: 10, y: 10, width: contentView.bounds.width - 20, height: 30)

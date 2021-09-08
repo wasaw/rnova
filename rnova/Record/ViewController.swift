@@ -11,9 +11,8 @@ class ViewController: UIViewController {
 
     var doctorVC: UIView!
     var specialtyVC: UIView!
-    
-    var doctorsData = DataLoader(urlMethod: "&method=getUsers", urlParameter: "").doctorsData
-    var professionsData = DataLoader(urlMethod: "&method=getProfessions", urlParameter: "").professionsData
+    var doctorsData = [Doctors]()
+    var professionsData = [Professions]()
         
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var layout: UICollectionViewFlowLayout!
@@ -35,6 +34,17 @@ class ViewController: UIViewController {
     var checkTapSegment = true
     override func viewDidLoad() {
         super.viewDidLoad()
+        let activityIndicator = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.medium)
+        activityIndicator.center = view.center
+        activityIndicator.startAnimating()
+        view.addSubview(activityIndicator)
+        
+        DispatchQueue.main.async {
+            self.doctorsData = DataLoader(urlMethod: "&method=getUsers", urlParameter: "").doctorsData
+            self.professionsData = DataLoader(urlMethod: "&method=getProfessions", urlParameter: "").professionsData
+            activityIndicator.stopAnimating()
+            self.collectionView.reloadData()
+        }
         
         collectonViewSetup()
         

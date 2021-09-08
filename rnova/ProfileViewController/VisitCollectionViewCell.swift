@@ -14,13 +14,6 @@ class VisitCollectionViewCell: UICollectionViewCell {
     var doctorLabel = UILabel()
     var clinicLabel = UILabel()
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-       
-        
-    }
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
