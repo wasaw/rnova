@@ -13,8 +13,8 @@ class Login: UIViewController {
     private let lastNameField = UITextField()
     private let phoneNumberField = UITextField()
     
-    private let registrationButton = UIButton()
-    private let enterButton = UIButton()
+    private let registrationButton = View().button
+    private let enterButton = View().button
     
     private let appDelegate = UIApplication.shared.delegate as! AppDelegate
     
@@ -38,13 +38,19 @@ class Login: UIViewController {
         line(y: 240)
         view.addSubview(phoneNumberField)
         
-        let registrationFrame = CGRect(x: 20, y: 340, width: view.bounds.width - 40, height: 60)
-        registrationButton.createButton(frame: registrationFrame, color: UIColor.systemGreen, title: "Зарегистрироваться")
+//        let registrationFrame = CGRect(x: 20, y: 340, width: view.bounds.width - 40, height: 60)
+        registrationButton.frame = CGRect(x: 20, y: 340, width: view.bounds.width - 40, height: 60)
+//        registrationButton.createButton(frame: registrationFrame, color: UIColor.systemGreen, title: "Зарегистрироваться")
+        registrationButton.backgroundColor = UIColor.systemGreen
+        registrationButton.setTitle("Зарегистрироваться", for: .normal)
         registrationButton.addTarget(self, action: #selector(registration), for: .touchUpInside)
         view.addSubview(registrationButton)
         
-        let enterFrame = CGRect(x: 20, y: 270, width: view.bounds.width - 40, height: 60)
-        enterButton.createButton(frame: enterFrame, color: UIColor.systemOrange, title: "Войти")
+//        let enterFrame = CGRect(x: 20, y: 270, width: view.bounds.width - 40, height: 60)
+        enterButton.frame = CGRect(x: 20, y: 270, width: view.bounds.width - 40, height: 60)
+//        enterButton.createButton(frame: enterFrame, color: UIColor.systemOrange, title: "Войти")
+        enterButton.backgroundColor = UIColor.systemOrange
+        enterButton.setTitle("Войти", for: .normal)
         enterButton.addTarget(self, action: #selector(enter), for: .touchUpInside)
         view.addSubview(enterButton)
         

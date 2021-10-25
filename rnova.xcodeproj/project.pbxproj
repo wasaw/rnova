@@ -14,7 +14,14 @@
 		BB46D2B725B856B9003AD167 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB46D2B525B856B9003AD167 /* Main.storyboard */; };
 		BB46D2B925B856BC003AD167 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BB46D2B825B856BC003AD167 /* Assets.xcassets */; };
 		BB46D2BC25B856BC003AD167 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB46D2BA25B856BC003AD167 /* LaunchScreen.storyboard */; };
+		BB4ABFF82715BE49008D05F8 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB4ABFF72715BE49008D05F8 /* Model.swift */; };
+		BB4ABFFB2715C006008D05F8 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB4ABFFA2715C006008D05F8 /* View.swift */; };
+		BB4AC0042716D0A5008D05F8 /* RecordViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB4AC0022716D0A5008D05F8 /* RecordViewCell.swift */; };
+		BB4AC0052716D0A5008D05F8 /* RecordViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB4AC0032716D0A5008D05F8 /* RecordViewCell.xib */; };
+		BB4AC0082716D552008D05F8 /* RecordController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB4AC0072716D552008D05F8 /* RecordController.swift */; };
 		BB4C554B25F0D5C600A616D6 /* SpecialtyChoiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB4C554A25F0D5C600A616D6 /* SpecialtyChoiceViewController.swift */; };
+		BB552DFE2721A563001F605A /* ClinicsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB552DFD2721A563001F605A /* ClinicsController.swift */; };
+		BB552E002721AA1F001F605A /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB552DFF2721AA1F001F605A /* TabBarController.swift */; };
 		BB7CDE5B25D16E96007B1B1A /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB7CDE5A25D16E96007B1B1A /* DetailViewController.swift */; };
 		BB9BD83226722E7D00FA2DCF /* Registration.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB9BD83126722E7D00FA2DCF /* Registration.swift */; };
 		BB9BD83A267CC8F800FA2DCF /* EnteringInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB9BD839267CC8F800FA2DCF /* EnteringInformation.swift */; };
@@ -54,7 +61,14 @@
 		BB46D2B825B856BC003AD167 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BB46D2BB25B856BC003AD167 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BB46D2BD25B856BC003AD167 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BB4ABFF72715BE49008D05F8 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		BB4ABFFA2715C006008D05F8 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
+		BB4AC0022716D0A5008D05F8 /* RecordViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordViewCell.swift; sourceTree = "<group>"; };
+		BB4AC0032716D0A5008D05F8 /* RecordViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecordViewCell.xib; sourceTree = "<group>"; };
+		BB4AC0072716D552008D05F8 /* RecordController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordController.swift; sourceTree = "<group>"; };
 		BB4C554A25F0D5C600A616D6 /* SpecialtyChoiceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecialtyChoiceViewController.swift; sourceTree = "<group>"; };
+		BB552DFD2721A563001F605A /* ClinicsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClinicsController.swift; sourceTree = "<group>"; };
+		BB552DFF2721AA1F001F605A /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		BB7CDE5A25D16E96007B1B1A /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		BB9BD83126722E7D00FA2DCF /* Registration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Registration.swift; sourceTree = "<group>"; };
 		BB9BD839267CC8F800FA2DCF /* EnteringInformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnteringInformation.swift; sourceTree = "<group>"; };
@@ -137,6 +151,9 @@
 		BB46D2AE25B856B9003AD167 /* rnova */ = {
 			isa = PBXGroup;
 			children = (
+				BB4ABFF62715BDDF008D05F8 /* Controller */,
+				BB4ABFF52715BDD7008D05F8 /* View */,
+				BB4ABFF42715BDCB008D05F8 /* Model */,
 				BB46D2AF25B856B9003AD167 /* AppDelegate.swift */,
 				BB7CDE5A25D16E96007B1B1A /* DetailViewController.swift */,
 				BB46D2B125B856B9003AD167 /* SceneDelegate.swift */,
@@ -151,6 +168,74 @@
 				BBF5F37D265E7F2E00BF1F66 /* Utilies */,
 			);
 			path = rnova;
+			sourceTree = "<group>";
+		};
+		BB4ABFF42715BDCB008D05F8 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				BB4ABFF72715BE49008D05F8 /* Model.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		BB4ABFF52715BDD7008D05F8 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				BB4ABFFC2715DA0F008D05F8 /* Record */,
+				BB4ABFFD2715DA27008D05F8 /* Clinic */,
+				BB4ABFFE2715DA39008D05F8 /* Service */,
+				BB4ABFFF2715DA46008D05F8 /* Profile */,
+				BB4ABFFA2715C006008D05F8 /* View.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		BB4ABFF62715BDDF008D05F8 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				BB4AC0062716D529008D05F8 /* Record */,
+				BB552DFD2721A563001F605A /* ClinicsController.swift */,
+				BB552DFF2721AA1F001F605A /* TabBarController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		BB4ABFFC2715DA0F008D05F8 /* Record */ = {
+			isa = PBXGroup;
+			children = (
+				BB4AC0022716D0A5008D05F8 /* RecordViewCell.swift */,
+				BB4AC0032716D0A5008D05F8 /* RecordViewCell.xib */,
+			);
+			path = Record;
+			sourceTree = "<group>";
+		};
+		BB4ABFFD2715DA27008D05F8 /* Clinic */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Clinic;
+			sourceTree = "<group>";
+		};
+		BB4ABFFE2715DA39008D05F8 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		BB4ABFFF2715DA46008D05F8 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		BB4AC0062716D529008D05F8 /* Record */ = {
+			isa = PBXGroup;
+			children = (
+				BB4AC0072716D552008D05F8 /* RecordController.swift */,
+			);
+			path = Record;
 			sourceTree = "<group>";
 		};
 		BBA245D5261EFCC200BF12E7 /* Clinic */ = {
@@ -283,6 +368,7 @@
 				BBA245BA260BA14900BF12E7 /* ServicesCell.xib in Resources */,
 				BB9BD84426948B9D00FA2DCF /* VisitCollectionViewCell.xib in Resources */,
 				BBA245DF2629B27200BF12E7 /* SpecialtyCollectionViewCell.xib in Resources */,
+				BB4AC0052716D0A5008D05F8 /* RecordViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -339,6 +425,7 @@
 				BBD2E8A725BAB37E00A8D092 /* ProfileViewController.swift in Sources */,
 				BB4C554B25F0D5C600A616D6 /* SpecialtyChoiceViewController.swift in Sources */,
 				BB46D2B425B856B9003AD167 /* ViewController.swift in Sources */,
+				BB4AC0042716D0A5008D05F8 /* RecordViewCell.swift in Sources */,
 				BB46D2B025B856B9003AD167 /* AppDelegate.swift in Sources */,
 				BBD2E8B725BB0CDA00A8D092 /* VisitViewController.swift in Sources */,
 				BBCE6CFA25E672B700CC8598 /* RecordCollectionViewCell.swift in Sources */,
@@ -347,13 +434,18 @@
 				BBF8AD6B25C9B9E0009CD35D /* SubServicesViewController.swift in Sources */,
 				BB9BD84326948B9D00FA2DCF /* VisitCollectionViewCell.swift in Sources */,
 				BBD2E8BD25BEAB9100A8D092 /* ExitViewController.swift in Sources */,
+				BB552DFE2721A563001F605A /* ClinicsController.swift in Sources */,
 				BBA245B9260BA14900BF12E7 /* ServicesCell.swift in Sources */,
+				BB552E002721AA1F001F605A /* TabBarController.swift in Sources */,
 				BB9BD83226722E7D00FA2DCF /* Registration.swift in Sources */,
+				BB4ABFFB2715C006008D05F8 /* View.swift in Sources */,
 				BBA245C826135A9800BF12E7 /* CustomCollectionViewCell.swift in Sources */,
 				BBF8AD6825C8200E009CD35D /* DataLoader.swift in Sources */,
+				BB4AC0082716D552008D05F8 /* RecordController.swift in Sources */,
 				BBD2E8A425B9B6F900A8D092 /* ServicesViewController.swift in Sources */,
 				BBA245D9261EFE7800BF12E7 /* ClinicCell.swift in Sources */,
 				BBD920D62670A312000073FC /* Model.xcdatamodeld in Sources */,
+				BB4ABFF82715BE49008D05F8 /* Model.swift in Sources */,
 				BB9BD83D267CCB2F00FA2DCF /* EnteringInformationViewCell.swift in Sources */,
 				BB46D2B225B856B9003AD167 /* SceneDelegate.swift in Sources */,
 				BB9BD84626A0261B00FA2DCF /* Login.swift in Sources */,

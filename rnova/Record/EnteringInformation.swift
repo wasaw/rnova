@@ -22,8 +22,8 @@ class EnteringInformation: UIViewController, UICollectionViewDelegate, UICollect
     
     private let datePicker = UIDatePicker()
         
-    private let recordButton = UIButton()
-    private let registrationButton = UIButton()
+    private let recordButton = View().button
+    private let registrationButton = View().button
     
     private let doctorId: Int
     private let doctorName: String
@@ -95,8 +95,11 @@ class EnteringInformation: UIViewController, UICollectionViewDelegate, UICollect
         
         if checkLogIn() {
             
-            let frame = CGRect(x: 20, y: 620, width: view.bounds.width - 40, height: 60)
-            recordButton.createButton(frame: frame, color: UIColor.systemGreen, title: "Записаться")
+//            let frame = CGRect(x: 20, y: 620, width: view.bounds.width - 40, height: 60)
+            recordButton.frame = CGRect(x: 20, y: 620, width: view.bounds.width - 40, height: 60)
+//            recordButton.createButton(frame: frame, color: UIColor.systemGreen, title: "Записаться")
+            recordButton.backgroundColor = UIColor.systemGreen
+            recordButton.setTitle("Записаться", for: .normal)
             recordButton.addTarget(self, action: #selector(recordAppointment), for: .touchUpInside)
             view.addSubview(recordButton)
             
@@ -141,8 +144,11 @@ class EnteringInformation: UIViewController, UICollectionViewDelegate, UICollect
             line(y: 710)
             view.addSubview(phoneNumberField)
             
-            let registrationFrame = CGRect(x: 20, y: 740, width: view.bounds.width - 40, height: 60)
-            registrationButton.createButton(frame: registrationFrame, color: UIColor.systemGreen, title: "Зарегистрироваться")
+//            let registrationFrame = CGRect(x: 20, y: 740, width: view.bounds.width - 40, height: 60)
+            registrationButton.frame = CGRect(x: 30, y: 740, width: view.bounds.width - 40, height: 60)
+//            registrationButton.createButton(frame: registrationFrame, color: UIColor.systemGreen, title: "Зарегистрироваться")
+            registrationButton.backgroundColor = UIColor.systemGreen
+            registrationButton.setTitle("Зарегистрироваться", for: .normal)
             registrationButton.addTarget(self, action: #selector(registration), for: .touchUpInside)
             view.addSubview(registrationButton)
         }
