@@ -12,7 +12,10 @@ class RecordController: UIViewController {
     private let segmentedControl = UISegmentedControl(items: ["Врачи", "Специальности"])
     private var collectionView: UICollectionView?
     private var doctorsData = [Doctors]()
+    private var professionsData = [Professions]()
+    private var quantityProfession = [Int: Int]()
     private let insents = UIEdgeInsets(top: 20, left: 0, bottom: 0, right: 0)
+    private var isDoctorChoice = true
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,7 +24,9 @@ class RecordController: UIViewController {
         
         DispatchQueue.main.async {
             self.doctorsData = DataLoader(urlMethod: "&method=getUsers", urlParameter: "").doctorsData
+            self.professionsData = DataLoader(urlMethod: "&method=getProfessions", urlParameter: "").professionsData
             self.collectionView?.reloadData()
+            self.countingNumberOfProfessions()
         }
     
         let statusBar = UIView()
@@ -52,11 +57,32 @@ class RecordController: UIViewController {
         collectonViewSetup()
     }
     
+    func countingNumberOfProfessions() {
+        for item in 0..<professionsData.count {
+            var quantity = 0
+            let id = professionsData[item].id
+            
+            for i in 0..<doctorsData.count {
+                guard let str = doctorsData[i].profession else { continue }
+                if !str.isEmpty {
+                    for j in 0..<str.count {
+                        if id == Int(str[j]) {
+                            quantity += 1
+                        }
+                    }
+                }
+                quantityProfession[id] = quantity
+            }
+        }
+    }
+    
     @objc func didTapSegment() {
         if segmentedControl.selectedSegmentIndex == 0 {
-            print("DEBUG: selected 0")
+            isDoctorChoice = true
+            collectionView?.reloadData()
         } else {
-            print("DEBUG: selected 1")
+            isDoctorChoice = false
+            collectionView?.reloadData()
         }
     }
     
@@ -66,6 +92,7 @@ class RecordController: UIViewController {
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.register(UINib(nibName: RecordViewCell.identifite, bundle: nil), forCellWithReuseIdentifier: RecordViewCell.identifite)
+        collectionView.register(UINib(nibName: ProfessionViewCell.identifire, bundle: nil), forCellWithReuseIdentifier: ProfessionViewCell.identifire)
         
         view.addSubview(collectionView)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
@@ -79,22 +106,35 @@ class RecordController: UIViewController {
 //    MARK: -- extension
 extension RecordController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if doctorsData.count != 0 {
+        if doctorsData.count != 0 && isDoctorChoice {
             return doctorsData.count
+        }
+        if professionsData.count != 0 && !isDoctorChoice {
+            return professionsData.count
         }
         return 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: RecordViewCell.identifite, for: indexPath) as? RecordViewCell else { return UICollectionViewCell() }
-        if doctorsData.count != 0 {
-            if doctorsData[indexPath.row].avatar_small != nil {
-                cell.profileImageView.downloaded(from: doctorsData[indexPath.row].avatar_small!)
+        guard let cellDoctor = collectionView.dequeueReusableCell(withReuseIdentifier: RecordViewCell.identifite, for: indexPath) as? RecordViewCell else { return UICollectionViewCell() }
+        guard let cellProfession = collectionView.dequeueReusableCell(withReuseIdentifier: ProfessionViewCell.identifire, for: indexPath) as? ProfessionViewCell else { return UICollectionViewCell()}
+        if isDoctorChoice {
+            if doctorsData.count != 0 {
+                if doctorsData[indexPath.row].avatar_small != nil {
+                    cellDoctor.profileImageView.downloaded(from: doctorsData[indexPath.row].avatar_small!)
+                }
+                cellDoctor.surnameLabel.text = doctorsData[indexPath.row].name
+                cellDoctor.professionLabel.text = doctorsData[indexPath.row].profession_titles
             }
-            cell.surnameLabel.text = doctorsData[indexPath.row].name
-            cell.professionLabel.text = doctorsData[indexPath.row].profession_titles
+            return cellDoctor
+        } else {
+//            let quantityProfession = countingNumberOfProfessions(id: professionsData[indexPath.row].id)
+            guard let quantity = quantityProfession[professionsData[indexPath.row].id] else { return UICollectionViewCell() }
+            cellProfession.specialtyLabel.text = "\(professionsData[indexPath.row].name) (\(quantity))"
+            return cellProfession
         }
-        return cell
+        
+//        return UICollectionViewCell()
     }
 }
 
@@ -105,7 +145,13 @@ extension RecordController: UICollectionViewDelegate {
 extension RecordController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width = collectionView.frame.width
-        return CGSize(width: width - 20, height: width / 4)
+        let height: CGFloat
+        if isDoctorChoice {
+            height = width / 4
+        } else {
+            height = 60
+        }
+        return CGSize(width: width - 20, height: height)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {

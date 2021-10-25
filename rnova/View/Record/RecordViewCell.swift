@@ -17,7 +17,6 @@ class RecordViewCell: UICollectionViewCell {
         label.adjustsFontSizeToFitWidth = false
         label.lineBreakMode = .byTruncatingTail
         label.numberOfLines = 2
-        label.text = "text"
         return label
     }()
     let professionLabel: UILabel = {
