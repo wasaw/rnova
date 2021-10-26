@@ -14,6 +14,8 @@
 		BB46D2B725B856B9003AD167 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB46D2B525B856B9003AD167 /* Main.storyboard */; };
 		BB46D2B925B856BC003AD167 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BB46D2B825B856BC003AD167 /* Assets.xcassets */; };
 		BB46D2BC25B856BC003AD167 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB46D2BA25B856BC003AD167 /* LaunchScreen.storyboard */; };
+		BB49DEA72727F06500CD26A2 /* Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB49DEA62727F06500CD26A2 /* Search.swift */; };
+		BB49DEA92727F1A600CD26A2 /* SearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB49DEA82727F1A600CD26A2 /* SearchController.swift */; };
 		BB4ABFF82715BE49008D05F8 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB4ABFF72715BE49008D05F8 /* Model.swift */; };
 		BB4ABFFB2715C006008D05F8 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB4ABFFA2715C006008D05F8 /* View.swift */; };
 		BB4AC0042716D0A5008D05F8 /* RecordViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB4AC0022716D0A5008D05F8 /* RecordViewCell.swift */; };
@@ -64,6 +66,8 @@
 		BB46D2B825B856BC003AD167 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BB46D2BB25B856BC003AD167 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BB46D2BD25B856BC003AD167 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BB49DEA62727F06500CD26A2 /* Search.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Search.swift; sourceTree = "<group>"; };
+		BB49DEA82727F1A600CD26A2 /* SearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchController.swift; sourceTree = "<group>"; };
 		BB4ABFF72715BE49008D05F8 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		BB4ABFFA2715C006008D05F8 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
 		BB4AC0022716D0A5008D05F8 /* RecordViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordViewCell.swift; sourceTree = "<group>"; };
@@ -192,6 +196,7 @@
 				BB4ABFFE2715DA39008D05F8 /* Service */,
 				BB4ABFFF2715DA46008D05F8 /* Profile */,
 				BB4ABFFA2715C006008D05F8 /* View.swift */,
+				BB49DEA62727F06500CD26A2 /* Search.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -201,6 +206,7 @@
 			children = (
 				BB4AC0062716D529008D05F8 /* Record */,
 				BB552DFD2721A563001F605A /* ClinicsController.swift */,
+				BB49DEA82727F1A600CD26A2 /* SearchController.swift */,
 				BB552DFF2721AA1F001F605A /* TabBarController.swift */,
 			);
 			path = Controller;
@@ -452,6 +458,7 @@
 				BB4ABFFB2715C006008D05F8 /* View.swift in Sources */,
 				BBA245C826135A9800BF12E7 /* CustomCollectionViewCell.swift in Sources */,
 				BB8A54ED2726AC9500FB8941 /* ProfessionViewCell.swift in Sources */,
+				BB49DEA72727F06500CD26A2 /* Search.swift in Sources */,
 				BBF8AD6825C8200E009CD35D /* DataLoader.swift in Sources */,
 				BB4AC0082716D552008D05F8 /* RecordController.swift in Sources */,
 				BBD2E8A425B9B6F900A8D092 /* ServicesViewController.swift in Sources */,
@@ -461,6 +468,7 @@
 				BB9BD83D267CCB2F00FA2DCF /* EnteringInformationViewCell.swift in Sources */,
 				BB46D2B225B856B9003AD167 /* SceneDelegate.swift in Sources */,
 				BB9BD84626A0261B00FA2DCF /* Login.swift in Sources */,
+				BB49DEA92727F1A600CD26A2 /* SearchController.swift in Sources */,
 				BB9BD83A267CC8F800FA2DCF /* EnteringInformation.swift in Sources */,
 				BBA245DE2629B27100BF12E7 /* SpecialtyCollectionViewCell.swift in Sources */,
 				BB7CDE5B25D16E96007B1B1A /* DetailViewController.swift in Sources */,
