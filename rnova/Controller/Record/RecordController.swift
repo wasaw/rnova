@@ -78,7 +78,7 @@ class RecordController: UIViewController {
         navigationItem.searchController = searchController
 
         searchController.searchResultsUpdater = self
-        searchController.searchBar.delegate = self
+//        searchController.searchBar.delegate = self
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.searchBar.placeholder = "Поиск"
         searchController.searchBar.barTintColor = .white
@@ -108,15 +108,15 @@ class RecordController: UIViewController {
     }
     
     func countingQuantityOfProfessions() {
-        for item in 0..<professionsData.count {
+        for item in professionsData {
             var quantity = 0
-            let id = professionsData[item].id
+            let id = item.id
             
-            for i in 0..<doctorsData.count {
-                guard let str = doctorsData[i].profession else { continue }
+            for item in doctorsData {
+                guard let str = item.profession else { continue }
                 if !str.isEmpty {
-                    for j in 0..<str.count {
-                        if id == Int(str[j]) {
+                    for item in str {
+                        if id == Int(item) {
                             quantity += 1
                         }
                     }
@@ -195,18 +195,27 @@ extension RecordController: UICollectionViewDataSource {
 }
 
 extension RecordController: UICollectionViewDelegate {
-    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if isDoctorChoice {
+            let id: Int
+            searchBarIsEmpty ? ( id = doctorsData[indexPath.row].id) : (id = filteredSearchResultDoctors[indexPath.row].id)
+            let vc = DataRecordChoiceController(id: id)
+            navigationController?.pushViewController(vc, animated: true)
+        } else {
+            let vc = ChooseDoctorByProfession()
+            let id: Int
+            searchBarIsEmpty ? ( id = professionsData[indexPath.row].id) : (id = filteredSearchResultProfessions[indexPath.row].id)
+            print(id)
+            navigationController?.pushViewController(vc, animated: true)
+        }
+    }
 }
 
 extension RecordController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width = collectionView.frame.width
         let height: CGFloat
-        if isDoctorChoice {
-            height = width / 4
-        } else {
-            height = 60
-        }
+        isDoctorChoice ? (height = width / 4) : (height = 60)
         return CGSize(width: width - 20, height: height)
     }
     
