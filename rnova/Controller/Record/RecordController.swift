@@ -81,9 +81,7 @@ class RecordController: UIViewController {
 //        searchController.searchBar.delegate = self
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.searchBar.placeholder = "Поиск"
-        searchController.searchBar.barTintColor = .white
-        collectionView?.addSubview(searchController.searchBar)
-        
+        searchController.searchBar.barTintColor = .white        
         searchController.searchBar.translatesAutoresizingMaskIntoConstraints = false
         searchController.searchBar.heightAnchor.constraint(equalToConstant: 40).isActive = true
 //        searchController.searchBar.widthAnchor.constraint(equalToConstant: view.frame.width).isActive = true
@@ -199,7 +197,7 @@ extension RecordController: UICollectionViewDelegate {
         if isDoctorChoice {
             let id: Int
             searchBarIsEmpty ? ( id = doctorsData[indexPath.row].id) : (id = filteredSearchResultDoctors[indexPath.row].id)
-            let vc = DataRecordChoiceController(id: id)
+            let vc = DateRecordChoiceController(id: id)
             navigationController?.pushViewController(vc, animated: true)
         } else {
             let vc = ChooseDoctorByProfession()

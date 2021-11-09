@@ -15,6 +15,7 @@ public class  DataLoader {
     @Published var professionsData = [Professions]()
     @Published var clinicsData = [Clinic]()
     @Published var scheduleData = [String: [Schedule]]()
+
     
     init(urlMethod:String, urlParameter: String) {
         self.urlMethod = urlMethod
