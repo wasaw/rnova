@@ -51,7 +51,7 @@ extension UICollectionViewCell {
 }
 
 //    MARK: - UIButton
-//extension UIButton {
+extension UIButton {
 //    func createButton(frame: CGRect, color: UIColor, title: String) {
 //        self.frame = frame
 //        self.layer.cornerRadius = 10
@@ -64,4 +64,16 @@ extension UICollectionViewCell {
 //        self.setTitle(title, for: .normal)
 //        self.setTitleColor(.white, for: .normal)
 //    }
-//}
+    
+    func createButton(title: String) {
+        self.layer.cornerRadius = 10
+        self.layer.shadowColor = UIColor.black.cgColor
+        self.layer.shadowOffset = CGSize(width: 0, height: 1)
+        self.layer.shadowOpacity = 0.3
+        self.layer.shadowRadius = 4
+        self.layer.masksToBounds = false
+        self.backgroundColor = .systemOrange
+        self.setTitle(title, for: .normal)
+        self.setTitleColor(.white, for: .normal)
+    }
+}

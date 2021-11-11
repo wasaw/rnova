@@ -23,6 +23,8 @@
 		BB49DEBD2739527E00CD26A2 /* MakeAppointmentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB49DEBC2739527E00CD26A2 /* MakeAppointmentController.swift */; };
 		BB49DEBF273A601300CD26A2 /* DateRecordChoiceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB49DEBE273A601300CD26A2 /* DateRecordChoiceController.swift */; };
 		BB49DEC3273A66DF00CD26A2 /* ChoiceDateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB49DEC2273A66DF00CD26A2 /* ChoiceDateView.swift */; };
+		BB49DEC7273BF84200CD26A2 /* RecordInformationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB49DEC6273BF84200CD26A2 /* RecordInformationView.swift */; };
+		BB49DEC9273C0EFC00CD26A2 /* ContactInformationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB49DEC8273C0EFB00CD26A2 /* ContactInformationView.swift */; };
 		BB4ABFF82715BE49008D05F8 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB4ABFF72715BE49008D05F8 /* Model.swift */; };
 		BB4ABFFB2715C006008D05F8 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB4ABFFA2715C006008D05F8 /* View.swift */; };
 		BB4AC0042716D0A5008D05F8 /* RecordViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB4AC0022716D0A5008D05F8 /* RecordViewCell.swift */; };
@@ -81,6 +83,8 @@
 		BB49DEBC2739527E00CD26A2 /* MakeAppointmentController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeAppointmentController.swift; sourceTree = "<group>"; };
 		BB49DEBE273A601300CD26A2 /* DateRecordChoiceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateRecordChoiceController.swift; sourceTree = "<group>"; };
 		BB49DEC2273A66DF00CD26A2 /* ChoiceDateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoiceDateView.swift; sourceTree = "<group>"; };
+		BB49DEC6273BF84200CD26A2 /* RecordInformationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordInformationView.swift; sourceTree = "<group>"; };
+		BB49DEC8273C0EFB00CD26A2 /* ContactInformationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactInformationView.swift; sourceTree = "<group>"; };
 		BB4ABFF72715BE49008D05F8 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		BB4ABFFA2715C006008D05F8 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
 		BB4AC0022716D0A5008D05F8 /* RecordViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordViewCell.swift; sourceTree = "<group>"; };
@@ -235,6 +239,8 @@
 				BB49DEB82735053000CD26A2 /* TimeViewCell.swift */,
 				BB49DEB92735053000CD26A2 /* TimeViewCell.xib */,
 				BB49DEC2273A66DF00CD26A2 /* ChoiceDateView.swift */,
+				BB49DEC6273BF84200CD26A2 /* RecordInformationView.swift */,
+				BB49DEC8273C0EFB00CD26A2 /* ContactInformationView.swift */,
 			);
 			path = Record;
 			sourceTree = "<group>";
@@ -469,8 +475,10 @@
 				BBCE6CFA25E672B700CC8598 /* RecordCollectionViewCell.swift in Sources */,
 				BBF5F37F265E7F4F00BF1F66 /* Extensions.swift in Sources */,
 				BB49DEBD2739527E00CD26A2 /* MakeAppointmentController.swift in Sources */,
+				BB49DEC9273C0EFC00CD26A2 /* ContactInformationView.swift in Sources */,
 				BB49DEBA2735053000CD26A2 /* TimeViewCell.swift in Sources */,
 				BBD2E8A125B9686400A8D092 /* ClinicViewController.swift in Sources */,
+				BB49DEC7273BF84200CD26A2 /* RecordInformationView.swift in Sources */,
 				BBF8AD6B25C9B9E0009CD35D /* SubServicesViewController.swift in Sources */,
 				BB9BD84326948B9D00FA2DCF /* VisitCollectionViewCell.swift in Sources */,
 				BBD2E8BD25BEAB9100A8D092 /* ExitViewController.swift in Sources */,

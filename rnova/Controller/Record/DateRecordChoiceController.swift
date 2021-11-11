@@ -244,7 +244,13 @@ extension DateRecordChoiceController: UICollectionViewDelegate {
             dateCollectionView.reloadData()
             setTimeCollectionView()
         } else {
-            let vc = MakeAppointmentController(selectedDate: calendarTwoWeekDay[selectedDay], selectedTime: timeStartArray[indexPath.row])
+            let profession: String
+            if doctorData[0].profession_titles != nil {
+                profession = doctorData[0].profession_titles!
+            } else {
+                profession = "Не указана профессия"
+            }
+            let vc = MakeAppointmentController(selectedDoctor: doctorData[0].name, selectedSpecialty: profession, selectedDate: calendarTwoWeekDay[selectedDay], selectedTime: timeStartArray[indexPath.row])
             navigationController?.pushViewController(vc, animated: true)
         }
     }

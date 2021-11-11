@@ -5,6 +5,8 @@
 //  Created by Александр Меренков on 10/12/21.
 //
 
+import Foundation
+
 struct Services: Decodable {
     let id: Int
     let title: String

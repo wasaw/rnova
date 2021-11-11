@@ -203,7 +203,6 @@ extension RecordController: UICollectionViewDelegate {
             let vc = ChooseDoctorByProfession()
             let id: Int
             searchBarIsEmpty ? ( id = professionsData[indexPath.row].id) : (id = filteredSearchResultProfessions[indexPath.row].id)
-            print(id)
             navigationController?.pushViewController(vc, animated: true)
         }
     }
