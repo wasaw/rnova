@@ -14,7 +14,7 @@ class RecordController: UIViewController {
     private var doctorsData = [Doctors]()
     private var professionsData = [Professions]()
     private var quantityProfession = [Int: Int]()
-    private let insents = UIEdgeInsets(top: 20, left: 0, bottom: 0, right: 0)
+    private let insets = UIEdgeInsets(top: 20, left: 0, bottom: 0, right: 0)
     private var isDoctorChoice = true
     
     private var searchController = UISearchController(searchResultsController: nil)
@@ -200,9 +200,9 @@ extension RecordController: UICollectionViewDelegate {
             let vc = DateRecordChoiceController(id: id)
             navigationController?.pushViewController(vc, animated: true)
         } else {
-            let vc = ChooseDoctorByProfession()
             let id: Int
             searchBarIsEmpty ? ( id = professionsData[indexPath.row].id) : (id = filteredSearchResultProfessions[indexPath.row].id)
+            let vc = ChooseDoctorByProfession(professionId: id)
             navigationController?.pushViewController(vc, animated: true)
         }
     }
@@ -221,7 +221,7 @@ extension RecordController: UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return insents
+        return insets
     }
 }
 
