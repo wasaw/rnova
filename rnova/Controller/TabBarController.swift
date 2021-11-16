@@ -19,7 +19,7 @@ class TabBarController: UITabBarController {
         recordVC.tabBarItem.image = UIImage(systemName: "square.and.pencil")
         recordVC.tabBarItem.title = "Запись"
         
-        let clinicsVC = UINavigationController(rootViewController: ClinickController())
+        let clinicsVC = UINavigationController(rootViewController: ClinicsController())
         clinicsVC.tabBarItem.image = UIImage(systemName: "house")
         clinicsVC.tabBarItem.title = "Клиники"
         viewControllers = [recordVC, clinicsVC]

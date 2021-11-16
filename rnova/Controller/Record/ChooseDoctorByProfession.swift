@@ -44,7 +44,7 @@ class ChooseDoctorByProfession: UIViewController {
         guard let collectionView = collectionView else { return }
         collectionView.delegate = self
         collectionView.dataSource = self
-        collectionView.register(UINib(nibName: RecordViewCell.identifite, bundle: nil), forCellWithReuseIdentifier: RecordViewCell.identifite)
+        collectionView.register(UINib(nibName: RecordViewCell.identifire, bundle: nil), forCellWithReuseIdentifier: RecordViewCell.identifire)
         view.addSubview(collectionView)
         
         collectionView.translatesAutoresizingMaskIntoConstraints = false
@@ -75,7 +75,7 @@ extension ChooseDoctorByProfession: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: RecordViewCell.identifite, for: indexPath) as? RecordViewCell else { return UICollectionViewCell()}
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: RecordViewCell.identifire, for: indexPath) as? RecordViewCell else { return UICollectionViewCell()}
         cell.professionLabel.text = doctorsData[indexPath.row].profession_titles
         cell.surnameLabel.text = doctorsData[indexPath.row].name
         if doctorsData[indexPath.row].avatar_small != nil {

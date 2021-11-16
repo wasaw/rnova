@@ -92,7 +92,7 @@ class RecordController: UIViewController {
         guard let collectionView = collectionView else { return }
         collectionView.delegate = self
         collectionView.dataSource = self
-        collectionView.register(UINib(nibName: RecordViewCell.identifite, bundle: nil), forCellWithReuseIdentifier: RecordViewCell.identifite)
+        collectionView.register(UINib(nibName: RecordViewCell.identifire, bundle: nil), forCellWithReuseIdentifier: RecordViewCell.identifire)
         collectionView.register(UINib(nibName: ProfessionViewCell.identifire, bundle: nil), forCellWithReuseIdentifier: ProfessionViewCell.identifire)
         
         view.addSubview(collectionView)
@@ -156,7 +156,7 @@ extension RecordController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cellDoctor = collectionView.dequeueReusableCell(withReuseIdentifier: RecordViewCell.identifite, for: indexPath) as? RecordViewCell else { return UICollectionViewCell() }
+        guard let cellDoctor = collectionView.dequeueReusableCell(withReuseIdentifier: RecordViewCell.identifire, for: indexPath) as? RecordViewCell else { return UICollectionViewCell() }
         guard let cellProfession = collectionView.dequeueReusableCell(withReuseIdentifier: ProfessionViewCell.identifire, for: indexPath) as? ProfessionViewCell else { return UICollectionViewCell()}
         if isDoctorChoice {
             if searchBarIsEmpty {

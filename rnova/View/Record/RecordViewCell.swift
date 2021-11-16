@@ -8,7 +8,7 @@
 import UIKit
 
 class RecordViewCell: UICollectionViewCell {
-    static let identifite = "RecordViewCell"
+    static let identifire = "RecordViewCell"
     
     let surnameLabel: UILabel = {
         let label = UILabel()
