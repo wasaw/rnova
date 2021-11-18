@@ -22,6 +22,10 @@ class TabBarController: UITabBarController {
         let clinicsVC = UINavigationController(rootViewController: ClinicsController())
         clinicsVC.tabBarItem.image = UIImage(systemName: "house")
         clinicsVC.tabBarItem.title = "Клиники"
-        viewControllers = [recordVC, clinicsVC]
+        
+        let serviceVC = UINavigationController(rootViewController: ServiceController())
+        serviceVC.tabBarItem.image = UIImage(systemName: "list.dash")
+        serviceVC.tabBarItem.title = "Услуги"
+        viewControllers = [recordVC, clinicsVC, serviceVC]
     }
 }

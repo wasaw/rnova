@@ -78,13 +78,11 @@ class RecordController: UIViewController {
         navigationItem.searchController = searchController
 
         searchController.searchResultsUpdater = self
-//        searchController.searchBar.delegate = self
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.searchBar.placeholder = "Поиск"
-        searchController.searchBar.barTintColor = .white        
+        searchController.searchBar.barTintColor = .white
         searchController.searchBar.translatesAutoresizingMaskIntoConstraints = false
         searchController.searchBar.heightAnchor.constraint(equalToConstant: 40).isActive = true
-//        searchController.searchBar.widthAnchor.constraint(equalToConstant: view.frame.width).isActive = true
     }
     
     func configureCollectionView() {

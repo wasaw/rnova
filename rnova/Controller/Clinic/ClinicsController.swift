@@ -50,6 +50,7 @@ class ClinicsController: UIViewController {
     }
 }
 
+// MARK: -- extension
 extension ClinicsController: UICollectionViewDelegate {
     
 }

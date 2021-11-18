@@ -56,7 +56,7 @@ extension ServicesViewController: UICollectionViewDelegate {
         }else {
             id = data[indexPath.row].id
         }
-        let vc = SubServicesViewController(selectedId: id)
+        let vc = SubServiceController(id: id)
         navigationController?.pushViewController(vc, animated: true)
     }
 }

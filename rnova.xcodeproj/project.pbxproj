@@ -27,6 +27,10 @@
 		BB49DEC9273C0EFC00CD26A2 /* ContactInformationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB49DEC8273C0EFB00CD26A2 /* ContactInformationView.swift */; };
 		BB49DECD2743911F00CD26A2 /* ClinicViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB49DECB2743911F00CD26A2 /* ClinicViewCell.swift */; };
 		BB49DECE2743911F00CD26A2 /* ClinicViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB49DECC2743911F00CD26A2 /* ClinicViewCell.xib */; };
+		BB49DED32743F04900CD26A2 /* ServiceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB49DED22743F04900CD26A2 /* ServiceController.swift */; };
+		BB49DED82745381600CD26A2 /* ServiceViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB49DED62745381600CD26A2 /* ServiceViewCell.swift */; };
+		BB49DED92745381600CD26A2 /* ServiceViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB49DED72745381600CD26A2 /* ServiceViewCell.xib */; };
+		BB49DEDB2746397500CD26A2 /* SubServiceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB49DEDA2746397500CD26A2 /* SubServiceController.swift */; };
 		BB4ABFF82715BE49008D05F8 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB4ABFF72715BE49008D05F8 /* Model.swift */; };
 		BB4ABFFB2715C006008D05F8 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB4ABFFA2715C006008D05F8 /* View.swift */; };
 		BB4AC0042716D0A5008D05F8 /* RecordViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB4AC0022716D0A5008D05F8 /* RecordViewCell.swift */; };
@@ -89,6 +93,10 @@
 		BB49DEC8273C0EFB00CD26A2 /* ContactInformationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactInformationView.swift; sourceTree = "<group>"; };
 		BB49DECB2743911F00CD26A2 /* ClinicViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClinicViewCell.swift; sourceTree = "<group>"; };
 		BB49DECC2743911F00CD26A2 /* ClinicViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ClinicViewCell.xib; sourceTree = "<group>"; };
+		BB49DED22743F04900CD26A2 /* ServiceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceController.swift; sourceTree = "<group>"; };
+		BB49DED62745381600CD26A2 /* ServiceViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceViewCell.swift; sourceTree = "<group>"; };
+		BB49DED72745381600CD26A2 /* ServiceViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ServiceViewCell.xib; sourceTree = "<group>"; };
+		BB49DEDA2746397500CD26A2 /* SubServiceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubServiceController.swift; sourceTree = "<group>"; };
 		BB4ABFF72715BE49008D05F8 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		BB4ABFFA2715C006008D05F8 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
 		BB4AC0022716D0A5008D05F8 /* RecordViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordViewCell.swift; sourceTree = "<group>"; };
@@ -208,6 +216,15 @@
 			path = Clinic;
 			sourceTree = "<group>";
 		};
+		BB49DECF2743F00100CD26A2 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				BB49DED22743F04900CD26A2 /* ServiceController.swift */,
+				BB49DEDA2746397500CD26A2 /* SubServiceController.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
 		BB4ABFF42715BDCB008D05F8 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -233,6 +250,7 @@
 			children = (
 				BB4AC0062716D529008D05F8 /* Record */,
 				BB49DECA27438F8B00CD26A2 /* Clinic */,
+				BB49DECF2743F00100CD26A2 /* Service */,
 				BB552DFF2721AA1F001F605A /* TabBarController.swift */,
 			);
 			path = Controller;
@@ -269,6 +287,8 @@
 		BB4ABFFE2715DA39008D05F8 /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				BB49DED62745381600CD26A2 /* ServiceViewCell.swift */,
+				BB49DED72745381600CD26A2 /* ServiceViewCell.xib */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -418,6 +438,7 @@
 				BB8A54EE2726AC9500FB8941 /* ProfessionViewCell.xib in Resources */,
 				BBA245DA261EFE7800BF12E7 /* ClinicCell.xib in Resources */,
 				BB49DEBB2735053000CD26A2 /* TimeViewCell.xib in Resources */,
+				BB49DED92745381600CD26A2 /* ServiceViewCell.xib in Resources */,
 				BBCE6CFB25E672B700CC8598 /* RecordCollectionViewCell.xib in Resources */,
 				BB9BD83E267CCB2F00FA2DCF /* EnteringInformationViewCell.xib in Resources */,
 				BBA245BA260BA14900BF12E7 /* ServicesCell.xib in Resources */,
@@ -482,6 +503,7 @@
 				BBB5B1F825EE7C3C00A33761 /* DoctorChoiceViewController.swift in Sources */,
 				BBD2E8A725BAB37E00A8D092 /* ProfileViewController.swift in Sources */,
 				BB4C554B25F0D5C600A616D6 /* SpecialtyChoiceViewController.swift in Sources */,
+				BB49DED82745381600CD26A2 /* ServiceViewCell.swift in Sources */,
 				BB49DEC3273A66DF00CD26A2 /* ChoiceDateView.swift in Sources */,
 				BB46D2B425B856B9003AD167 /* ViewController.swift in Sources */,
 				BB4AC0042716D0A5008D05F8 /* RecordViewCell.swift in Sources */,
@@ -493,6 +515,7 @@
 				BB49DEC9273C0EFC00CD26A2 /* ContactInformationView.swift in Sources */,
 				BB49DEBA2735053000CD26A2 /* TimeViewCell.swift in Sources */,
 				BBD2E8A125B9686400A8D092 /* ClinicViewController.swift in Sources */,
+				BB49DEDB2746397500CD26A2 /* SubServiceController.swift in Sources */,
 				BB49DEC7273BF84200CD26A2 /* RecordInformationView.swift in Sources */,
 				BBF8AD6B25C9B9E0009CD35D /* SubServicesViewController.swift in Sources */,
 				BB9BD84326948B9D00FA2DCF /* VisitCollectionViewCell.swift in Sources */,
@@ -516,6 +539,7 @@
 				BB49DEAD272C162E00CD26A2 /* ChooseDoctorByProfession.swift in Sources */,
 				BB9BD83D267CCB2F00FA2DCF /* EnteringInformationViewCell.swift in Sources */,
 				BB46D2B225B856B9003AD167 /* SceneDelegate.swift in Sources */,
+				BB49DED32743F04900CD26A2 /* ServiceController.swift in Sources */,
 				BB9BD84626A0261B00FA2DCF /* Login.swift in Sources */,
 				BB9BD83A267CC8F800FA2DCF /* EnteringInformation.swift in Sources */,
 				BBA245DE2629B27100BF12E7 /* SpecialtyCollectionViewCell.swift in Sources */,
