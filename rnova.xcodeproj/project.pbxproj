@@ -31,6 +31,9 @@
 		BB49DED82745381600CD26A2 /* ServiceViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB49DED62745381600CD26A2 /* ServiceViewCell.swift */; };
 		BB49DED92745381600CD26A2 /* ServiceViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB49DED72745381600CD26A2 /* ServiceViewCell.xib */; };
 		BB49DEDB2746397500CD26A2 /* SubServiceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB49DEDA2746397500CD26A2 /* SubServiceController.swift */; };
+		BB49DEDE2746999F00CD26A2 /* SubServiceViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB49DEDC2746999F00CD26A2 /* SubServiceViewCell.swift */; };
+		BB49DEDF274699A000CD26A2 /* SubServiceViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB49DEDD2746999F00CD26A2 /* SubServiceViewCell.xib */; };
+		BB49DEE32747AC5200CD26A2 /* ServiceCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB49DEE22747AC5200CD26A2 /* ServiceCard.swift */; };
 		BB4ABFF82715BE49008D05F8 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB4ABFF72715BE49008D05F8 /* Model.swift */; };
 		BB4ABFFB2715C006008D05F8 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB4ABFFA2715C006008D05F8 /* View.swift */; };
 		BB4AC0042716D0A5008D05F8 /* RecordViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB4AC0022716D0A5008D05F8 /* RecordViewCell.swift */; };
@@ -97,6 +100,9 @@
 		BB49DED62745381600CD26A2 /* ServiceViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceViewCell.swift; sourceTree = "<group>"; };
 		BB49DED72745381600CD26A2 /* ServiceViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ServiceViewCell.xib; sourceTree = "<group>"; };
 		BB49DEDA2746397500CD26A2 /* SubServiceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubServiceController.swift; sourceTree = "<group>"; };
+		BB49DEDC2746999F00CD26A2 /* SubServiceViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubServiceViewCell.swift; sourceTree = "<group>"; };
+		BB49DEDD2746999F00CD26A2 /* SubServiceViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SubServiceViewCell.xib; sourceTree = "<group>"; };
+		BB49DEE22747AC5200CD26A2 /* ServiceCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceCard.swift; sourceTree = "<group>"; };
 		BB4ABFF72715BE49008D05F8 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		BB4ABFFA2715C006008D05F8 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
 		BB4AC0022716D0A5008D05F8 /* RecordViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordViewCell.swift; sourceTree = "<group>"; };
@@ -221,6 +227,7 @@
 			children = (
 				BB49DED22743F04900CD26A2 /* ServiceController.swift */,
 				BB49DEDA2746397500CD26A2 /* SubServiceController.swift */,
+				BB49DEE22747AC5200CD26A2 /* ServiceCard.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -289,6 +296,8 @@
 			children = (
 				BB49DED62745381600CD26A2 /* ServiceViewCell.swift */,
 				BB49DED72745381600CD26A2 /* ServiceViewCell.xib */,
+				BB49DEDC2746999F00CD26A2 /* SubServiceViewCell.swift */,
+				BB49DEDD2746999F00CD26A2 /* SubServiceViewCell.xib */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -445,6 +454,7 @@
 				BB9BD84426948B9D00FA2DCF /* VisitCollectionViewCell.xib in Resources */,
 				BBA245DF2629B27200BF12E7 /* SpecialtyCollectionViewCell.xib in Resources */,
 				BB49DEB72731246100CD26A2 /* CalendarViewCell.xib in Resources */,
+				BB49DEDF274699A000CD26A2 /* SubServiceViewCell.xib in Resources */,
 				BB49DECE2743911F00CD26A2 /* ClinicViewCell.xib in Resources */,
 				BB4AC0052716D0A5008D05F8 /* RecordViewCell.xib in Resources */,
 			);
@@ -500,6 +510,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BB49DEB62731246100CD26A2 /* CalendarViewCell.swift in Sources */,
+				BB49DEE32747AC5200CD26A2 /* ServiceCard.swift in Sources */,
 				BBB5B1F825EE7C3C00A33761 /* DoctorChoiceViewController.swift in Sources */,
 				BBD2E8A725BAB37E00A8D092 /* ProfileViewController.swift in Sources */,
 				BB4C554B25F0D5C600A616D6 /* SpecialtyChoiceViewController.swift in Sources */,
@@ -526,6 +537,7 @@
 				BB49DEB3272C378F00CD26A2 /* DoctorInformationView.swift in Sources */,
 				BB9BD83226722E7D00FA2DCF /* Registration.swift in Sources */,
 				BB4ABFFB2715C006008D05F8 /* View.swift in Sources */,
+				BB49DEDE2746999F00CD26A2 /* SubServiceViewCell.swift in Sources */,
 				BB49DEBF273A601300CD26A2 /* DateRecordChoiceController.swift in Sources */,
 				BB49DECD2743911F00CD26A2 /* ClinicViewCell.swift in Sources */,
 				BBA245C826135A9800BF12E7 /* CustomCollectionViewCell.swift in Sources */,

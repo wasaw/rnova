@@ -13,6 +13,12 @@ struct Services: Decodable {
     let services_count: Int
 }
 
+struct SubService: Decodable {
+    let service_id: Int
+    let title: String
+    let price: String
+}
+
 struct Doctors: Decodable {
     let id: Int
     let name: String

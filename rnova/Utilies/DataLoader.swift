@@ -11,6 +11,7 @@ import Foundation
 public class  DataLoader {
     
     @Published var servicesData = [Services]()
+    @Published var subServicesData = [SubService]()
     @Published var doctorsData = [Doctors]()
     @Published var professionsData = [Professions]()
     @Published var clinicsData = [Clinic]()
@@ -41,6 +42,9 @@ public class  DataLoader {
                 case "&method=getServiceCategories":
                     let dataFromJson = try jsonDecoder.decode([Services].self, from: data)
                     self.servicesData = dataFromJson
+                case "&method=getServices":
+                    let dataFromJson = try jsonDecoder.decode([SubService].self, from: data)
+                    self.subServicesData = dataFromJson
                 case "&method=getProfessions":
                     let dataFromJson = try jsonDecoder.decode([Professions].self, from: data)
                     self.professionsData = dataFromJson
