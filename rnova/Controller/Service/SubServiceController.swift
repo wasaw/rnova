@@ -59,7 +59,9 @@ class SubServiceController: UIViewController {
 // MARK: --extension
 extension SubServiceController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let vc = ServiceCard()
+        let name = subServicesData[indexPath.row].title
+        let cost = subServicesData[indexPath.row].price
+        let vc = ServiceCardController(name: name, cost: cost)
         navigationController?.pushViewController(vc, animated: true)
     }
 }
@@ -76,7 +78,7 @@ extension SubServiceController: UICollectionViewDataSource {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SubServiceViewCell.identifire, for: indexPath) as? SubServiceViewCell else { return UICollectionViewCell() }
         if !subServicesData.isEmpty {
             cell.serviceNameLabel.text = subServicesData[indexPath.row].title
-            cell.serviceCostLabel.text = subServicesData[indexPath.row].price
+            cell.serviceCostLabel.text = subServicesData[indexPath.row].price + " руб."
         }
         return cell
     }

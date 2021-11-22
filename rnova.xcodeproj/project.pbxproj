@@ -33,7 +33,8 @@
 		BB49DEDB2746397500CD26A2 /* SubServiceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB49DEDA2746397500CD26A2 /* SubServiceController.swift */; };
 		BB49DEDE2746999F00CD26A2 /* SubServiceViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB49DEDC2746999F00CD26A2 /* SubServiceViewCell.swift */; };
 		BB49DEDF274699A000CD26A2 /* SubServiceViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB49DEDD2746999F00CD26A2 /* SubServiceViewCell.xib */; };
-		BB49DEE32747AC5200CD26A2 /* ServiceCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB49DEE22747AC5200CD26A2 /* ServiceCard.swift */; };
+		BB49DEE5274BB72A00CD26A2 /* ServiceCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB49DEE4274BB72900CD26A2 /* ServiceCardView.swift */; };
+		BB49DEE7274BE30E00CD26A2 /* ServiceCardController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB49DEE6274BE30E00CD26A2 /* ServiceCardController.swift */; };
 		BB4ABFF82715BE49008D05F8 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB4ABFF72715BE49008D05F8 /* Model.swift */; };
 		BB4ABFFB2715C006008D05F8 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB4ABFFA2715C006008D05F8 /* View.swift */; };
 		BB4AC0042716D0A5008D05F8 /* RecordViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB4AC0022716D0A5008D05F8 /* RecordViewCell.swift */; };
@@ -102,7 +103,8 @@
 		BB49DEDA2746397500CD26A2 /* SubServiceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubServiceController.swift; sourceTree = "<group>"; };
 		BB49DEDC2746999F00CD26A2 /* SubServiceViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubServiceViewCell.swift; sourceTree = "<group>"; };
 		BB49DEDD2746999F00CD26A2 /* SubServiceViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SubServiceViewCell.xib; sourceTree = "<group>"; };
-		BB49DEE22747AC5200CD26A2 /* ServiceCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceCard.swift; sourceTree = "<group>"; };
+		BB49DEE4274BB72900CD26A2 /* ServiceCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceCardView.swift; sourceTree = "<group>"; };
+		BB49DEE6274BE30E00CD26A2 /* ServiceCardController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceCardController.swift; sourceTree = "<group>"; };
 		BB4ABFF72715BE49008D05F8 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		BB4ABFFA2715C006008D05F8 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
 		BB4AC0022716D0A5008D05F8 /* RecordViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordViewCell.swift; sourceTree = "<group>"; };
@@ -227,7 +229,7 @@
 			children = (
 				BB49DED22743F04900CD26A2 /* ServiceController.swift */,
 				BB49DEDA2746397500CD26A2 /* SubServiceController.swift */,
-				BB49DEE22747AC5200CD26A2 /* ServiceCard.swift */,
+				BB49DEE6274BE30E00CD26A2 /* ServiceCardController.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -298,6 +300,7 @@
 				BB49DED72745381600CD26A2 /* ServiceViewCell.xib */,
 				BB49DEDC2746999F00CD26A2 /* SubServiceViewCell.swift */,
 				BB49DEDD2746999F00CD26A2 /* SubServiceViewCell.xib */,
+				BB49DEE4274BB72900CD26A2 /* ServiceCardView.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -510,11 +513,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				BB49DEB62731246100CD26A2 /* CalendarViewCell.swift in Sources */,
-				BB49DEE32747AC5200CD26A2 /* ServiceCard.swift in Sources */,
 				BBB5B1F825EE7C3C00A33761 /* DoctorChoiceViewController.swift in Sources */,
 				BBD2E8A725BAB37E00A8D092 /* ProfileViewController.swift in Sources */,
 				BB4C554B25F0D5C600A616D6 /* SpecialtyChoiceViewController.swift in Sources */,
 				BB49DED82745381600CD26A2 /* ServiceViewCell.swift in Sources */,
+				BB49DEE5274BB72A00CD26A2 /* ServiceCardView.swift in Sources */,
 				BB49DEC3273A66DF00CD26A2 /* ChoiceDateView.swift in Sources */,
 				BB46D2B425B856B9003AD167 /* ViewController.swift in Sources */,
 				BB4AC0042716D0A5008D05F8 /* RecordViewCell.swift in Sources */,
@@ -524,6 +527,7 @@
 				BBF5F37F265E7F4F00BF1F66 /* Extensions.swift in Sources */,
 				BB49DEBD2739527E00CD26A2 /* MakeAppointmentController.swift in Sources */,
 				BB49DEC9273C0EFC00CD26A2 /* ContactInformationView.swift in Sources */,
+				BB49DEE7274BE30E00CD26A2 /* ServiceCardController.swift in Sources */,
 				BB49DEBA2735053000CD26A2 /* TimeViewCell.swift in Sources */,
 				BBD2E8A125B9686400A8D092 /* ClinicViewController.swift in Sources */,
 				BB49DEDB2746397500CD26A2 /* SubServiceController.swift in Sources */,
