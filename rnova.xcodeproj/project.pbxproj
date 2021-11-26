@@ -35,6 +35,9 @@
 		BB49DEDF274699A000CD26A2 /* SubServiceViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB49DEDD2746999F00CD26A2 /* SubServiceViewCell.xib */; };
 		BB49DEE5274BB72A00CD26A2 /* ServiceCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB49DEE4274BB72900CD26A2 /* ServiceCardView.swift */; };
 		BB49DEE7274BE30E00CD26A2 /* ServiceCardController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB49DEE6274BE30E00CD26A2 /* ServiceCardController.swift */; };
+		BB49DEEB274CDE1100CD26A2 /* ProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB49DEEA274CDE1100CD26A2 /* ProfileController.swift */; };
+		BB49DEED274D0C6500CD26A2 /* RegistrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB49DEEC274D0C6500CD26A2 /* RegistrationView.swift */; };
+		BB49DEF0274FBAC400CD26A2 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB49DEEF274FBAC300CD26A2 /* LoginController.swift */; };
 		BB4ABFF82715BE49008D05F8 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB4ABFF72715BE49008D05F8 /* Model.swift */; };
 		BB4ABFFB2715C006008D05F8 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB4ABFFA2715C006008D05F8 /* View.swift */; };
 		BB4AC0042716D0A5008D05F8 /* RecordViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB4AC0022716D0A5008D05F8 /* RecordViewCell.swift */; };
@@ -105,6 +108,9 @@
 		BB49DEDD2746999F00CD26A2 /* SubServiceViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SubServiceViewCell.xib; sourceTree = "<group>"; };
 		BB49DEE4274BB72900CD26A2 /* ServiceCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceCardView.swift; sourceTree = "<group>"; };
 		BB49DEE6274BE30E00CD26A2 /* ServiceCardController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceCardController.swift; sourceTree = "<group>"; };
+		BB49DEEA274CDE1100CD26A2 /* ProfileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileController.swift; sourceTree = "<group>"; };
+		BB49DEEC274D0C6500CD26A2 /* RegistrationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationView.swift; sourceTree = "<group>"; };
+		BB49DEEF274FBAC300CD26A2 /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		BB4ABFF72715BE49008D05F8 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		BB4ABFFA2715C006008D05F8 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
 		BB4AC0022716D0A5008D05F8 /* RecordViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordViewCell.swift; sourceTree = "<group>"; };
@@ -234,6 +240,15 @@
 			path = Service;
 			sourceTree = "<group>";
 		};
+		BB49DEE9274CDDD800CD26A2 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				BB49DEEA274CDE1100CD26A2 /* ProfileController.swift */,
+				BB49DEEF274FBAC300CD26A2 /* LoginController.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
 		BB4ABFF42715BDCB008D05F8 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -260,6 +275,7 @@
 				BB4AC0062716D529008D05F8 /* Record */,
 				BB49DECA27438F8B00CD26A2 /* Clinic */,
 				BB49DECF2743F00100CD26A2 /* Service */,
+				BB49DEE9274CDDD800CD26A2 /* Profile */,
 				BB552DFF2721AA1F001F605A /* TabBarController.swift */,
 			);
 			path = Controller;
@@ -308,6 +324,7 @@
 		BB4ABFFF2715DA46008D05F8 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				BB49DEEC274D0C6500CD26A2 /* RegistrationView.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -540,6 +557,7 @@
 				BB552E002721AA1F001F605A /* TabBarController.swift in Sources */,
 				BB49DEB3272C378F00CD26A2 /* DoctorInformationView.swift in Sources */,
 				BB9BD83226722E7D00FA2DCF /* Registration.swift in Sources */,
+				BB49DEF0274FBAC400CD26A2 /* LoginController.swift in Sources */,
 				BB4ABFFB2715C006008D05F8 /* View.swift in Sources */,
 				BB49DEDE2746999F00CD26A2 /* SubServiceViewCell.swift in Sources */,
 				BB49DEBF273A601300CD26A2 /* DateRecordChoiceController.swift in Sources */,
@@ -547,9 +565,11 @@
 				BBA245C826135A9800BF12E7 /* CustomCollectionViewCell.swift in Sources */,
 				BB8A54ED2726AC9500FB8941 /* ProfessionViewCell.swift in Sources */,
 				BBF8AD6825C8200E009CD35D /* DataLoader.swift in Sources */,
+				BB49DEEB274CDE1100CD26A2 /* ProfileController.swift in Sources */,
 				BB4AC0082716D552008D05F8 /* RecordController.swift in Sources */,
 				BBD2E8A425B9B6F900A8D092 /* ServicesViewController.swift in Sources */,
 				BBA245D9261EFE7800BF12E7 /* ClinicCell.swift in Sources */,
+				BB49DEED274D0C6500CD26A2 /* RegistrationView.swift in Sources */,
 				BBD920D62670A312000073FC /* Model.xcdatamodeld in Sources */,
 				BB4ABFF82715BE49008D05F8 /* Model.swift in Sources */,
 				BB49DEAD272C162E00CD26A2 /* ChooseDoctorByProfession.swift in Sources */,

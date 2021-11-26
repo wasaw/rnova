@@ -48,3 +48,11 @@ struct Schedule: Decodable {
     let room: String
     let is_busy: Bool
 }
+
+struct User {
+    let lastname: String
+    let firstname: String
+    let surname: String
+    let date: String
+    let phoneNumber: String
+}
