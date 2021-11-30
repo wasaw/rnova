@@ -38,6 +38,7 @@
 		BB49DEEB274CDE1100CD26A2 /* ProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB49DEEA274CDE1100CD26A2 /* ProfileController.swift */; };
 		BB49DEED274D0C6500CD26A2 /* RegistrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB49DEEC274D0C6500CD26A2 /* RegistrationView.swift */; };
 		BB49DEF0274FBAC400CD26A2 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB49DEEF274FBAC300CD26A2 /* LoginController.swift */; };
+		BB49DEF42751153600CD26A2 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB49DEF32751153600CD26A2 /* LoginView.swift */; };
 		BB4ABFF82715BE49008D05F8 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB4ABFF72715BE49008D05F8 /* Model.swift */; };
 		BB4ABFFB2715C006008D05F8 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB4ABFFA2715C006008D05F8 /* View.swift */; };
 		BB4AC0042716D0A5008D05F8 /* RecordViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB4AC0022716D0A5008D05F8 /* RecordViewCell.swift */; };
@@ -111,6 +112,7 @@
 		BB49DEEA274CDE1100CD26A2 /* ProfileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileController.swift; sourceTree = "<group>"; };
 		BB49DEEC274D0C6500CD26A2 /* RegistrationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationView.swift; sourceTree = "<group>"; };
 		BB49DEEF274FBAC300CD26A2 /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
+		BB49DEF32751153600CD26A2 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		BB4ABFF72715BE49008D05F8 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		BB4ABFFA2715C006008D05F8 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
 		BB4AC0022716D0A5008D05F8 /* RecordViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordViewCell.swift; sourceTree = "<group>"; };
@@ -325,6 +327,7 @@
 			isa = PBXGroup;
 			children = (
 				BB49DEEC274D0C6500CD26A2 /* RegistrationView.swift */,
+				BB49DEF32751153600CD26A2 /* LoginView.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -539,6 +542,7 @@
 				BB46D2B425B856B9003AD167 /* ViewController.swift in Sources */,
 				BB4AC0042716D0A5008D05F8 /* RecordViewCell.swift in Sources */,
 				BB46D2B025B856B9003AD167 /* AppDelegate.swift in Sources */,
+				BB49DEF42751153600CD26A2 /* LoginView.swift in Sources */,
 				BBD2E8B725BB0CDA00A8D092 /* VisitViewController.swift in Sources */,
 				BBCE6CFA25E672B700CC8598 /* RecordCollectionViewCell.swift in Sources */,
 				BBF5F37F265E7F4F00BF1F66 /* Extensions.swift in Sources */,
