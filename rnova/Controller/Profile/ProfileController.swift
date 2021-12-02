@@ -12,10 +12,15 @@ class ProfileController: UIViewController {
     private let registrationView = RegistrationView()
     private let profileView = ProfileView()
     private let databaseService = DatabaseService()
+    private var user: User?
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         if databaseService.checkLogIn() {
+            DispatchQueue.main.async {
+                self.user = self.databaseService.getPersonInformation()
+                self.fillProfileView()
+            }
             configureProfileView()
         } else {
             configureRegistrationView()
@@ -52,6 +57,15 @@ class ProfileController: UIViewController {
         profileView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
         profileView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
         profileView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+    }
+    
+    func fillProfileView() {
+        guard let user = user else { return }
+        profileView.lastnameUserLabel.text = user.lastname
+        profileView.firstnameUserLabel.text = user.firstname
+        profileView.surnameUserLabel.text = user.surname
+        profileView.dateUserLabel.text = user.date
+        profileView.phoneLabel.text = "  " + user.phoneNumber
     }
     
     func alert(fields: String) {

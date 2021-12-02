@@ -88,3 +88,13 @@ extension UITextField {
         self.layer.addSublayer(textFieldLine)
     }
 }
+
+//MARK: - UILabel
+extension UILabel {
+    func addLine() {
+        let textFieldLine = CALayer()
+        textFieldLine.frame = CGRect(x: 0, y: self.frame.height - 1, width: self.frame.width, height: 1)
+        textFieldLine.backgroundColor = UIColor.lightGray.cgColor
+        self.layer.addSublayer(textFieldLine)
+    }
+}

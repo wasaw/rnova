@@ -43,25 +43,28 @@ class DatabaseService {
         }
     }
     
-    func getPersonInformation() {
+    func getPersonInformation() -> User {
         let context = appDelegate.persistentContainer.viewContext
-        
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Person")
+        
         do {
             let result = try context.fetch(fetchRequest)
             for data in result {
                 if let data = data as? NSManagedObject {
-                    print("DEBUG: \(data.value(forKey: "lastname") as? String ?? "")")
-                    print("DEBUG: \(data.value(forKey: "surname") as? String ?? "")")
-                    print("DEBUG: \(data.value(forKey: "firstname") as? String ?? "")")
-                    print("DEBUG: \(data.value(forKey: "date") as? String ?? "")")
-                    print("DEBUG: \(data.value(forKey: "phone") as? String ?? "")")
-                    print("DEBUG: \(data.value(forKey: "login") as? String ?? "")")
+                    let user = User(
+                        lastname: data.value(forKey: "lastname") as? String ?? "",
+                        firstname: data.value(forKey: "firstname") as? String ?? "",
+                        surname: data.value(forKey: "surname") as? String ?? "",
+                        date: data.value(forKey: "date") as? String ?? "",
+                        phoneNumber: data.value(forKey: "phone") as? String ?? "")
+                    return user
                 }
             }
         } catch let error as NSError {
             print(error)
         }
+        
+        return User(lastname: "", firstname: "", surname: "", date: "", phoneNumber: "")
     }
     
     func checkLogIn() -> Bool {
