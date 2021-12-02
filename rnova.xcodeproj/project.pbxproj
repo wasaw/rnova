@@ -39,6 +39,7 @@
 		BB49DEED274D0C6500CD26A2 /* RegistrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB49DEEC274D0C6500CD26A2 /* RegistrationView.swift */; };
 		BB49DEF0274FBAC400CD26A2 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB49DEEF274FBAC300CD26A2 /* LoginController.swift */; };
 		BB49DEF42751153600CD26A2 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB49DEF32751153600CD26A2 /* LoginView.swift */; };
+		BB49DEF82757972800CD26A2 /* DatabaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB49DEF72757972800CD26A2 /* DatabaseService.swift */; };
 		BB4ABFF82715BE49008D05F8 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB4ABFF72715BE49008D05F8 /* Model.swift */; };
 		BB4ABFFB2715C006008D05F8 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB4ABFFA2715C006008D05F8 /* View.swift */; };
 		BB4AC0042716D0A5008D05F8 /* RecordViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB4AC0022716D0A5008D05F8 /* RecordViewCell.swift */; };
@@ -73,6 +74,7 @@
 		BBD2E8B725BB0CDA00A8D092 /* VisitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD2E8B625BB0CDA00A8D092 /* VisitViewController.swift */; };
 		BBD2E8BD25BEAB9100A8D092 /* ExitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD2E8BC25BEAB9100A8D092 /* ExitViewController.swift */; };
 		BBD920D62670A312000073FC /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BBD920D42670A312000073FC /* Model.xcdatamodeld */; };
+		BBE91CAE2758BE7B00DBA81E /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE91CAD2758BE7B00DBA81E /* ProfileView.swift */; };
 		BBF5F37F265E7F4F00BF1F66 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF5F37E265E7F4F00BF1F66 /* Extensions.swift */; };
 		BBF8AD6825C8200E009CD35D /* DataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF8AD6725C8200E009CD35D /* DataLoader.swift */; };
 		BBF8AD6B25C9B9E0009CD35D /* SubServicesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF8AD6A25C9B9E0009CD35D /* SubServicesViewController.swift */; };
@@ -113,6 +115,7 @@
 		BB49DEEC274D0C6500CD26A2 /* RegistrationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationView.swift; sourceTree = "<group>"; };
 		BB49DEEF274FBAC300CD26A2 /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		BB49DEF32751153600CD26A2 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		BB49DEF72757972800CD26A2 /* DatabaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseService.swift; sourceTree = "<group>"; };
 		BB4ABFF72715BE49008D05F8 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		BB4ABFFA2715C006008D05F8 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
 		BB4AC0022716D0A5008D05F8 /* RecordViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordViewCell.swift; sourceTree = "<group>"; };
@@ -148,6 +151,7 @@
 		BBD2E8BC25BEAB9100A8D092 /* ExitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExitViewController.swift; sourceTree = "<group>"; };
 		BBD920D52670A312000073FC /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		BBDB24C03A7147C4A5E52818 /* Pods-rnova.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-rnova.debug.xcconfig"; path = "Target Support Files/Pods-rnova/Pods-rnova.debug.xcconfig"; sourceTree = "<group>"; };
+		BBE91CAD2758BE7B00DBA81E /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		BBF5F37E265E7F4F00BF1F66 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		BBF8AD6725C8200E009CD35D /* DataLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataLoader.swift; sourceTree = "<group>"; };
 		BBF8AD6A25C9B9E0009CD35D /* SubServicesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubServicesViewController.swift; sourceTree = "<group>"; };
@@ -328,6 +332,7 @@
 			children = (
 				BB49DEEC274D0C6500CD26A2 /* RegistrationView.swift */,
 				BB49DEF32751153600CD26A2 /* LoginView.swift */,
+				BBE91CAD2758BE7B00DBA81E /* ProfileView.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -401,6 +406,7 @@
 			children = (
 				BBF8AD6725C8200E009CD35D /* DataLoader.swift */,
 				BBF5F37E265E7F4F00BF1F66 /* Extensions.swift */,
+				BB49DEF72757972800CD26A2 /* DatabaseService.swift */,
 			);
 			path = Utilies;
 			sourceTree = "<group>";
@@ -560,6 +566,7 @@
 				BBA245B9260BA14900BF12E7 /* ServicesCell.swift in Sources */,
 				BB552E002721AA1F001F605A /* TabBarController.swift in Sources */,
 				BB49DEB3272C378F00CD26A2 /* DoctorInformationView.swift in Sources */,
+				BBE91CAE2758BE7B00DBA81E /* ProfileView.swift in Sources */,
 				BB9BD83226722E7D00FA2DCF /* Registration.swift in Sources */,
 				BB49DEF0274FBAC400CD26A2 /* LoginController.swift in Sources */,
 				BB4ABFFB2715C006008D05F8 /* View.swift in Sources */,
@@ -579,6 +586,7 @@
 				BB49DEAD272C162E00CD26A2 /* ChooseDoctorByProfession.swift in Sources */,
 				BB9BD83D267CCB2F00FA2DCF /* EnteringInformationViewCell.swift in Sources */,
 				BB46D2B225B856B9003AD167 /* SceneDelegate.swift in Sources */,
+				BB49DEF82757972800CD26A2 /* DatabaseService.swift in Sources */,
 				BB49DED32743F04900CD26A2 /* ServiceController.swift in Sources */,
 				BB9BD84626A0261B00FA2DCF /* Login.swift in Sources */,
 				BB9BD83A267CC8F800FA2DCF /* EnteringInformation.swift in Sources */,

@@ -8,17 +8,26 @@
 import UIKit
 
 class ProfileController: UIViewController {
-    
+
     private let registrationView = RegistrationView()
+    private let profileView = ProfileView()
+    private let databaseService = DatabaseService()
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if databaseService.checkLogIn() {
+            configureProfileView()
+        } else {
+            configureRegistrationView()
+        }
+    }
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         
         navigationItem.title = "Профиль"
         navigationController?.navigationBar.backgroundColor = .systemOrange
-        
-        configureRegistrationView()
-        
+                
         view.backgroundColor = .white
     }
     
@@ -33,6 +42,16 @@ class ProfileController: UIViewController {
         registrationView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
         registrationView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
         registrationView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+    }
+    
+    func configureProfileView() {
+        view.addSubview(profileView)
+        
+        profileView.translatesAutoresizingMaskIntoConstraints = false
+        profileView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
+        profileView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
+        profileView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
+        profileView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
     }
     
     func alert(fields: String) {
@@ -74,7 +93,8 @@ extension ProfileController: SendValueProtocol {
         }
         
         if isValidPhoneNumber(number: user.phoneNumber) {
-            print("DEBUG: saving")
+            databaseService.registration(user: user)
+            viewWillAppear(true)
         } else {
             alert(fields: """
                   Номер телефона.
