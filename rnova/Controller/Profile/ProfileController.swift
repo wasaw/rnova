@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SideMenu
 
 class ProfileController: UIViewController {
 
@@ -13,6 +14,8 @@ class ProfileController: UIViewController {
     private let profileView = ProfileView()
     private let databaseService = DatabaseService()
     private var user: User?
+    
+    private var sideMenu: SideMenuNavigationController?
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -32,6 +35,8 @@ class ProfileController: UIViewController {
         
         navigationItem.title = "Профиль"
         navigationController?.navigationBar.backgroundColor = .systemOrange
+        
+        configureSideMenu()
                 
         view.backgroundColor = .white
     }
@@ -59,6 +64,16 @@ class ProfileController: UIViewController {
         profileView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
     }
     
+    func configureSideMenu() {
+        let imageBar = UIImage(systemName: "line.horizontal.3")
+        navigationController?.navigationBar.tintColor = .white
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: imageBar, style: .plain, target: self, action: #selector(presentingSideMenu))
+        
+        sideMenu = SideMenuNavigationController(rootViewController: MenuListController())
+        sideMenu?.leftSide = true
+        sideMenu?.navigationBar.backgroundColor = .systemOrange
+    }
+    
     func fillProfileView() {
         guard let user = user else { return }
         profileView.lastnameUserLabel.text = user.lastname
@@ -80,6 +95,11 @@ class ProfileController: UIViewController {
         let regEx = "^\\+7\\d{3}-\\d{3}-\\d{4}$"
         let phoneCheck = NSPredicate(format: "SELF MATCHES %@", regEx)
         return phoneCheck.evaluate(with: number)
+    }
+    
+    @objc func presentingSideMenu() {
+        guard let sideMenu = sideMenu else { return }
+        present(sideMenu, animated: true)
     }
 }
 

@@ -7,7 +7,6 @@
 
 import UIKit
 import MessageUI
-import Alamofire
 
 class ClinicsController: UIViewController {
     private var collectionView: UICollectionView?

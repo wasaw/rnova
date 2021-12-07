@@ -20,8 +20,8 @@ class ServiceViewCell: UICollectionViewCell {
         let image = UIImageView()
         image.layer.masksToBounds = false
         image.clipsToBounds = true
-        image.image = UIImage(systemName: "arrow.right")
-        image.tintColor = .black
+        image.image = UIImage(systemName: "chevron.right")
+        image.tintColor = .gray
         return image
     }()
 
@@ -46,9 +46,9 @@ class ServiceViewCell: UICollectionViewCell {
         arrowImageView.translatesAutoresizingMaskIntoConstraints = false
         arrowImageView.leftAnchor.constraint(equalTo: serviceLabel.rightAnchor).isActive = true
         arrowImageView.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
-        arrowImageView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -10).isActive = true
-        arrowImageView.heightAnchor.constraint(equalToConstant: 30).isActive = true
-        arrowImageView.widthAnchor.constraint(equalToConstant: 30).isActive = true
+        arrowImageView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -20).isActive = true
+        arrowImageView.heightAnchor.constraint(equalToConstant: 20).isActive = true
+        arrowImageView.widthAnchor.constraint(equalToConstant: 20).isActive = true
     }
 
 }

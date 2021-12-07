@@ -7,6 +7,4 @@ target 'rnova' do
 
   # Pods for rnova
 pod 'SideMenu'
-pod 'Alamofire'
-pod 'FSCalendar'
 end

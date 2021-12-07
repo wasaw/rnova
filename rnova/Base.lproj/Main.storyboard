@@ -59,7 +59,7 @@
                             <constraint firstItem="jgU-U2-MIe" firstAttribute="top" secondItem="MkD-cl-vNo" secondAttribute="top" id="oXS-e3-XbG"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Клиники" image="house" catalog="system" id="jZu-w8-Yzp"/>
+                    <tabBarItem key="tabBarItem" title="Клиники" image="note.text" catalog="system" id="jZu-w8-Yzp"/>
                     <navigationItem key="navigationItem" title="Клиники" id="LGK-eu-e0Y"/>
                     <connections>
                         <outlet property="collectionView" destination="jgU-U2-MIe" id="qhx-Vb-aSv"/>
@@ -248,7 +248,7 @@
         <scene sceneID="hqF-B3-7bm">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="p91-9f-MOF" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Профиль" image="person.circle" catalog="system" id="IoP-Bi-XSs"/>
+                    <tabBarItem key="tabBarItem" title="Профиль" image="person" catalog="system" id="IoP-Bi-XSs"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Z8L-dq-UDw">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -271,7 +271,8 @@
     <resources>
         <image name="house" catalog="system" width="128" height="106"/>
         <image name="list.dash" catalog="system" width="128" height="85"/>
-        <image name="person.circle" catalog="system" width="128" height="121"/>
+        <image name="note.text" catalog="system" width="128" height="106"/>
+        <image name="person" catalog="system" width="128" height="117"/>
         <image name="square.and.pencil" catalog="system" width="128" height="115"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

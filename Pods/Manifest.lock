@@ -1,24 +1,16 @@
 PODS:
-  - Alamofire (5.4.1)
-  - FSCalendar (2.8.2)
   - SideMenu (6.5.0)
 
 DEPENDENCIES:
-  - Alamofire
-  - FSCalendar
   - SideMenu
 
 SPEC REPOS:
   trunk:
-    - Alamofire
-    - FSCalendar
     - SideMenu
 
 SPEC CHECKSUMS:
-  Alamofire: 2291f7d21ca607c491dd17642e5d40fdcda0e65c
-  FSCalendar: e6a2eb9c571bf0719ed797ef807e08426753c241
   SideMenu: f583187d21c5b1dd04c72002be544b555a2627a2
 
-PODFILE CHECKSUM: 1c71c831e2fbeb952ee3e8264e801ca0aa04fcf6
+PODFILE CHECKSUM: 5bf790bdcdf17bf4dbef0163691f507e73d2e2d9
 
 COCOAPODS: 1.10.0
