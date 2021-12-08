@@ -80,6 +80,8 @@
 		BBE91CB5275E4E7C00DBA81E /* ExitController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE91CB4275E4E7C00DBA81E /* ExitController.swift */; };
 		BBE91CB8275E579E00DBA81E /* MenuListViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE91CB6275E579E00DBA81E /* MenuListViewCell.swift */; };
 		BBE91CB9275E579E00DBA81E /* MenuListViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BBE91CB7275E579E00DBA81E /* MenuListViewCell.xib */; };
+		BBE91CBC275F9C2200DBA81E /* VisitCardViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE91CBA275F9C2200DBA81E /* VisitCardViewCell.swift */; };
+		BBE91CBD275F9C2200DBA81E /* VisitCardViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BBE91CBB275F9C2200DBA81E /* VisitCardViewCell.xib */; };
 		BBF5F37F265E7F4F00BF1F66 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF5F37E265E7F4F00BF1F66 /* Extensions.swift */; };
 		BBF8AD6825C8200E009CD35D /* DataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF8AD6725C8200E009CD35D /* DataLoader.swift */; };
 		BBF8AD6B25C9B9E0009CD35D /* SubServicesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF8AD6A25C9B9E0009CD35D /* SubServicesViewController.swift */; };
@@ -162,6 +164,8 @@
 		BBE91CB4275E4E7C00DBA81E /* ExitController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExitController.swift; sourceTree = "<group>"; };
 		BBE91CB6275E579E00DBA81E /* MenuListViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuListViewCell.swift; sourceTree = "<group>"; };
 		BBE91CB7275E579E00DBA81E /* MenuListViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MenuListViewCell.xib; sourceTree = "<group>"; };
+		BBE91CBA275F9C2200DBA81E /* VisitCardViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisitCardViewCell.swift; sourceTree = "<group>"; };
+		BBE91CBB275F9C2200DBA81E /* VisitCardViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VisitCardViewCell.xib; sourceTree = "<group>"; };
 		BBF5F37E265E7F4F00BF1F66 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		BBF8AD6725C8200E009CD35D /* DataLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataLoader.swift; sourceTree = "<group>"; };
 		BBF8AD6A25C9B9E0009CD35D /* SubServicesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubServicesViewController.swift; sourceTree = "<group>"; };
@@ -348,6 +352,8 @@
 				BBE91CAD2758BE7B00DBA81E /* ProfileView.swift */,
 				BBE91CB6275E579E00DBA81E /* MenuListViewCell.swift */,
 				BBE91CB7275E579E00DBA81E /* MenuListViewCell.xib */,
+				BBE91CBA275F9C2200DBA81E /* VisitCardViewCell.swift */,
+				BBE91CBB275F9C2200DBA81E /* VisitCardViewCell.xib */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -485,6 +491,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BBE91CBD275F9C2200DBA81E /* VisitCardViewCell.xib in Resources */,
 				BB46D2BC25B856BC003AD167 /* LaunchScreen.storyboard in Resources */,
 				BB46D2B925B856BC003AD167 /* Assets.xcassets in Resources */,
 				BB46D2B725B856B9003AD167 /* Main.storyboard in Resources */,
@@ -556,6 +563,7 @@
 			files = (
 				BB49DEB62731246100CD26A2 /* CalendarViewCell.swift in Sources */,
 				BBB5B1F825EE7C3C00A33761 /* DoctorChoiceViewController.swift in Sources */,
+				BBE91CBC275F9C2200DBA81E /* VisitCardViewCell.swift in Sources */,
 				BBD2E8A725BAB37E00A8D092 /* ProfileViewController.swift in Sources */,
 				BB4C554B25F0D5C600A616D6 /* SpecialtyChoiceViewController.swift in Sources */,
 				BB49DED82745381600CD26A2 /* ServiceViewCell.swift in Sources */,
