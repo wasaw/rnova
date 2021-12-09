@@ -56,3 +56,12 @@ struct User {
     let date: String
     let phoneNumber: String
 }
+
+struct Appointment {
+    let doctor: String
+    let profession: String
+    let time: String
+    let date: Date
+    let clinic: String
+    let comment: String
+}

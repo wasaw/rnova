@@ -30,7 +30,7 @@ class VisitCardViewCell: UICollectionViewCell {
         label.font = UIFont.boldSystemFont(ofSize: 18)
         return label
     }()
-    let clinicAdressLabel: UILabel = {
+    let commentLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 14)
         label.lineBreakMode = .byWordWrapping
@@ -45,7 +45,7 @@ class VisitCardViewCell: UICollectionViewCell {
         addSubview(doctorFullNameLabel)
         addSubview(doctorProfessionLabel)
         addSubview(clinicTitleLabel)
-        addSubview(clinicAdressLabel)
+        addSubview(commentLabel)
         
         line.layer.borderWidth = 1
         line.layer.borderColor = UIColor.lightGray.cgColor
@@ -85,11 +85,11 @@ class VisitCardViewCell: UICollectionViewCell {
         clinicTitleLabel.topAnchor.constraint(equalTo: doctorProfessionLabel.bottomAnchor, constant: 5).isActive = true
         clinicTitleLabel.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -10).isActive = true
         
-        clinicAdressLabel.translatesAutoresizingMaskIntoConstraints = false
-        clinicAdressLabel.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 10).isActive = true
-        clinicAdressLabel.topAnchor.constraint(equalTo: clinicTitleLabel.bottomAnchor).isActive = true
-        clinicAdressLabel.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -10).isActive = true
-        clinicAdressLabel.heightAnchor.constraint(equalToConstant: 45).isActive = true
+        commentLabel.translatesAutoresizingMaskIntoConstraints = false
+        commentLabel.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 10).isActive = true
+        commentLabel.topAnchor.constraint(equalTo: clinicTitleLabel.bottomAnchor).isActive = true
+        commentLabel.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -10).isActive = true
+        commentLabel.heightAnchor.constraint(equalToConstant: 45).isActive = true
     }
 
 }

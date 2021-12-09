@@ -9,25 +9,25 @@ import UIKit
 
 class RecordInformationView: UIView {
     
-    let doctorLabel: UILabel = {
+    private let doctorLabel: UILabel = {
         let label = UILabel()
         label.textColor = .gray
         label.text = "Врач:"
         return label
     }()
-    let professionLabel: UILabel = {
+    private let professionLabel: UILabel = {
         let label = UILabel()
         label.textColor = .gray
         label.text = "Специальность:"
         return label
     }()
-    let dateLabel: UILabel = {
+    private let dateLabel: UILabel = {
         let label = UILabel()
         label.textColor = .gray
         label.text = "Дата:"
         return label
     }()
-    let clinicLabel: UILabel = {
+    private let clinicLabel: UILabel = {
         let label = UILabel()
         label.textColor = .gray
         label.text = "Клиника:"
@@ -52,7 +52,6 @@ class RecordInformationView: UIView {
     let clinicOutputLable: UILabel = {
         let label = UILabel()
         label.font = UIFont.boldSystemFont(ofSize: 18)
-        label.text = "Моя клиника"
         return label
     }()
 

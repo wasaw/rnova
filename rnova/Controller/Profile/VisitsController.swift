@@ -13,10 +13,21 @@ class VisitsController: UIViewController {
     private var collectionView: UICollectionView?
     private var sideMenu: SideMenuNavigationController?
     
+    private let databaseService = DatabaseService()
+    private var ticketsArray = [Appointment]()
+    private var pastTickets = [Appointment]()
+    private var futureTickets = [Appointment]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         navigationItem.title = "Визиты"
+        
+        DispatchQueue.main.async {
+            self.ticketsArray = self.databaseService.loadDoctorAppointment()
+            self.sortingTickets()
+            self.collectionView?.reloadData()
+        }
         
         configureUI()
         
@@ -72,9 +83,21 @@ class VisitsController: UIViewController {
         collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
     }
     
+    func sortingTickets() {
+        let dateComponents = Calendar.current.dateComponents([.day, .month, .year], from: Date())
+        for item in ticketsArray {
+            let ticketDateComponents = Calendar.current.dateComponents([.day, .month, .year], from: item.date)
+            if Calendar.current.date(from: dateComponents)! <= Calendar.current.date(from: ticketDateComponents)! {
+                futureTickets.append(item)
+            } else {
+                pastTickets.append(item)
+            }
+        }
+    }
+    
     
     @objc func didTapSegment() {
-        print("DEBUG: Tap")
+        collectionView?.reloadData()
     }
     
     @objc func presentingSideMenu() {
@@ -90,16 +113,38 @@ extension VisitsController: UICollectionViewDelegate {
 
 extension VisitsController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 2
+        if pastTickets.isEmpty && futureTickets.isEmpty {
+            return 0
+        } else {
+            if segmentedControl.selectedSegmentIndex == 0 {
+                return futureTickets.count
+            } else {
+                return pastTickets.count
+            }
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: VisitCardViewCell.identifire, for: indexPath) as? VisitCardViewCell else { return UICollectionViewCell()}
-        cell.dateLabel.text = "07 Декабря 2021, 17:30"
-        cell.doctorFullNameLabel.text = "Быков Андрей Евгеньевич"
-        cell.doctorProfessionLabel.text = "Терапевт"
-        cell.clinicTitleLabel.text = "КДЦ МОЯ Клиника"
-        cell.clinicAdressLabel.text = "г. Санкт-Петербург, Выборгский р-н, Луначарского пр., д.12, к.3"
+        if !pastTickets.isEmpty || !futureTickets.isEmpty {
+            let formatter = DateFormatter()
+            formatter.dateFormat = "dd MMMM yyyy"
+            if segmentedControl.selectedSegmentIndex == 0 {
+                let date = formatter.string(from: futureTickets[indexPath.row].date)
+                cell.dateLabel.text = date + ", " + futureTickets[indexPath.row].time
+                cell.doctorFullNameLabel.text = futureTickets[indexPath.row].doctor
+                cell.doctorProfessionLabel.text = futureTickets[indexPath.row].profession
+                cell.clinicTitleLabel.text = futureTickets[indexPath.row].clinic
+                cell.commentLabel.text = futureTickets[indexPath.row].comment
+            } else {
+                let date = formatter.string(from: pastTickets[indexPath.row].date)
+                cell.dateLabel.text = date + ", " + pastTickets[indexPath.row].time
+                cell.doctorFullNameLabel.text = pastTickets[indexPath.row].doctor
+                cell.doctorProfessionLabel.text = pastTickets[indexPath.row].profession
+                cell.clinicTitleLabel.text = pastTickets[indexPath.row].clinic
+                cell.commentLabel.text = pastTickets[indexPath.row].comment
+            }
+        }
         return cell
     }
 }

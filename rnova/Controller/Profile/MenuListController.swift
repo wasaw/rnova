@@ -28,7 +28,7 @@ class MenuListController: UITableViewController {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: MenuListViewCell.identifire, for: indexPath) as? MenuListViewCell else { return UITableViewCell() }
         cell.menuNameLabel.text = listItemsName[indexPath.row]
         cell.imageMenu.image = UIImage(systemName: listImageItems[indexPath.row])
-        cell.imageArrowMenu.image = UIImage(systemName: "chevron.right")
+        cell.accessoryType = .disclosureIndicator
         return cell
     }
 

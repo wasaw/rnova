@@ -27,7 +27,7 @@ class SubServiceViewCell: UICollectionViewCell {
         let image = UIImageView()
         image.layer.masksToBounds = false
         image.clipsToBounds = true
-        image.image = UIImage(systemName: "arrow.right")
+        image.image = UIImage(systemName: "chevron.right")
         image.tintColor = .black
         return image
     }()

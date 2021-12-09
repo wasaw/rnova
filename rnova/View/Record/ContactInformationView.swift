@@ -9,21 +9,21 @@ import UIKit
 
 class ContactInformationView: UIView {
     
-    private let lastNameField: UITextField = {
+    let lastNameField: UITextField = {
         let tf = UITextField()
         tf.placeholder = "Фамилия"
         tf.clearButtonMode = .always
         tf.clearsOnBeginEditing = true
         return tf
     }()
-    private let firstNameField: UITextField = {
+    let firstNameField: UITextField = {
         let tf = UITextField()
         tf.placeholder = "Имя"
         tf.clearButtonMode = .always
         tf.clearsOnBeginEditing = true
         return tf
     }()
-    private let surnameField: UITextField = {
+    let surnameField: UITextField = {
         let tf = UITextField()
         tf.placeholder = "Отчество"
         tf.clearButtonMode = .always
@@ -37,14 +37,14 @@ class ContactInformationView: UIView {
         tf.clearsOnBeginEditing = true
         return tf
     }()
-    private let phoneNumberField: UITextField = {
+    let phoneNumberField: UITextField = {
         let tf = UITextField()
         tf.placeholder = "Номер телефона"
         tf.clearButtonMode = .always
         tf.clearsOnBeginEditing = true
         return tf
     }()
-    private let commentField: UITextField = {
+    let commentField: UITextField = {
         let tf = UITextField()
         tf.placeholder = "Комментарий"
         tf.clearButtonMode = .always
@@ -128,3 +128,11 @@ class ContactInformationView: UIView {
         line.backgroundColor = .lightGray
     }
 }
+
+// MARK: - extension
+extension ContactInformationView: SendCommentProtocol {
+    func gettingComment() -> String? {
+        return commentField.text
+    }
+}
+

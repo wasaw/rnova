@@ -7,11 +7,19 @@
 
 import UIKit
 
+protocol SendCommentProtocol {
+    func gettingComment() -> String?
+}
+
 class MakeAppointmentController: UIViewController {
     private let selectedDoctor: String
     private let selectedProfession: String
     private let selectedDate: Date
     private let selectedTime: String
+    
+    var delegateComment: SendCommentProtocol?
+        
+    private let databaseService = DatabaseService()
     
     private let datePicker = UIDatePicker()
     private let formatter = DateFormatter()
@@ -77,16 +85,26 @@ class MakeAppointmentController: UIViewController {
         recordInformationView.professionOutputLabel.text = selectedProfession
         formatter.dateFormat = "dd.MM.yy"
         recordInformationView.dateOutputLabel.text = selectedTime + " " + formatter.string(from: selectedDate)
+        recordInformationView.clinicOutputLable.text = "Моя клиника"
     }
     
     func configureContactInformationView() {
         view.addSubview(contactInformationView)
-        
+        delegateComment = contactInformationView
         contactInformationView.translatesAutoresizingMaskIntoConstraints = false
         contactInformationView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 10).isActive = true
         contactInformationView.topAnchor.constraint(equalTo: recordInformationView.bottomAnchor, constant: 30).isActive = true
         contactInformationView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -10).isActive = true
         contactInformationView.heightAnchor.constraint(equalToConstant: 320).isActive = true
+        
+        if databaseService.checkLogIn() {
+            let user = databaseService.getPersonInformation()
+            contactInformationView.lastNameField.text = user.lastname
+            contactInformationView.firstNameField.text = user.firstname
+            contactInformationView.surnameField.text = user.surname
+            contactInformationView.dateField.text = String(user.date)
+            contactInformationView.phoneNumberField.text = user.phoneNumber
+        }
     }
     
     func configureSubmitButton() {
@@ -97,6 +115,7 @@ class MakeAppointmentController: UIViewController {
         submitButton.topAnchor.constraint(equalTo: contactInformationView.bottomAnchor,constant: 30).isActive = true
         submitButton.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -10).isActive = true
         submitButton.heightAnchor.constraint(equalToConstant: 60).isActive = true
+        submitButton.addTarget(self, action: #selector(saveTicket), for: .touchUpInside)
     }
     
     func configureDatePicker() {
@@ -122,5 +141,24 @@ class MakeAppointmentController: UIViewController {
     
     @objc func cancelAction() {
         view.endEditing(true)
+    }
+    
+    @objc func saveTicket() {
+        if databaseService.checkLogIn() {
+            guard let clinic = recordInformationView.clinicOutputLable.text else { return }
+            let comment = delegateComment?.gettingComment()
+            var fullComment: String
+            if comment == nil {
+                fullComment = ""
+            } else {
+                fullComment = comment!
+            }
+            let ticket = Appointment(doctor: selectedDoctor, profession: selectedProfession, time: selectedTime, date: selectedDate, clinic: clinic, comment: fullComment)
+            databaseService.saveDoctorAppointment(ticket: ticket)
+        } else {
+            let alert = UIAlertController(title: "Внимание", message: "Предварительно необходимо зарегистрироваться.", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+            present(alert, animated: true, completion: nil)
+        }
     }
 }
