@@ -12,6 +12,12 @@ class ExitController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = .systemTeal
+        let databaseService = DatabaseService()
+        DispatchQueue.main.async {
+            databaseService.exit()
+        }
+        
+        let vc = ProfileController()
+        navigationController?.pushViewController(vc, animated: true)
     }
 }

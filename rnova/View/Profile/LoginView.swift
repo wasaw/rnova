@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol SendPhoneNumberProtocol {
+protocol SendPhoneNumberProtocol: AnyObject {
     func sendProtocol(phoneNumber: String)
 }
 
@@ -22,7 +22,7 @@ class LoginView: UIView {
     
     private let enterButton = View().button
     
-    var delegate: SendPhoneNumberProtocol?
+    weak var delegate: SendPhoneNumberProtocol?
 
     override init(frame: CGRect) {
         super.init(frame: frame)

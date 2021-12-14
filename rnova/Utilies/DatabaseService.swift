@@ -134,7 +134,34 @@ class DatabaseService {
         } catch let error as NSError {
             print(error)
         }
-//        return [Appointment(clinic: "", comment: "", time: "", date: Date(timeIntervalSince1970: 0), doctor: "")]
         return [Appointment(doctor: "", profession: "", time: "", date: Date(timeIntervalSince1970: 0), clinic: "", comment: "")]
+    }
+    
+    func login() {
+        let context = appDelegate.persistentContainer.viewContext
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Person")
+        
+        do {
+            let result = try context.fetch(fetchRequest)
+            guard let user = result.first as? NSManagedObject else { return }
+            user.setValue(true, forKey: "login")
+            try context.save()
+        } catch let error as NSError {
+            print(error)
+        }
+    }
+    
+    func exit() {
+        let context = appDelegate.persistentContainer.viewContext
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Person")
+        
+        do {
+            let result = try context.fetch(fetchRequest)
+            guard let user = result.first as? NSManagedObject else { return }
+            user.setValue(false, forKey: "login")
+            try context.save()
+        } catch let error as NSError {
+            print(error)
+        }
     }
 }

@@ -52,7 +52,12 @@ class LoginController: UIViewController {
 extension LoginController: SendPhoneNumberProtocol {
     func sendProtocol(phoneNumber: String) {
         if isValidPhoneNumber(number: phoneNumber) {
-            print("DEBUG: Saving")
+            let databaseService = DatabaseService()
+            DispatchQueue.main.async {
+                databaseService.login()
+            }
+            let vc = ProfileController()
+            navigationController?.pushViewController(vc, animated: true)
         }else {
             alert(fields: """
                   Номер телефона.

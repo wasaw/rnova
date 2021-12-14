@@ -7,11 +7,11 @@
 
 import UIKit
 
-protocol SendValueProtocol {
+protocol SendValueProtocol: AnyObject {
     func recordUser(user: User)
 }
 
-protocol PresentViewProtocol {
+protocol PresentViewProtocol: AnyObject {
     func showNewView()
 }
 
@@ -57,8 +57,8 @@ class RegistrationView: UIView {
     private let registrationButton = View().button
     private let enterButton = View().button
     
-    var delegate: SendValueProtocol?
-    var delegateShow: PresentViewProtocol?
+    weak var delegate: SendValueProtocol?
+    weak var delegateShow: PresentViewProtocol?
 
     override init(frame: CGRect) {
         super.init(frame: frame)
