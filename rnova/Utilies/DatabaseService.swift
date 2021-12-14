@@ -104,7 +104,6 @@ class DatabaseService {
             guard let user = result.first as? NSManagedObject else { return }
             newRecord.setValue(user, forKey: "owner")
             try context.save()
-            print("DEBUG: Successfully")
         } catch let error as NSError {
             print(error)
         }
@@ -118,7 +117,6 @@ class DatabaseService {
             let result = try context.fetch(fetchRequest)
             var ticket = [Appointment]()
             for data in result {
-                print("DEBUG: \(result.count)")
                 if let data = data as? NSManagedObject {
                     let ticketTemp = Appointment(
                         doctor: data.value(forKey: "doctor") as? String ?? "",
