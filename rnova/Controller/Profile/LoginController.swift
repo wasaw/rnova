@@ -49,15 +49,19 @@ class LoginController: UIViewController {
 }
 
 //MARK: - extension
-extension LoginController: SendPhoneNumberProtocol {
-    func sendProtocol(phoneNumber: String) {
+extension LoginController: SendLoginInformationProtocol {
+    func sendLoginInformation(phoneNumber: String, password: String) {
         if isValidPhoneNumber(number: phoneNumber) {
             let databaseService = DatabaseService()
             DispatchQueue.main.async {
-                databaseService.login()
+                if databaseService.login(phoneNumber: phoneNumber, password: password) {
+                    let vc = ProfileController()
+                    self.navigationController?.pushViewController(vc, animated: true)
+                } else {
+                    self.alert(fields: "Неправильно введено поле логин или пароль")
+                }
             }
-            let vc = ProfileController()
-            navigationController?.pushViewController(vc, animated: true)
+            
         }else {
             alert(fields: """
                   Номер телефона.

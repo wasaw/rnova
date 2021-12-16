@@ -31,7 +31,7 @@ class DatabaseService {
                 newPerson.setValue(user.date, forKey: "date")
                 newPerson.setValue(user.phoneNumber, forKey: "phone")
                 newPerson.setValue(true, forKey: "login")
-                
+                newPerson.setValue(user.password, forKey: "password")
                 do {
                     try context.save()
                 } catch let error as NSError {
@@ -56,7 +56,8 @@ class DatabaseService {
                         firstname: data.value(forKey: "firstname") as? String ?? "",
                         surname: data.value(forKey: "surname") as? String ?? "",
                         date: data.value(forKey: "date") as? String ?? "",
-                        phoneNumber: data.value(forKey: "phone") as? String ?? "")
+                        phoneNumber: data.value(forKey: "phone") as? String ?? "",
+                        password: data.value(forKey: "password") as? String ?? "")
                     return user
                 }
             }
@@ -64,7 +65,7 @@ class DatabaseService {
             print(error)
         }
         
-        return User(lastname: "", firstname: "", surname: "", date: "", phoneNumber: "")
+        return User(lastname: "", firstname: "", surname: "", date: "", phoneNumber: "", password: "")
     }
     
     func checkLogIn() -> Bool {
@@ -135,18 +136,26 @@ class DatabaseService {
         return [Appointment(doctor: "", profession: "", time: "", date: Date(timeIntervalSince1970: 0), clinic: "", comment: "")]
     }
     
-    func login() {
+    func login(phoneNumber: String, password: String) -> Bool {
         let context = appDelegate.persistentContainer.viewContext
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Person")
-        
+
         do {
             let result = try context.fetch(fetchRequest)
-            guard let user = result.first as? NSManagedObject else { return }
-            user.setValue(true, forKey: "login")
-            try context.save()
+            guard let user = result.first as? NSManagedObject else { return false }
+            
+            let phoneBD = user.value(forKey: "phone") as? String ?? ""
+            let passBD = user.value(forKey: "password") as? String ?? ""
+            if phoneNumber == phoneBD && password == passBD {
+                user.setValue(true, forKey: "login")
+                try context.save()
+                return true
+            }
         } catch let error as NSError {
             print(error)
         }
+        
+        return false
     }
     
     func exit() {

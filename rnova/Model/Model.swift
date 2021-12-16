@@ -55,6 +55,7 @@ struct User {
     let surname: String
     let date: String
     let phoneNumber: String
+    let password: String
 }
 
 struct Appointment {

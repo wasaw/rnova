@@ -35,8 +35,6 @@ class ProfileController: UIViewController {
         
         navigationItem.title = "Профиль"
         navigationController?.navigationBar.backgroundColor = .systemOrange
-        
-        configureSideMenu()
                 
         view.backgroundColor = .white
     }
@@ -62,6 +60,8 @@ class ProfileController: UIViewController {
         profileView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
         profileView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
         profileView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        
+        configureSideMenu()
     }
     
     func configureSideMenu() {
@@ -121,6 +121,9 @@ extension ProfileController: SendValueProtocol {
         }
         if user.phoneNumber == "" {
             fields = fields + "Номер телефона"
+        }
+        if user.password == "" {
+            fields = fields + "Пароль"
         }
         if !fields.isEmpty {
             alert(fields: fields)

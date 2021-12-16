@@ -7,8 +7,8 @@
 
 import UIKit
 
-protocol SendPhoneNumberProtocol: AnyObject {
-    func sendProtocol(phoneNumber: String)
+protocol SendLoginInformationProtocol: AnyObject {
+    func sendLoginInformation(phoneNumber: String, password: String)
 }
 
 class LoginView: UIView {
@@ -19,15 +19,28 @@ class LoginView: UIView {
         tf.clearsOnBeginEditing = true
         return tf
     }()
+    private let passwordField: UITextField = {
+        let tf = UITextField()
+        tf.placeholder = "Пароль"
+        tf.clearButtonMode = .always
+        tf.clearsOnBeginEditing = true
+        tf.textContentType = .password
+        tf.isSecureTextEntry = true
+        tf.autocorrectionType = .no
+        tf.spellCheckingType = .no
+        tf.returnKeyType = .done
+        return tf
+    }()
     
     private let enterButton = View().button
     
-    weak var delegate: SendPhoneNumberProtocol?
+    weak var delegate: SendLoginInformationProtocol?
 
     override init(frame: CGRect) {
         super.init(frame: frame)
         
         addSubview(phoneNumberField)
+        addSubview(passwordField)
         addSubview(enterButton)
         
         enterButton.backgroundColor = UIColor.systemOrange
@@ -51,16 +64,24 @@ class LoginView: UIView {
         phoneNumberField.heightAnchor.constraint(equalToConstant: 40).isActive = true
         phoneNumberField.addLine()
         
+        passwordField.translatesAutoresizingMaskIntoConstraints = false
+        passwordField.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 20).isActive = true
+        passwordField.topAnchor.constraint(equalTo: phoneNumberField.bottomAnchor, constant: 20).isActive = true
+        passwordField.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -20).isActive = true
+        passwordField.heightAnchor.constraint(equalToConstant: 40).isActive = true
+        passwordField.addLine()
+        
         enterButton.translatesAutoresizingMaskIntoConstraints = false
         enterButton.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 10).isActive = true
-        enterButton.topAnchor.constraint(equalTo: phoneNumberField.bottomAnchor, constant: 30).isActive = true
+        enterButton.topAnchor.constraint(equalTo: passwordField.bottomAnchor, constant: 30).isActive = true
         enterButton.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -10).isActive = true
         enterButton.heightAnchor.constraint(equalToConstant: 60).isActive = true
     }
     
     @objc func entering() {
         guard let phoneNumber = phoneNumberField.text else { return }
-        delegate?.sendProtocol(phoneNumber: phoneNumber)
+        guard let password = passwordField.text else { return }
+        delegate?.sendLoginInformation(phoneNumber: phoneNumber, password: password)
     }
     
 }

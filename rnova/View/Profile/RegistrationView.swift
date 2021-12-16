@@ -21,6 +21,8 @@ class RegistrationView: UIView {
         tf.placeholder = "Фамилия"
         tf.clearButtonMode = .always
         tf.clearsOnBeginEditing = true
+        tf.autocorrectionType = .no
+        tf.spellCheckingType = .no
         return tf
     }()
     private let firstNameField: UITextField = {
@@ -28,6 +30,8 @@ class RegistrationView: UIView {
         tf.placeholder = "Имя"
         tf.clearButtonMode = .always
         tf.clearsOnBeginEditing = true
+        tf.autocorrectionType = .no
+        tf.spellCheckingType = .no
         return tf
     }()
     private let surnameField: UITextField = {
@@ -35,6 +39,8 @@ class RegistrationView: UIView {
         tf.placeholder = "Отчество"
         tf.clearButtonMode = .always
         tf.clearsOnBeginEditing = true
+        tf.autocorrectionType = .no
+        tf.spellCheckingType = .no
         return tf
     }()
     private let dateField: UITextField = {
@@ -49,6 +55,18 @@ class RegistrationView: UIView {
         tf.placeholder = "Номер телефона"
         tf.clearButtonMode = .always
         tf.clearsOnBeginEditing = true
+        return tf
+    }()
+    private let passwordField: UITextField = {
+        let tf = UITextField()
+        tf.placeholder = "Пароль"
+        tf.clearButtonMode = .always
+        tf.clearsOnBeginEditing = true
+        tf.textContentType = .password
+        tf.isSecureTextEntry = true
+        tf.autocorrectionType = .no
+        tf.spellCheckingType = .no
+        tf.returnKeyType = .done
         return tf
     }()
     
@@ -68,6 +86,7 @@ class RegistrationView: UIView {
         addSubview(surnameField)
         addSubview(dateField)
         addSubview(phoneNumberField)
+        addSubview(passwordField)
         addSubview(registrationButton)
         addSubview(enterButton)
         
@@ -122,12 +141,19 @@ class RegistrationView: UIView {
         phoneNumberField.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -20).isActive = true
         phoneNumberField.heightAnchor.constraint(equalToConstant: 40).isActive = true
         phoneNumberField.addLine()
+        
+        passwordField.translatesAutoresizingMaskIntoConstraints = false
+        passwordField.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 20).isActive = true
+        passwordField.topAnchor.constraint(equalTo: phoneNumberField.bottomAnchor, constant: 10).isActive = true
+        passwordField.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -20).isActive = true
+        passwordField.heightAnchor.constraint(equalToConstant: 40).isActive = true
+        passwordField.addLine()
     }
     
     func configureRegistrationButton() {
         registrationButton.translatesAutoresizingMaskIntoConstraints = false
         registrationButton.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 10).isActive = true
-        registrationButton.topAnchor.constraint(equalTo: phoneNumberField.bottomAnchor, constant: 30).isActive = true
+        registrationButton.topAnchor.constraint(equalTo: passwordField.bottomAnchor, constant: 30).isActive = true
         registrationButton.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -10).isActive = true
         registrationButton.heightAnchor.constraint(equalToConstant: 60).isActive = true
         
@@ -164,9 +190,9 @@ class RegistrationView: UIView {
     }
     
     @objc func registering() {
-        guard let lastName = lastNameField.text, let firstName = firstNameField.text, let surName = surnameField.text, let date = dateField.text, let phoneNumber = phoneNumberField.text else { return }
+        guard let lastName = lastNameField.text, let firstName = firstNameField.text, let surName = surnameField.text, let date = dateField.text, let phoneNumber = phoneNumberField.text, let password = passwordField.text else { return }
         
-        let user = User(lastname: lastName, firstname: firstName, surname: surName, date: date, phoneNumber: phoneNumber)
+        let user = User(lastname: lastName, firstname: firstName, surname: surName, date: date, phoneNumber: phoneNumber, password: password)
         delegate?.recordUser(user: user)
     }
     

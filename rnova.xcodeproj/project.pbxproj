@@ -176,6 +176,7 @@
 				BB4ABFF62715BDDF008D05F8 /* Controller */,
 				BB4ABFF52715BDD7008D05F8 /* View */,
 				BB4ABFF42715BDCB008D05F8 /* Model */,
+				BBF5F37D265E7F2E00BF1F66 /* Utilies */,
 				BB46D2AF25B856B9003AD167 /* AppDelegate.swift */,
 				BB7CDE5A25D16E96007B1B1A /* DetailViewController.swift */,
 				BB46D2B125B856B9003AD167 /* SceneDelegate.swift */,
@@ -183,7 +184,6 @@
 				BB46D2B825B856BC003AD167 /* Assets.xcassets */,
 				BB46D2BA25B856BC003AD167 /* LaunchScreen.storyboard */,
 				BB46D2BD25B856BC003AD167 /* Info.plist */,
-				BBF5F37D265E7F2E00BF1F66 /* Utilies */,
 			);
 			path = rnova;
 			sourceTree = "<group>";
