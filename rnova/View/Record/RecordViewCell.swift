@@ -10,7 +10,7 @@ import UIKit
 class RecordViewCell: UICollectionViewCell {
     static let identifire = "RecordViewCell"
     
-    let surnameLabel: UILabel = {
+    let fullnameLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.boldSystemFont(ofSize: 19)
         label.textColor = .black
@@ -30,44 +30,39 @@ class RecordViewCell: UICollectionViewCell {
   
     var profileImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.layer.cornerRadius = 25
+        imageView.layer.cornerRadius = 30
         imageView.layer.masksToBounds = false
         imageView.clipsToBounds = true
-        imageView.image = UIImage(systemName: "person")
+        imageView.contentMode = .scaleAspectFill
         return imageView
     }()
         
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        self.addSubview(surnameLabel)
+        self.addSubview(fullnameLabel)
         self.addSubview(professionLabel)
         self.addSubview(profileImageView)
         
-        let stack = UIStackView(arrangedSubviews: [surnameLabel, professionLabel])
+        let stack = UIStackView(arrangedSubviews: [fullnameLabel, professionLabel])
         stack.axis = .vertical
         stack.distribution = .fillEqually
         stack.spacing = 5
-        
         self.addSubview(stack)
+        
+        profileImageView.translatesAutoresizingMaskIntoConstraints = false
+        profileImageView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor).isActive = true
+        profileImageView.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 20).isActive = true
+        profileImageView.widthAnchor.constraint(equalToConstant: 60).isActive = true
+        profileImageView.heightAnchor.constraint(equalToConstant: 60).isActive = true
         
         stack.translatesAutoresizingMaskIntoConstraints = false
         stack.leftAnchor.constraint(equalTo: profileImageView.rightAnchor, constant: 30).isActive = true
         stack.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10).isActive = true
         stack.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -10).isActive = true
         stack.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10).isActive = true
-
+        
         shadow()
         backgroundColor = .white
-    }
-    
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        
-        profileImageView.translatesAutoresizingMaskIntoConstraints = false
-        profileImageView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor).isActive = true
-        profileImageView.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 20).isActive = true
-        profileImageView.widthAnchor.constraint(equalToConstant: 50).isActive = true
-        profileImageView.heightAnchor.constraint(equalToConstant: 50).isActive = true
     }
 }

@@ -12,8 +12,7 @@ protocol SendCommentProtocol {
 }
 
 class MakeAppointmentController: UIViewController {
-    private let selectedDoctor: String
-    private let selectedProfession: String
+    private let doctor: Doctor
     private let selectedDate: Date
     private let selectedTime: String
     
@@ -41,9 +40,8 @@ class MakeAppointmentController: UIViewController {
         return btn
     }()
     
-    init(selectedDoctor: String, selectedSpecialty: String, selectedDate: Date, selectedTime: String) {
-        self.selectedDoctor = selectedDoctor
-        self.selectedProfession = selectedSpecialty
+    init(doctor: Doctor, selectedDate: Date, selectedTime: String) {
+        self.doctor = doctor
         self.selectedDate = selectedDate
         self.selectedTime = selectedTime
         super.init(nibName: nil, bundle: nil)
@@ -81,8 +79,8 @@ class MakeAppointmentController: UIViewController {
         recordInformationView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -10).isActive = true
         recordInformationView.heightAnchor.constraint(equalToConstant: 140).isActive = true
 
-        recordInformationView.doctorOutputLabel.text = selectedDoctor
-        recordInformationView.professionOutputLabel.text = selectedProfession
+        recordInformationView.doctorOutputLabel.text = doctor.name
+        recordInformationView.professionOutputLabel.text = doctor.profession_titles
         formatter.dateFormat = "dd.MM.yy"
         recordInformationView.dateOutputLabel.text = selectedTime + " " + formatter.string(from: selectedDate)
         recordInformationView.clinicOutputLable.text = "Моя клиника"
@@ -153,8 +151,13 @@ class MakeAppointmentController: UIViewController {
             } else {
                 fullComment = comment!
             }
-            let ticket = Appointment(doctor: selectedDoctor, profession: selectedProfession, time: selectedTime, date: selectedDate, clinic: clinic, comment: fullComment)
+            let ticket = Appointment(doctor: doctor.name, profession: doctor.profession_titles, time: selectedTime, date: selectedDate, clinic: clinic, comment: fullComment)
             databaseService.saveDoctorAppointment(ticket: ticket)
+            let alert = UIAlertController(title: "Уведомление", message: "Поздравляем, вы успешно записались", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { _ in
+                self.navigationController?.popToRootViewController(animated: true)
+            }))
+            present(alert, animated: true, completion: nil)
         } else {
             let alert = UIAlertController(title: "Внимание", message: "Предварительно необходимо зарегистрироваться.", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))

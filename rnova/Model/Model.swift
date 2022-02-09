@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 struct Services: Decodable {
     let id: Int

@@ -120,7 +120,7 @@ extension ProfileController: SendValueProtocol {
             fields = fields + "Дата "
         }
         if user.phoneNumber == "" {
-            fields = fields + "Номер телефона"
+            fields = fields + "Номер телефона "
         }
         if user.password == "" {
             fields = fields + "Пароль"

@@ -159,7 +159,7 @@ class RegistrationView: UIView {
         
         registrationButton.backgroundColor = UIColor.systemGreen
         registrationButton.setTitle("Зарегистрироваться", for: .normal)
-        registrationButton.addTarget(self, action: #selector(registering), for: .touchUpInside)
+        registrationButton.addTarget(self, action: #selector(registering), for: .touchUpInside)  
     }
     
     func configureEnterButton() {

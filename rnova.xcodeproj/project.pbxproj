@@ -41,9 +41,10 @@
 		BB49DEF82757972800CD26A2 /* DatabaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB49DEF72757972800CD26A2 /* DatabaseService.swift */; };
 		BB4ABFF82715BE49008D05F8 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB4ABFF72715BE49008D05F8 /* Model.swift */; };
 		BB4ABFFB2715C006008D05F8 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB4ABFFA2715C006008D05F8 /* View.swift */; };
-		BB4AC0042716D0A5008D05F8 /* RecordViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB4AC0022716D0A5008D05F8 /* RecordViewCell.swift */; };
-		BB4AC0052716D0A5008D05F8 /* RecordViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB4AC0032716D0A5008D05F8 /* RecordViewCell.xib */; };
 		BB4AC0082716D552008D05F8 /* RecordController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB4AC0072716D552008D05F8 /* RecordController.swift */; };
+		BB50D65927AC15C6003BE5D3 /* RecordViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB50D65727AC15C6003BE5D3 /* RecordViewCell.swift */; };
+		BB50D65A27AC15C6003BE5D3 /* RecordViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB50D65827AC15C6003BE5D3 /* RecordViewCell.xib */; };
+		BB50D65C27AC20D2003BE5D3 /* Doctor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB50D65B27AC20D2003BE5D3 /* Doctor.swift */; };
 		BB552DFE2721A563001F605A /* ClinicsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB552DFD2721A563001F605A /* ClinicsController.swift */; };
 		BB552E002721AA1F001F605A /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB552DFF2721AA1F001F605A /* TabBarController.swift */; };
 		BB7CDE5B25D16E96007B1B1A /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB7CDE5A25D16E96007B1B1A /* DetailViewController.swift */; };
@@ -99,9 +100,10 @@
 		BB49DEF72757972800CD26A2 /* DatabaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseService.swift; sourceTree = "<group>"; };
 		BB4ABFF72715BE49008D05F8 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		BB4ABFFA2715C006008D05F8 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
-		BB4AC0022716D0A5008D05F8 /* RecordViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordViewCell.swift; sourceTree = "<group>"; };
-		BB4AC0032716D0A5008D05F8 /* RecordViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecordViewCell.xib; sourceTree = "<group>"; };
 		BB4AC0072716D552008D05F8 /* RecordController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordController.swift; sourceTree = "<group>"; };
+		BB50D65727AC15C6003BE5D3 /* RecordViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordViewCell.swift; sourceTree = "<group>"; };
+		BB50D65827AC15C6003BE5D3 /* RecordViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecordViewCell.xib; sourceTree = "<group>"; };
+		BB50D65B27AC20D2003BE5D3 /* Doctor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Doctor.swift; sourceTree = "<group>"; };
 		BB552DFD2721A563001F605A /* ClinicsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClinicsController.swift; sourceTree = "<group>"; };
 		BB552DFF2721AA1F001F605A /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		BB7CDE5A25D16E96007B1B1A /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
@@ -222,6 +224,7 @@
 			isa = PBXGroup;
 			children = (
 				BB4ABFF72715BE49008D05F8 /* Model.swift */,
+				BB50D65B27AC20D2003BE5D3 /* Doctor.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -253,8 +256,8 @@
 		BB4ABFFC2715DA0F008D05F8 /* Record */ = {
 			isa = PBXGroup;
 			children = (
-				BB4AC0022716D0A5008D05F8 /* RecordViewCell.swift */,
-				BB4AC0032716D0A5008D05F8 /* RecordViewCell.xib */,
+				BB50D65727AC15C6003BE5D3 /* RecordViewCell.swift */,
+				BB50D65827AC15C6003BE5D3 /* RecordViewCell.xib */,
 				BB8A54EB2726AC9500FB8941 /* ProfessionViewCell.swift */,
 				BB8A54EC2726AC9500FB8941 /* ProfessionViewCell.xib */,
 				BB49DEB2272C378F00CD26A2 /* DoctorInformationView.swift */,
@@ -385,6 +388,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BBE91CBD275F9C2200DBA81E /* VisitCardViewCell.xib in Resources */,
+				BB50D65A27AC15C6003BE5D3 /* RecordViewCell.xib in Resources */,
 				BB46D2BC25B856BC003AD167 /* LaunchScreen.storyboard in Resources */,
 				BB46D2B925B856BC003AD167 /* Assets.xcassets in Resources */,
 				BB46D2B725B856B9003AD167 /* Main.storyboard in Resources */,
@@ -395,7 +399,6 @@
 				BB49DEDF274699A000CD26A2 /* SubServiceViewCell.xib in Resources */,
 				BB49DECE2743911F00CD26A2 /* ClinicViewCell.xib in Resources */,
 				BBE91CB9275E579E00DBA81E /* MenuListViewCell.xib in Resources */,
-				BB4AC0052716D0A5008D05F8 /* RecordViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -453,16 +456,17 @@
 				BB49DED82745381600CD26A2 /* ServiceViewCell.swift in Sources */,
 				BB49DEE5274BB72A00CD26A2 /* ServiceCardView.swift in Sources */,
 				BB49DEC3273A66DF00CD26A2 /* ChoiceDateView.swift in Sources */,
-				BB4AC0042716D0A5008D05F8 /* RecordViewCell.swift in Sources */,
 				BB46D2B025B856B9003AD167 /* AppDelegate.swift in Sources */,
 				BB49DEF42751153600CD26A2 /* LoginView.swift in Sources */,
 				BBE91CB0275E417500DBA81E /* MenuListController.swift in Sources */,
 				BBF5F37F265E7F4F00BF1F66 /* Extensions.swift in Sources */,
 				BB49DEBD2739527E00CD26A2 /* MakeAppointmentController.swift in Sources */,
+				BB50D65927AC15C6003BE5D3 /* RecordViewCell.swift in Sources */,
 				BB49DEC9273C0EFC00CD26A2 /* ContactInformationView.swift in Sources */,
 				BB49DEE7274BE30E00CD26A2 /* ServiceCardController.swift in Sources */,
 				BB49DEBA2735053000CD26A2 /* TimeViewCell.swift in Sources */,
 				BB49DEDB2746397500CD26A2 /* SubServiceController.swift in Sources */,
+				BB50D65C27AC20D2003BE5D3 /* Doctor.swift in Sources */,
 				BB49DEC7273BF84200CD26A2 /* RecordInformationView.swift in Sources */,
 				BB552DFE2721A563001F605A /* ClinicsController.swift in Sources */,
 				BB552E002721AA1F001F605A /* TabBarController.swift in Sources */,

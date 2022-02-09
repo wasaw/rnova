@@ -42,6 +42,8 @@ class ServiceController: UIViewController {
         statusBar.backgroundColor = .systemOrange
         UIApplication.shared.keyWindow?.addSubview(statusBar)
         navigationController?.navigationBar.backgroundColor = .systemOrange
+        navigationController?.navigationBar.isTranslucent = true
+        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         navigationController?.preferredStatusBarStyle
         navigationItem.title = "Услуги"
     }

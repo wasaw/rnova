@@ -14,6 +14,8 @@ class TabBarController: UITabBarController {
         tabBar.backgroundColor = .systemOrange
         tabBar.tintColor = .white
         tabBar.unselectedItemTintColor = .black
+        tabBar.isTranslucent = true
+        tabBar.backgroundImage = UIImage()
         
         let recordVC = UINavigationController(rootViewController: RecordController())
         recordVC.tabBarItem.image = UIImage(systemName: "square.and.pencil")

@@ -10,7 +10,7 @@ import UIKit
 class DateRecordChoiceController: UIViewController {
     
     private let doctorId: Int
-    private var doctorData = [Doctors]()
+    private let doctor: Doctor
     private var scheduleData = [String: [Schedule]]()
     private let insents = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
     private let dayNames = [0 : "Пн", 1 : "Вт", 2 : "Ср", 3 : "Чт", 4 : "Пт", 5 : "Сб", 6 : "Вс"]
@@ -40,8 +40,9 @@ class DateRecordChoiceController: UIViewController {
         return label
     }()
     
-    init(id: Int) {
-        self.doctorId = id
+    init(doctor: Doctor) {
+        self.doctor = doctor
+        self.doctorId = doctor.id
         self.dateCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
         self.timeCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
         super.init(nibName: nil, bundle: nil)
@@ -57,14 +58,11 @@ class DateRecordChoiceController: UIViewController {
         navigationItem.title = "Выбор времени"
         
         configureUI()
+        setValue()
         
         let urlStr = "&user_id=" + String(self.doctorId)
         DispatchQueue.main.async {
-            self.doctorData = DataLoader(urlMethod: "&method=getUsers", urlParameter: urlStr).doctorsData
             self.scheduleData = DataLoader(urlMethod: "&method=getSchedule", urlParameter: urlStr).scheduleData
-            if !self.doctorData.isEmpty {
-                self.setValue()
-            }
             if !self.scheduleData.isEmpty {
                 self.setTimeCollectionView()
             }
@@ -214,11 +212,9 @@ class DateRecordChoiceController: UIViewController {
     }
     
     func setValue() {
-        doctorInfoView.surnameLabel.text = doctorData[0].name
-        doctorInfoView.professionLabel.text = doctorData[0].profession_titles
-        if doctorData[0].avatar_small != nil {
-            doctorInfoView.profileImageView.downloaded(from: doctorData[0].avatar_small!)
-        }
+        doctorInfoView.surnameLabel.text = doctor.name
+        doctorInfoView.professionLabel.text = doctor.profession_titles
+        doctorInfoView.profileImageView.image = doctor.image.image
     }
     
     @objc func pressLeftButton() {
@@ -244,13 +240,7 @@ extension DateRecordChoiceController: UICollectionViewDelegate {
             dateCollectionView.reloadData()
             setTimeCollectionView()
         } else {
-            let profession: String
-            if doctorData[0].profession_titles != nil {
-                profession = doctorData[0].profession_titles!
-            } else {
-                profession = "Не указана профессия"
-            }
-            let vc = MakeAppointmentController(selectedDoctor: doctorData[0].name, selectedSpecialty: profession, selectedDate: calendarTwoWeekDay[selectedDay], selectedTime: timeStartArray[indexPath.row])
+            let vc = MakeAppointmentController(doctor: doctor, selectedDate: calendarTwoWeekDay[selectedDay], selectedTime: timeStartArray[indexPath.row])
             navigationController?.pushViewController(vc, animated: true)
         }
     }

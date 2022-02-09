@@ -45,6 +45,8 @@ class ClinicViewCell: UICollectionViewCell {
         btn.setTitleColor(.black, for: .normal)
         btn.layer.cornerRadius = 5
         btn.backgroundColor = .lightGray
+        btn.widthAnchor.constraint(equalToConstant: 200).isActive = true
+        btn.heightAnchor.constraint(equalToConstant: 40).isActive = true
         return btn
     }()
 
@@ -57,42 +59,21 @@ class ClinicViewCell: UICollectionViewCell {
         addSubview(button)
         
         shadow()
+        
+        let stack = UIStackView(arrangedSubviews: [titleLabel, addressLabel, emailLabel, phoneLabel, button])
+        stack.distribution = .fillProportionally
+        stack.alignment = .leading
+        stack.axis = .vertical
+        stack.spacing = 6
+        addSubview(stack)
+        
+        stack.translatesAutoresizingMaskIntoConstraints = false
+        stack.leftAnchor.constraint(equalTo: leftAnchor, constant: 10).isActive = true
+        stack.topAnchor.constraint(equalTo: topAnchor, constant: 10).isActive = true
+        stack.rightAnchor.constraint(equalTo: rightAnchor, constant: -10).isActive = true
+        stack.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -10).isActive = true
+        
         backgroundColor = .white
         
     }
-    
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        
-        titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        titleLabel.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 10).isActive = true
-        titleLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 10).isActive = true
-        titleLabel.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -10).isActive = true
-        titleLabel.heightAnchor.constraint(equalToConstant: 20).isActive = true
-        
-        addressLabel.translatesAutoresizingMaskIntoConstraints = false
-        addressLabel.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 10).isActive = true
-        addressLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 10).isActive = true
-        addressLabel.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -10).isActive = true
-        addressLabel.heightAnchor.constraint(equalToConstant: 50).isActive = true
-        
-        emailLabel.translatesAutoresizingMaskIntoConstraints = false
-        emailLabel.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 10).isActive = true
-        emailLabel.topAnchor.constraint(equalTo: addressLabel.bottomAnchor, constant: 10).isActive = true
-        emailLabel.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -10).isActive = true
-        emailLabel.heightAnchor.constraint(equalToConstant: 20).isActive = true
-        
-        phoneLabel.translatesAutoresizingMaskIntoConstraints = false
-        phoneLabel.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 10).isActive = true
-        phoneLabel.topAnchor.constraint(equalTo: emailLabel.bottomAnchor, constant: 10).isActive = true
-        phoneLabel.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -10).isActive = true
-        phoneLabel.heightAnchor.constraint(equalToConstant: 20).isActive = true
-        
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 10).isActive = true
-        button.topAnchor.constraint(equalTo: phoneLabel.bottomAnchor, constant: 10).isActive = true
-        button.heightAnchor.constraint(equalToConstant: 30).isActive = true
-        button.widthAnchor.constraint(equalToConstant: 120).isActive = true
-    }
-
 }

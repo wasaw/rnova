@@ -29,10 +29,10 @@ class DoctorInformationView: UIView {
     
     var profileImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.layer.cornerRadius = 25
+        imageView.contentMode = .scaleAspectFill
+        imageView.layer.cornerRadius = 30
         imageView.layer.masksToBounds = false
         imageView.clipsToBounds = true
-        imageView.image = UIImage(systemName: "person")
         return imageView
     }()
 
@@ -59,8 +59,8 @@ class DoctorInformationView: UIView {
         profileImageView.translatesAutoresizingMaskIntoConstraints = false
         profileImageView.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
         profileImageView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 20).isActive = true
-        profileImageView.widthAnchor.constraint(equalToConstant: 50).isActive = true
-        profileImageView.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        profileImageView.widthAnchor.constraint(equalToConstant: 60).isActive = true
+        profileImageView.heightAnchor.constraint(equalToConstant: 60).isActive = true
 
         layer.cornerRadius = 10
         layer.shadowColor = UIColor.black.cgColor

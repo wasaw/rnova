@@ -11,7 +11,7 @@ class RecordController: UIViewController {
     
     private let segmentedControl = UISegmentedControl(items: ["Врачи", "Специальности"])
     private var collectionView: UICollectionView?
-    private var doctorsData = [Doctors]()
+    private var doctors = [Doctor]()
     private var professionsData = [Professions]()
     private var quantityProfession = [Int: Int]()
     private let insets = UIEdgeInsets(top: 20, left: 0, bottom: 0, right: 0)
@@ -23,7 +23,7 @@ class RecordController: UIViewController {
         return text.isEmpty
     }
     
-    private var filteredSearchResultDoctors = [Doctors]()
+    private var filteredSearchResultDoctors = [Doctor]()
     private var filteredSearchResultProfessions = [Professions]()
 
     override func viewDidLoad() {
@@ -32,7 +32,17 @@ class RecordController: UIViewController {
         configureUI()
         
         DispatchQueue.main.async {
-            self.doctorsData = DataLoader(urlMethod: "&method=getUsers", urlParameter: "").doctorsData
+            let loadDoctors = DataLoader(urlMethod: "&method=getUsers", urlParameter: "").doctorsData
+            for item in loadDoctors {
+                let downloadImage = UIImageView()
+                if item.avatar_small != nil {
+                    downloadImage.downloaded(from: item.avatar_small!)
+                } else {
+                    downloadImage.image = UIImage(systemName: "person")
+                }
+                let doc = Doctor(id: item.id, name: item.name, profession: item.profession ?? [], profession_titles: item.profession_titles ?? "Доктор", image: downloadImage)
+                self.doctors.append(doc)
+            }
             self.professionsData = DataLoader(urlMethod: "&method=getProfessions", urlParameter: "").professionsData
             self.collectionView?.reloadData()
             self.countingQuantityOfProfessions()
@@ -76,7 +86,6 @@ class RecordController: UIViewController {
     
     func configureSearchBar() {
         navigationItem.searchController = searchController
-
         searchController.searchResultsUpdater = self
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.searchBar.placeholder = "Поиск"
@@ -107,9 +116,9 @@ class RecordController: UIViewController {
         for item in professionsData {
             var quantity = 0
             let id = item.id
-            
-            for item in doctorsData {
-                guard let str = item.profession else { continue }
+
+            for item in doctors {
+                let str = item.profession
                 if !str.isEmpty {
                     for item in str {
                         if id == Int(item) {
@@ -136,9 +145,9 @@ class RecordController: UIViewController {
 //    MARK: -- extension
 extension RecordController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if doctorsData.count != 0 && isDoctorChoice {
+        if doctors.count != 0 && isDoctorChoice {
             if searchBarIsEmpty {
-                return doctorsData.count
+                return doctors.count
             } else {
                 return filteredSearchResultDoctors.count
             }
@@ -158,20 +167,16 @@ extension RecordController: UICollectionViewDataSource {
         guard let cellProfession = collectionView.dequeueReusableCell(withReuseIdentifier: ProfessionViewCell.identifire, for: indexPath) as? ProfessionViewCell else { return UICollectionViewCell()}
         if isDoctorChoice {
             if searchBarIsEmpty {
-                if doctorsData.count != 0 {
-                    if doctorsData[indexPath.row].avatar_small != nil {
-                        cellDoctor.profileImageView.downloaded(from: doctorsData[indexPath.row].avatar_small!)
-                    }
-                    cellDoctor.surnameLabel.text = doctorsData[indexPath.row].name
-                    cellDoctor.professionLabel.text = doctorsData[indexPath.row].profession_titles
+                if !doctors.isEmpty {
+                    cellDoctor.fullnameLabel.text = doctors[indexPath.row].name
+                    cellDoctor.professionLabel.text = doctors[indexPath.row].profession_titles
+                    cellDoctor.profileImageView.image = doctors[indexPath.row].image.image
                 }
             } else {
-                if doctorsData.count != 0 {
-                    if filteredSearchResultDoctors[indexPath.row].avatar_small != nil {
-                        cellDoctor.profileImageView.downloaded(from: filteredSearchResultDoctors[indexPath.row].avatar_small!)
-                    }
-                    cellDoctor.surnameLabel.text = filteredSearchResultDoctors[indexPath.row].name
+                if !doctors.isEmpty {
+                    cellDoctor.fullnameLabel.text = filteredSearchResultDoctors[indexPath.row].name
                     cellDoctor.professionLabel.text = filteredSearchResultDoctors[indexPath.row].profession_titles
+                    cellDoctor.profileImageView.image = filteredSearchResultDoctors[indexPath.row].image.image
                 }
             }
             
@@ -193,9 +198,9 @@ extension RecordController: UICollectionViewDataSource {
 extension RecordController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if isDoctorChoice {
-            let id: Int
-            searchBarIsEmpty ? ( id = doctorsData[indexPath.row].id) : (id = filteredSearchResultDoctors[indexPath.row].id)
-            let vc = DateRecordChoiceController(id: id)
+            let doctor: Doctor
+            searchBarIsEmpty ? ( doctor = doctors[indexPath.row]) : (doctor = filteredSearchResultDoctors[indexPath.row])
+            let vc = DateRecordChoiceController(doctor: doctor)
             navigationController?.pushViewController(vc, animated: true)
         } else {
             let id: Int
@@ -227,7 +232,7 @@ extension RecordController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
         if !searchBarIsEmpty {
             if isDoctorChoice {
-                filteredSearchResultDoctors = doctorsData.filter({ (list: Doctors) -> Bool in
+                filteredSearchResultDoctors = doctors.filter({ (list: Doctor) -> Bool in
                     return list.name.lowercased().contains(searchController.searchBar.text?.lowercased() ?? "")
                 })
             } else {
