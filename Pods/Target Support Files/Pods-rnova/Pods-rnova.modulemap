@@ -1,6 +1,0 @@
-framework module Pods_rnova {
-  umbrella header "Pods-rnova-umbrella.h"
-
-  export *
-  module * { export * }
-}
