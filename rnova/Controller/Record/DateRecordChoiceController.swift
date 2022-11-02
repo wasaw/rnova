@@ -9,6 +9,8 @@ import UIKit
 
 class DateRecordChoiceController: UIViewController {
     
+//    MARK: - Properties
+    
     private let doctorId: Int
     private let doctor: Doctor
     private var scheduleData = [String: [Schedule]]()
@@ -24,12 +26,13 @@ class DateRecordChoiceController: UIViewController {
     private let doctorInfoView = DoctorInformationView()
     private let choiceDateView = ChoiceDateView()
         
-    private var dateCollectionView: UICollectionView
-    private var timeCollectionView: UICollectionView
+    private var dateCollectionView: UICollectionView?
+    private var timeCollectionView: UICollectionView?
     
     private let choiceTimeLabel: UILabel = {
         let label = UILabel()
         label.text = "Выбрать время:"
+        label.textColor = .black
         label.font = UIFont.boldSystemFont(ofSize: 22)
         return label
     }()
@@ -37,14 +40,15 @@ class DateRecordChoiceController: UIViewController {
         let label = UILabel()
         label.text = "Нет свободного времени"
         label.font = UIFont.systemFont(ofSize: 19)
+        label.textColor = .black
         return label
     }()
+    
+//    MARK: - Lifecycle
     
     init(doctor: Doctor) {
         self.doctor = doctor
         self.doctorId = doctor.id
-        self.dateCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
-        self.timeCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -56,10 +60,17 @@ class DateRecordChoiceController: UIViewController {
         super.viewDidLoad()
         
         navigationItem.title = "Выбор времени"
-        
+        choiceDateView.delegate = self
+        loadInformation()
         configureUI()
         setValue()
-        
+        configureDate()
+        view.backgroundColor = .white
+    }
+    
+//    MARK: - Functions
+    
+    private func loadInformation() {
         let urlStr = "&user_id=" + String(self.doctorId)
         DispatchQueue.main.async {
             self.scheduleData = DataLoader(urlMethod: "&method=getSchedule", urlParameter: urlStr).scheduleData
@@ -67,15 +78,9 @@ class DateRecordChoiceController: UIViewController {
                 self.setTimeCollectionView()
             }
         }
-        
-        configureDate()
-        
-        view.backgroundColor = .white
     }
     
-//    MARK: -- Function
-    
-    func configureUI() {
+    private func configureUI() {
         configureDoctorView()
         configureDateCollectionView()
         configureChoiceTimeLabel()
@@ -83,73 +88,50 @@ class DateRecordChoiceController: UIViewController {
         configureNoFreeTimeLabel()
     }
     
-    func configureDoctorView() {
+    private func configureDoctorView() {
         view.addSubview(doctorInfoView)
         view.addSubview(choiceDateView)
+        doctorInfoView.anchor(left: view.leftAnchor, top: view.safeAreaLayoutGuide.topAnchor, right: view.rightAnchor, paddingLeft: 10, paddingTop: 20, paddingRight: -10, width: view.frame.width - 20, height: view.frame.width / 4)
         
-        doctorInfoView.translatesAutoresizingMaskIntoConstraints = false
-        doctorInfoView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 10).isActive  = true
-        doctorInfoView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20).isActive = true
-        doctorInfoView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -10).isActive = true
-        doctorInfoView.heightAnchor.constraint(equalToConstant: view.frame.width / 4).isActive = true
-        doctorInfoView.widthAnchor.constraint(equalToConstant: view.frame.width - 20).isActive = true
-        
-        choiceDateView.translatesAutoresizingMaskIntoConstraints = false
-        choiceDateView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 10).isActive = true
-        choiceDateView.topAnchor.constraint(equalTo: doctorInfoView.bottomAnchor, constant: 30).isActive = true
-        choiceDateView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -10).isActive = true
-        choiceDateView.heightAnchor.constraint(equalToConstant: 120).isActive = true
+        choiceDateView.anchor(left: view.leftAnchor, top: doctorInfoView.bottomAnchor, right: view.rightAnchor, paddingLeft: 10, paddingTop: 30, paddingRight: -10, height: 120)
     }
     
-    func configureDateCollectionView() {
+    private func configureDateCollectionView() {
+        dateCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
+        guard let dateCollectionView = dateCollectionView else { return }
         dateCollectionView.delegate = self
         dateCollectionView.dataSource = self
-        dateCollectionView.register(UINib(nibName: CalendarViewCell.identifire, bundle: nil), forCellWithReuseIdentifier: CalendarViewCell.identifire)
+        dateCollectionView.register(CalendarViewCell.self, forCellWithReuseIdentifier: CalendarViewCell.identifire)
         
         view.addSubview(dateCollectionView)
-        
-        dateCollectionView.translatesAutoresizingMaskIntoConstraints = false
-        dateCollectionView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 10).isActive = true
-        dateCollectionView.topAnchor.constraint(equalTo: choiceDateView.bottomAnchor, constant: 30).isActive = true
-        dateCollectionView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -10).isActive = true
-        dateCollectionView.heightAnchor.constraint(equalToConstant: 170).isActive = true
+        dateCollectionView.anchor(left: view.leftAnchor, top: choiceDateView.bottomAnchor, right: view.rightAnchor, paddingLeft: 10, paddingTop: 30, paddingRight: -10, height: 170)
+        dateCollectionView.backgroundColor = .white
     }
     
-    func configureChoiceTimeLabel() {
+    private func configureChoiceTimeLabel() {
         view.addSubview(choiceTimeLabel)
-        
-        choiceTimeLabel.translatesAutoresizingMaskIntoConstraints = false
-        choiceTimeLabel.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 10).isActive = true
-        choiceTimeLabel.topAnchor.constraint(equalTo: dateCollectionView.bottomAnchor, constant: 20).isActive = true
-        choiceTimeLabel.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -10).isActive = true
+        choiceTimeLabel.anchor(left: view.leftAnchor, top: dateCollectionView?.bottomAnchor, right: view.rightAnchor, paddingLeft: 10, paddingTop: 20, paddingRight: -10)
     }
     
-    func configureTimeCollectionView() {
+    private func configureTimeCollectionView() {
+        timeCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
+        guard let timeCollectionView = timeCollectionView else { return }
         timeCollectionView.delegate = self
         timeCollectionView.dataSource = self
-        timeCollectionView.register(UINib(nibName: TimeViewCell.identifire, bundle: nil), forCellWithReuseIdentifier: TimeViewCell.identifire)
+        timeCollectionView.register(TimeViewCell.self, forCellWithReuseIdentifier: TimeViewCell.identifire)
         
         view.addSubview(timeCollectionView)
-        
-        timeCollectionView.translatesAutoresizingMaskIntoConstraints = false
-        timeCollectionView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 10).isActive = true
-        timeCollectionView.topAnchor.constraint(equalTo: choiceTimeLabel.bottomAnchor, constant: 30).isActive = true
-        timeCollectionView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -10).isActive = true
-        timeCollectionView.heightAnchor.constraint(equalToConstant: 170).isActive = true
+        timeCollectionView.anchor(left: view.leftAnchor, top: choiceTimeLabel.bottomAnchor, right: view.rightAnchor, paddingLeft: 10, paddingTop: 30, paddingRight: -10, height: 170)
+        timeCollectionView.backgroundColor = .white
     }
     
-    func configureNoFreeTimeLabel() {
+    private func configureNoFreeTimeLabel() {
         view.addSubview(noFreeTimeLabel)
-        
-        noFreeTimeLabel.translatesAutoresizingMaskIntoConstraints = false
-        noFreeTimeLabel.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 10).isActive = true
-        noFreeTimeLabel.topAnchor.constraint(equalTo: choiceTimeLabel.bottomAnchor, constant: 20).isActive = true
-        noFreeTimeLabel.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -10).isActive = true
-        noFreeTimeLabel.heightAnchor.constraint(equalToConstant: 30).isActive = true
+        noFreeTimeLabel.anchor(left: view.leftAnchor, top: choiceTimeLabel.bottomAnchor, right: view.rightAnchor, paddingLeft: 10, paddingTop: 20, paddingRight: -10, height: 30)
         noFreeTimeLabel.isHidden = false
     }
     
-    func configureDate() {
+    private func configureDate() {
         let dayOfWeek = Calendar.current.component(.weekday, from: currentDay)
 
         switch dayOfWeek {
@@ -184,16 +166,16 @@ class DateRecordChoiceController: UIViewController {
         }
     }
     
-    func setDateDurationLabel() {
+    private func setDateDurationLabel() {
         let firstDay = Calendar.current.date(byAdding: .day, value: calendarDayCounter, to: currentDay)
         let lastDay = Calendar.current.date(byAdding: .day, value: calendarDayCounter + 13, to: currentDay)
         formatter.dateFormat = "dd MMMM"
         guard let firstDay = firstDay else { return }
         guard let lastDay = lastDay else { return }
-        choiceDateView.dateDurationLabel.text = formatter.string(from: firstDay) + " - " + formatter.string(from: lastDay)
+        choiceDateView.setInformation(firstDay: formatter.string(from: firstDay), lastDay: formatter.string(from: lastDay))
     }
     
-    func setTimeCollectionView() {
+    private func setTimeCollectionView() {
         guard let scheduleTimeArr = scheduleData[String(doctorId)] else { return }
         formatter.dateFormat = "dd.MM.yyyy"
         let choiceDay = formatter.string(from: calendarTwoWeekDay[selectedDay])
@@ -208,36 +190,21 @@ class DateRecordChoiceController: UIViewController {
         } else {
             noFreeTimeLabel.isHidden = true
         }
-        timeCollectionView.reloadData()
+        timeCollectionView?.reloadData()
     }
     
-    func setValue() {
-        doctorInfoView.surnameLabel.text = doctor.name
-        doctorInfoView.professionLabel.text = doctor.profession_titles
-        doctorInfoView.profileImageView.image = doctor.image.image
-    }
-    
-    @objc func pressLeftButton() {
-        //2 week
-        currentDay = currentDay.addingTimeInterval(-1209600)
-        configureDate()
-        dateCollectionView.reloadData()
-    }
-    
-    @objc func pressRightButton() {
-        //2 week
-        currentDay = currentDay.addingTimeInterval(1209600)
-        configureDate()
-        dateCollectionView.reloadData()
+    private func setValue() {
+        doctorInfoView.setInformation(doctor)
     }
 }
 
-// MARK: -- extension
+// MARK: - Extensions
+
 extension DateRecordChoiceController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if collectionView == self.dateCollectionView {
             selectedDay = indexPath.row - 7
-            dateCollectionView.reloadData()
+            dateCollectionView?.reloadData()
             setTimeCollectionView()
         } else {
             let vc = MakeAppointmentController(doctor: doctor, selectedDate: calendarTwoWeekDay[selectedDay], selectedTime: timeStartArray[indexPath.row])
@@ -258,24 +225,24 @@ extension DateRecordChoiceController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if collectionView == self.dateCollectionView {
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CalendarViewCell.identifire, for: indexPath) as? CalendarViewCell else { return UICollectionViewCell() }
-            cell.backgroundColor = .white
+            cell.resetDate()
             if indexPath.row < 7 {
-                cell.label.text = dayNames[indexPath.row]
+                if let dayName = dayNames[indexPath.row] {
+                    cell.setInformation(dayName)
+                }
             } else {
                 formatter.dateFormat = "dd"
                 let stringDay = formatter.string(from: calendarTwoWeekDay[indexPath.row - 7])
-                cell.label.text = stringDay
+                cell.setInformation(stringDay)
                 if indexPath.row - 7 == selectedDay{
-                    cell.backgroundColor = .systemOrange
+                    cell.selectDate()
                     cell.layer.cornerRadius = cell.frame.width / 2
                 }
             }
             return cell
         } else {
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TimeViewCell.identifire, for: indexPath) as? TimeViewCell else { return UICollectionViewCell() }
-            cell.backgroundColor = .systemOrange
-            cell.layer.cornerRadius = 15
-            cell.label.text = timeStartArray[indexPath.row]
+            cell.setInformation(timeStartArray[indexPath.row])
             return cell
         }
     }
@@ -296,5 +263,19 @@ extension DateRecordChoiceController: UICollectionViewDelegateFlowLayout {
             let heigt = CGFloat(40)
             return CGSize(width: width, height: heigt)
         }
+    }
+}
+
+extension DateRecordChoiceController: FlipCalendarDelegate {
+    func flipCalendar(direction: FlipCalendar) {
+        //2 week
+        switch direction {
+        case .left:
+            currentDay = currentDay.addingTimeInterval(-1209600)
+        case .right:
+            currentDay = currentDay.addingTimeInterval(1209600)
+        }
+        configureDate()
+        dateCollectionView?.reloadData()
     }
 }

@@ -9,6 +9,9 @@ import UIKit
 import SideMenu
 
 class VisitsController: UIViewController {
+    
+//    MARK - Properties
+    
     private let segmentedControl = UISegmentedControl(items: ["Будущие", "Прошедшие"])
     private var collectionView: UICollectionView?
     private var sideMenu: SideMenuNavigationController?
@@ -18,29 +21,35 @@ class VisitsController: UIViewController {
     private var pastTickets = [Appointment]()
     private var futureTickets = [Appointment]()
     
+//  MARK: - Lifecycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         navigationItem.title = "Визиты"
         
+        loadInformation()
+        configureUI()
+        view.backgroundColor = .white
+    }
+    
+//    MARK: - Helpers
+    
+    private func loadInformation() {
         DispatchQueue.main.async {
             self.ticketsArray = self.databaseService.loadDoctorAppointment()
             self.sortingTickets()
             self.collectionView?.reloadData()
         }
-        
-        configureUI()
-        
-        view.backgroundColor = .white
     }
     
-    func configureUI() {
+    private func configureUI() {
         configureSideMenu()
         configureSegmentedControl()
         configureCollectionView()
     }
     
-    func configureSideMenu() {
+    private func configureSideMenu() {
         let imageBar = UIImage(systemName: "line.horizontal.3")
         navigationController?.navigationBar.tintColor = .white
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: imageBar, style: .plain, target: self, action: #selector(presentingSideMenu))
@@ -50,7 +59,7 @@ class VisitsController: UIViewController {
         sideMenu?.navigationBar.backgroundColor = .systemOrange
     }
     
-    func configureSegmentedControl() {
+    private func configureSegmentedControl() {
         view.addSubview(segmentedControl)
         
         segmentedControl.translatesAutoresizingMaskIntoConstraints = false
@@ -67,11 +76,11 @@ class VisitsController: UIViewController {
         segmentedControl.addTarget(self, action: #selector(didTapSegment), for: .valueChanged)
     }
     
-    func configureCollectionView() {
+    private func configureCollectionView() {
         let layout = UICollectionViewFlowLayout()
         collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         guard let collectionView = collectionView else { return }
-        collectionView.register(UINib(nibName: VisitCardViewCell.identifire, bundle: nil), forCellWithReuseIdentifier: VisitCardViewCell.identifire)
+        collectionView.register(VisitCardViewCell.self, forCellWithReuseIdentifier: VisitCardViewCell.identifire)
         collectionView.dataSource = self
         collectionView.delegate = self
         view.addSubview(collectionView)
@@ -83,7 +92,7 @@ class VisitsController: UIViewController {
         collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
     }
     
-    func sortingTickets() {
+    private func sortingTickets() {
         let dateComponents = Calendar.current.dateComponents([.day, .month, .year], from: Date())
         for item in ticketsArray {
             let ticketDateComponents = Calendar.current.dateComponents([.day, .month, .year], from: item.date)
@@ -95,6 +104,7 @@ class VisitsController: UIViewController {
         }
     }
     
+//    MARK: - Selecters
     
     @objc func didTapSegment() {
         collectionView?.reloadData()
@@ -106,10 +116,7 @@ class VisitsController: UIViewController {
     }
 }
 
-// MARK: - extensions
-extension VisitsController: UICollectionViewDelegate {
-    
-}
+// MARK: - Extensions
 
 extension VisitsController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -131,18 +138,10 @@ extension VisitsController: UICollectionViewDataSource {
             formatter.dateFormat = "dd MMMM yyyy"
             if segmentedControl.selectedSegmentIndex == 0 {
                 let date = formatter.string(from: futureTickets[indexPath.row].date)
-                cell.dateLabel.text = date + ", " + futureTickets[indexPath.row].time
-                cell.doctorFullNameLabel.text = futureTickets[indexPath.row].doctor
-                cell.doctorProfessionLabel.text = futureTickets[indexPath.row].profession
-                cell.clinicTitleLabel.text = futureTickets[indexPath.row].clinic
-                cell.commentLabel.text = futureTickets[indexPath.row].comment
+                cell.setInformation(futureTickets[indexPath.row], date: date)
             } else {
                 let date = formatter.string(from: pastTickets[indexPath.row].date)
-                cell.dateLabel.text = date + ", " + pastTickets[indexPath.row].time
-                cell.doctorFullNameLabel.text = pastTickets[indexPath.row].doctor
-                cell.doctorProfessionLabel.text = pastTickets[indexPath.row].profession
-                cell.clinicTitleLabel.text = pastTickets[indexPath.row].clinic
-                cell.commentLabel.text = pastTickets[indexPath.row].comment
+                cell.setInformation(pastTickets[indexPath.row], date: date)
             }
         }
         return cell

@@ -9,6 +9,8 @@ import UIKit
 
 class ServiceController: UIViewController {
     
+//    MARK: - Properties
+    
     private var searchController = UISearchController(searchResultsController: nil)
     private var searchBarIsEmpty: Bool {
         guard let text = searchController.searchBar.text else { return false }
@@ -21,22 +23,28 @@ class ServiceController: UIViewController {
     private var servicesData = [Services]()
     private var filteredSearchResultServices = [Services]()
     
+//    MARK: - Lifecycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        loadInformation()
+        configureCollectionView()
+        configureStatusBar()
+        configureSearchBar()
+        view.backgroundColor = .white
+    }
+    
+//    MARK: - Helpers
+    
+    private func loadInformation() {
         DispatchQueue.main.async {
             self.servicesData = DataLoader(urlMethod: "&method=getServiceCategories", urlParameter: "").servicesData
             self.collectionView?.reloadData()
         }
-        
-        configureCollectionView()
-        configureStatusBar()
-        configureSearchBar()
-
-        view.backgroundColor = .white
     }
     
-    func configureStatusBar() {
+    private func configureStatusBar() {
         let statusBar = UIView()
         statusBar.frame = UIApplication.shared.statusBarFrame
         statusBar.backgroundColor = .systemOrange
@@ -48,7 +56,7 @@ class ServiceController: UIViewController {
         navigationItem.title = "Услуги"
     }
     
-    func configureSearchBar() {
+    private func configureSearchBar() {
         navigationItem.searchController = searchController
         navigationItem.hidesSearchBarWhenScrolling = false
         searchController.searchResultsUpdater = self
@@ -59,26 +67,23 @@ class ServiceController: UIViewController {
         searchController.searchBar.heightAnchor.constraint(equalToConstant: 40).isActive = true
     }
     
-    func configureCollectionView() {
+    private func configureCollectionView() {
         let layout = UICollectionViewFlowLayout()
         layout.minimumLineSpacing = 20
         collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         guard let collectionView = collectionView else { return }
-        collectionView.register(UINib(nibName: ServiceViewCell.identifire, bundle: nil), forCellWithReuseIdentifier: ServiceViewCell.identifire)
+        collectionView.register(ServiceViewCell.self, forCellWithReuseIdentifier: ServiceViewCell.identifire)
         collectionView.collectionViewLayout = layout
         collectionView.delegate = self
         collectionView.dataSource = self
         view.addSubview(collectionView)
-
-        collectionView.translatesAutoresizingMaskIntoConstraints = false
-        collectionView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
-        collectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
-        collectionView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
-        collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        collectionView.anchor(left: view.leftAnchor, top: view.safeAreaLayoutGuide.topAnchor, right: view.rightAnchor, bottom: view.bottomAnchor)
+        collectionView.backgroundColor = .white
     }
 }
 
-// MARK: -- extension
+// MARK: - Extensions
+
 extension ServiceController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let id: Int
@@ -108,9 +113,11 @@ extension ServiceController: UICollectionViewDataSource {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ServiceViewCell.identifire, for: indexPath) as? ServiceViewCell else { return UICollectionViewCell() }
         if !servicesData.isEmpty {
             if searchBarIsEmpty {
-                cell.serviceLabel.text = servicesData[indexPath.row].title
+                let title = servicesData[indexPath.row].title
+                cell.setTitle(title)
             } else {
-                cell.serviceLabel.text = filteredSearchResultServices[indexPath.row].title
+                let title = filteredSearchResultServices[indexPath.row].title
+                cell.setTitle(title)
             }
         }
         return cell

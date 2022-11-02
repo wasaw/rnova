@@ -9,9 +9,13 @@ import UIKit
 
 class ServiceCardController: UIViewController {
     
+//    MARK: - Properties
+    
     private let serviceCardView = ServiceCardView()
     private let serviceCardName: String
     private let serviceCardCost: String
+    
+//    MARK: - Lifecycle
     
     init(name: String, cost: String) {
         self.serviceCardName = name
@@ -27,23 +31,17 @@ class ServiceCardController: UIViewController {
         super.viewDidLoad()
         
         navigationItem.title = "Карточка услуги"
-        
         configureServiceCard()
-        
         view.backgroundColor = .white
     }
     
-    func configureServiceCard() {
+//    MARK: - Helpers
+    
+    private func configureServiceCard() {
         view.addSubview(serviceCardView)
-        
-        serviceCardView.translatesAutoresizingMaskIntoConstraints = false
-        serviceCardView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 10).isActive = true
-        serviceCardView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20).isActive = true
-        serviceCardView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -10).isActive = true
-        serviceCardView.heightAnchor.constraint(equalToConstant: 100).isActive = true
-        
-        serviceCardView.serviceNameLabel.text = serviceCardName
-        serviceCardView.serviceCostLabel.text = serviceCardCost + " руб."
+        serviceCardView.anchor(left: view.leftAnchor, top: view.safeAreaLayoutGuide.topAnchor, right: view.rightAnchor, paddingLeft: 10, paddingTop: 20, paddingRight: -10, height: 100)
+        let cost = serviceCardCost + " руб."
+        serviceCardView.setInformation(name: serviceCardName, cost: cost)
     }
 }
 

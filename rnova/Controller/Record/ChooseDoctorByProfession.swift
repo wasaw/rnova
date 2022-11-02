@@ -9,9 +9,13 @@ import UIKit
 
 class ChooseDoctorByProfession: UIViewController {
     
+//    MARK: - Properties
+    
     private let professionId: Int
     private var doctors = [Doctor]()
     private var collectionView: UICollectionView?
+    
+//    MARK: - Lifecycle
     
     init(professionId: Int){
         self.professionId = professionId
@@ -26,8 +30,14 @@ class ChooseDoctorByProfession: UIViewController {
         super.viewDidLoad()
         
         navigationItem.title = "Выбор специалиста"
+        loadInformation()
         configureCollectionView()
-        
+        view.backgroundColor = .white
+    }
+    
+//    MARK: - Helpers
+    
+    private func loadInformation() {
         DispatchQueue.main.async {
             let urlParameter = "&profession_id=" + String(self.professionId)
             let doctorsData = DataLoader(urlMethod: "&method=getUsers", urlParameter: urlParameter).doctorsData
@@ -45,29 +55,22 @@ class ChooseDoctorByProfession: UIViewController {
             }
             self.collectionView?.reloadData()
         }
-                
-        view.backgroundColor = .white
     }
     
-    func configureCollectionView() {
+    private func configureCollectionView() {
         collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
         guard let collectionView = collectionView else { return }
         collectionView.delegate = self
         collectionView.dataSource = self
-        collectionView.register(UINib(nibName: RecordViewCell.identifire, bundle: nil), forCellWithReuseIdentifier: RecordViewCell.identifire)
+        collectionView.register(DoctorViewCell.self, forCellWithReuseIdentifier: DoctorViewCell.identifire)
         view.addSubview(collectionView)
-        
-        collectionView.translatesAutoresizingMaskIntoConstraints = false
-        collectionView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
-        collectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20).isActive = true
-        collectionView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
-        collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
-        
+        collectionView.anchor(left: view.leftAnchor, top: view.safeAreaLayoutGuide.topAnchor, right: view.rightAnchor, bottom: view.bottomAnchor, paddingTop: 20)
         collectionView.backgroundColor = .white
     }
 }
 
-// MARK: --extension
+// MARK: - Extensions
+
 extension ChooseDoctorByProfession: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let vc = DateRecordChoiceController(doctor: doctors[indexPath.row])
@@ -85,13 +88,12 @@ extension ChooseDoctorByProfession: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: RecordViewCell.identifire, for: indexPath) as? RecordViewCell else { return UICollectionViewCell()}
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DoctorViewCell.identifire, for: indexPath) as? DoctorViewCell else { return UICollectionViewCell()}
         if doctors[indexPath.row].image.image == nil {
             collectionView.reloadData()
         }
-        cell.professionLabel.text = doctors[indexPath.row].profession_titles
-        cell.fullnameLabel.text = doctors[indexPath.row].name
-        cell.profileImageView.image = doctors[indexPath.row].image.image
+        cell.setInformation(doctors[indexPath.item])
+
         return cell
     }
 }

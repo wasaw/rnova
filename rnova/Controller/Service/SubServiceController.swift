@@ -8,11 +8,16 @@
 import UIKit
 
 class SubServiceController: UIViewController {
+    
+//    MARK: - Properties
+    
     private let serviceId: Int
     private let insets = UIEdgeInsets(top: 20, left: 0, bottom: 0, right: 0)
     private var subServicesData = [SubService]()
     
     private var collectionView: UICollectionView?
+    
+//    MARK: - Lifecycle
     
     init(id: Int) {
         self.serviceId = id
@@ -27,36 +32,38 @@ class SubServiceController: UIViewController {
         super.viewDidLoad()
         
         navigationItem.title = "Выбор услуги"
+        loadInformation()
+        configureCollectionView()
+        view.backgroundColor = .white
+    }
+    
+//    MARK: - Helpers
+    
+    private func loadInformation() {
         DispatchQueue.main.async {
             let urlParameter = "&category_id=" + String(self.serviceId)
             self.subServicesData = DataLoader(urlMethod: "&method=getServices", urlParameter: urlParameter).subServicesData
             self.collectionView?.reloadData()
         }
-        
-        configureCollectionView()
-        
-        view.backgroundColor = .white
     }
     
-    func configureCollectionView() {
+    private func configureCollectionView() {
         let layout = UICollectionViewFlowLayout()
         layout.minimumLineSpacing = 20
         collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         guard let collectionView = collectionView else { return }
         collectionView.register(UINib(nibName: SubServiceViewCell.identifire, bundle: nil), forCellWithReuseIdentifier: SubServiceViewCell.identifire)
+        collectionView.register(SubServiceViewCell.self, forCellWithReuseIdentifier: SubServiceViewCell.identifire)
         collectionView.delegate = self
         collectionView.dataSource = self
         view.addSubview(collectionView)
-        
-        collectionView.translatesAutoresizingMaskIntoConstraints = false
-        collectionView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
-        collectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
-        collectionView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
-        collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        collectionView.anchor(left: view.leftAnchor, top: view.safeAreaLayoutGuide.topAnchor, right: view.rightAnchor, bottom: view.bottomAnchor)
+        collectionView.backgroundColor = .white
     }
 }
 
-// MARK: --extension
+// MARK: - Extensions
+
 extension SubServiceController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let name = subServicesData[indexPath.row].title
@@ -77,8 +84,9 @@ extension SubServiceController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SubServiceViewCell.identifire, for: indexPath) as? SubServiceViewCell else { return UICollectionViewCell() }
         if !subServicesData.isEmpty {
-            cell.serviceNameLabel.text = subServicesData[indexPath.row].title
-            cell.serviceCostLabel.text = subServicesData[indexPath.row].price + " руб."
+            let title = subServicesData[indexPath.row].title
+            let cost = subServicesData[indexPath.row].price + " руб."
+            cell.setInformation(title: title, cost: cost)
         }
         return cell
     }

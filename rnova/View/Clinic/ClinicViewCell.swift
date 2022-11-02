@@ -7,16 +7,30 @@
 
 import UIKit
 
+protocol SendMailDelegate: AnyObject {
+    func sendEmail()
+}
+
+protocol CallPhoneDelegate: AnyObject {
+    func callPhone(_ phone: String)
+}
+
 class ClinicViewCell: UICollectionViewCell {
     static let identifire = "ClinicViewCell"
     
-    let titleLabel: UILabel = {
+//    MARK: - Properties
+    
+    weak var emailDelegate: SendMailDelegate?
+    weak var phoneDelegate: CallPhoneDelegate?
+    
+    private let titleLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.boldSystemFont(ofSize: 19)
         label.textColor = .black
         return label
     }()
-    let addressLabel: UILabel = {
+    
+    private let addressLabel: UILabel = {
         let label = UILabel()
         label.textColor = .gray
         label.font = UIFont.systemFont(ofSize: 14)
@@ -24,20 +38,23 @@ class ClinicViewCell: UICollectionViewCell {
         label.numberOfLines = 2
         return label
     }()
-    let emailLabel: UILabel = {
+    
+    private let emailLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 14)
         label.textColor = .systemOrange
         label.isUserInteractionEnabled = true
         return label
     }()
-    let phoneLabel: UILabel = {
+    
+    private let phoneLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 14)
         label.textColor = .gray
         return label
     }()
-    let button: UIButton = {
+    
+    private let button: UIButton = {
         let btn = UIButton()
         btn.setTitle(" Позвонить", for: .normal)
         btn.titleLabel?.font = UIFont.systemFont(ofSize: 14)
@@ -47,33 +64,53 @@ class ClinicViewCell: UICollectionViewCell {
         btn.backgroundColor = .lightGray
         btn.widthAnchor.constraint(equalToConstant: 200).isActive = true
         btn.heightAnchor.constraint(equalToConstant: 40).isActive = true
+        btn.addTarget(self, action: #selector(handleButtonAction), for: .touchUpInside)
         return btn
     }()
-
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        addSubview(titleLabel)
-        addSubview(addressLabel)
-        addSubview(emailLabel)
-        addSubview(phoneLabel)
-        addSubview(button)
+    
+//    MARK: - Lifecyle
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
         
+        let tap = UITapGestureRecognizer(target: self, action: #selector(sendMail))
+        emailLabel.addGestureRecognizer(tap)
+        configureUI()
         shadow()
-        
+        backgroundColor = .white
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+//    MARK: - Helpers
+    
+    private func configureUI() {
         let stack = UIStackView(arrangedSubviews: [titleLabel, addressLabel, emailLabel, phoneLabel, button])
         stack.distribution = .fillProportionally
         stack.alignment = .leading
         stack.axis = .vertical
         stack.spacing = 6
         addSubview(stack)
-        
-        stack.translatesAutoresizingMaskIntoConstraints = false
-        stack.leftAnchor.constraint(equalTo: leftAnchor, constant: 10).isActive = true
-        stack.topAnchor.constraint(equalTo: topAnchor, constant: 10).isActive = true
-        stack.rightAnchor.constraint(equalTo: rightAnchor, constant: -10).isActive = true
-        stack.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -10).isActive = true
-        
-        backgroundColor = .white
-        
+        stack.anchor(left: leftAnchor, top: topAnchor, right: rightAnchor, bottom: bottomAnchor, paddingLeft: 10, paddingTop: 10, paddingRight: -10, paddingBottom: -10)
+    }
+    
+    func setInformation(_ clinic: Clinic) {
+        titleLabel.text = clinic.title
+        addressLabel.text = clinic.address
+        emailLabel.text = clinic.email
+        phoneLabel.text = clinic.mobile
+    }
+    
+//    MARK: - Helpers
+    
+    @objc private func sendMail() {
+        emailDelegate?.sendEmail()
+    }
+    
+    @objc private func handleButtonAction() {
+        guard let phone = phoneLabel.text else { return }
+        phoneDelegate?.callPhone(phone)
     }
 }

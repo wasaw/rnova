@@ -16,81 +16,30 @@ protocol PresentViewProtocol: AnyObject {
 }
 
 class RegistrationView: UIView {
-    private let lastNameField: UITextField = {
-        let tf = UITextField()
-        tf.placeholder = "Фамилия"
-        tf.clearButtonMode = .always
-        tf.clearsOnBeginEditing = true
-        tf.autocorrectionType = .no
-        tf.spellCheckingType = .no
-        return tf
-    }()
-    private let firstNameField: UITextField = {
-        let tf = UITextField()
-        tf.placeholder = "Имя"
-        tf.clearButtonMode = .always
-        tf.clearsOnBeginEditing = true
-        tf.autocorrectionType = .no
-        tf.spellCheckingType = .no
-        return tf
-    }()
-    private let surnameField: UITextField = {
-        let tf = UITextField()
-        tf.placeholder = "Отчество"
-        tf.clearButtonMode = .always
-        tf.clearsOnBeginEditing = true
-        tf.autocorrectionType = .no
-        tf.spellCheckingType = .no
-        return tf
-    }()
-    private let dateField: UITextField = {
-        let tf = UITextField()
-        tf.placeholder = "Дата рождения"
-        tf.clearButtonMode = .always
-        tf.clearsOnBeginEditing = true
-        return tf
-    }()
-    private let phoneNumberField: UITextField = {
-        let tf = UITextField()
-        tf.placeholder = "Номер телефона"
-        tf.clearButtonMode = .always
-        tf.clearsOnBeginEditing = true
-        return tf
-    }()
-    private let passwordField: UITextField = {
-        let tf = UITextField()
-        tf.placeholder = "Пароль"
-        tf.clearButtonMode = .always
-        tf.clearsOnBeginEditing = true
-        tf.textContentType = .password
-        tf.isSecureTextEntry = true
-        tf.autocorrectionType = .no
-        tf.spellCheckingType = .no
-        tf.returnKeyType = .done
-        return tf
-    }()
+    
+//    MARK: - Properties
+    
+    private let lastNameField = UIView().fieldForForm(placeholder: "Фамилия")
+    private let firstNameField = UIView().fieldForForm(placeholder: "Имя")
+    private let surnameField = UIView().fieldForForm(placeholder: "Отчество")
+    private let dateField = UIView().fieldForForm(placeholder: "Дата рождения")
+    private let phoneNumberField = UIView().fieldForForm(placeholder: "Номер телефона")
+    private let passwordField = UIView().fieldForForm(placeholder: "Пароль", isSecure: true)
     
     private let datePicker = UIDatePicker()
     
-    private let registrationButton = View().button
-    private let enterButton = View().button
+    private let registrationButton = UIView().getButton()
+    private let enterButton = UIView().getButton()
     
     weak var delegate: SendValueProtocol?
     weak var delegateShow: PresentViewProtocol?
 
+//    MARK: - Lifecycle
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        addSubview(lastNameField)
-        addSubview(firstNameField)
-        addSubview(surnameField)
-        addSubview(dateField)
-        addSubview(phoneNumberField)
-        addSubview(passwordField)
-        addSubview(registrationButton)
-        addSubview(enterButton)
-        
-        configureView()
+        configureUI()
         configureDatePicker()
 
         backgroundColor = .white
@@ -99,82 +48,31 @@ class RegistrationView: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+
+//    MARK: - Helpers
     
-    func configureView() {
-        configureRegistrationButton()
-        configureEnterButton()
-    }
-    
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        lastNameField.translatesAutoresizingMaskIntoConstraints = false
-        lastNameField.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 20).isActive = true
-        lastNameField.topAnchor.constraint(equalTo: self.topAnchor, constant: 30).isActive = true
-        lastNameField.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -20).isActive = true
-        lastNameField.heightAnchor.constraint(equalToConstant: 40).isActive = true
-        lastNameField.addLine()
+    private func configureUI() {
+        let stack = UIStackView(arrangedSubviews: [lastNameField, firstNameField, surnameField, dateField,phoneNumberField, passwordField])
+        stack.axis = .vertical
+        stack.alignment = .fill
+        stack.distribution = .fillEqually
+        addSubview(stack)
+        stack.anchor(left: leftAnchor, top: topAnchor, right: rightAnchor, paddingLeft: 20, paddingTop: 30, paddingRight: -20, height: 300)
         
-        firstNameField.translatesAutoresizingMaskIntoConstraints = false
-        firstNameField.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 20).isActive = true
-        firstNameField.topAnchor.constraint(equalTo: lastNameField.bottomAnchor, constant: 10).isActive = true
-        firstNameField.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -20).isActive = true
-        firstNameField.heightAnchor.constraint(equalToConstant: 40).isActive = true
-        firstNameField.addLine()
-        
-        surnameField.translatesAutoresizingMaskIntoConstraints = false
-        surnameField.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 20).isActive = true
-        surnameField.topAnchor.constraint(equalTo: firstNameField.bottomAnchor, constant: 10).isActive = true
-        surnameField.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -20).isActive = true
-        surnameField.heightAnchor.constraint(equalToConstant: 40).isActive = true
-        surnameField.addLine()
-        
-        dateField.translatesAutoresizingMaskIntoConstraints = false
-        dateField.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 20).isActive = true
-        dateField.topAnchor.constraint(equalTo: surnameField.bottomAnchor, constant: 10).isActive = true
-        dateField.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -20).isActive = true
-        dateField.heightAnchor.constraint(equalToConstant: 40).isActive = true
-        dateField.addLine()
-        
-        phoneNumberField.translatesAutoresizingMaskIntoConstraints = false
-        phoneNumberField.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 20).isActive = true
-        phoneNumberField.topAnchor.constraint(equalTo: dateField.bottomAnchor, constant: 10).isActive = true
-        phoneNumberField.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -20).isActive = true
-        phoneNumberField.heightAnchor.constraint(equalToConstant: 40).isActive = true
-        phoneNumberField.addLine()
-        
-        passwordField.translatesAutoresizingMaskIntoConstraints = false
-        passwordField.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 20).isActive = true
-        passwordField.topAnchor.constraint(equalTo: phoneNumberField.bottomAnchor, constant: 10).isActive = true
-        passwordField.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -20).isActive = true
-        passwordField.heightAnchor.constraint(equalToConstant: 40).isActive = true
-        passwordField.addLine()
-    }
-    
-    func configureRegistrationButton() {
-        registrationButton.translatesAutoresizingMaskIntoConstraints = false
-        registrationButton.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 10).isActive = true
-        registrationButton.topAnchor.constraint(equalTo: passwordField.bottomAnchor, constant: 30).isActive = true
-        registrationButton.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -10).isActive = true
-        registrationButton.heightAnchor.constraint(equalToConstant: 60).isActive = true
-        
+        addSubview(registrationButton)
+        registrationButton.anchor(left: leftAnchor, top: stack.bottomAnchor, right: rightAnchor, paddingLeft: 10, paddingTop: 30, paddingRight: -10, height: 60)
         registrationButton.backgroundColor = UIColor.systemGreen
         registrationButton.setTitle("Зарегистрироваться", for: .normal)
-        registrationButton.addTarget(self, action: #selector(registering), for: .touchUpInside)  
-    }
-    
-    func configureEnterButton() {
-        enterButton.translatesAutoresizingMaskIntoConstraints = false
-        enterButton.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 10).isActive = true
-        enterButton.topAnchor.constraint(equalTo: registrationButton.bottomAnchor, constant: 20).isActive = true
-        enterButton.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -10).isActive = true
-        enterButton.heightAnchor.constraint(equalToConstant: 60).isActive = true
+        registrationButton.addTarget(self, action: #selector(registering), for: .touchUpInside)
         
+        addSubview(enterButton)
+        enterButton.anchor(left: leftAnchor, top: registrationButton.bottomAnchor, right: rightAnchor, paddingLeft: 10, paddingTop: 20, paddingRight: -10, height: 60)
         enterButton.backgroundColor = UIColor.systemOrange
         enterButton.setTitle("Войти", for: .normal)
         enterButton.addTarget(self, action: #selector(entering), for: .touchUpInside)
     }
     
-    func configureDatePicker() {
+    private func configureDatePicker() {
         dateField.inputView = datePicker
         datePicker.preferredDatePickerStyle = .wheels
         datePicker.datePickerMode = .date
@@ -189,25 +87,27 @@ class RegistrationView: UIView {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(cancelAction))
     }
     
-    @objc func registering() {
+//    MARK: - Selecters
+    
+    @objc private func registering() {
         guard let lastName = lastNameField.text, let firstName = firstNameField.text, let surName = surnameField.text, let date = dateField.text, let phoneNumber = phoneNumberField.text, let password = passwordField.text else { return }
         
         let user = User(lastname: lastName, firstname: firstName, surname: surName, date: date, phoneNumber: phoneNumber, password: password)
         delegate?.recordUser(user: user)
     }
     
-    @objc func entering() {
+    @objc private func entering() {
         delegateShow?.showNewView()
     }
     
-    @objc func doneAction() {
+    @objc private func doneAction() {
         let formatter = DateFormatter()
         formatter.dateFormat = "dd.MM.yyyy"
         dateField.text = formatter.string(from: datePicker.date)
         endEditing(true)
     }
     
-    @objc func cancelAction() {
+    @objc private func cancelAction() {
         dateField.text = "Дата рождения"
         endEditing(true)
     }

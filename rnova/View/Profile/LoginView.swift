@@ -12,41 +12,22 @@ protocol SendLoginInformationProtocol: AnyObject {
 }
 
 class LoginView: UIView {
-    private let phoneNumberField: UITextField = {
-        let tf = UITextField()
-        tf.placeholder = "Номер телефона"
-        tf.clearButtonMode = .always
-        tf.clearsOnBeginEditing = true
-        return tf
-    }()
-    private let passwordField: UITextField = {
-        let tf = UITextField()
-        tf.placeholder = "Пароль"
-        tf.clearButtonMode = .always
-        tf.clearsOnBeginEditing = true
-        tf.textContentType = .password
-        tf.isSecureTextEntry = true
-        tf.autocorrectionType = .no
-        tf.spellCheckingType = .no
-        tf.returnKeyType = .done
-        return tf
-    }()
     
-    private let enterButton = View().button
+//    MARK: - Properties
+    
+    private let phoneNumberField = UIView().fieldForForm(placeholder: "Номер телефона")
+    private let passwordField = UIView().fieldForForm(placeholder: "Пароль", isSecure: true)
+    private let enterButton = UIView().getButton()
     
     weak var delegate: SendLoginInformationProtocol?
 
+//    MARK: - Lifecycle
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        addSubview(phoneNumberField)
-        addSubview(passwordField)
-        addSubview(enterButton)
-        
-        enterButton.backgroundColor = UIColor.systemOrange
-        enterButton.setTitle("Войти", for: .normal)
+        configureUI()
         enterButton.addTarget(self, action: #selector(entering), for: .touchUpInside)
-        
         backgroundColor = .white
     }
     
@@ -54,31 +35,22 @@ class LoginView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        
-        phoneNumberField.translatesAutoresizingMaskIntoConstraints = false
-        phoneNumberField.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 20).isActive = true
-        phoneNumberField.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 30).isActive = true
-        phoneNumberField.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -20).isActive = true
-        phoneNumberField.heightAnchor.constraint(equalToConstant: 40).isActive = true
-        phoneNumberField.addLine()
-        
-        passwordField.translatesAutoresizingMaskIntoConstraints = false
-        passwordField.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 20).isActive = true
-        passwordField.topAnchor.constraint(equalTo: phoneNumberField.bottomAnchor, constant: 20).isActive = true
-        passwordField.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -20).isActive = true
-        passwordField.heightAnchor.constraint(equalToConstant: 40).isActive = true
-        passwordField.addLine()
-        
-        enterButton.translatesAutoresizingMaskIntoConstraints = false
-        enterButton.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 10).isActive = true
-        enterButton.topAnchor.constraint(equalTo: passwordField.bottomAnchor, constant: 30).isActive = true
-        enterButton.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -10).isActive = true
-        enterButton.heightAnchor.constraint(equalToConstant: 60).isActive = true
+//    MARK: - Helpers
+    
+    private func configureUI() {
+        addSubview(phoneNumberField)
+        addSubview(passwordField)
+        addSubview(enterButton)
+        phoneNumberField.anchor(left: leftAnchor, top: safeAreaLayoutGuide.topAnchor, right: rightAnchor, paddingLeft: 20, paddingTop: 30, paddingRight: -20, height: 40)
+        passwordField.anchor(left: leftAnchor, top: phoneNumberField.bottomAnchor, right: rightAnchor, paddingLeft: 20, paddingTop: 20, paddingRight: -20, height: 40)
+        enterButton.anchor(left: leftAnchor, top: passwordField.bottomAnchor, right: rightAnchor, paddingLeft: 10, paddingTop: 30, paddingRight: -10, height: 60)
+        enterButton.backgroundColor = UIColor.systemOrange
+        enterButton.setTitle("Войти", for: .normal)
     }
     
-    @objc func entering() {
+//    MARK: - Helpers
+    
+    @objc private func entering() {
         guard let phoneNumber = phoneNumberField.text else { return }
         guard let password = passwordField.text else { return }
         delegate?.sendLoginInformation(phoneNumber: phoneNumber, password: password)

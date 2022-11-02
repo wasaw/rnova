@@ -8,6 +8,8 @@
 import Foundation
 import UIKit
 
+//  MARK: - Decodable
+
 struct Services: Decodable {
     let id: Int
     let title: String
@@ -50,6 +52,8 @@ struct Schedule: Decodable {
     let is_busy: Bool
 }
 
+//  MARK: - Informations
+
 struct User {
     let lastname: String
     let firstname: String
@@ -66,4 +70,9 @@ struct Appointment {
     let date: Date
     let clinic: String
     let comment: String
+}
+
+enum FlipCalendar {
+    case left
+    case right
 }

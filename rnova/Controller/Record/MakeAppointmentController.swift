@@ -12,6 +12,9 @@ protocol SendCommentProtocol {
 }
 
 class MakeAppointmentController: UIViewController {
+    
+//    MARK: - Properties
+    
     private let doctor: Doctor
     private let selectedDate: Date
     private let selectedTime: String
@@ -40,6 +43,8 @@ class MakeAppointmentController: UIViewController {
         return btn
     }()
     
+//    MARK: - Lifecycle
+    
     init(doctor: Doctor, selectedDate: Date, selectedTime: String) {
         self.doctor = doctor
         self.selectedDate = selectedDate
@@ -55,46 +60,32 @@ class MakeAppointmentController: UIViewController {
         super.viewDidLoad()
         
         navigationItem.title = "Личные данные"
-        
         configureUI()
-        
         configureDatePicker()
-                
         view.backgroundColor = .white
     }
     
-//    MARK: -- function
-    func configureUI() {
+//    MARK: - Helpers
+    
+    private func configureUI() {
         configureRecordInformationView()
         configureContactInformationView()
         configureSubmitButton()
     }
     
-    func configureRecordInformationView() {
+    private func configureRecordInformationView() {
         view.addSubview(recordInformationView)
-        
-        recordInformationView.translatesAutoresizingMaskIntoConstraints = false
-        recordInformationView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 10).isActive = true
-        recordInformationView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20).isActive = true
-        recordInformationView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -10).isActive = true
-        recordInformationView.heightAnchor.constraint(equalToConstant: 140).isActive = true
-
-        recordInformationView.doctorOutputLabel.text = doctor.name
-        recordInformationView.professionOutputLabel.text = doctor.profession_titles
+        recordInformationView.anchor(left: view.leftAnchor, top: view.safeAreaLayoutGuide.topAnchor, right: view.rightAnchor, paddingLeft: 10, paddingTop: 20, paddingRight: -10, height: 140)
         formatter.dateFormat = "dd.MM.yy"
-        recordInformationView.dateOutputLabel.text = selectedTime + " " + formatter.string(from: selectedDate)
-        recordInformationView.clinicOutputLable.text = "Моя клиника"
+        let date = selectedTime + " " + formatter.string(from: selectedDate)
+        recordInformationView.setInformation(doctor, date: date)
     }
     
-    func configureContactInformationView() {
+    private func configureContactInformationView() {
         view.addSubview(contactInformationView)
         delegateComment = contactInformationView
-        contactInformationView.translatesAutoresizingMaskIntoConstraints = false
-        contactInformationView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 10).isActive = true
-        contactInformationView.topAnchor.constraint(equalTo: recordInformationView.bottomAnchor, constant: 30).isActive = true
-        contactInformationView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -10).isActive = true
-        contactInformationView.heightAnchor.constraint(equalToConstant: 320).isActive = true
-        
+        contactInformationView.anchor(left: view.leftAnchor, top: recordInformationView.bottomAnchor, right: view.rightAnchor, paddingLeft: 10, paddingTop: 30, paddingRight: -10, height: 320)
+ 
         if databaseService.checkLogIn() {
             let user = databaseService.getPersonInformation()
             contactInformationView.lastNameField.text = user.lastname
@@ -105,19 +96,15 @@ class MakeAppointmentController: UIViewController {
         }
     }
     
-    func configureSubmitButton() {
+    private func configureSubmitButton() {
         view.addSubview(submitButton)
-        
-        submitButton.translatesAutoresizingMaskIntoConstraints = false
-        submitButton.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 10).isActive = true
-        submitButton.topAnchor.constraint(equalTo: contactInformationView.bottomAnchor,constant: 30).isActive = true
-        submitButton.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -10).isActive = true
-        submitButton.heightAnchor.constraint(equalToConstant: 60).isActive = true
+        submitButton.anchor(left: view.leftAnchor, top: contactInformationView.bottomAnchor, right: view.rightAnchor, paddingLeft: 10, paddingTop: 30, paddingRight: -10, height: 60)
         submitButton.addTarget(self, action: #selector(saveTicket), for: .touchUpInside)
     }
     
-    func configureDatePicker() {
+    private func configureDatePicker() {
         contactInformationView.dateField.inputView = datePicker
+        datePicker.backgroundColor = .white
         datePicker.preferredDatePickerStyle = .wheels
         datePicker.datePickerMode = .date
         
@@ -131,19 +118,21 @@ class MakeAppointmentController: UIViewController {
         _ = UITapGestureRecognizer(target: self, action: #selector(cancelAction))
     }
     
-    @objc func doneAction() {
+//    MARK: - Selectors
+    
+    @objc private func doneAction() {
         formatter.dateFormat = "dd.MM.yyyy"
         contactInformationView.dateField.text = formatter.string(from: datePicker.date)
         view.endEditing(true)
     }
     
-    @objc func cancelAction() {
+    @objc private func cancelAction() {
         view.endEditing(true)
     }
     
-    @objc func saveTicket() {
+    @objc private func saveTicket() {
         if databaseService.checkLogIn() {
-            guard let clinic = recordInformationView.clinicOutputLable.text else { return }
+            let clinic = "Моя клиника"
             let comment = delegateComment?.gettingComment()
             var fullComment: String
             if comment == nil {

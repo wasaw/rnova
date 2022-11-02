@@ -8,71 +8,36 @@
 import UIKit
 
 class ProfileView: UIView {
-    let phoneLabel: UILabel = {
+    
+//    MARK: - Properties
+    
+    private let phoneLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.boldSystemFont(ofSize: 22)
         label.textColor = .black
         label.backgroundColor = .lightGray
         return label
     }()
-    private let lastnameTitleLabel: UILabel = {
-        let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 15)
-        label.textColor = .lightGray
-        label.text = "Фамилия"
-        return label
-    }()
-    let lastnameUserLabel: UILabel = {
-        let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 21)
-        return label
-    }()
-    private let firstnameTitleLabel: UILabel = {
-        let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 12)
-        label.text = "Имя"
-        return label
-    }()
-    let firstnameUserLabel: UILabel = {
-        let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 19)
-        return label
-    }()
-    private let surnameTitleLabel: UILabel = {
-        let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 12)
-        label.text = "Отчество"
-        return label
-    }()
-    let surnameUserLabel: UILabel = {
-        let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 19)
-        return label
-    }()
-    private let dateTitleLabel: UILabel = {
-        let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 12)
-        label.text = "Дата рождения"
-        return label
-    }()
-    let dateUserLabel: UILabel = {
-        let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 19)
-        return label
-    }()
+    
+    private let lastnameTitleLabel = UILabel().profileTitleLabel("Фамилия")
+    private let lastnameUserLabel = UILabel().profileLabel(size: 21)
+    private let firstnameTitleLabel = UILabel().profileTitleLabel("Имя")
+    private let firstnameUserLabel = UILabel().profileLabel()
+    private let surnameTitleLabel = UILabel().profileTitleLabel("Отчество")
+    private let surnameUserLabel = UILabel().profileLabel()
+    private let dateTitleLabel = UILabel().profileTitleLabel("Дата рождения", size: 12)
+    private let dateUserLabel = UILabel().profileLabel()
+    
+//    MARK: - Lifecycle
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        addSubview(phoneLabel)
-        addSubview(lastnameTitleLabel)
-        addSubview(lastnameUserLabel)
-        addSubview(firstnameTitleLabel)
-        addSubview(firstnameUserLabel)
-        addSubview(surnameTitleLabel)
-        addSubview(surnameUserLabel)
-        addSubview(dateTitleLabel)
-        addSubview(dateUserLabel)
         
+        configurePhone()
+        configureLastname()
+        configureFirstname()
+        configureSurname()
+        configureDate()
         backgroundColor = .white
     }
     
@@ -80,78 +45,46 @@ class ProfileView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func layoutSubviews() {
-        super.layoutSubviews()
-                
-        phoneLabel.translatesAutoresizingMaskIntoConstraints = false
-        phoneLabel.leftAnchor.constraint(equalTo: self.leftAnchor).isActive = true
-        phoneLabel.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
-        phoneLabel.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
-        phoneLabel.heightAnchor.constraint(equalToConstant: 60).isActive = true
-        
-        configureLastname()
-        configureFirstname()
-        configureSurname()
-        configureDate()
+//    MARK: - Helpers
+    
+    private func configurePhone() {
+        addSubview(phoneLabel)
+        phoneLabel.anchor(left: leftAnchor, top: topAnchor, right: rightAnchor, height: 60)
     }
     
-    func configureLastname() {
-        lastnameTitleLabel.translatesAutoresizingMaskIntoConstraints = false
-        lastnameTitleLabel.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 10).isActive = true
-        lastnameTitleLabel.topAnchor.constraint(equalTo: phoneLabel.bottomAnchor, constant: 40).isActive = true
-        lastnameTitleLabel.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
-        lastnameTitleLabel.heightAnchor.constraint(equalToConstant: 15).isActive = true
-        
-        lastnameUserLabel.translatesAutoresizingMaskIntoConstraints = false
-        lastnameUserLabel.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 10).isActive = true
-        lastnameUserLabel.topAnchor.constraint(equalTo: lastnameTitleLabel.bottomAnchor, constant: 5).isActive = true
-        lastnameUserLabel.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
-        lastnameUserLabel.heightAnchor.constraint(equalToConstant: 30).isActive = true
-        lastnameUserLabel.addLine()
+    private func configureLastname() {
+        addSubview(lastnameTitleLabel)
+        addSubview(lastnameUserLabel)
+        lastnameTitleLabel.anchor(left: leftAnchor, top: phoneLabel.bottomAnchor, right: rightAnchor, paddingLeft: 10, paddingTop: 40, height: 15)
+        lastnameUserLabel.anchor(left: leftAnchor, top: lastnameTitleLabel.bottomAnchor, right: rightAnchor, paddingLeft: 10, paddingTop: 5, height: 30)
     }
     
-    func configureFirstname() {
-        firstnameTitleLabel.translatesAutoresizingMaskIntoConstraints = false
-        firstnameTitleLabel.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 10).isActive = true
-        firstnameTitleLabel.topAnchor.constraint(equalTo: lastnameUserLabel.bottomAnchor, constant: 20).isActive = true
-        firstnameTitleLabel.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
-        firstnameTitleLabel.heightAnchor.constraint(equalToConstant: 15).isActive = true
-        
-        firstnameUserLabel.translatesAutoresizingMaskIntoConstraints = false
-        firstnameUserLabel.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 10).isActive = true
-        firstnameUserLabel.topAnchor.constraint(equalTo: firstnameTitleLabel.bottomAnchor, constant: 5).isActive = true
-        firstnameUserLabel.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
-        firstnameUserLabel.heightAnchor.constraint(equalToConstant: 30).isActive = true
-        firstnameUserLabel.addLine()
+    private func configureFirstname() {
+        addSubview(firstnameTitleLabel)
+        addSubview(firstnameUserLabel)
+        firstnameTitleLabel.anchor(left: leftAnchor, top: lastnameUserLabel.bottomAnchor, right: rightAnchor, paddingLeft: 10, paddingTop: 20, height: 15)
+        firstnameUserLabel.anchor(left: leftAnchor, top: firstnameTitleLabel.bottomAnchor, right: rightAnchor, paddingLeft: 10, paddingTop: 5, height: 30)
     }
     
-    func configureSurname() {
-        surnameTitleLabel.translatesAutoresizingMaskIntoConstraints = false
-        surnameTitleLabel.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 10).isActive = true
-        surnameTitleLabel.topAnchor.constraint(equalTo: firstnameUserLabel.bottomAnchor, constant: 20).isActive = true
-        surnameTitleLabel.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
-        surnameTitleLabel.heightAnchor.constraint(equalToConstant: 15).isActive = true
-        
-        surnameUserLabel.translatesAutoresizingMaskIntoConstraints = false
-        surnameUserLabel.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 10).isActive = true
-        surnameUserLabel.topAnchor.constraint(equalTo: surnameTitleLabel.bottomAnchor, constant: 5).isActive = true
-        surnameUserLabel.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
-        surnameUserLabel.heightAnchor.constraint(equalToConstant: 30).isActive = true
-        surnameUserLabel.addLine()
+    private func configureSurname() {
+        addSubview(surnameTitleLabel)
+        addSubview(surnameUserLabel)
+        surnameTitleLabel.anchor(left: leftAnchor, top: firstnameUserLabel.bottomAnchor, right: rightAnchor, paddingLeft: 10, paddingTop: 20, height: 15)
+        surnameUserLabel.anchor(left: leftAnchor, top: surnameTitleLabel.bottomAnchor, right: rightAnchor, paddingLeft: 10, paddingTop: 5, height: 30)
     }
     
-    func configureDate() {
-        dateTitleLabel.translatesAutoresizingMaskIntoConstraints = false
-        dateTitleLabel.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 10).isActive = true
-        dateTitleLabel.topAnchor.constraint(equalTo: surnameUserLabel.bottomAnchor, constant: 20).isActive = true
-        dateTitleLabel.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
-        dateTitleLabel.heightAnchor.constraint(equalToConstant: 15).isActive = true
-        
-        dateUserLabel.translatesAutoresizingMaskIntoConstraints = false
-        dateUserLabel.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 10).isActive = true
-        dateUserLabel.topAnchor.constraint(equalTo: dateTitleLabel.bottomAnchor, constant: 5).isActive = true
-        dateUserLabel.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
-        dateUserLabel.heightAnchor.constraint(equalToConstant: 30).isActive = true
-        dateUserLabel.addLine()
+    private func configureDate() {
+        addSubview(dateTitleLabel)
+        addSubview(dateUserLabel)
+        dateTitleLabel.anchor(left: leftAnchor, top: surnameUserLabel.bottomAnchor, right: rightAnchor, paddingLeft: 10, paddingTop: 20, height: 15)
+        dateUserLabel.anchor(left: leftAnchor, top: dateTitleLabel.bottomAnchor, right: rightAnchor, paddingLeft: 10, paddingTop: 5, height: 30)
+    }
+    
+    func setInformation(_ user: User) {
+        lastnameUserLabel.text = user.lastname
+        firstnameUserLabel.text = user.firstname
+        surnameUserLabel.text = user.surname
+        dateUserLabel.text = user.date
+        phoneLabel.text = "  " + user.phoneNumber
     }
 }

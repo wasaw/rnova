@@ -9,8 +9,11 @@ import UIKit
 
 class TabBarController: UITabBarController {
     
+//    MARK: - Lifecycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         tabBar.backgroundColor = .systemOrange
         tabBar.tintColor = .white
         tabBar.unselectedItemTintColor = .black

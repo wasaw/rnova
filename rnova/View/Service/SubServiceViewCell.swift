@@ -10,20 +10,24 @@ import UIKit
 class SubServiceViewCell: UICollectionViewCell {
     static let identifire = "SubServiceViewCell"
     
-    let serviceNameLabel: UILabel = {
+//    MARK: - Properties
+    
+    private let serviceNameLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 18)
         label.lineBreakMode = .byWordWrapping
         label.numberOfLines = 2
         return label
     }()
-    let serviceCostLabel: UILabel = {
+    
+    private let serviceCostLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 14)
         label.textColor = .gray
         return label
     }()
-    let arrowImage: UIImageView = {
+    
+    private let arrowImage: UIImageView = {
         let image = UIImageView()
         image.layer.masksToBounds = false
         image.clipsToBounds = true
@@ -31,36 +35,37 @@ class SubServiceViewCell: UICollectionViewCell {
         image.tintColor = .black
         return image
     }()
-
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        addSubview(serviceNameLabel)
-        addSubview(serviceCostLabel)
-        addSubview(arrowImage)
-
+    
+//    MARK: - Lifecycle
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        
+        configureUI()
         shadow()
         backgroundColor = .white
     }
     
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        
-        serviceNameLabel.translatesAutoresizingMaskIntoConstraints = false
-        serviceNameLabel.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 10).isActive = true
-        serviceNameLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant: -15).isActive = true
-        serviceNameLabel.heightAnchor.constraint(equalToConstant: 45).isActive = true
-        
-        serviceCostLabel.translatesAutoresizingMaskIntoConstraints = false
-        serviceCostLabel.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 10).isActive = true
-        serviceCostLabel.topAnchor.constraint(equalTo: serviceNameLabel.bottomAnchor, constant: 5).isActive = true
-        serviceCostLabel.heightAnchor.constraint(equalToConstant: 20).isActive = true
-        
-        arrowImage.translatesAutoresizingMaskIntoConstraints = false
-        arrowImage.leftAnchor.constraint(equalTo: serviceNameLabel.rightAnchor, constant: 10).isActive = true
-        arrowImage.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
-        arrowImage.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -10).isActive = true
-        arrowImage.heightAnchor.constraint(equalToConstant: 20).isActive = true
-        arrowImage.widthAnchor.constraint(equalToConstant: 20).isActive = true
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
+    
+//    MARK: - Helpers
+    
+    private func configureUI() {
+        addSubview(serviceNameLabel)
+        addSubview(serviceCostLabel)
+        addSubview(arrowImage)
+        serviceNameLabel.centerYAnchor.constraint(equalTo: centerYAnchor, constant: -15).isActive = true
+        serviceNameLabel.anchor(left: leftAnchor, paddingLeft: 10, height: 45)
 
+        serviceCostLabel.anchor(left: leftAnchor, top: serviceNameLabel.bottomAnchor, paddingLeft: 10, paddingTop: 5, height: 20)
+        arrowImage.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
+        arrowImage.anchor(left: serviceNameLabel.rightAnchor, right: rightAnchor, paddingLeft: 10, paddingRight: -10, width: 20, height: 20)
+    }
+    
+    func setInformation(title: String, cost: String) {
+        serviceNameLabel.text = title
+        serviceCostLabel.text = cost
+    }
 }

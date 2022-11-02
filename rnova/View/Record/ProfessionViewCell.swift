@@ -10,7 +10,9 @@ import UIKit
 class ProfessionViewCell: UICollectionViewCell {
     static let identifire = "ProfessionViewCell"
     
-    let specialtyLabel: UILabel = {
+//    MARK: - Properties
+    
+    private let specialtyLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 18)
         label.textColor = .black
@@ -20,21 +22,30 @@ class ProfessionViewCell: UICollectionViewCell {
         return label
     }()
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-        self.addSubview(specialtyLabel)
+//    MARK: - Lifecycle
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
         
+        configureUI()
         shadow()
         backgroundColor = .white
     }
     
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        
-        specialtyLabel.translatesAutoresizingMaskIntoConstraints = false
-        specialtyLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor).isActive = true
-        specialtyLabel.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 20).isActive = true
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 
+//    MARK: - Helpers
+    
+    private func configureUI() {
+        self.addSubview(specialtyLabel)
+        specialtyLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor).isActive = true
+        specialtyLabel.anchor(left: leftAnchor, paddingLeft: 20)
+    }
+    
+    
+    func setInformation(_ specialty: String) {
+        specialtyLabel.text = specialty
+    }
 }

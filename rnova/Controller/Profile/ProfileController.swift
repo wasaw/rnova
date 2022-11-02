@@ -9,6 +9,8 @@ import UIKit
 import SideMenu
 
 class ProfileController: UIViewController {
+    
+//    MARK: - Properties
 
     private let registrationView = RegistrationView()
     private let profileView = ProfileView()
@@ -16,6 +18,8 @@ class ProfileController: UIViewController {
     private var user: User?
     
     private var sideMenu: SideMenuNavigationController?
+    
+//  MARK: - Lifecycle
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -35,36 +39,26 @@ class ProfileController: UIViewController {
         
         navigationItem.title = "Профиль"
         navigationController?.navigationBar.backgroundColor = .systemOrange
-                
         view.backgroundColor = .white
     }
     
-    func configureRegistrationView() {
+//    MARK: - Helpers
+    
+    private func configureRegistrationView() {
         view.addSubview(registrationView)
         
         registrationView.delegate = self
         registrationView.delegateShow = self
-        
-        registrationView.translatesAutoresizingMaskIntoConstraints = false
-        registrationView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
-        registrationView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
-        registrationView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
-        registrationView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        registrationView.anchor(left: view.leftAnchor, top: view.safeAreaLayoutGuide.topAnchor, right: view.rightAnchor, bottom: view.bottomAnchor)
     }
     
-    func configureProfileView() {
+    private func configureProfileView() {
         view.addSubview(profileView)
-        
-        profileView.translatesAutoresizingMaskIntoConstraints = false
-        profileView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
-        profileView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
-        profileView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
-        profileView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
-        
+        profileView.anchor(left: view.leftAnchor, top: view.safeAreaLayoutGuide.topAnchor, right: view.rightAnchor, bottom: view.bottomAnchor)
         configureSideMenu()
     }
     
-    func configureSideMenu() {
+    private func configureSideMenu() {
         let imageBar = UIImage(systemName: "line.horizontal.3")
         navigationController?.navigationBar.tintColor = .white
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: imageBar, style: .plain, target: self, action: #selector(presentingSideMenu))
@@ -74,36 +68,35 @@ class ProfileController: UIViewController {
         sideMenu?.navigationBar.backgroundColor = .systemOrange
     }
     
-    func fillProfileView() {
+    private func fillProfileView() {
         guard let user = user else { return }
-        profileView.lastnameUserLabel.text = user.lastname
-        profileView.firstnameUserLabel.text = user.firstname
-        profileView.surnameUserLabel.text = user.surname
-        profileView.dateUserLabel.text = user.date
-        profileView.phoneLabel.text = "  " + user.phoneNumber
+        profileView.setInformation(user)
     }
     
-    func alert(fields: String) {
+    private func alert(fields: String) {
         let message = "Не заполнены следующие поля: " + fields
         let alert = UIAlertController(title: "Внимание!", message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Ок", style: .default, handler: nil))
         self.present(alert, animated: true, completion: nil)
     }
     
-    func isValidPhoneNumber(number: String?) -> Bool {
+    private func isValidPhoneNumber(number: String?) -> Bool {
         guard let number = number else { return false }
         let regEx = "^\\+7\\d{3}-\\d{3}-\\d{4}$"
         let phoneCheck = NSPredicate(format: "SELF MATCHES %@", regEx)
         return phoneCheck.evaluate(with: number)
     }
     
-    @objc func presentingSideMenu() {
+//    MARK: - Selecters
+    
+    @objc private  func presentingSideMenu() {
         guard let sideMenu = sideMenu else { return }
         present(sideMenu, animated: true)
     }
 }
 
-//MARK: -extension
+//  MARK: - Extensions
+
 extension ProfileController: SendValueProtocol {
     func recordUser(user: User) {
         var fields = ""

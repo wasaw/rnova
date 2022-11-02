@@ -10,13 +10,18 @@ import UIKit
 class ServiceViewCell: UICollectionViewCell {
     static let identifire = "ServiceViewCell"
     
-    let serviceLabel: UILabel = {
+//    MARK: - Properties
+    
+    private let serviceLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.boldSystemFont(ofSize: 21)
+        label.font = UIFont.boldSystemFont(ofSize: 20)
+        label.numberOfLines = 0
+        label.lineBreakMode = .byWordWrapping
         label.textColor = .black
         return label
     }()
-    let arrowImageView: UIImageView = {
+    
+    private let arrowImageView: UIImageView = {
         let image = UIImageView()
         image.layer.masksToBounds = false
         image.clipsToBounds = true
@@ -24,31 +29,34 @@ class ServiceViewCell: UICollectionViewCell {
         image.tintColor = .gray
         return image
     }()
-
-    override func awakeFromNib() {
-        super.awakeFromNib()
-
+    
+//    MARK: - Lifecycle
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        
+        configureUI()
         shadow()
         backgroundColor = .white
     }
     
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        
-        addSubview(serviceLabel)
-        addSubview(arrowImageView)
-        
-        serviceLabel.translatesAutoresizingMaskIntoConstraints = false
-        serviceLabel.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 10).isActive = true
-        serviceLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
-        serviceLabel.rightAnchor.constraint(equalTo: arrowImageView.leftAnchor, constant: 10).isActive = true
-        
-        arrowImageView.translatesAutoresizingMaskIntoConstraints = false
-        arrowImageView.leftAnchor.constraint(equalTo: serviceLabel.rightAnchor).isActive = true
-        arrowImageView.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
-        arrowImageView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -20).isActive = true
-        arrowImageView.heightAnchor.constraint(equalToConstant: 20).isActive = true
-        arrowImageView.widthAnchor.constraint(equalToConstant: 20).isActive = true
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 
+//    MARK: - Helpers
+    
+    private func configureUI() {
+        addSubview(serviceLabel)
+        addSubview(arrowImageView)
+        serviceLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
+        serviceLabel.anchor(left: leftAnchor, right: arrowImageView.leftAnchor, paddingLeft: 10, paddingRight: 10)
+        
+        arrowImageView.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
+        arrowImageView.anchor(left: serviceLabel.rightAnchor, right: rightAnchor, paddingRight: -20, width: 20, height: 20)
+    }
+    
+    func setTitle(_ title: String) {
+        serviceLabel.text = title
+    }
 }
