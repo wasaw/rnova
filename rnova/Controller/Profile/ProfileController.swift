@@ -8,7 +8,7 @@
 import UIKit
 import SideMenu
 
-class ProfileController: UIViewController {
+final class ProfileController: UIViewController {
     
 //    MARK: - Properties
 

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ExitController: UIViewController {
+final class ExitController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()

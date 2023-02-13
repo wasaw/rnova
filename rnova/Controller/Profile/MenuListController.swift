@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MenuListController: UITableViewController {
+final class MenuListController: UITableViewController {
     
 //    MARK: - Properties
     

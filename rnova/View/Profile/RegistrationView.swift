@@ -15,7 +15,7 @@ protocol PresentViewProtocol: AnyObject {
     func showNewView()
 }
 
-class RegistrationView: UIView {
+final class RegistrationView: UIView {
     
 //    MARK: - Properties
     

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ProfessionViewCell: UICollectionViewCell {
+final class ProfessionViewCell: UICollectionViewCell {
     static let identifire = "ProfessionViewCell"
     
 //    MARK: - Properties

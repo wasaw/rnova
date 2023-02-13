@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SubServiceController: UIViewController {
+final class SubServiceController: UIViewController {
     
 //    MARK: - Properties
     
@@ -42,8 +42,16 @@ class SubServiceController: UIViewController {
     private func loadInformation() {
         DispatchQueue.main.async {
             let urlParameter = "&category_id=" + String(self.serviceId)
-            self.subServicesData = DataLoader(urlMethod: "&method=getServices", urlParameter: urlParameter).subServicesData
-            self.collectionView?.reloadData()
+            NetworkService.shared.request(method: .services, category: urlParameter) { (result: RequestStatus<[SubService]?>) in
+                switch result {
+                case .success(let answer):
+                    guard let answer = answer else { return }
+                    self.subServicesData = answer
+                    self.collectionView?.reloadData()
+                case .error:
+                    break
+                }
+            }
         }
     }
     

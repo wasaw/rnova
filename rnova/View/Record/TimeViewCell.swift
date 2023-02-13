@@ -7,7 +7,7 @@
 
 import UIKit
 
-class TimeViewCell: UICollectionViewCell {
+final class TimeViewCell: UICollectionViewCell {
     static let identifire = "TimeViewCell"
     
 //    MARK: - Properties

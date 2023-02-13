@@ -8,7 +8,7 @@
 import CoreData
 import UIKit
 
-class DatabaseService {
+final class DatabaseService {
     private let appDelegate = UIApplication.shared.delegate as! AppDelegate
         
     func registration(user: User) {

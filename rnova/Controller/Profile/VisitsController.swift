@@ -8,7 +8,7 @@
 import UIKit
 import SideMenu
 
-class VisitsController: UIViewController {
+final class VisitsController: UIViewController {
     
 //    MARK - Properties
     

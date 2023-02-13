@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SubServiceViewCell: UICollectionViewCell {
+final class SubServiceViewCell: UICollectionViewCell {
     static let identifire = "SubServiceViewCell"
     
 //    MARK: - Properties

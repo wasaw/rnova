@@ -7,7 +7,7 @@
 
 import UIKit
 
-class RecordController: UIViewController {
+final class RecordController: UIViewController {
     
 //    MARK: - Properties
     
@@ -42,20 +42,38 @@ class RecordController: UIViewController {
     
     private func loadInformation() {
         DispatchQueue.main.async {
-            let loadDoctors = DataLoader(urlMethod: "&method=getUsers", urlParameter: "").doctorsData
-            for item in loadDoctors {
-                let downloadImage = UIImageView()
-                if item.avatar_small != nil {
-                    downloadImage.downloaded(from: item.avatar_small!)
-                } else {
-                    downloadImage.image = UIImage(systemName: "person")
+            NetworkService.shared.request(method: .users) { (result: RequestStatus<[Doctors]?>) in
+                switch result {
+                case .success(let answer):
+                    guard let answer = answer else { return }
+                    for item in answer {
+                        let downloadImage = UIImageView()
+                        if item.avatar_small != nil {
+                            downloadImage.downloaded(from: item.avatar_small!)
+                        } else {
+                            downloadImage.image = UIImage(systemName: "person")
+                        }
+                        let doc = Doctor(id: item.id, name: item.name, profession: item.profession ?? [], profession_titles: item.profession_titles ?? "Доктор", image: downloadImage)
+                        self.doctors.append(doc)
+                    }
+                    self.collectionView?.reloadData()
+                    self.countingQuantityOfProfessions()
+                case .error:
+                    break
                 }
-                let doc = Doctor(id: item.id, name: item.name, profession: item.profession ?? [], profession_titles: item.profession_titles ?? "Доктор", image: downloadImage)
-                self.doctors.append(doc)
             }
-            self.professionsData = DataLoader(urlMethod: "&method=getProfessions", urlParameter: "").professionsData
-            self.collectionView?.reloadData()
-            self.countingQuantityOfProfessions()
+            
+            NetworkService.shared.request(method: .professions) { (result: RequestStatus<[Professions]?>) in
+                switch result {
+                case .success(let answer):
+                    guard let answer = answer else { return }
+                    self.professionsData = answer
+                    self.collectionView?.reloadData()
+                case .error:
+                    break
+                }
+            }
+            
         }
     }
     

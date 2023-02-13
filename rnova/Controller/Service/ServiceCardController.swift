@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ServiceCardController: UIViewController {
+final class ServiceCardController: UIViewController {
     
 //    MARK: - Properties
     

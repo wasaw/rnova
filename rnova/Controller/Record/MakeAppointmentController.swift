@@ -11,7 +11,7 @@ protocol SendCommentProtocol {
     func gettingComment() -> String?
 }
 
-class MakeAppointmentController: UIViewController {
+final class MakeAppointmentController: UIViewController {
     
 //    MARK: - Properties
     

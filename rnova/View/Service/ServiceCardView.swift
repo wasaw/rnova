@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ServiceCardView: UIView {
+final class ServiceCardView: UIView {
     
 //    MARK: - Properties
     

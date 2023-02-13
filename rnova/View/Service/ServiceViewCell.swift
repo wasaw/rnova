@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ServiceViewCell: UICollectionViewCell {
+final class ServiceViewCell: UICollectionViewCell {
     static let identifire = "ServiceViewCell"
     
 //    MARK: - Properties

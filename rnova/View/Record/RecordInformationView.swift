@@ -7,7 +7,7 @@
 
 import UIKit
 
-class RecordInformationView: UIView {
+final class RecordInformationView: UIView {
     
 //  MARK: - Properties
     

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class VisitCardViewCell: UICollectionViewCell {
+final class VisitCardViewCell: UICollectionViewCell {
     static let identifire = "VisitCardViewCell"
     
 //    MARK: - Properties

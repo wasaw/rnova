@@ -7,7 +7,7 @@
 
 import UIKit
 
-class DoctorViewCell: UICollectionViewCell {
+final class DoctorViewCell: UICollectionViewCell {
     static let identifire = "DoctorViewCell"
 
 //    MARK: - Properties

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ContactInformationView: UIView {
+final class ContactInformationView: UIView {
     
 //    MARK: - Properties
     

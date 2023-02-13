@@ -11,7 +11,7 @@ protocol FlipCalendarDelegate: AnyObject {
     func flipCalendar(direction: FlipCalendar)
 }
 
-class ChoiceDateView: UIView {
+final class ChoiceDateView: UIView {
     
 //    MARK: - Properties
     

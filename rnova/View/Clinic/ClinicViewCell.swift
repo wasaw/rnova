@@ -15,7 +15,7 @@ protocol CallPhoneDelegate: AnyObject {
     func callPhone(_ phone: String)
 }
 
-class ClinicViewCell: UICollectionViewCell {
+final class ClinicViewCell: UICollectionViewCell {
     static let identifire = "ClinicViewCell"
     
 //    MARK: - Properties

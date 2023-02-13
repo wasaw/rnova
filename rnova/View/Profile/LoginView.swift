@@ -11,7 +11,7 @@ protocol SendLoginInformationProtocol: AnyObject {
     func sendLoginInformation(phoneNumber: String, password: String)
 }
 
-class LoginView: UIView {
+final class LoginView: UIView {
     
 //    MARK: - Properties
     

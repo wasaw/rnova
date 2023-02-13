@@ -10,7 +10,6 @@
 		182A98A483399BDEFF4E6317 /* Pods_rnova.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEA0475F7112F150729550A7 /* Pods_rnova.framework */; };
 		BB46D2B025B856B9003AD167 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB46D2AF25B856B9003AD167 /* AppDelegate.swift */; };
 		BB46D2B225B856B9003AD167 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB46D2B125B856B9003AD167 /* SceneDelegate.swift */; };
-		BB46D2B725B856B9003AD167 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB46D2B525B856B9003AD167 /* Main.storyboard */; };
 		BB46D2B925B856BC003AD167 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BB46D2B825B856BC003AD167 /* Assets.xcassets */; };
 		BB46D2BC25B856BC003AD167 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB46D2BA25B856BC003AD167 /* LaunchScreen.storyboard */; };
 		BB49DEAD272C162E00CD26A2 /* ChooseDoctorByProfession.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB49DEAC272C162E00CD26A2 /* ChooseDoctorByProfession.swift */; };
@@ -40,6 +39,9 @@
 		BB50D65C27AC20D2003BE5D3 /* Doctor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB50D65B27AC20D2003BE5D3 /* Doctor.swift */; };
 		BB552DFE2721A563001F605A /* ClinicsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB552DFD2721A563001F605A /* ClinicsController.swift */; };
 		BB552E002721AA1F001F605A /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB552DFF2721AA1F001F605A /* TabBarController.swift */; };
+		BB66452A29966307006F4F2E /* JsonHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB66452929966307006F4F2E /* JsonHelper.swift */; };
+		BB66452C2996666F006F4F2E /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB66452B2996666F006F4F2E /* NetworkService.swift */; };
+		BB66452E2996678B006F4F2E /* NetworkConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB66452D2996678B006F4F2E /* NetworkConfiguration.swift */; };
 		BB8A54ED2726AC9500FB8941 /* ProfessionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB8A54EB2726AC9500FB8941 /* ProfessionViewCell.swift */; };
 		BBD920D62670A312000073FC /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BBD920D42670A312000073FC /* Model.xcdatamodeld */; };
 		BBE91CAE2758BE7B00DBA81E /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE91CAD2758BE7B00DBA81E /* ProfileView.swift */; };
@@ -49,7 +51,6 @@
 		BBE91CB8275E579E00DBA81E /* MenuListViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE91CB6275E579E00DBA81E /* MenuListViewCell.swift */; };
 		BBE91CBC275F9C2200DBA81E /* VisitCardViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE91CBA275F9C2200DBA81E /* VisitCardViewCell.swift */; };
 		BBF5F37F265E7F4F00BF1F66 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF5F37E265E7F4F00BF1F66 /* Extensions.swift */; };
-		BBF8AD6825C8200E009CD35D /* DataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF8AD6725C8200E009CD35D /* DataLoader.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -57,7 +58,6 @@
 		BB46D2AC25B856B9003AD167 /* rnova.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = rnova.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB46D2AF25B856B9003AD167 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BB46D2B125B856B9003AD167 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		BB46D2B625B856B9003AD167 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		BB46D2B825B856BC003AD167 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BB46D2BB25B856BC003AD167 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BB46D2BD25B856BC003AD167 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -88,6 +88,9 @@
 		BB50D65B27AC20D2003BE5D3 /* Doctor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Doctor.swift; sourceTree = "<group>"; };
 		BB552DFD2721A563001F605A /* ClinicsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClinicsController.swift; sourceTree = "<group>"; };
 		BB552DFF2721AA1F001F605A /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		BB66452929966307006F4F2E /* JsonHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonHelper.swift; sourceTree = "<group>"; };
+		BB66452B2996666F006F4F2E /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		BB66452D2996678B006F4F2E /* NetworkConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkConfiguration.swift; sourceTree = "<group>"; };
 		BB8A54EB2726AC9500FB8941 /* ProfessionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfessionViewCell.swift; sourceTree = "<group>"; };
 		BBD920D52670A312000073FC /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		BBDB24C03A7147C4A5E52818 /* Pods-rnova.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-rnova.debug.xcconfig"; path = "Target Support Files/Pods-rnova/Pods-rnova.debug.xcconfig"; sourceTree = "<group>"; };
@@ -98,7 +101,6 @@
 		BBE91CB6275E579E00DBA81E /* MenuListViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuListViewCell.swift; sourceTree = "<group>"; };
 		BBE91CBA275F9C2200DBA81E /* VisitCardViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisitCardViewCell.swift; sourceTree = "<group>"; };
 		BBF5F37E265E7F4F00BF1F66 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
-		BBF8AD6725C8200E009CD35D /* DataLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataLoader.swift; sourceTree = "<group>"; };
 		CEA0475F7112F150729550A7 /* Pods_rnova.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_rnova.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -153,15 +155,12 @@
 		BB46D2AE25B856B9003AD167 /* rnova */ = {
 			isa = PBXGroup;
 			children = (
+				BB66452729965E7D006F4F2E /* App */,
+				BB66452829965F27006F4F2E /* API */,
 				BB4ABFF62715BDDF008D05F8 /* Controller */,
 				BB4ABFF52715BDD7008D05F8 /* View */,
 				BB4ABFF42715BDCB008D05F8 /* Model */,
 				BBF5F37D265E7F2E00BF1F66 /* Utilies */,
-				BB46D2AF25B856B9003AD167 /* AppDelegate.swift */,
-				BB46D2B125B856B9003AD167 /* SceneDelegate.swift */,
-				BB46D2B525B856B9003AD167 /* Main.storyboard */,
-				BB46D2B825B856BC003AD167 /* Assets.xcassets */,
-				BB46D2BA25B856BC003AD167 /* LaunchScreen.storyboard */,
 				BB46D2BD25B856BC003AD167 /* Info.plist */,
 			);
 			path = rnova;
@@ -285,12 +284,32 @@
 			path = Record;
 			sourceTree = "<group>";
 		};
+		BB66452729965E7D006F4F2E /* App */ = {
+			isa = PBXGroup;
+			children = (
+				BB46D2BA25B856BC003AD167 /* LaunchScreen.storyboard */,
+				BB46D2B825B856BC003AD167 /* Assets.xcassets */,
+				BB46D2AF25B856B9003AD167 /* AppDelegate.swift */,
+				BB46D2B125B856B9003AD167 /* SceneDelegate.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		BB66452829965F27006F4F2E /* API */ = {
+			isa = PBXGroup;
+			children = (
+				BB49DEF72757972800CD26A2 /* DatabaseService.swift */,
+				BB66452B2996666F006F4F2E /* NetworkService.swift */,
+				BB66452D2996678B006F4F2E /* NetworkConfiguration.swift */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
 		BBF5F37D265E7F2E00BF1F66 /* Utilies */ = {
 			isa = PBXGroup;
 			children = (
-				BBF8AD6725C8200E009CD35D /* DataLoader.swift */,
 				BBF5F37E265E7F4F00BF1F66 /* Extensions.swift */,
-				BB49DEF72757972800CD26A2 /* DatabaseService.swift */,
+				BB66452929966307006F4F2E /* JsonHelper.swift */,
 			);
 			path = Utilies;
 			sourceTree = "<group>";
@@ -356,7 +375,6 @@
 			files = (
 				BB46D2BC25B856BC003AD167 /* LaunchScreen.storyboard in Resources */,
 				BB46D2B925B856BC003AD167 /* Assets.xcassets in Resources */,
-				BB46D2B725B856B9003AD167 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -420,6 +438,7 @@
 				BBF5F37F265E7F4F00BF1F66 /* Extensions.swift in Sources */,
 				BB49DEBD2739527E00CD26A2 /* MakeAppointmentController.swift in Sources */,
 				BB50D65927AC15C6003BE5D3 /* DoctorViewCell.swift in Sources */,
+				BB66452E2996678B006F4F2E /* NetworkConfiguration.swift in Sources */,
 				BB49DEC9273C0EFC00CD26A2 /* ContactInformationView.swift in Sources */,
 				BB49DEE7274BE30E00CD26A2 /* ServiceCardController.swift in Sources */,
 				BB49DEBA2735053000CD26A2 /* TimeViewCell.swift in Sources */,
@@ -434,8 +453,8 @@
 				BB49DEDE2746999F00CD26A2 /* SubServiceViewCell.swift in Sources */,
 				BB49DEBF273A601300CD26A2 /* DateRecordChoiceController.swift in Sources */,
 				BB49DECD2743911F00CD26A2 /* ClinicViewCell.swift in Sources */,
+				BB66452C2996666F006F4F2E /* NetworkService.swift in Sources */,
 				BB8A54ED2726AC9500FB8941 /* ProfessionViewCell.swift in Sources */,
-				BBF8AD6825C8200E009CD35D /* DataLoader.swift in Sources */,
 				BB49DEEB274CDE1100CD26A2 /* ProfileController.swift in Sources */,
 				BB4AC0082716D552008D05F8 /* RecordController.swift in Sources */,
 				BBE91CB5275E4E7C00DBA81E /* ExitController.swift in Sources */,
@@ -445,6 +464,7 @@
 				BB4ABFF82715BE49008D05F8 /* Model.swift in Sources */,
 				BB49DEAD272C162E00CD26A2 /* ChooseDoctorByProfession.swift in Sources */,
 				BBE91CB3275E4E3800DBA81E /* VisitsController.swift in Sources */,
+				BB66452A29966307006F4F2E /* JsonHelper.swift in Sources */,
 				BB46D2B225B856B9003AD167 /* SceneDelegate.swift in Sources */,
 				BB49DEF82757972800CD26A2 /* DatabaseService.swift in Sources */,
 				BB49DED32743F04900CD26A2 /* ServiceController.swift in Sources */,
@@ -454,14 +474,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		BB46D2B525B856B9003AD167 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				BB46D2B625B856B9003AD167 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		BB46D2BA25B856BC003AD167 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (

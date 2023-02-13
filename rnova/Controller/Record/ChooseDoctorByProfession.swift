@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ChooseDoctorByProfession: UIViewController {
+final class ChooseDoctorByProfession: UIViewController {
     
 //    MARK: - Properties
     
@@ -40,20 +40,27 @@ class ChooseDoctorByProfession: UIViewController {
     private func loadInformation() {
         DispatchQueue.main.async {
             let urlParameter = "&profession_id=" + String(self.professionId)
-            let doctorsData = DataLoader(urlMethod: "&method=getUsers", urlParameter: urlParameter).doctorsData
-            for item in doctorsData {
-                let downloadImage = UIImageView()
-                if item.avatar_small != nil {
-                    downloadImage.downloaded(from: item.avatar_small!)
-                } else {
-                    downloadImage.image = UIImage(systemName: "person")
-                }
+            NetworkService.shared.request(method: .users) { (result: RequestStatus<[Doctors]?>) in
+                switch result {
+                case .success(let answer):
+                    guard let answer = answer else { return }
+                    for item in answer {
+                        let downloadImage = UIImageView()
+                        if item.avatar_small != nil {
+                            downloadImage.downloaded(from: item.avatar_small!)
+                        } else {
+                            downloadImage.image = UIImage(systemName: "person")
+                        }
 
-                let doc = Doctor(id: item.id, name: item.name, profession: item.profession ?? [], profession_titles: item.profession_titles ?? "Доктор", image: downloadImage)
-                
-                self.doctors.append(doc)
-            }
-            self.collectionView?.reloadData()
+                        let doc = Doctor(id: item.id, name: item.name, profession: item.profession ?? [], profession_titles: item.profession_titles ?? "Доктор", image: downloadImage)
+                        
+                        self.doctors.append(doc)
+                    }
+                    self.collectionView?.reloadData()
+                case .error:
+                    break
+                }
+            }            
         }
     }
     

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class DateRecordChoiceController: UIViewController {
+final class DateRecordChoiceController: UIViewController {
     
 //    MARK: - Properties
     
@@ -73,9 +73,17 @@ class DateRecordChoiceController: UIViewController {
     private func loadInformation() {
         let urlStr = "&user_id=" + String(self.doctorId)
         DispatchQueue.main.async {
-            self.scheduleData = DataLoader(urlMethod: "&method=getSchedule", urlParameter: urlStr).scheduleData
-            if !self.scheduleData.isEmpty {
-                self.setTimeCollectionView()
+            NetworkService.shared.request(method: .schedule) { (result: RequestStatus<[String: [Schedule]]?>) in
+                switch result {
+                case .success(let answer):
+                    guard let answer = answer else { return }
+                    self.scheduleData = answer
+                    if !self.scheduleData.isEmpty {
+                        self.setTimeCollectionView()
+                    }
+                case .error:
+                    break
+                }
             }
         }
     }

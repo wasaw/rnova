@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CalendarViewCell: UICollectionViewCell {
+final class CalendarViewCell: UICollectionViewCell {
     static let identifire = "CalendarViewCell"
     
 //    MARK: - Properties

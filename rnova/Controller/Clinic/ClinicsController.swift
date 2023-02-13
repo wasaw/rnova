@@ -8,7 +8,7 @@
 import UIKit
 import MessageUI
 
-class ClinicsController: UIViewController {
+final class ClinicsController: UIViewController {
     
 //    MARK: - Properties
     
@@ -33,7 +33,16 @@ class ClinicsController: UIViewController {
     
     private func loadInformation() {
         DispatchQueue.main.async {
-            self.clinicsData = DataLoader(urlMethod: "&method=getClinics", urlParameter: "").clinicsData
+            NetworkService.shared.request(method: .clinics) { (result: RequestStatus<[Clinic]?>) in
+                switch result {
+                case .success(let answer):
+                    guard let answer = answer else { return }
+                    self.clinicsData = answer
+                    self.collectionView?.reloadData()
+                case .error:
+                    break
+                }
+            }
             self.collectionView?.reloadData()
         }
     }

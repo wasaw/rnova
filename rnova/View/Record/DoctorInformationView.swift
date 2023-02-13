@@ -7,7 +7,7 @@
 
 import UIKit
 
-class DoctorInformationView: UIView {
+final class DoctorInformationView: UIView {
     
 //    MARK: - Properties
     
