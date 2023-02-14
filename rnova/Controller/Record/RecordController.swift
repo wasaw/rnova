@@ -57,7 +57,6 @@ final class RecordController: UIViewController {
                         self.doctors.append(doc)
                     }
                     self.collectionView?.reloadData()
-                    self.countingQuantityOfProfessions()
                 case .error(let error):
                     self.alert(with: "Ошибка", and: error.localizedDescription)
                 }
@@ -126,26 +125,7 @@ final class RecordController: UIViewController {
         collectionView.anchor(left: view.leftAnchor, top: segmentedControl.bottomAnchor, right: view.rightAnchor, bottom: view.bottomAnchor, paddingTop: 20)
         collectionView.backgroundColor = .white
     }
-    
-    private func countingQuantityOfProfessions() {
-        for item in professionsData {
-            var quantity = 0
-            let id = item.id
-
-            for item in doctors {
-                let str = item.profession
-                if !str.isEmpty {
-                    for item in str {
-                        if id == Int(item) {
-                            quantity += 1
-                        }
-                    }
-                }
-                quantityProfession[id] = quantity
-            }
-        }
-    }
-    
+        
 //    MARK: - Selectors
     
     @objc private func didTapSegment() {
@@ -197,12 +177,10 @@ extension RecordController: UICollectionViewDataSource {
             return cellDoctor
         } else {
             if searchBarIsEmpty {
-                guard let quantity = quantityProfession[professionsData[indexPath.row].id] else { return UICollectionViewCell() }
-                let specialty = "\(professionsData[indexPath.row].name) (\(quantity))"
+                let specialty = "\(professionsData[indexPath.row].name)"
                 cellProfession.setInformation(specialty)
             } else {
-                guard let quantity = quantityProfession[filteredSearchResultProfessions[indexPath.row].id] else { return UICollectionViewCell() }
-                let specialty = "\(filteredSearchResultProfessions[indexPath.row].name) (\(quantity))"
+                let specialty = "\(filteredSearchResultProfessions[indexPath.row].name)"
                 cellProfession.setInformation(specialty)
             }
             

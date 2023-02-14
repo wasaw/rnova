@@ -40,7 +40,7 @@ final class ChooseDoctorByProfession: UIViewController {
     private func loadInformation() {
         DispatchQueue.main.async {
             let urlParameter = "&profession_id=" + String(self.professionId)
-            NetworkService.shared.request(method: .users) { (result: RequestStatus<[Doctors]?>) in
+            NetworkService.shared.request(method: .users, category: urlParameter) { (result: RequestStatus<[Doctors]?>) in
                 switch result {
                 case .success(let answer):
                     guard let answer = answer else { return }

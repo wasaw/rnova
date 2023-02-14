@@ -67,7 +67,7 @@ final class ClinicsController: UIViewController {
 extension ClinicsController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if !clinicsData.isEmpty {
-            return clinicsData.count
+            return 1
         }
         return 0
     }
