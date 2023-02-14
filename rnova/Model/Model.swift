@@ -76,10 +76,3 @@ enum FlipCalendar {
     case left
     case right
 }
-
-//  MARK: - Error
-
-enum RequestStatus<T> {
-    case success(T)
-    case error
-}

@@ -45,8 +45,8 @@ final class ServiceController: UIViewController {
                     guard let answer = answer else { return }
                     self.servicesData = answer
                     self.collectionView?.reloadData()
-                case .error:
-                    break
+                case .error(let error):
+                    self.alert(with: "Ошибка", and: error.localizedDescription)
                 }
             }
         }

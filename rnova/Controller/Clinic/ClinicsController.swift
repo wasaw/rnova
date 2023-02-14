@@ -39,8 +39,8 @@ final class ClinicsController: UIViewController {
                     guard let answer = answer else { return }
                     self.clinicsData = answer
                     self.collectionView?.reloadData()
-                case .error:
-                    break
+                case .error(let error):
+                    self.alert(with: "Ошибка", and: error.localizedDescription)
                 }
             }
             self.collectionView?.reloadData()

@@ -40,6 +40,18 @@ final class NetworkService {
                 print(error.localizedDescription)
             }
             
+            if let response = response as? HTTPURLResponse {
+                if response.statusCode >= 400 && response.statusCode < 500 {
+                    if response.statusCode == 404 {
+                        completion(.error(NetworkError.notFound))
+                    }
+                    completion(.error(NetworkError.badRequest))
+                }
+                if response.statusCode >= 500 {
+                    completion(.error(NetworkError.serverError))
+                }
+            }
+            
             if let data = data {
                 DispatchQueue.main.async {
                     let decodeData = JsonHelpers.shared.decode(data: data, T.self)

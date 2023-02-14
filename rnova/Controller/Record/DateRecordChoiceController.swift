@@ -81,8 +81,8 @@ final class DateRecordChoiceController: UIViewController {
                     if !self.scheduleData.isEmpty {
                         self.setTimeCollectionView()
                     }
-                case .error:
-                    break
+                case .error(let error):
+                    self.alert(with: "Ошибка", and: error.localizedDescription)
                 }
             }
         }

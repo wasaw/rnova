@@ -177,3 +177,13 @@ extension UIView {
         return tf
     }
 }
+
+//  MARK: - UIViewController
+
+extension UIViewController {
+    func alert(with title: String, and message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: .default))
+        self.present(alert, animated: true)
+    }
+}

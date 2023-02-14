@@ -48,8 +48,8 @@ final class SubServiceController: UIViewController {
                     guard let answer = answer else { return }
                     self.subServicesData = answer
                     self.collectionView?.reloadData()
-                case .error:
-                    break
+                case .error(let error):
+                    self.alert(with: "Ошибка", and: error.localizedDescription)
                 }
             }
         }

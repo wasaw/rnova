@@ -57,8 +57,8 @@ final class ChooseDoctorByProfession: UIViewController {
                         self.doctors.append(doc)
                     }
                     self.collectionView?.reloadData()
-                case .error:
-                    break
+                case .error(let error):
+                    self.alert(with: "Ошибка", and: error.localizedDescription)
                 }
             }            
         }

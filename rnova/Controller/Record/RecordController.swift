@@ -58,8 +58,8 @@ final class RecordController: UIViewController {
                     }
                     self.collectionView?.reloadData()
                     self.countingQuantityOfProfessions()
-                case .error:
-                    break
+                case .error(let error):
+                    self.alert(with: "Ошибка", and: error.localizedDescription)
                 }
             }
             
@@ -69,8 +69,8 @@ final class RecordController: UIViewController {
                     guard let answer = answer else { return }
                     self.professionsData = answer
                     self.collectionView?.reloadData()
-                case .error:
-                    break
+                case .error(let error):
+                    self.alert(with: "Ошибка", and: error.localizedDescription)
                 }
             }
             
