@@ -56,11 +56,14 @@ extension LoginController: SendLoginInformationProtocol {
         if isValidPhoneNumber(number: phoneNumber) {
             let databaseService = DatabaseService()
             DispatchQueue.main.async {
-                if databaseService.login(phoneNumber: phoneNumber, password: password) {
-                    let vc = ProfileController()
-                    self.navigationController?.pushViewController(vc, animated: true)
-                } else {
-                    self.alert(fields: "Неправильно введено поле логин или пароль")
+                databaseService.login(phoneNumber: phoneNumber, password: password) { result in
+                    switch result {
+                    case .success(_):
+                        let vc = ProfileController()
+                        self.navigationController?.pushViewController(vc, animated: true)
+                    case .error(_):
+                        self.alert(with: "Ошибка", and: "Неправильно введено поле логин или пароль")
+                    }
                 }
             }
             

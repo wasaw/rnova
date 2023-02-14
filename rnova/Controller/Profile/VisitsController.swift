@@ -10,7 +10,7 @@ import SideMenu
 
 final class VisitsController: UIViewController {
     
-//    MARK - Properties
+//    MARK: - Properties
     
     private let segmentedControl = UISegmentedControl(items: ["Будущие", "Прошедшие"])
     private var collectionView: UICollectionView?
@@ -37,7 +37,14 @@ final class VisitsController: UIViewController {
     
     private func loadInformation() {
         DispatchQueue.main.async {
-            self.ticketsArray = self.databaseService.loadDoctorAppointment()
+            self.databaseService.loadDoctorAppointment { (result: RequestStatus<[Appointment]>) in
+                switch result {
+                case .success(let answer):
+                    self.ticketsArray = answer
+                case .error(let error):
+                    self.alert(with: "Ошибка", and: error.localizedDescription)
+                }
+            }
             self.sortingTickets()
             self.collectionView?.reloadData()
         }

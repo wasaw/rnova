@@ -11,7 +11,7 @@ import UIKit
 final class DatabaseService {
     private let appDelegate = UIApplication.shared.delegate as! AppDelegate
         
-    func registration(user: User) {
+    func registration(user: User, completion: @escaping(RequestStatus<Bool>) -> Void) {
         let context = appDelegate.persistentContainer.viewContext
                 
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Person")
@@ -19,8 +19,7 @@ final class DatabaseService {
             let result = try context.fetch(fetchRequest)
             
             if (result.first as? NSManagedObject) != nil {
-                let alert = UIAlertController(title: "Внимание", message: "Вы уже зарегистрировались на этом устройстве", preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "Ок", style: .default, handler: nil))
+                completion(.success(false))
             } else {
                 guard let entity = NSEntityDescription.entity(forEntityName: "Person", in: context) else { return }
                 let newPerson = NSManagedObject(entity: entity, insertInto: context)
@@ -34,16 +33,17 @@ final class DatabaseService {
                 newPerson.setValue(user.password, forKey: "password")
                 do {
                     try context.save()
-                } catch let error as NSError {
-                    print(error)
+                    completion(.success(true))
+                } catch {
+                    completion(.error(CoreDataError.somethingError))
                 }
             }
-        } catch let error as NSError {
-            print(error)
+        } catch {
+            completion(.error(CoreDataError.somethingError))
         }
     }
     
-    func getPersonInformation() -> User {
+    func getPersonInformation(completion: @escaping(RequestStatus<User>) -> Void) {
         let context = appDelegate.persistentContainer.viewContext
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Person")
         
@@ -58,17 +58,15 @@ final class DatabaseService {
                         date: data.value(forKey: "date") as? String ?? "",
                         phoneNumber: data.value(forKey: "phone") as? String ?? "",
                         password: data.value(forKey: "password") as? String ?? "")
-                    return user
+                    completion(.success(user))
                 }
             }
-        } catch let error as NSError {
-            print(error)
+        } catch {
+            completion(.error(CoreDataError.somethingError))
         }
-        
-        return User(lastname: "", firstname: "", surname: "", date: "", phoneNumber: "", password: "")
     }
     
-    func checkLogIn() -> Bool {
+    func checkLogIn(completion: @escaping(RequestStatus<Bool>) -> Void) {
         let context = appDelegate.persistentContainer.viewContext
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Person")
         
@@ -77,16 +75,16 @@ final class DatabaseService {
             if let user = result.first as? NSManagedObject {
                 let checkLogIn = user.value(forKey: "login") as? Bool ?? false
                 if checkLogIn {
-                    return true
+                    completion(.success(true))
                 }
             }
-        } catch let error as NSError {
-            print(error)
+        } catch {
+            completion(.error(CoreDataError.somethingError))
         }
-        return false
+        completion(.success(false))
     }
     
-    func saveDoctorAppointment(ticket: Appointment) {
+    func saveDoctorAppointment(ticket: Appointment, completion: @escaping(RequestStatus<Bool>) -> Void) {
         let context = appDelegate.persistentContainer.viewContext
         guard let entity = NSEntityDescription.entity(forEntityName: "Record", in: context) else { return }
         let newRecord = NSManagedObject(entity: entity, insertInto: context)
@@ -105,12 +103,13 @@ final class DatabaseService {
             guard let user = result.first as? NSManagedObject else { return }
             newRecord.setValue(user, forKey: "owner")
             try context.save()
-        } catch let error as NSError {
-            print(error)
+            completion(.success(true))
+        } catch {
+            completion(.error(CoreDataError.somethingError))
         }
     }
     
-    func loadDoctorAppointment() -> [Appointment] {
+    func loadDoctorAppointment(completion: @escaping(RequestStatus<[Appointment]>) -> Void) {
         let context = appDelegate.persistentContainer.viewContext
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Record")
         
@@ -129,36 +128,33 @@ final class DatabaseService {
                     ticket.append(ticketTemp)
                 }
             }
-            return ticket
-        } catch let error as NSError {
-            print(error)
+            completion(.success(ticket))
+        } catch {
+            completion(.error(CoreDataError.somethingError))
         }
-        return [Appointment(doctor: "", profession: "", time: "", date: Date(timeIntervalSince1970: 0), clinic: "", comment: "")]
     }
     
-    func login(phoneNumber: String, password: String) -> Bool {
+    func login(phoneNumber: String, password: String, completion: @escaping(RequestStatus<Bool>) -> Void) {
         let context = appDelegate.persistentContainer.viewContext
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Person")
 
         do {
             let result = try context.fetch(fetchRequest)
-            guard let user = result.first as? NSManagedObject else { return false }
+            guard let user = result.first as? NSManagedObject else { return }
             
             let phoneBD = user.value(forKey: "phone") as? String ?? ""
             let passBD = user.value(forKey: "password") as? String ?? ""
             if phoneNumber == phoneBD && password == passBD {
                 user.setValue(true, forKey: "login")
                 try context.save()
-                return true
+                completion(.success(true))
             }
-        } catch let error as NSError {
-            print(error)
+        } catch {
+            completion(.error(CoreDataError.somethingError))
         }
-        
-        return false
     }
     
-    func exit() {
+    func exit(completion: @escaping(RequestStatus<Bool>) -> Void) {
         let context = appDelegate.persistentContainer.viewContext
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Person")
         
@@ -167,8 +163,9 @@ final class DatabaseService {
             guard let user = result.first as? NSManagedObject else { return }
             user.setValue(false, forKey: "login")
             try context.save()
-        } catch let error as NSError {
-            print(error)
+            completion(.success(true))
+        } catch {
+            completion(.error(CoreDataError.somethingError))
         }
     }
 }

@@ -23,14 +23,28 @@ final class ProfileController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        if databaseService.checkLogIn() {
-            DispatchQueue.main.async {
-                self.user = self.databaseService.getPersonInformation()
-                self.fillProfileView()
+        databaseService.checkLogIn { result in
+            switch result {
+            case .success(let answer):
+                if answer {
+                    DispatchQueue.main.async {
+                        self.databaseService.getPersonInformation { result in
+                            switch result {
+                            case .success(let user):
+                                self.user = user
+                            case .error(let error):
+                                self.alert(with: "Ошибка", and: error.localizedDescription)
+                            }
+                        }
+                        self.fillProfileView()
+                    }
+                    self.configureProfileView()
+                } else {
+                    self.configureRegistrationView()
+                }
+            case .error(let error):
+                self.alert(with: "Ошибка", and: error.localizedDescription)
             }
-            configureProfileView()
-        } else {
-            configureRegistrationView()
         }
     }
         
@@ -123,8 +137,18 @@ extension ProfileController: SendValueProtocol {
         }
         
         if isValidPhoneNumber(number: user.phoneNumber) {
-            databaseService.registration(user: user)
-            viewWillAppear(true)
+            databaseService.registration(user: user) { result in
+                switch result {
+                case .success(let answer):
+                    if answer {
+                        self.viewWillAppear(true)
+                    } else {
+                        self.alert(with: "Внимание", and: "Вы уже зарегистрировались на этом устройстве")
+                    }
+                case .error(let error):
+                    self.alert(with: "Ошибка", and: error.localizedDescription)
+                }
+            }
         } else {
             alert(fields: """
                   Номер телефона.

@@ -33,3 +33,16 @@ extension NetworkError: LocalizedError {
         }
     }
 }
+
+enum CoreDataError: Error {
+    case somethingError
+}
+
+extension CoreDataError: LocalizedError {
+    var errorDescription: String? {
+        switch self {
+        case .somethingError:
+            return NSLocalizedString("Ошибка. Попробуйте снова.", comment: "")
+        }
+    }
+}

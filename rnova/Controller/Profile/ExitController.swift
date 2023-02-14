@@ -14,7 +14,14 @@ final class ExitController: UIViewController {
         
         let databaseService = DatabaseService()
         DispatchQueue.main.async {
-            databaseService.exit()
+            databaseService.exit { result in
+                switch result {
+                case .success(_):
+                    break
+                case .error(let error):
+                    self.alert(with: "Ошибка", and: error.localizedDescription)
+                }
+            }
         }
         
         let vc = ProfileController()

@@ -85,14 +85,29 @@ final class MakeAppointmentController: UIViewController {
         view.addSubview(contactInformationView)
         delegateComment = contactInformationView
         contactInformationView.anchor(left: view.leftAnchor, top: recordInformationView.bottomAnchor, right: view.rightAnchor, paddingLeft: 10, paddingTop: 30, paddingRight: -10, height: 320)
- 
-        if databaseService.checkLogIn() {
-            let user = databaseService.getPersonInformation()
-            contactInformationView.lastNameField.text = user.lastname
-            contactInformationView.firstNameField.text = user.firstname
-            contactInformationView.surnameField.text = user.surname
-            contactInformationView.dateField.text = String(user.date)
-            contactInformationView.phoneNumberField.text = user.phoneNumber
+        
+        databaseService.checkLogIn { result in
+            switch result {
+            case .success(let answer):
+                if answer {
+                    self.databaseService.getPersonInformation { result in
+                        switch result {
+                        case .success(let user):
+                            self.contactInformationView.lastNameField.text = user.lastname
+                            self.contactInformationView.firstNameField.text = user.firstname
+                            self.contactInformationView.surnameField.text = user.surname
+                            self.contactInformationView.dateField.text = String(user.date)
+                            self.contactInformationView.phoneNumberField.text = user.phoneNumber
+                        case .error(let error):
+                            self.alert(with: "Ошибка", and: error.localizedDescription)
+                        }
+                    }
+                } else {
+                    self.alert(with: "Внимание", and: "Предварительно необходимо зарегистрироваться.")
+                }
+            case .error(let error):
+                self.alert(with: "Ошибка", and: error.localizedDescription)
+            }
         }
     }
     
@@ -131,26 +146,34 @@ final class MakeAppointmentController: UIViewController {
     }
     
     @objc private func saveTicket() {
-        if databaseService.checkLogIn() {
-            let clinic = "Моя клиника"
-            let comment = delegateComment?.gettingComment()
-            var fullComment: String
-            if comment == nil {
-                fullComment = ""
-            } else {
-                fullComment = comment!
+        databaseService.checkLogIn { result in
+            switch result {
+            case.success(let answer):
+                if answer {
+                    let clinic = "Моя клиника"
+                    let comment = self.delegateComment?.gettingComment()
+                    var fullComment: String
+                    if comment == nil {
+                        fullComment = ""
+                    } else {
+                        fullComment = comment!
+                    }
+                    let ticket = Appointment(doctor: self.doctor.name, profession: self.doctor.profession_titles, time: self.selectedTime, date: self.selectedDate, clinic: clinic, comment: fullComment)
+                    self.databaseService.saveDoctorAppointment(ticket: ticket) { result in
+                        switch result {
+                        case .success(_):
+                            self.alert(with: "Уведомление", and: "Поздравляем, вы успешно записались")
+                            self.navigationController?.popToRootViewController(animated: true)
+                        case .error(let error):
+                            self.alert(with: "Ошибка", and: error.localizedDescription)
+                        }
+                    }
+                } else {
+                    self.alert(with: "Внимание", and: "Предварительно необходимо зарегистрироваться.")
+                }
+            case .error(let error):
+                self.alert(with: "Ошибка", and: error.localizedDescription)
             }
-            let ticket = Appointment(doctor: doctor.name, profession: doctor.profession_titles, time: selectedTime, date: selectedDate, clinic: clinic, comment: fullComment)
-            databaseService.saveDoctorAppointment(ticket: ticket)
-            let alert = UIAlertController(title: "Уведомление", message: "Поздравляем, вы успешно записались", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { _ in
-                self.navigationController?.popToRootViewController(animated: true)
-            }))
-            present(alert, animated: true, completion: nil)
-        } else {
-            let alert = UIAlertController(title: "Внимание", message: "Предварительно необходимо зарегистрироваться.", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
-            present(alert, animated: true, completion: nil)
         }
     }
 }
