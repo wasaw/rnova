@@ -9,8 +9,14 @@ import CoreData
 import UIKit
 
 final class DatabaseService {
+    static let shared = DatabaseService()
+    
+//    MARK: - Properties
+    
     private let appDelegate = UIApplication.shared.delegate as! AppDelegate
         
+//    MARK: - Helpers
+    
     func registration(user: User, completion: @escaping(RequestStatus<Bool>) -> Void) {
         let context = appDelegate.persistentContainer.viewContext
                 
@@ -76,12 +82,13 @@ final class DatabaseService {
                 let checkLogIn = user.value(forKey: "login") as? Bool ?? false
                 if checkLogIn {
                     completion(.success(true))
+                } else {
+                    completion(.success(false))
                 }
             }
         } catch {
             completion(.error(CoreDataError.somethingError))
         }
-        completion(.success(false))
     }
     
     func saveDoctorAppointment(ticket: Appointment, completion: @escaping(RequestStatus<Bool>) -> Void) {

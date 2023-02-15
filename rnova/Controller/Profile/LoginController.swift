@@ -29,7 +29,9 @@ final class LoginController: UIViewController {
     
     private func configuretionView() {
         view.addSubview(loginView)
-        
+
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Назад", style: .plain, target: self, action: #selector(handleBackButton))
+        navigationController?.navigationBar.tintColor = .white
         loginView.delegate = self
         loginView.anchor(left: view.leftAnchor, top: view.safeAreaLayoutGuide.topAnchor, right: view.rightAnchor, bottom: view.bottomAnchor)
     }
@@ -47,6 +49,12 @@ final class LoginController: UIViewController {
         let phoneCheck = NSPredicate(format: "SELF MATCHES %@", regEx)
         return phoneCheck.evaluate(with: number)
     }
+    
+//  MARK: - Selectors
+    
+    @objc private func handleBackButton() {
+        navigationController?.popToRootViewController(animated: true)
+    }
 }
 
 //  MARK: - Extensions
@@ -54,13 +62,12 @@ final class LoginController: UIViewController {
 extension LoginController: SendLoginInformationProtocol {
     func sendLoginInformation(phoneNumber: String, password: String) {
         if isValidPhoneNumber(number: phoneNumber) {
-            let databaseService = DatabaseService()
+            let databaseService = DatabaseService.shared
             DispatchQueue.main.async {
                 databaseService.login(phoneNumber: phoneNumber, password: password) { result in
                     switch result {
                     case .success(_):
-                        let vc = ProfileController()
-                        self.navigationController?.pushViewController(vc, animated: true)
+                        self.navigationController?.popToRootViewController(animated: true)
                     case .error(_):
                         self.alert(with: "Ошибка", and: "Неправильно введено поле логин или пароль")
                     }

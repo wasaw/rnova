@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import SideMenu
 
 protocol ProfileControllerDelegate: AnyObject {
     func didTapMenuButton()
@@ -20,11 +19,9 @@ final class ProfileController: UIViewController {
 
     private let registrationView = RegistrationView()
     private let profileView = ProfileView()
-    private let databaseService = DatabaseService()
+    private let databaseService = DatabaseService.shared
     private var user: User?
-    
-    private var sideMenu: SideMenuNavigationController?
-    
+        
 //  MARK: - Lifecycle
     
     override func viewWillAppear(_ animated: Bool) {
@@ -70,11 +67,15 @@ final class ProfileController: UIViewController {
         registrationView.delegate = self
         registrationView.delegateShow = self
         registrationView.anchor(left: view.leftAnchor, top: view.safeAreaLayoutGuide.topAnchor, right: view.rightAnchor, bottom: view.bottomAnchor)
+        navigationItem.leftBarButtonItem = nil
+
+        navigationController?.navigationBar.tintColor = .systemOrange
     }
     
     private func configureProfileView() {
         view.addSubview(profileView)
         profileView.anchor(left: view.leftAnchor, top: view.safeAreaLayoutGuide.topAnchor, right: view.rightAnchor, bottom: view.bottomAnchor)
+
         configureSideMenu()
     }
     
@@ -82,14 +83,6 @@ final class ProfileController: UIViewController {
         let imageBar = UIImage(systemName: "line.horizontal.3")
         navigationController?.navigationBar.tintColor = .white
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: imageBar, style: .done, target: self, action: #selector(presentingSideMenu))
-        
-//        let imageBar = UIImage(systemName: "line.horizontal.3")
-//        navigationController?.navigationBar.tintColor = .white
-//        navigationItem.leftBarButtonItem = UIBarButtonItem(image: imageBar, style: .plain, target: self, action: #selector(presentingSideMenu))
-//        
-//        sideMenu = SideMenuNavigationController(rootViewController: MenuListController())
-//        sideMenu?.leftSide = true
-//        sideMenu?.navigationBar.backgroundColor = .systemOrange
     }
     
     private func fillProfileView() {
@@ -114,8 +107,6 @@ final class ProfileController: UIViewController {
 //    MARK: - Selecters
     
     @objc private  func presentingSideMenu() {
-//        guard let sideMenu = sideMenu else { return }
-//        present(sideMenu, animated: true)
         delegate?.didTapMenuButton()
     }
 }

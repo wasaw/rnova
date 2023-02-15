@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import SideMenu
 
 final class VisitsController: UIViewController {
     
@@ -14,9 +13,8 @@ final class VisitsController: UIViewController {
     
     private let segmentedControl = UISegmentedControl(items: ["Будущие", "Прошедшие"])
     private var collectionView: UICollectionView?
-    private var sideMenu: SideMenuNavigationController?
     
-    private let databaseService = DatabaseService()
+    private let databaseService = DatabaseService.shared
     private var ticketsArray = [Appointment]()
     private var pastTickets = [Appointment]()
     private var futureTickets = [Appointment]()
@@ -51,19 +49,8 @@ final class VisitsController: UIViewController {
     }
     
     private func configureUI() {
-        configureSideMenu()
         configureSegmentedControl()
         configureCollectionView()
-    }
-    
-    private func configureSideMenu() {
-        let imageBar = UIImage(systemName: "line.horizontal.3")
-        navigationController?.navigationBar.tintColor = .white
-        navigationItem.leftBarButtonItem = UIBarButtonItem(image: imageBar, style: .plain, target: self, action: #selector(presentingSideMenu))
-        
-        sideMenu = SideMenuNavigationController(rootViewController: MenuListController())
-        sideMenu?.leftSide = true
-        sideMenu?.navigationBar.backgroundColor = .systemOrange
     }
     
     private func configureSegmentedControl() {
@@ -115,11 +102,6 @@ final class VisitsController: UIViewController {
     
     @objc func didTapSegment() {
         collectionView?.reloadData()
-    }
-    
-    @objc func presentingSideMenu() {
-        guard let sideMenu = sideMenu else { return }
-        present(sideMenu, animated: true)
     }
 }
 

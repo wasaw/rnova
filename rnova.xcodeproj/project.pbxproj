@@ -3,11 +3,10 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 50;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		182A98A483399BDEFF4E6317 /* Pods_rnova.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEA0475F7112F150729550A7 /* Pods_rnova.framework */; };
 		BB46D2B025B856B9003AD167 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB46D2AF25B856B9003AD167 /* AppDelegate.swift */; };
 		BB46D2B225B856B9003AD167 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB46D2B125B856B9003AD167 /* SceneDelegate.swift */; };
 		BB46D2B925B856BC003AD167 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BB46D2B825B856BC003AD167 /* Assets.xcassets */; };
@@ -48,16 +47,13 @@
 		BB8A54ED2726AC9500FB8941 /* ProfessionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB8A54EB2726AC9500FB8941 /* ProfessionViewCell.swift */; };
 		BBD920D62670A312000073FC /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BBD920D42670A312000073FC /* Model.xcdatamodeld */; };
 		BBE91CAE2758BE7B00DBA81E /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE91CAD2758BE7B00DBA81E /* ProfileView.swift */; };
-		BBE91CB0275E417500DBA81E /* MenuListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE91CAF275E417500DBA81E /* MenuListController.swift */; };
 		BBE91CB3275E4E3800DBA81E /* VisitsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE91CB2275E4E3800DBA81E /* VisitsController.swift */; };
-		BBE91CB5275E4E7C00DBA81E /* ExitController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE91CB4275E4E7C00DBA81E /* ExitController.swift */; };
 		BBE91CB8275E579E00DBA81E /* MenuListViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE91CB6275E579E00DBA81E /* MenuListViewCell.swift */; };
 		BBE91CBC275F9C2200DBA81E /* VisitCardViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE91CBA275F9C2200DBA81E /* VisitCardViewCell.swift */; };
 		BBF5F37F265E7F4F00BF1F66 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF5F37E265E7F4F00BF1F66 /* Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		3231784F51AEC18CFC3EF17F /* Pods-rnova.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-rnova.release.xcconfig"; path = "Target Support Files/Pods-rnova/Pods-rnova.release.xcconfig"; sourceTree = "<group>"; };
 		BB46D2AC25B856B9003AD167 /* rnova.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = rnova.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB46D2AF25B856B9003AD167 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BB46D2B125B856B9003AD167 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -99,15 +95,11 @@
 		BB66455B299CC99F006F4F2E /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		BB8A54EB2726AC9500FB8941 /* ProfessionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfessionViewCell.swift; sourceTree = "<group>"; };
 		BBD920D52670A312000073FC /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
-		BBDB24C03A7147C4A5E52818 /* Pods-rnova.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-rnova.debug.xcconfig"; path = "Target Support Files/Pods-rnova/Pods-rnova.debug.xcconfig"; sourceTree = "<group>"; };
 		BBE91CAD2758BE7B00DBA81E /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
-		BBE91CAF275E417500DBA81E /* MenuListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuListController.swift; sourceTree = "<group>"; };
 		BBE91CB2275E4E3800DBA81E /* VisitsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisitsController.swift; sourceTree = "<group>"; };
-		BBE91CB4275E4E7C00DBA81E /* ExitController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExitController.swift; sourceTree = "<group>"; };
 		BBE91CB6275E579E00DBA81E /* MenuListViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuListViewCell.swift; sourceTree = "<group>"; };
 		BBE91CBA275F9C2200DBA81E /* VisitCardViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisitCardViewCell.swift; sourceTree = "<group>"; };
 		BBF5F37E265E7F4F00BF1F66 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
-		CEA0475F7112F150729550A7 /* Pods_rnova.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_rnova.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,38 +107,18 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				182A98A483399BDEFF4E6317 /* Pods_rnova.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		5D5AAEC7B4ECC75046E9C552 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				CEA0475F7112F150729550A7 /* Pods_rnova.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		9568AA022936D4FE3102FA6A /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				BBDB24C03A7147C4A5E52818 /* Pods-rnova.debug.xcconfig */,
-				3231784F51AEC18CFC3EF17F /* Pods-rnova.release.xcconfig */,
-			);
-			path = Pods;
-			sourceTree = "<group>";
-		};
 		BB46D2A325B856B9003AD167 = {
 			isa = PBXGroup;
 			children = (
 				BBD920D42670A312000073FC /* Model.xcdatamodeld */,
 				BB46D2AE25B856B9003AD167 /* rnova */,
 				BB46D2AD25B856B9003AD167 /* Products */,
-				9568AA022936D4FE3102FA6A /* Pods */,
-				5D5AAEC7B4ECC75046E9C552 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -195,9 +167,7 @@
 			children = (
 				BB49DEEA274CDE1100CD26A2 /* ProfileController.swift */,
 				BB49DEEF274FBAC300CD26A2 /* LoginController.swift */,
-				BBE91CAF275E417500DBA81E /* MenuListController.swift */,
 				BBE91CB2275E4E3800DBA81E /* VisitsController.swift */,
-				BBE91CB4275E4E7C00DBA81E /* ExitController.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -338,11 +308,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = BB46D2C025B856BC003AD167 /* Build configuration list for PBXNativeTarget "rnova" */;
 			buildPhases = (
-				DFF137E128C32F790BBA6CA4 /* [CP] Check Pods Manifest.lock */,
 				BB46D2A825B856B9003AD167 /* Sources */,
 				BB46D2A925B856B9003AD167 /* Frameworks */,
 				BB46D2AA25B856B9003AD167 /* Resources */,
-				23C80358F6311242F408D123 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -397,48 +365,6 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
-/* Begin PBXShellScriptBuildPhase section */
-		23C80358F6311242F408D123 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-rnova/Pods-rnova-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-rnova/Pods-rnova-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-rnova/Pods-rnova-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		DFF137E128C32F790BBA6CA4 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-rnova-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
-
 /* Begin PBXSourcesBuildPhase section */
 		BB46D2A825B856B9003AD167 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -451,7 +377,6 @@
 				BB49DEC3273A66DF00CD26A2 /* ChoiceDateView.swift in Sources */,
 				BB46D2B025B856B9003AD167 /* AppDelegate.swift in Sources */,
 				BB49DEF42751153600CD26A2 /* LoginView.swift in Sources */,
-				BBE91CB0275E417500DBA81E /* MenuListController.swift in Sources */,
 				BBF5F37F265E7F4F00BF1F66 /* Extensions.swift in Sources */,
 				BB49DEBD2739527E00CD26A2 /* MakeAppointmentController.swift in Sources */,
 				BB50D65927AC15C6003BE5D3 /* DoctorViewCell.swift in Sources */,
@@ -475,7 +400,6 @@
 				BB8A54ED2726AC9500FB8941 /* ProfessionViewCell.swift in Sources */,
 				BB49DEEB274CDE1100CD26A2 /* ProfileController.swift in Sources */,
 				BB4AC0082716D552008D05F8 /* RecordController.swift in Sources */,
-				BBE91CB5275E4E7C00DBA81E /* ExitController.swift in Sources */,
 				BBE91CB8275E579E00DBA81E /* MenuListViewCell.swift in Sources */,
 				BB49DEED274D0C6500CD26A2 /* RegistrationView.swift in Sources */,
 				BBD920D62670A312000073FC /* Model.xcdatamodeld in Sources */,
@@ -623,7 +547,6 @@
 		};
 		BB46D2C125B856BC003AD167 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = BBDB24C03A7147C4A5E52818 /* Pods-rnova.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -643,7 +566,6 @@
 		};
 		BB46D2C225B856BC003AD167 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3231784F51AEC18CFC3EF17F /* Pods-rnova.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

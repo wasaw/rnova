@@ -15,7 +15,7 @@ enum MenuState {
 final class ContainerSideMenu: UIViewController {
     
 //    MARK: - Properties
-    
+        
     private let menuVC = MenuViewController()
     private var homeVC = ProfileController()
     private var navVC: UINavigationController?
@@ -98,7 +98,7 @@ extension ContainerSideMenu: MenuViewControllerDelegate {
         case .logout:
             let alert = UIAlertController(title: nil, message: "Вы уверены, что хотите выйти?", preferredStyle: .actionSheet)
             alert.addAction(UIAlertAction(title: "Выйти", style: .destructive, handler: { _ in
-                let databaseService = DatabaseService()
+                let databaseService = DatabaseService.shared
                 DispatchQueue.main.async {
                     databaseService.exit { result in
                         switch result {

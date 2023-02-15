@@ -21,7 +21,7 @@ final class MakeAppointmentController: UIViewController {
     
     var delegateComment: SendCommentProtocol?
         
-    private let databaseService = DatabaseService()
+    private let databaseService = DatabaseService.shared
     
     private let datePicker = UIDatePicker()
     private let formatter = DateFormatter()
