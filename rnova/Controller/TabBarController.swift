@@ -28,7 +28,7 @@ final class TabBarController: UITabBarController {
         clinicsVC.tabBarItem.image = UIImage(systemName: "house")
         clinicsVC.tabBarItem.title = "Клиники"
         
-        let profileVC = UINavigationController(rootViewController: ProfileController())
+        let profileVC = ContainerSideMenu()
         profileVC.tabBarItem.image = UIImage(systemName: "person.circle")
         profileVC.tabBarItem.title = "Профиль"
         

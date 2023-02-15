@@ -8,9 +8,15 @@
 import UIKit
 import SideMenu
 
+protocol ProfileControllerDelegate: AnyObject {
+    func didTapMenuButton()
+}
+
 final class ProfileController: UIViewController {
     
 //    MARK: - Properties
+    
+    weak var delegate: ProfileControllerDelegate?
 
     private let registrationView = RegistrationView()
     private let profileView = ProfileView()
@@ -75,11 +81,15 @@ final class ProfileController: UIViewController {
     private func configureSideMenu() {
         let imageBar = UIImage(systemName: "line.horizontal.3")
         navigationController?.navigationBar.tintColor = .white
-        navigationItem.leftBarButtonItem = UIBarButtonItem(image: imageBar, style: .plain, target: self, action: #selector(presentingSideMenu))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: imageBar, style: .done, target: self, action: #selector(presentingSideMenu))
         
-        sideMenu = SideMenuNavigationController(rootViewController: MenuListController())
-        sideMenu?.leftSide = true
-        sideMenu?.navigationBar.backgroundColor = .systemOrange
+//        let imageBar = UIImage(systemName: "line.horizontal.3")
+//        navigationController?.navigationBar.tintColor = .white
+//        navigationItem.leftBarButtonItem = UIBarButtonItem(image: imageBar, style: .plain, target: self, action: #selector(presentingSideMenu))
+//        
+//        sideMenu = SideMenuNavigationController(rootViewController: MenuListController())
+//        sideMenu?.leftSide = true
+//        sideMenu?.navigationBar.backgroundColor = .systemOrange
     }
     
     private func fillProfileView() {
@@ -104,8 +114,9 @@ final class ProfileController: UIViewController {
 //    MARK: - Selecters
     
     @objc private  func presentingSideMenu() {
-        guard let sideMenu = sideMenu else { return }
-        present(sideMenu, animated: true)
+//        guard let sideMenu = sideMenu else { return }
+//        present(sideMenu, animated: true)
+        delegate?.didTapMenuButton()
     }
 }
 

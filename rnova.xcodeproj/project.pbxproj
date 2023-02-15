@@ -43,6 +43,8 @@
 		BB66452C2996666F006F4F2E /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB66452B2996666F006F4F2E /* NetworkService.swift */; };
 		BB66452E2996678B006F4F2E /* NetworkConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB66452D2996678B006F4F2E /* NetworkConfiguration.swift */; };
 		BB664530299B6F3E006F4F2E /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB66452F299B6F3E006F4F2E /* Error.swift */; };
+		BB66455A299CC95E006F4F2E /* ContainerSideMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB664559299CC95E006F4F2E /* ContainerSideMenu.swift */; };
+		BB66455C299CC99F006F4F2E /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB66455B299CC99F006F4F2E /* MenuViewController.swift */; };
 		BB8A54ED2726AC9500FB8941 /* ProfessionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB8A54EB2726AC9500FB8941 /* ProfessionViewCell.swift */; };
 		BBD920D62670A312000073FC /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BBD920D42670A312000073FC /* Model.xcdatamodeld */; };
 		BBE91CAE2758BE7B00DBA81E /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE91CAD2758BE7B00DBA81E /* ProfileView.swift */; };
@@ -93,6 +95,8 @@
 		BB66452B2996666F006F4F2E /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		BB66452D2996678B006F4F2E /* NetworkConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkConfiguration.swift; sourceTree = "<group>"; };
 		BB66452F299B6F3E006F4F2E /* Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
+		BB664559299CC95E006F4F2E /* ContainerSideMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerSideMenu.swift; sourceTree = "<group>"; };
+		BB66455B299CC99F006F4F2E /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		BB8A54EB2726AC9500FB8941 /* ProfessionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfessionViewCell.swift; sourceTree = "<group>"; };
 		BBD920D52670A312000073FC /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		BBDB24C03A7147C4A5E52818 /* Pods-rnova.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-rnova.debug.xcconfig"; path = "Target Support Files/Pods-rnova/Pods-rnova.debug.xcconfig"; sourceTree = "<group>"; };
@@ -222,6 +226,7 @@
 		BB4ABFF62715BDDF008D05F8 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				BB664558299CC937006F4F2E /* SideMenu */,
 				BB4AC0062716D529008D05F8 /* Record */,
 				BB49DECA27438F8B00CD26A2 /* Clinic */,
 				BB49DECF2743F00100CD26A2 /* Service */,
@@ -306,6 +311,15 @@
 				BB66452D2996678B006F4F2E /* NetworkConfiguration.swift */,
 			);
 			path = API;
+			sourceTree = "<group>";
+		};
+		BB664558299CC937006F4F2E /* SideMenu */ = {
+			isa = PBXGroup;
+			children = (
+				BB664559299CC95E006F4F2E /* ContainerSideMenu.swift */,
+				BB66455B299CC99F006F4F2E /* MenuViewController.swift */,
+			);
+			path = SideMenu;
 			sourceTree = "<group>";
 		};
 		BBF5F37D265E7F2E00BF1F66 /* Utilies */ = {
@@ -445,6 +459,7 @@
 				BB49DEC9273C0EFC00CD26A2 /* ContactInformationView.swift in Sources */,
 				BB49DEE7274BE30E00CD26A2 /* ServiceCardController.swift in Sources */,
 				BB49DEBA2735053000CD26A2 /* TimeViewCell.swift in Sources */,
+				BB66455C299CC99F006F4F2E /* MenuViewController.swift in Sources */,
 				BB49DEDB2746397500CD26A2 /* SubServiceController.swift in Sources */,
 				BB50D65C27AC20D2003BE5D3 /* Doctor.swift in Sources */,
 				BB49DEC7273BF84200CD26A2 /* RecordInformationView.swift in Sources */,
@@ -470,6 +485,7 @@
 				BB66452A29966307006F4F2E /* JsonHelper.swift in Sources */,
 				BB46D2B225B856B9003AD167 /* SceneDelegate.swift in Sources */,
 				BB49DEF82757972800CD26A2 /* DatabaseService.swift in Sources */,
+				BB66455A299CC95E006F4F2E /* ContainerSideMenu.swift in Sources */,
 				BB664530299B6F3E006F4F2E /* Error.swift in Sources */,
 				BB49DED32743F04900CD26A2 /* ServiceController.swift in Sources */,
 			);
