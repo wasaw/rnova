@@ -12,7 +12,7 @@ final class ProfessionViewCell: UICollectionViewCell {
     
 //    MARK: - Properties
     
-    private let specialtyLabel: UILabel = {
+    private lazy var specialtyLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 18)
         label.textColor = .black

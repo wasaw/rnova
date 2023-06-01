@@ -12,7 +12,7 @@ final class TimeViewCell: UICollectionViewCell {
     
 //    MARK: - Properties
     
-    private let timeLabel: UILabel = {
+    private lazy var timeLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 16)
         label.textColor = .black
@@ -37,7 +37,10 @@ final class TimeViewCell: UICollectionViewCell {
     
     private func configureUI() {
         addSubview(timeLabel)
-        timeLabel.anchor(left: leftAnchor, top: topAnchor, right: rightAnchor, bottom: bottomAnchor)
+        timeLabel.anchor(left: leftAnchor,
+                         top: topAnchor,
+                         right: rightAnchor,
+                         bottom: bottomAnchor)
         layer.cornerRadius = 15
     }
     

@@ -7,12 +7,18 @@
 
 import UIKit
 
+private enum Constants {
+    static let serviceLabelPaddings: CGFloat = 10
+    static let arrowImagePaddingRight: CGFloat = 20
+    static let arrowImageDimensions: CGFloat = 20
+}
+
 final class ServiceViewCell: UICollectionViewCell {
     static let identifire = "ServiceViewCell"
     
 //    MARK: - Properties
     
-    private let serviceLabel: UILabel = {
+    private lazy var serviceLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.boldSystemFont(ofSize: 20)
         label.numberOfLines = 0
@@ -21,7 +27,7 @@ final class ServiceViewCell: UICollectionViewCell {
         return label
     }()
     
-    private let arrowImageView: UIImageView = {
+    private lazy var arrowImageView: UIImageView = {
         let image = UIImageView()
         image.layer.masksToBounds = false
         image.clipsToBounds = true
@@ -50,10 +56,17 @@ final class ServiceViewCell: UICollectionViewCell {
         addSubview(serviceLabel)
         addSubview(arrowImageView)
         serviceLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
-        serviceLabel.anchor(left: leftAnchor, right: arrowImageView.leftAnchor, paddingLeft: 10, paddingRight: 10)
+        serviceLabel.anchor(left: leftAnchor,
+                            right: arrowImageView.leftAnchor,
+                            paddingLeft: Constants.serviceLabelPaddings,
+                            paddingRight: Constants.serviceLabelPaddings)
         
         arrowImageView.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
-        arrowImageView.anchor(left: serviceLabel.rightAnchor, right: rightAnchor, paddingRight: -20, width: 20, height: 20)
+        arrowImageView.anchor(left: serviceLabel.rightAnchor,
+                              right: rightAnchor,
+                              paddingRight: -Constants.arrowImagePaddingRight,
+                              width: Constants.arrowImageDimensions,
+                              height: Constants.arrowImageDimensions)
     }
     
     func setTitle(_ title: String) {

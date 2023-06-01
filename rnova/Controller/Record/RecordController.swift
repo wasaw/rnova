@@ -7,6 +7,13 @@
 
 import UIKit
 
+private enum Constants {
+    static let segmentedHorizontalPaddings: CGFloat = 20
+    static let segmentedVerticalPadding: CGFloat = 30
+    static let segmentedHeight: CGFloat = 30
+    static let collectionViewPaddingTop: CGFloat = 20
+}
+
 final class RecordController: UIViewController {
     
 //    MARK: - Properties
@@ -29,6 +36,15 @@ final class RecordController: UIViewController {
     private var filteredSearchResultProfessions = [Professions]()
 
 //    MARK: - Lifecycle
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        let statusBar = UIView()
+        statusBar.frame = view.window?.windowScene?.statusBarManager?.statusBarFrame ?? CGRect.zero
+        statusBar.backgroundColor = .systemOrange
+        view.addSubview(statusBar)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,7 +69,11 @@ final class RecordController: UIViewController {
                         } else {
                             downloadImage.image = UIImage(systemName: "person")
                         }
-                        let doc = Doctor(id: item.id, name: item.name, profession: item.profession ?? [], profession_titles: item.profession_titles ?? "Доктор", image: downloadImage)
+                        let doc = Doctor(id: item.id,
+                                         name: item.name,
+                                         profession: item.profession ?? [],
+                                         profession_titles: item.profession_titles ?? "Доктор",
+                                         image: downloadImage)
                         self.doctors.append(doc)
                     }
                     self.collectionView?.reloadData()
@@ -78,14 +98,20 @@ final class RecordController: UIViewController {
     
     private func configureUI() {
         configureSegmentedControl()
-        configureStatusBar()
+        configureNavigationBar()
         configureSearchBar()
         configureCollectionView()
     }
     
     private func configureSegmentedControl() {
         view.addSubview(segmentedControl)
-        segmentedControl.anchor(left: view.leftAnchor, top: view.safeAreaLayoutGuide.topAnchor, right: view.rightAnchor, paddingLeft: 20, paddingTop: 30, paddingRight: -20, height: 30)
+        segmentedControl.anchor(left: view.leftAnchor,
+                                top: view.safeAreaLayoutGuide.topAnchor,
+                                right: view.rightAnchor,
+                                paddingLeft: Constants.segmentedHorizontalPaddings,
+                                paddingTop: Constants.segmentedVerticalPadding,
+                                paddingRight: -Constants.segmentedVerticalPadding,
+                                height: Constants.segmentedHeight)
         
         segmentedControl.selectedSegmentIndex = 0
         segmentedControl.layer.borderWidth = 1
@@ -94,13 +120,8 @@ final class RecordController: UIViewController {
         segmentedControl.addTarget(self, action: #selector(didTapSegment), for: .valueChanged)
     }
     
-    private func configureStatusBar() {
-        let statusBar = UIView()
-        statusBar.frame = UIApplication.shared.statusBarFrame
-        statusBar.backgroundColor = .systemOrange
-        UIApplication.shared.keyWindow?.addSubview(statusBar)
+    private func configureNavigationBar() {
         navigationController?.navigationBar.backgroundColor = .systemOrange
-        navigationController?.preferredStatusBarStyle
         navigationItem.title = "Запись"
     }
     
@@ -110,7 +131,6 @@ final class RecordController: UIViewController {
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.searchBar.placeholder = "Поиск"
         searchController.searchBar.barTintColor = .white
-        searchController.searchBar.anchor(height: 40)
     }
     
     private func configureCollectionView() {
@@ -122,7 +142,11 @@ final class RecordController: UIViewController {
         collectionView.register(ProfessionViewCell.self, forCellWithReuseIdentifier: ProfessionViewCell.identifire)
         
         view.addSubview(collectionView)
-        collectionView.anchor(left: view.leftAnchor, top: segmentedControl.bottomAnchor, right: view.rightAnchor, bottom: view.bottomAnchor, paddingTop: 20)
+        collectionView.anchor(left: view.leftAnchor,
+                              top: segmentedControl.bottomAnchor,
+                              right: view.rightAnchor,
+                              bottom: view.bottomAnchor,
+                              paddingTop: Constants.collectionViewPaddingTop)
         collectionView.backgroundColor = .white
     }
         

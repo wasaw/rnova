@@ -7,6 +7,18 @@
 
 import UIKit
 
+private enum Constants {
+    static let phoneNumberFieldHorizontalPaddings: CGFloat = 20
+    static let phoneNumberFieldPaddingTop: CGFloat = 30
+    static let phoneNumberFieldHeight: CGFloat = 40
+    static let passwordFieldHorizontalPaddings: CGFloat = 20
+    static let passwordFieldPaddingTop: CGFloat = 20
+    static let passwordFieldHeight: CGFloat = 40
+    static let enterButtonHorizontalPaddings: CGFloat = 10
+    static let enterButtonPaddingTop: CGFloat = 30
+    static let enterButtonHeight: CGFloat = 60
+}
+
 protocol SendLoginInformationProtocol: AnyObject {
     func sendLoginInformation(phoneNumber: String, password: String)
 }
@@ -15,9 +27,9 @@ final class LoginView: UIView {
     
 //    MARK: - Properties
     
-    private let phoneNumberField = UIView().fieldForForm(placeholder: "Номер телефона")
-    private let passwordField = UIView().fieldForForm(placeholder: "Пароль", isSecure: true)
-    private let enterButton = UIView().getButton()
+    private lazy var phoneNumberField = UIView().fieldForForm(placeholder: "Номер телефона")
+    private lazy var passwordField = UIView().fieldForForm(placeholder: "Пароль", isSecure: true)
+    private lazy var enterButton = UIView().getButton()
     
     weak var delegate: SendLoginInformationProtocol?
 
@@ -41,9 +53,27 @@ final class LoginView: UIView {
         addSubview(phoneNumberField)
         addSubview(passwordField)
         addSubview(enterButton)
-        phoneNumberField.anchor(left: leftAnchor, top: safeAreaLayoutGuide.topAnchor, right: rightAnchor, paddingLeft: 20, paddingTop: 30, paddingRight: -20, height: 40)
-        passwordField.anchor(left: leftAnchor, top: phoneNumberField.bottomAnchor, right: rightAnchor, paddingLeft: 20, paddingTop: 20, paddingRight: -20, height: 40)
-        enterButton.anchor(left: leftAnchor, top: passwordField.bottomAnchor, right: rightAnchor, paddingLeft: 10, paddingTop: 30, paddingRight: -10, height: 60)
+        phoneNumberField.anchor(left: leftAnchor,
+                                top: safeAreaLayoutGuide.topAnchor,
+                                right: rightAnchor,
+                                paddingLeft: Constants.phoneNumberFieldHorizontalPaddings,
+                                paddingTop: Constants.phoneNumberFieldPaddingTop,
+                                paddingRight: -Constants.phoneNumberFieldHorizontalPaddings,
+                                height: Constants.phoneNumberFieldHeight)
+        passwordField.anchor(left: leftAnchor,
+                             top: phoneNumberField.bottomAnchor,
+                             right: rightAnchor,
+                             paddingLeft: Constants.passwordFieldHorizontalPaddings,
+                             paddingTop: Constants.passwordFieldPaddingTop,
+                             paddingRight: -Constants.passwordFieldHorizontalPaddings,
+                             height: Constants.passwordFieldHeight)
+        enterButton.anchor(left: leftAnchor,
+                           top: passwordField.bottomAnchor,
+                           right: rightAnchor,
+                           paddingLeft: Constants.enterButtonHorizontalPaddings,
+                           paddingTop: Constants.enterButtonPaddingTop,
+                           paddingRight: -Constants.enterButtonHorizontalPaddings,
+                           height: Constants.enterButtonHeight)
         enterButton.backgroundColor = UIColor.systemOrange
         enterButton.setTitle("Войти", for: .normal)
     }

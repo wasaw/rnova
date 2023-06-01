@@ -7,6 +7,10 @@
 
 import UIKit
 
+private enum Constants {
+    static let stackPaddings: CGFloat = 10
+}
+
 protocol SendMailDelegate: AnyObject {
     func sendEmail()
 }
@@ -23,14 +27,14 @@ final class ClinicViewCell: UICollectionViewCell {
     weak var emailDelegate: SendMailDelegate?
     weak var phoneDelegate: CallPhoneDelegate?
     
-    private let titleLabel: UILabel = {
+    private lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.boldSystemFont(ofSize: 19)
         label.textColor = .black
         return label
     }()
     
-    private let addressLabel: UILabel = {
+    private lazy var addressLabel: UILabel = {
         let label = UILabel()
         label.textColor = .gray
         label.font = UIFont.systemFont(ofSize: 14)
@@ -39,7 +43,7 @@ final class ClinicViewCell: UICollectionViewCell {
         return label
     }()
     
-    private let emailLabel: UILabel = {
+    private lazy var emailLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 14)
         label.textColor = .systemOrange
@@ -47,14 +51,14 @@ final class ClinicViewCell: UICollectionViewCell {
         return label
     }()
     
-    private let phoneLabel: UILabel = {
+    private lazy var phoneLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 14)
         label.textColor = .gray
         return label
     }()
     
-    private let button: UIButton = {
+    private lazy var button: UIButton = {
         let btn = UIButton()
         btn.setTitle(" Позвонить", for: .normal)
         btn.titleLabel?.font = UIFont.systemFont(ofSize: 14)
@@ -93,7 +97,14 @@ final class ClinicViewCell: UICollectionViewCell {
         stack.axis = .vertical
         stack.spacing = 6
         addSubview(stack)
-        stack.anchor(left: leftAnchor, top: topAnchor, right: rightAnchor, bottom: bottomAnchor, paddingLeft: 10, paddingTop: 10, paddingRight: -10, paddingBottom: -10)
+        stack.anchor(left: leftAnchor,
+                     top: topAnchor,
+                     right: rightAnchor,
+                     bottom: bottomAnchor,
+                     paddingLeft: Constants.stackPaddings,
+                     paddingTop: Constants.stackPaddings,
+                     paddingRight: -Constants.stackPaddings,
+                     paddingBottom: -Constants.stackPaddings)
     }
     
     func setInformation(_ clinic: Clinic) {

@@ -50,6 +50,15 @@ final class ProfileController: UIViewController {
             }
         }
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        let statusBar = UIView()
+        statusBar.frame = view.window?.windowScene?.statusBarManager?.statusBarFrame ?? CGRect.zero
+        statusBar.backgroundColor = .systemOrange
+        view.addSubview(statusBar)
+    }
         
     override func viewDidLoad() {
         super.viewDidLoad()

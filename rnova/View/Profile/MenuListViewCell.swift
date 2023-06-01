@@ -7,25 +7,33 @@
 
 import UIKit
 
+private enum Constants {
+    static let menuNameLabelPaddingLeft: CGFloat = 20
+    static let menuNameLabelPaddingRight: CGFloat = 10
+    static let menuNameLabelHeight: CGFloat = 30
+    static let imageArrowMenuPaddings: CGFloat = 20
+    static let imageArrowMenuHeight: CGFloat = 20
+}
+
 final class MenuListViewCell: UITableViewCell {
     static let identifire = "menuListCell"
     
 //    MARK: - Properties
     
-    private let menuNameLabel: UILabel = {
+    private lazy var menuNameLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 20)
         label.textColor = .black
         return label
     }()
     
-    private let imageMenu: UIImageView = {
+    private lazy var imageMenu: UIImageView = {
         let image = UIImageView()
         image.tintColor = .gray
         return image
     }()
     
-    private let imageArrowMenu: UIImageView = {
+    private lazy var imageArrowMenu: UIImageView = {
         let image = UIImageView()
         image.tintColor = .gray
         return image
@@ -52,9 +60,15 @@ final class MenuListViewCell: UITableViewCell {
         addSubview(imageArrowMenu)
         imageMenu.frame = CGRect(x: 20, y: 10, width: 25, height: 25)
         menuNameLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
-        menuNameLabel.anchor(left: imageMenu.rightAnchor, right: imageArrowMenu.leftAnchor, paddingLeft: 20, paddingRight: -10, height: 30)
+        menuNameLabel.anchor(left: imageMenu.rightAnchor,
+                             right: imageArrowMenu.leftAnchor,
+                             paddingLeft: Constants.menuNameLabelPaddingLeft,
+                             paddingRight: -Constants.menuNameLabelPaddingRight,
+                             height: Constants.menuNameLabelHeight)
         imageArrowMenu.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
-        imageArrowMenu.anchor(right: rightAnchor, paddingRight: -20, height: 20)
+        imageArrowMenu.anchor(right: rightAnchor,
+                              paddingRight: -Constants.imageArrowMenuPaddings,
+                              height: Constants.imageArrowMenuHeight)
     }
     
     func setInformation(name: String, image: String) {

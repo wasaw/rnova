@@ -20,7 +20,7 @@ final class ContainerSideMenu: UIViewController {
     private var homeVC = ProfileController()
     private var navVC: UINavigationController?
     private var currentVC: UIViewController = ProfileController()
-    private let blackView = UIView()
+    private lazy var blackView = UIView()
     private lazy var xOrigin = view.frame.width - 80
     
     private var menuState: MenuState = .close
@@ -52,13 +52,21 @@ final class ContainerSideMenu: UIViewController {
     private func toggle() {
         switch menuState {
         case .open:
-            UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: .curveEaseInOut) {
+            UIView.animate(withDuration: 0.5,
+                           delay: 0,
+                           usingSpringWithDamping: 0.8,
+                           initialSpringVelocity: 0,
+                           options: .curveEaseInOut) {
                 self.navVC?.view.frame.origin.x = 0
                 self.blackView.alpha = 0
                 self.menuState = .close
             }
         case .close:
-            UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: .curveEaseInOut) {
+            UIView.animate(withDuration: 0.5,
+                           delay: 0,
+                           usingSpringWithDamping: 0.8,
+                           initialSpringVelocity: 0,
+                           options: .curveEaseInOut) {
                 self.navVC?.view.frame.origin.x = self.xOrigin
                 self.blackView.frame = CGRect(x: self.xOrigin, y: 0, width: 80, height: self.view.frame.height)
                 self.blackView.alpha = 1

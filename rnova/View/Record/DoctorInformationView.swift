@@ -7,11 +7,18 @@
 
 import UIKit
 
+private enum Constant {
+    static let profileImageViewPaddingLeft: CGFloat = 20
+    static let profileImageViewDimensions: CGFloat = 60
+    static let stackPaddingLeft: CGFloat = 30
+    static let stackPadding: CGFloat = 10
+}
+
 final class DoctorInformationView: UIView {
     
 //    MARK: - Properties
     
-    private let surnameLabel: UILabel = {
+    private lazy var surnameLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.boldSystemFont(ofSize: 19)
         label.textColor = .black
@@ -21,7 +28,7 @@ final class DoctorInformationView: UIView {
         return label
     }()
     
-    private let professionLabel: UILabel = {
+    private lazy var professionLabel: UILabel = {
         let label = UILabel()
         label.textColor = .gray
         label.adjustsFontSizeToFitWidth = false
@@ -30,7 +37,7 @@ final class DoctorInformationView: UIView {
         return label
     }()
     
-    private var profileImageView: UIImageView = {
+    private lazy var profileImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
         imageView.layer.cornerRadius = 30
@@ -58,14 +65,24 @@ final class DoctorInformationView: UIView {
     private func configureUI() {
         addSubview(profileImageView)
         profileImageView.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
-        profileImageView.anchor(left: leftAnchor, paddingLeft: 20, width: 60, height: 60)
+        profileImageView.anchor(left: leftAnchor,
+                                paddingLeft: Constant.profileImageViewPaddingLeft,
+                                width: Constant.profileImageViewDimensions,
+                                height: Constant.profileImageViewDimensions)
         
         let stack = UIStackView(arrangedSubviews: [surnameLabel, professionLabel])
         stack.axis = .vertical
         stack.distribution = .fillEqually
         stack.spacing = 5
         addSubview(stack)
-        stack.anchor(left: profileImageView.rightAnchor, top: topAnchor, right: rightAnchor, bottom: bottomAnchor, paddingLeft: 30, paddingTop: 10, paddingRight: -10, paddingBottom: -10)
+        stack.anchor(left: profileImageView.rightAnchor,
+                     top: topAnchor,
+                     right: rightAnchor,
+                     bottom: bottomAnchor,
+                     paddingLeft: Constant.stackPaddingLeft,
+                     paddingTop: Constant.stackPadding,
+                     paddingRight: -Constant.stackPadding,
+                     paddingBottom: -Constant.stackPadding)
     }
     
     private func shadow() {

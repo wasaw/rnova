@@ -7,11 +7,17 @@
 
 import UIKit
 
+private enum Constants {
+    static let serviceCardHorizontalPaddings: CGFloat = 10
+    static let serviceCardPaddingTop: CGFloat = 20
+    static let serviceCardHeight: CGFloat = 100
+}
+
 final class ServiceCardController: UIViewController {
     
 //    MARK: - Properties
     
-    private let serviceCardView = ServiceCardView()
+    private lazy var serviceCardView = ServiceCardView()
     private let serviceCardName: String
     private let serviceCardCost: String
     
@@ -39,7 +45,13 @@ final class ServiceCardController: UIViewController {
     
     private func configureServiceCard() {
         view.addSubview(serviceCardView)
-        serviceCardView.anchor(left: view.leftAnchor, top: view.safeAreaLayoutGuide.topAnchor, right: view.rightAnchor, paddingLeft: 10, paddingTop: 20, paddingRight: -10, height: 100)
+        serviceCardView.anchor(left: view.leftAnchor,
+                               top: view.safeAreaLayoutGuide.topAnchor,
+                               right: view.rightAnchor,
+                               paddingLeft: Constants.serviceCardHorizontalPaddings,
+                               paddingTop: Constants.serviceCardPaddingTop,
+                               paddingRight: -Constants.serviceCardHorizontalPaddings,
+                               height: Constants.serviceCardHeight)
         let cost = serviceCardCost + " руб."
         serviceCardView.setInformation(name: serviceCardName, cost: cost)
     }

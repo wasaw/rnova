@@ -7,6 +7,10 @@
 
 import UIKit
 
+private enum Constants {
+    static let collectionViewPaddingTop: CGFloat = 20
+}
+
 final class ChooseDoctorByProfession: UIViewController {
     
 //    MARK: - Properties
@@ -71,7 +75,11 @@ final class ChooseDoctorByProfession: UIViewController {
         collectionView.dataSource = self
         collectionView.register(DoctorViewCell.self, forCellWithReuseIdentifier: DoctorViewCell.identifire)
         view.addSubview(collectionView)
-        collectionView.anchor(left: view.leftAnchor, top: view.safeAreaLayoutGuide.topAnchor, right: view.rightAnchor, bottom: view.bottomAnchor, paddingTop: 20)
+        collectionView.anchor(left: view.leftAnchor,
+                              top: view.safeAreaLayoutGuide.topAnchor,
+                              right: view.rightAnchor,
+                              bottom: view.bottomAnchor,
+                              paddingTop: Constants.collectionViewPaddingTop)
         collectionView.backgroundColor = .white
     }
 }

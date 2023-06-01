@@ -7,12 +7,19 @@
 
 import UIKit
 
+private enum Constants {
+    static let profileImageViewPaddingLeft: CGFloat = 20
+    static let profileImageViewDimensions: CGFloat = 60
+    static let stackPaddingLeft: CGFloat = 30
+    static let stackPadding: CGFloat = 10
+}
+
 final class DoctorViewCell: UICollectionViewCell {
     static let identifire = "DoctorViewCell"
 
 //    MARK: - Properties
     
-    private let fullnameLabel: UILabel = {
+    private lazy var fullnameLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.boldSystemFont(ofSize: 19)
         label.textColor = .black
@@ -21,7 +28,7 @@ final class DoctorViewCell: UICollectionViewCell {
         label.numberOfLines = 2
         return label
     }()
-    private let professionLabel: UILabel = {
+    private lazy var professionLabel: UILabel = {
         let label = UILabel()
         label.textColor = .gray
         label.adjustsFontSizeToFitWidth = false
@@ -30,7 +37,7 @@ final class DoctorViewCell: UICollectionViewCell {
         return label
     }()
   
-    private var profileImageView: UIImageView = {
+    private lazy var profileImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.layer.cornerRadius = 30
         imageView.layer.masksToBounds = false
@@ -53,9 +60,19 @@ final class DoctorViewCell: UICollectionViewCell {
         stack.distribution = .fillEqually
         addSubview(stack)
         profileImageView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor).isActive = true
-        profileImageView.anchor(left: leftAnchor, paddingLeft: 20, width: 60, height: 60)
+        profileImageView.anchor(left: leftAnchor,
+                                paddingLeft: Constants.profileImageViewPaddingLeft,
+                                width: Constants.profileImageViewDimensions,
+                                height: Constants.profileImageViewDimensions)
         
-        stack.anchor(left: profileImageView.rightAnchor, top: topAnchor, right: rightAnchor, bottom: bottomAnchor, paddingLeft: 30, paddingTop: 10, paddingRight: -10, paddingBottom: -10)
+        stack.anchor(left: profileImageView.rightAnchor,
+                     top: topAnchor,
+                     right: rightAnchor,
+                     bottom: bottomAnchor,
+                     paddingLeft: Constants.stackPaddingLeft,
+                     paddingTop: Constants.stackPadding,
+                     paddingRight: -Constants.stackPadding,
+                     paddingBottom: -Constants.stackPadding)
         shadow()
         backgroundColor = .white
     }

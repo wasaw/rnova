@@ -12,7 +12,7 @@ final class CalendarViewCell: UICollectionViewCell {
     
 //    MARK: - Properties
     
-    private let calendarLabel: UILabel = {
+    private lazy var calendarLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 16)
         label.textColor = .black
@@ -37,7 +37,10 @@ final class CalendarViewCell: UICollectionViewCell {
     
     private func configureUI() {
         addSubview(calendarLabel)
-        calendarLabel.anchor(left: leftAnchor, top: topAnchor, right: rightAnchor, bottom: bottomAnchor)
+        calendarLabel.anchor(left: leftAnchor,
+                             top: topAnchor,
+                             right: rightAnchor,
+                             bottom: bottomAnchor)
     }
     
     func setInformation(_ date: String) {

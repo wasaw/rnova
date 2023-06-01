@@ -25,12 +25,21 @@ final class ServiceController: UIViewController {
     
 //    MARK: - Lifecycle
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        let statusBar = UIView()
+        statusBar.frame = view.window?.windowScene?.statusBarManager?.statusBarFrame ?? CGRect.zero
+        statusBar.backgroundColor = .systemOrange
+        view.addSubview(statusBar)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         loadInformation()
         configureCollectionView()
-        configureStatusBar()
+        configureNavigationBar()
         configureSearchBar()
         view.backgroundColor = .white
     }
@@ -52,15 +61,10 @@ final class ServiceController: UIViewController {
         }
     }
     
-    private func configureStatusBar() {
-        let statusBar = UIView()
-        statusBar.frame = UIApplication.shared.statusBarFrame
-        statusBar.backgroundColor = .systemOrange
-        UIApplication.shared.keyWindow?.addSubview(statusBar)
+    private func configureNavigationBar() {
         navigationController?.navigationBar.backgroundColor = .systemOrange
         navigationController?.navigationBar.isTranslucent = true
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        navigationController?.preferredStatusBarStyle
         navigationItem.title = "Услуги"
     }
     
@@ -72,7 +76,6 @@ final class ServiceController: UIViewController {
         searchController.searchBar.placeholder = "Поиск"
         searchController.searchBar.barTintColor = .white
         searchController.searchBar.translatesAutoresizingMaskIntoConstraints = false
-        searchController.searchBar.heightAnchor.constraint(equalToConstant: 40).isActive = true
     }
     
     private func configureCollectionView() {
@@ -85,7 +88,10 @@ final class ServiceController: UIViewController {
         collectionView.delegate = self
         collectionView.dataSource = self
         view.addSubview(collectionView)
-        collectionView.anchor(left: view.leftAnchor, top: view.safeAreaLayoutGuide.topAnchor, right: view.rightAnchor, bottom: view.bottomAnchor)
+        collectionView.anchor(left: view.leftAnchor,
+                              top: view.safeAreaLayoutGuide.topAnchor,
+                              right: view.rightAnchor,
+                              bottom: view.bottomAnchor)
         collectionView.backgroundColor = .white
     }
 }

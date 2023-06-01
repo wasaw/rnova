@@ -7,16 +7,21 @@
 
 import UIKit
 
+private enum Constants {
+    static let stackHorizontalPaddings: CGFloat = 10
+    static let stackVerticalPaddings: CGFloat = 15
+}
+
 final class ContactInformationView: UIView {
     
 //    MARK: - Properties
     
-    let lastNameField = UIView().fieldForForm(placeholder: "Фамилия")
-    let firstNameField = UIView().fieldForForm(placeholder: "Имя")
-    let surnameField = UIView().fieldForForm(placeholder: "Отчество")
-    let dateField = UIView().fieldForForm(placeholder: "Дата рождения")
-    let phoneNumberField = UIView().fieldForForm(placeholder: "Номер телефона")
-    let commentField = UIView().fieldForForm(placeholder: "Комментарий")
+    lazy var lastNameField = UIView().fieldForForm(placeholder: "Фамилия")
+    lazy var firstNameField = UIView().fieldForForm(placeholder: "Имя")
+    lazy var surnameField = UIView().fieldForForm(placeholder: "Отчество")
+    lazy var dateField = UIView().fieldForForm(placeholder: "Дата рождения")
+    lazy var phoneNumberField = UIView().fieldForForm(placeholder: "Номер телефона")
+    lazy var commentField = UIView().fieldForForm(placeholder: "Комментарий")
     
 //    MARK: - Lifecycle
 
@@ -29,7 +34,14 @@ final class ContactInformationView: UIView {
         stack.distribution = .fillEqually
         addSubview(stack)
         
-        stack.anchor(left: leftAnchor, top: topAnchor, right: rightAnchor, bottom: bottomAnchor, paddingLeft: 10, paddingTop: 15, paddingRight: -10, paddingBottom: -15)
+        stack.anchor(left: leftAnchor,
+                     top: topAnchor,
+                     right: rightAnchor,
+                     bottom: bottomAnchor,
+                     paddingLeft: Constants.stackHorizontalPaddings,
+                     paddingTop: Constants.stackVerticalPaddings,
+                     paddingRight: -Constants.stackHorizontalPaddings,
+                     paddingBottom: -Constants.stackVerticalPaddings)
         backgroundColor = .white
     }
     

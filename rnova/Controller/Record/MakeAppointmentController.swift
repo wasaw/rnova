@@ -7,6 +7,15 @@
 
 import UIKit
 
+private enum Constants {
+    static let recordingViewHorizontalPaddings: CGFloat = 10
+    static let recordingViewTopPadding: CGFloat = 20
+    static let recordingViewHeight: CGFloat = 140
+    static let contactViewHorizontalPaddings: CGFloat = 10
+    static let contactViewPaddingTop: CGFloat = 30
+    static let contactViewHeight: CGFloat = 320
+}
+
 protocol SendCommentProtocol {
     func gettingComment() -> String?
 }
@@ -26,10 +35,10 @@ final class MakeAppointmentController: UIViewController {
     private let datePicker = UIDatePicker()
     private let formatter = DateFormatter()
     
-    private let recordInformationView = RecordInformationView()
-    private let contactInformationView = ContactInformationView()
+    private lazy var recordInformationView = RecordInformationView()
+    private lazy var contactInformationView = ContactInformationView()
     
-    private let submitButton: UIButton = {
+    private lazy var submitButton: UIButton = {
         let btn = UIButton()
         btn.layer.cornerRadius = 10
         btn.layer.shadowColor = UIColor.black.cgColor
@@ -75,7 +84,13 @@ final class MakeAppointmentController: UIViewController {
     
     private func configureRecordInformationView() {
         view.addSubview(recordInformationView)
-        recordInformationView.anchor(left: view.leftAnchor, top: view.safeAreaLayoutGuide.topAnchor, right: view.rightAnchor, paddingLeft: 10, paddingTop: 20, paddingRight: -10, height: 140)
+        recordInformationView.anchor(left: view.leftAnchor,
+                                     top: view.safeAreaLayoutGuide.topAnchor,
+                                     right: view.rightAnchor,
+                                     paddingLeft: Constants.recordingViewHorizontalPaddings,
+                                     paddingTop: Constants.recordingViewTopPadding,
+                                     paddingRight: -Constants.recordingViewHorizontalPaddings,
+                                     height: Constants.recordingViewHeight)
         formatter.dateFormat = "dd.MM.yy"
         let date = selectedTime + " " + formatter.string(from: selectedDate)
         recordInformationView.setInformation(doctor, date: date)
@@ -84,7 +99,13 @@ final class MakeAppointmentController: UIViewController {
     private func configureContactInformationView() {
         view.addSubview(contactInformationView)
         delegateComment = contactInformationView
-        contactInformationView.anchor(left: view.leftAnchor, top: recordInformationView.bottomAnchor, right: view.rightAnchor, paddingLeft: 10, paddingTop: 30, paddingRight: -10, height: 320)
+        contactInformationView.anchor(left: view.leftAnchor,
+                                      top: recordInformationView.bottomAnchor,
+                                      right: view.rightAnchor,
+                                      paddingLeft: Constants.contactViewHorizontalPaddings,
+                                      paddingTop: Constants.contactViewPaddingTop,
+                                      paddingRight: -Constants.contactViewHorizontalPaddings,
+                                      height: Constants.contactViewHeight)
         
         databaseService.checkLogIn { result in
             switch result {

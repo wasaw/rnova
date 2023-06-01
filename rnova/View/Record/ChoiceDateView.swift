@@ -7,6 +7,14 @@
 
 import UIKit
 
+private enum Constants {
+    static let choiceDateLabelPaddingTop: CGFloat = 5
+    static let buttonPaddingTop: CGFloat = 20
+    static let buttonDimensions: CGFloat = 50
+    static let dateDurationLabelPaddings: CGFloat = 20
+    static let dateDurationLabelHeight: CGFloat = 50
+}
+
 protocol FlipCalendarDelegate: AnyObject {
     func flipCalendar(direction: FlipCalendar)
 }
@@ -17,7 +25,7 @@ final class ChoiceDateView: UIView {
     
     weak var delegate: FlipCalendarDelegate?
 
-    private let choiceDateLabel: UILabel = {
+    private lazy var choiceDateLabel: UILabel = {
         let label = UILabel()
         label.text = "Выбрать дату:"
         label.textColor = .black
@@ -25,7 +33,7 @@ final class ChoiceDateView: UIView {
         return label
     }()
     
-    private let leftButton: UIButton = {
+    private lazy var leftButton: UIButton = {
         let button = UIButton()
         button.tintColor = UIColor.systemOrange
         button.layer.borderWidth = 1
@@ -39,7 +47,7 @@ final class ChoiceDateView: UIView {
         return button
     }()
     
-    private let rightButton: UIButton = {
+    private lazy var rightButton: UIButton = {
         let button = UIButton()
         button.tintColor = UIColor.systemOrange
         button.layer.borderWidth = 1
@@ -53,7 +61,7 @@ final class ChoiceDateView: UIView {
         return button
     }()
     
-    private let dateDurationLabel: UILabel = {
+    private lazy var dateDurationLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
         label.textColor = .black
@@ -81,10 +89,27 @@ final class ChoiceDateView: UIView {
         addSubview(rightButton)
         addSubview(dateDurationLabel)
         
-        choiceDateLabel.anchor(left: leftAnchor, top: topAnchor, right: rightAnchor, paddingTop: 5)
-        leftButton.anchor(left: leftAnchor, top: choiceDateLabel.bottomAnchor, paddingTop: 20, width: 50, height: 50)
-        rightButton.anchor(top: choiceDateLabel.bottomAnchor, right: rightAnchor, paddingTop: 20, width: 50, height: 50)
-        dateDurationLabel.anchor(left: leftButton.rightAnchor, top: choiceDateLabel.bottomAnchor, right: rightButton.leftAnchor, paddingLeft: 20, paddingTop: 20, paddingRight: -20, height: 50)
+        choiceDateLabel.anchor(left: leftAnchor,
+                               top: topAnchor,
+                               right: rightAnchor,
+                               paddingTop: Constants.choiceDateLabelPaddingTop)
+        leftButton.anchor(left: leftAnchor,
+                          top: choiceDateLabel.bottomAnchor,
+                          paddingTop: Constants.buttonPaddingTop,
+                          width: Constants.buttonDimensions,
+                          height: Constants.buttonDimensions)
+        rightButton.anchor(top: choiceDateLabel.bottomAnchor,
+                           right: rightAnchor,
+                           paddingTop: Constants.buttonPaddingTop,
+                           width: Constants.buttonDimensions,
+                           height: Constants.buttonDimensions)
+        dateDurationLabel.anchor(left: leftButton.rightAnchor,
+                                 top: choiceDateLabel.bottomAnchor,
+                                 right: rightButton.leftAnchor,
+                                 paddingLeft: Constants.dateDurationLabelPaddings,
+                                 paddingTop: Constants.dateDurationLabelPaddings,
+                                 paddingRight: -Constants.dateDurationLabelPaddings,
+                                 height: Constants.dateDurationLabelHeight)
     }
     
     func setInformation(firstDay: String, lastDay: String) {

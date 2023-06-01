@@ -13,6 +13,10 @@ enum MenuOption: String, CaseIterable {
     case logout = "Выход"
 }
 
+private enum Constants {
+    static let tablePaddingTop: CGFloat = 39
+}
+
 protocol MenuViewControllerDelegate: AnyObject {
     func didSelect(menu: MenuOption)
 }
@@ -44,7 +48,11 @@ final class MenuViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         view.addSubview(tableView)
-        tableView.anchor(left: view.leftAnchor, top: view.safeAreaLayoutGuide.topAnchor, right: view.rightAnchor, bottom: view.bottomAnchor, paddingTop: 39)
+        tableView.anchor(left: view.leftAnchor,
+                         top: view.safeAreaLayoutGuide.topAnchor,
+                         right: view.rightAnchor,
+                         bottom: view.bottomAnchor,
+                         paddingTop: Constants.tablePaddingTop)
     }
 }
 

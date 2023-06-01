@@ -19,6 +19,15 @@ final class ClinicsController: UIViewController {
     
 //    MARK: - Lifecycle
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        let statusBar = UIView()
+        statusBar.frame = view.window?.windowScene?.statusBarManager?.statusBarFrame ?? CGRect.zero
+        statusBar.backgroundColor = .systemOrange
+        view.addSubview(statusBar)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -57,7 +66,10 @@ final class ClinicsController: UIViewController {
         collectionView.collectionViewLayout = layout
         collectionView.register(ClinicViewCell.self, forCellWithReuseIdentifier: ClinicViewCell.identifire)
         view.addSubview(collectionView)
-        collectionView.anchor(left: view.leftAnchor, top: view.safeAreaLayoutGuide.topAnchor, right: view.rightAnchor, bottom: view.bottomAnchor)
+        collectionView.anchor(left: view.leftAnchor,
+                              top: view.safeAreaLayoutGuide.topAnchor,
+                              right: view.rightAnchor,
+                              bottom: view.bottomAnchor)
         collectionView.backgroundColor = .white
     }
 }
@@ -107,11 +119,7 @@ extension ClinicsController: SendMailDelegate {
         if !MFMailComposeViewController.canSendMail() {
             print("Mail services are not available")
                 if let url = URL(string: "mailto:\(email)") {
-                    if #available(iOS 10.0, *) {
-                        UIApplication.shared.openURL(url)
-                    } else {
-                        UIApplication.shared.open(url)
-                    }
+                    UIApplication.shared.open(url)
                 }
             return
         } else {

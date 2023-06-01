@@ -7,12 +7,23 @@
 
 import UIKit
 
+private enum Constants {
+    static let serviceNameLabelCenterPadding: CGFloat = 15
+    static let serviceNameLabelPaddingLeft: CGFloat = 10
+    static let serviceNameLabelHeight: CGFloat = 45
+    static let serviceCostLabelPaddingLeft: CGFloat = 10
+    static let serviceCostLabelPaddingTop: CGFloat = 5
+    static let serviceCostLabelHeight: CGFloat = 20
+    static let arrowImagePaddings: CGFloat = 10
+    static let arrowDimensions: CGFloat = 20
+}
+
 final class SubServiceViewCell: UICollectionViewCell {
     static let identifire = "SubServiceViewCell"
     
 //    MARK: - Properties
     
-    private let serviceNameLabel: UILabel = {
+    private lazy var serviceNameLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 18)
         label.lineBreakMode = .byWordWrapping
@@ -20,14 +31,14 @@ final class SubServiceViewCell: UICollectionViewCell {
         return label
     }()
     
-    private let serviceCostLabel: UILabel = {
+    private lazy var serviceCostLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 14)
         label.textColor = .gray
         return label
     }()
     
-    private let arrowImage: UIImageView = {
+    private lazy var arrowImage: UIImageView = {
         let image = UIImageView()
         image.layer.masksToBounds = false
         image.clipsToBounds = true
@@ -56,12 +67,23 @@ final class SubServiceViewCell: UICollectionViewCell {
         addSubview(serviceNameLabel)
         addSubview(serviceCostLabel)
         addSubview(arrowImage)
-        serviceNameLabel.centerYAnchor.constraint(equalTo: centerYAnchor, constant: -15).isActive = true
-        serviceNameLabel.anchor(left: leftAnchor, paddingLeft: 10, height: 45)
+        serviceNameLabel.centerYAnchor.constraint(equalTo: centerYAnchor, constant: -Constants.serviceNameLabelCenterPadding).isActive = true
+        serviceNameLabel.anchor(left: leftAnchor,
+                                paddingLeft: Constants.serviceNameLabelPaddingLeft,
+                                height: Constants.serviceNameLabelHeight)
 
-        serviceCostLabel.anchor(left: leftAnchor, top: serviceNameLabel.bottomAnchor, paddingLeft: 10, paddingTop: 5, height: 20)
+        serviceCostLabel.anchor(left: leftAnchor,
+                                top: serviceNameLabel.bottomAnchor,
+                                paddingLeft: Constants.serviceCostLabelPaddingLeft,
+                                paddingTop: Constants.serviceCostLabelPaddingTop,
+                                height: Constants.serviceCostLabelHeight)
         arrowImage.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
-        arrowImage.anchor(left: serviceNameLabel.rightAnchor, right: rightAnchor, paddingLeft: 10, paddingRight: -10, width: 20, height: 20)
+        arrowImage.anchor(left: serviceNameLabel.rightAnchor,
+                          right: rightAnchor,
+                          paddingLeft: Constants.arrowImagePaddings,
+                          paddingRight: -Constants.arrowImagePaddings,
+                          width: Constants.arrowDimensions,
+                          height: Constants.arrowDimensions)
     }
     
     func setInformation(title: String, cost: String) {

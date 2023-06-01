@@ -7,11 +7,17 @@
 
 import UIKit
 
+private enum Constants {
+    static let segmentedHorizontalPaddings: CGFloat = 20
+    static let segmentedPaddingTop: CGFloat = 30
+    static let segmentedHeight: CGFloat = 30
+}
+
 final class VisitsController: UIViewController {
     
 //    MARK: - Properties
     
-    private let segmentedControl = UISegmentedControl(items: ["Будущие", "Прошедшие"])
+    private lazy var segmentedControl = UISegmentedControl(items: ["Будущие", "Прошедшие"])
     private var collectionView: UICollectionView?
     
     private let databaseService = DatabaseService.shared
@@ -55,13 +61,13 @@ final class VisitsController: UIViewController {
     
     private func configureSegmentedControl() {
         view.addSubview(segmentedControl)
-        
-        segmentedControl.translatesAutoresizingMaskIntoConstraints = false
-        segmentedControl.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20).isActive = true
-        segmentedControl.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 30).isActive = true
-        segmentedControl.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -20).isActive = true
-        segmentedControl.heightAnchor.constraint(equalToConstant: 30).isActive = true
-        
+        segmentedControl.anchor(left: view.leftAnchor,
+                                top: view.safeAreaLayoutGuide.topAnchor,
+                                right: view.rightAnchor,
+                                paddingLeft: Constants.segmentedHorizontalPaddings,
+                                paddingTop: Constants.segmentedPaddingTop,
+                                paddingRight: -Constants.segmentedHorizontalPaddings,
+                                height: Constants.segmentedHeight)
         segmentedControl.selectedSegmentIndex = 0
         segmentedControl.layer.borderWidth = 1
         segmentedControl.layer.borderColor = UIColor.systemOrange.cgColor
