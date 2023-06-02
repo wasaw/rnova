@@ -75,9 +75,9 @@ final class ChooseDoctorByProfession: UIViewController {
         collectionView.dataSource = self
         collectionView.register(DoctorViewCell.self, forCellWithReuseIdentifier: DoctorViewCell.identifire)
         view.addSubview(collectionView)
-        collectionView.anchor(left: view.leftAnchor,
+        collectionView.anchor(leading: view.leadingAnchor,
                               top: view.safeAreaLayoutGuide.topAnchor,
-                              right: view.rightAnchor,
+                              trailing: view.trailingAnchor,
                               bottom: view.bottomAnchor,
                               paddingTop: Constants.collectionViewPaddingTop)
         collectionView.backgroundColor = .white

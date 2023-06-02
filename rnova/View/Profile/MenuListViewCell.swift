@@ -8,8 +8,8 @@
 import UIKit
 
 private enum Constants {
-    static let menuNameLabelPaddingLeft: CGFloat = 20
-    static let menuNameLabelPaddingRight: CGFloat = 10
+    static let menuNameLabelpaddingLeading: CGFloat = 20
+    static let menuNameLabelpaddingTrailing: CGFloat = 10
     static let menuNameLabelHeight: CGFloat = 30
     static let imageArrowMenuPaddings: CGFloat = 20
     static let imageArrowMenuHeight: CGFloat = 20
@@ -60,14 +60,14 @@ final class MenuListViewCell: UITableViewCell {
         addSubview(imageArrowMenu)
         imageMenu.frame = CGRect(x: 20, y: 10, width: 25, height: 25)
         menuNameLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
-        menuNameLabel.anchor(left: imageMenu.rightAnchor,
-                             right: imageArrowMenu.leftAnchor,
-                             paddingLeft: Constants.menuNameLabelPaddingLeft,
-                             paddingRight: -Constants.menuNameLabelPaddingRight,
+        menuNameLabel.anchor(leading: imageMenu.trailingAnchor,
+                             trailing: imageArrowMenu.leadingAnchor,
+                             paddingLeading: Constants.menuNameLabelpaddingLeading,
+                             paddingTrailing: -Constants.menuNameLabelpaddingTrailing,
                              height: Constants.menuNameLabelHeight)
         imageArrowMenu.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
-        imageArrowMenu.anchor(right: rightAnchor,
-                              paddingRight: -Constants.imageArrowMenuPaddings,
+        imageArrowMenu.anchor(trailing: trailingAnchor,
+                              paddingTrailing: -Constants.imageArrowMenuPaddings,
                               height: Constants.imageArrowMenuHeight)
     }
     

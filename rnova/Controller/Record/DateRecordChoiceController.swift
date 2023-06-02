@@ -117,21 +117,21 @@ final class DateRecordChoiceController: UIViewController {
     private func configureDoctorView() {
         view.addSubview(doctorInfoView)
         view.addSubview(choiceDateView)
-        doctorInfoView.anchor(left: view.leftAnchor,
+        doctorInfoView.anchor(leading: view.leadingAnchor,
                               top: view.safeAreaLayoutGuide.topAnchor,
-                              right: view.rightAnchor,
-                              paddingLeft: Constants.doctorInfoViewHorizontalPaddings,
+                              trailing: view.trailingAnchor,
+                              paddingLeading: Constants.doctorInfoViewHorizontalPaddings,
                               paddingTop: Constants.doctorInfoViewPaddingTop,
-                              paddingRight: -Constants.doctorInfoViewHorizontalPaddings,
+                              paddingTrailing: -Constants.doctorInfoViewHorizontalPaddings,
                               width: view.frame.width - 20,
                               height: view.frame.width / 4)
         
-        choiceDateView.anchor(left: view.leftAnchor,
+        choiceDateView.anchor(leading: view.leadingAnchor,
                               top: doctorInfoView.bottomAnchor,
-                              right: view.rightAnchor,
-                              paddingLeft: Constants.choiceDateViewHorizontalPaddings,
+                              trailing: view.trailingAnchor,
+                              paddingLeading: Constants.choiceDateViewHorizontalPaddings,
                               paddingTop: Constants.choiceDateViewPaddingTop,
-                              paddingRight: -Constants.choiceDateViewHorizontalPaddings,
+                              paddingTrailing: -Constants.choiceDateViewHorizontalPaddings,
                               height: Constants.choiceDateViewHeight)
     }
     
@@ -143,24 +143,24 @@ final class DateRecordChoiceController: UIViewController {
         dateCollectionView.register(CalendarViewCell.self, forCellWithReuseIdentifier: CalendarViewCell.identifire)
         
         view.addSubview(dateCollectionView)
-        dateCollectionView.anchor(left: view.leftAnchor,
+        dateCollectionView.anchor(leading: view.leadingAnchor,
                                   top: choiceDateView.bottomAnchor,
-                                  right: view.rightAnchor,
-                                  paddingLeft: Constants.dateCollectionHorizontalPaddings,
+                                  trailing: view.trailingAnchor,
+                                  paddingLeading: Constants.dateCollectionHorizontalPaddings,
                                   paddingTop: Constants.dateCollectionPaddingTop,
-                                  paddingRight: -Constants.dateCollectionHorizontalPaddings,
+                                  paddingTrailing: -Constants.dateCollectionHorizontalPaddings,
                                   height: Constants.dateCollectionHeight)
         dateCollectionView.backgroundColor = .white
     }
     
     private func configureChoiceTimeLabel() {
         view.addSubview(choiceTimeLabel)
-        choiceTimeLabel.anchor(left: view.leftAnchor,
+        choiceTimeLabel.anchor(leading: view.leadingAnchor,
                                top: dateCollectionView?.bottomAnchor,
-                               right: view.rightAnchor,
-                               paddingLeft: Constants.choiceTimeLabelHorizontalPaddings,
+                               trailing: view.trailingAnchor,
+                               paddingLeading: Constants.choiceTimeLabelHorizontalPaddings,
                                paddingTop: Constants.choiceTimeLabelPaddingTop,
-                               paddingRight: -Constants.choiceTimeLabelHorizontalPaddings)
+                               paddingTrailing: -Constants.choiceTimeLabelHorizontalPaddings)
     }
     
     private func configureTimeCollectionView() {
@@ -171,24 +171,24 @@ final class DateRecordChoiceController: UIViewController {
         timeCollectionView.register(TimeViewCell.self, forCellWithReuseIdentifier: TimeViewCell.identifire)
         
         view.addSubview(timeCollectionView)
-        timeCollectionView.anchor(left: view.leftAnchor,
+        timeCollectionView.anchor(leading: view.leadingAnchor,
                                   top: choiceTimeLabel.bottomAnchor,
-                                  right: view.rightAnchor,
-                                  paddingLeft: Constants.timeCollectionHorizontalPaddings,
+                                  trailing: view.trailingAnchor,
+                                  paddingLeading: Constants.timeCollectionHorizontalPaddings,
                                   paddingTop: Constants.timeCollectionPaddingTop,
-                                  paddingRight: -Constants.timeCollectionHorizontalPaddings,
+                                  paddingTrailing: -Constants.timeCollectionHorizontalPaddings,
                                   height: Constants.timeCollectionHeight)
         timeCollectionView.backgroundColor = .white
     }
     
     private func configureNoFreeTimeLabel() {
         view.addSubview(noFreeTimeLabel)
-        noFreeTimeLabel.anchor(left: view.leftAnchor,
+        noFreeTimeLabel.anchor(leading: view.leadingAnchor,
                                top: choiceTimeLabel.bottomAnchor,
-                               right: view.rightAnchor,
-                               paddingLeft: Constants.noFreeTimeLabelHorizontalPaddings,
+                               trailing: view.trailingAnchor,
+                               paddingLeading: Constants.noFreeTimeLabelHorizontalPaddings,
                                paddingTop: Constants.noFreeTimeLabelPaddingTop,
-                               paddingRight: -Constants.noFreeTimeLabelHorizontalPaddings,
+                               paddingTrailing: -Constants.noFreeTimeLabelHorizontalPaddings,
                                height: Constants.noFreeTimeLabelHeight)
         noFreeTimeLabel.isHidden = false
     }

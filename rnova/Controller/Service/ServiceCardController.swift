@@ -45,12 +45,12 @@ final class ServiceCardController: UIViewController {
     
     private func configureServiceCard() {
         view.addSubview(serviceCardView)
-        serviceCardView.anchor(left: view.leftAnchor,
+        serviceCardView.anchor(leading: view.leadingAnchor,
                                top: view.safeAreaLayoutGuide.topAnchor,
-                               right: view.rightAnchor,
-                               paddingLeft: Constants.serviceCardHorizontalPaddings,
+                               trailing: view.trailingAnchor,
+                               paddingLeading: Constants.serviceCardHorizontalPaddings,
                                paddingTop: Constants.serviceCardPaddingTop,
-                               paddingRight: -Constants.serviceCardHorizontalPaddings,
+                               paddingTrailing: -Constants.serviceCardHorizontalPaddings,
                                height: Constants.serviceCardHeight)
         let cost = serviceCardCost + " руб."
         serviceCardView.setInformation(name: serviceCardName, cost: cost)

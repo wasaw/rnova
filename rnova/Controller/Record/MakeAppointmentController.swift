@@ -14,6 +14,9 @@ private enum Constants {
     static let contactViewHorizontalPaddings: CGFloat = 10
     static let contactViewPaddingTop: CGFloat = 30
     static let contactViewHeight: CGFloat = 320
+    static let submitButtonHorizontalPaddings: CGFloat = 10
+    static let submitButtonPaddingTop: CGFloat = 30
+    static let submitButtonHeight: CGFloat = 60
 }
 
 protocol SendCommentProtocol {
@@ -84,12 +87,12 @@ final class MakeAppointmentController: UIViewController {
     
     private func configureRecordInformationView() {
         view.addSubview(recordInformationView)
-        recordInformationView.anchor(left: view.leftAnchor,
+        recordInformationView.anchor(leading: view.leadingAnchor,
                                      top: view.safeAreaLayoutGuide.topAnchor,
-                                     right: view.rightAnchor,
-                                     paddingLeft: Constants.recordingViewHorizontalPaddings,
+                                     trailing: view.trailingAnchor,
+                                     paddingLeading: Constants.recordingViewHorizontalPaddings,
                                      paddingTop: Constants.recordingViewTopPadding,
-                                     paddingRight: -Constants.recordingViewHorizontalPaddings,
+                                     paddingTrailing: -Constants.recordingViewHorizontalPaddings,
                                      height: Constants.recordingViewHeight)
         formatter.dateFormat = "dd.MM.yy"
         let date = selectedTime + " " + formatter.string(from: selectedDate)
@@ -99,12 +102,12 @@ final class MakeAppointmentController: UIViewController {
     private func configureContactInformationView() {
         view.addSubview(contactInformationView)
         delegateComment = contactInformationView
-        contactInformationView.anchor(left: view.leftAnchor,
+        contactInformationView.anchor(leading: view.leadingAnchor,
                                       top: recordInformationView.bottomAnchor,
-                                      right: view.rightAnchor,
-                                      paddingLeft: Constants.contactViewHorizontalPaddings,
+                                      trailing: view.trailingAnchor,
+                                      paddingLeading: Constants.contactViewHorizontalPaddings,
                                       paddingTop: Constants.contactViewPaddingTop,
-                                      paddingRight: -Constants.contactViewHorizontalPaddings,
+                                      paddingTrailing: -Constants.contactViewHorizontalPaddings,
                                       height: Constants.contactViewHeight)
         
         databaseService.checkLogIn { result in
@@ -134,7 +137,13 @@ final class MakeAppointmentController: UIViewController {
     
     private func configureSubmitButton() {
         view.addSubview(submitButton)
-        submitButton.anchor(left: view.leftAnchor, top: contactInformationView.bottomAnchor, right: view.rightAnchor, paddingLeft: 10, paddingTop: 30, paddingRight: -10, height: 60)
+        submitButton.anchor(leading: view.leadingAnchor,
+                            top: contactInformationView.bottomAnchor,
+                            trailing: view.trailingAnchor,
+                            paddingLeading: Constants.submitButtonHorizontalPaddings,
+                            paddingTop: Constants.submitButtonPaddingTop,
+                            paddingTrailing: -Constants.submitButtonHorizontalPaddings,
+                            height: Constants.submitButtonHeight)
         submitButton.addTarget(self, action: #selector(saveTicket), for: .touchUpInside)
     }
     

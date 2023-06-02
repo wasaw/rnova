@@ -88,9 +88,9 @@ final class ServiceController: UIViewController {
         collectionView.delegate = self
         collectionView.dataSource = self
         view.addSubview(collectionView)
-        collectionView.anchor(left: view.leftAnchor,
+        collectionView.anchor(leading: view.leadingAnchor,
                               top: view.safeAreaLayoutGuide.topAnchor,
-                              right: view.rightAnchor,
+                              trailing: view.trailingAnchor,
                               bottom: view.bottomAnchor)
         collectionView.backgroundColor = .white
     }

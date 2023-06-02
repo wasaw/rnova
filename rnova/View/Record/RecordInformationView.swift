@@ -11,13 +11,13 @@ private enum Constants {
     static let doctorLabelPaddings: CGFloat = 10
     static let doctorLabelWidth: CGFloat = 50
     static let doctorLabelHeight: CGFloat = 30
-    static let professionLabelPaddingLeft: CGFloat = 10
+    static let professionLabelpaddingLeading: CGFloat = 10
     static let professionLabelWidth: CGFloat = 130
     static let professionLabelHeight: CGFloat = 30
-    static let dateLabelPaddingLeft: CGFloat = 10
+    static let dateLabelpaddingLeading: CGFloat = 10
     static let dateLabelWidth: CGFloat = 50
     static let dateLabelHeight: CGFloat = 30
-    static let clinicLabelPaddingLeft: CGFloat = 10
+    static let clinicLabelpaddingLeading: CGFloat = 10
     static let clinicLabelWidth: CGFloat = 80
     static let clinicLabelHeight: CGFloat = 30
     static let outputLabelPaddings: CGFloat = 10
@@ -51,51 +51,51 @@ final class RecordInformationView: UIView {
         addSubview(dateOutputLabel)
         addSubview(clinicOutputLable)
         
-        doctorLabel.anchor(left: leftAnchor,
+        doctorLabel.anchor(leading: leadingAnchor,
                            top: topAnchor,
-                           paddingLeft: Constants.doctorLabelPaddings,
+                           paddingLeading: Constants.doctorLabelPaddings,
                            paddingTop: Constants.doctorLabelPaddings,
                            width: Constants.doctorLabelWidth,
                            height: Constants.doctorLabelHeight)
-        professionLabel.anchor(left: leftAnchor,
+        professionLabel.anchor(leading: leadingAnchor,
                                top: doctorLabel.bottomAnchor,
-                               paddingLeft: Constants.professionLabelPaddingLeft,
+                               paddingLeading: Constants.professionLabelpaddingLeading,
                                width: Constants.professionLabelWidth,
                                height: Constants.professionLabelHeight)
-        dateLabel.anchor(left: leftAnchor,
+        dateLabel.anchor(leading: leadingAnchor,
                          top: professionLabel.bottomAnchor,
-                         paddingLeft: Constants.dateLabelPaddingLeft,
+                         paddingLeading: Constants.dateLabelpaddingLeading,
                          width: Constants.dateLabelWidth,
                          height: Constants.dateLabelHeight)
-        clinicLabel.anchor(left: leftAnchor,
+        clinicLabel.anchor(leading: leadingAnchor,
                            top: dateLabel.bottomAnchor,
-                           paddingLeft: Constants.clinicLabelPaddingLeft,
+                           paddingLeading: Constants.clinicLabelpaddingLeading,
                            width: Constants.clinicLabelWidth,
                            height: Constants.clinicLabelHeight)
-        doctorOutputLabel.anchor(left: doctorLabel.rightAnchor,
+        doctorOutputLabel.anchor(leading: doctorLabel.trailingAnchor,
                                  top: topAnchor,
-                                 right: rightAnchor,
-                                 paddingLeft: Constants.outputLabelPaddings,
+                                 trailing: trailingAnchor,
+                                 paddingLeading: Constants.outputLabelPaddings,
                                  paddingTop: Constants.outputLabelPaddings,
-                                 paddingRight: -Constants.outputLabelPaddings,
+                                 paddingTrailing: -Constants.outputLabelPaddings,
                                  height: Constants.outputLabelHeight)
-        professionOutputLabel.anchor(left: professionLabel.rightAnchor,
+        professionOutputLabel.anchor(leading: professionLabel.trailingAnchor,
                                      top: doctorOutputLabel.bottomAnchor,
-                                     right: rightAnchor,
-                                     paddingLeft: Constants.outputLabelPaddings,
-                                     paddingRight: -Constants.outputLabelPaddings,
+                                     trailing: trailingAnchor,
+                                     paddingLeading: Constants.outputLabelPaddings,
+                                     paddingTrailing: -Constants.outputLabelPaddings,
                                      height: Constants.outputLabelHeight)
-        dateOutputLabel.anchor(left: dateLabel.rightAnchor,
+        dateOutputLabel.anchor(leading: dateLabel.trailingAnchor,
                                top: professionOutputLabel.bottomAnchor,
-                               right: rightAnchor,
-                               paddingLeft: Constants.outputLabelPaddings,
-                               paddingRight: -Constants.outputLabelPaddings,
+                               trailing: trailingAnchor,
+                               paddingLeading: Constants.outputLabelPaddings,
+                               paddingTrailing: -Constants.outputLabelPaddings,
                                height: Constants.outputLabelHeight)
-        clinicOutputLable.anchor(left: clinicLabel.rightAnchor,
+        clinicOutputLable.anchor(leading: clinicLabel.trailingAnchor,
                                  top: dateOutputLabel.bottomAnchor,
-                                 right: rightAnchor,
-                                 paddingLeft: Constants.outputLabelPaddings,
-                                 paddingRight: -Constants.outputLabelPaddings,
+                                 trailing: trailingAnchor,
+                                 paddingLeading: Constants.outputLabelPaddings,
+                                 paddingTrailing: -Constants.outputLabelPaddings,
                                  height: Constants.outputLabelHeight)
         
         layer.cornerRadius = 10

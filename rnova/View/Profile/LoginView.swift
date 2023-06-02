@@ -53,26 +53,26 @@ final class LoginView: UIView {
         addSubview(phoneNumberField)
         addSubview(passwordField)
         addSubview(enterButton)
-        phoneNumberField.anchor(left: leftAnchor,
+        phoneNumberField.anchor(leading: leadingAnchor,
                                 top: safeAreaLayoutGuide.topAnchor,
-                                right: rightAnchor,
-                                paddingLeft: Constants.phoneNumberFieldHorizontalPaddings,
+                                trailing: trailingAnchor,
+                                paddingLeading: Constants.phoneNumberFieldHorizontalPaddings,
                                 paddingTop: Constants.phoneNumberFieldPaddingTop,
-                                paddingRight: -Constants.phoneNumberFieldHorizontalPaddings,
+                                paddingTrailing: -Constants.phoneNumberFieldHorizontalPaddings,
                                 height: Constants.phoneNumberFieldHeight)
-        passwordField.anchor(left: leftAnchor,
+        passwordField.anchor(leading: leadingAnchor,
                              top: phoneNumberField.bottomAnchor,
-                             right: rightAnchor,
-                             paddingLeft: Constants.passwordFieldHorizontalPaddings,
+                             trailing: trailingAnchor,
+                             paddingLeading: Constants.passwordFieldHorizontalPaddings,
                              paddingTop: Constants.passwordFieldPaddingTop,
-                             paddingRight: -Constants.passwordFieldHorizontalPaddings,
+                             paddingTrailing: -Constants.passwordFieldHorizontalPaddings,
                              height: Constants.passwordFieldHeight)
-        enterButton.anchor(left: leftAnchor,
+        enterButton.anchor(leading: leadingAnchor,
                            top: passwordField.bottomAnchor,
-                           right: rightAnchor,
-                           paddingLeft: Constants.enterButtonHorizontalPaddings,
+                           trailing: trailingAnchor,
+                           paddingLeading: Constants.enterButtonHorizontalPaddings,
                            paddingTop: Constants.enterButtonPaddingTop,
-                           paddingRight: -Constants.enterButtonHorizontalPaddings,
+                           paddingTrailing: -Constants.enterButtonHorizontalPaddings,
                            height: Constants.enterButtonHeight)
         enterButton.backgroundColor = UIColor.systemOrange
         enterButton.setTitle("Войти", for: .normal)

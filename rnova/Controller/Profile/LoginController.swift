@@ -33,7 +33,10 @@ final class LoginController: UIViewController {
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Назад", style: .plain, target: self, action: #selector(handleBackButton))
         navigationController?.navigationBar.tintColor = .white
         loginView.delegate = self
-        loginView.anchor(left: view.leftAnchor, top: view.safeAreaLayoutGuide.topAnchor, right: view.rightAnchor, bottom: view.bottomAnchor)
+        loginView.anchor(leading: view.leadingAnchor,
+                         top: view.safeAreaLayoutGuide.topAnchor,
+                         trailing: view.trailingAnchor,
+                         bottom: view.bottomAnchor)
     }
     
     private func alert(fields: String) {

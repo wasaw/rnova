@@ -37,9 +37,9 @@ final class TimeViewCell: UICollectionViewCell {
     
     private func configureUI() {
         addSubview(timeLabel)
-        timeLabel.anchor(left: leftAnchor,
+        timeLabel.anchor(leading: leadingAnchor,
                          top: topAnchor,
-                         right: rightAnchor,
+                         trailing: trailingAnchor,
                          bottom: bottomAnchor)
         layer.cornerRadius = 15
     }

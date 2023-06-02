@@ -105,12 +105,12 @@ final class RecordController: UIViewController {
     
     private func configureSegmentedControl() {
         view.addSubview(segmentedControl)
-        segmentedControl.anchor(left: view.leftAnchor,
+        segmentedControl.anchor(leading: view.leadingAnchor,
                                 top: view.safeAreaLayoutGuide.topAnchor,
-                                right: view.rightAnchor,
-                                paddingLeft: Constants.segmentedHorizontalPaddings,
+                                trailing: view.trailingAnchor,
+                                paddingLeading: Constants.segmentedHorizontalPaddings,
                                 paddingTop: Constants.segmentedVerticalPadding,
-                                paddingRight: -Constants.segmentedVerticalPadding,
+                                paddingTrailing: -Constants.segmentedVerticalPadding,
                                 height: Constants.segmentedHeight)
         
         segmentedControl.selectedSegmentIndex = 0
@@ -142,9 +142,9 @@ final class RecordController: UIViewController {
         collectionView.register(ProfessionViewCell.self, forCellWithReuseIdentifier: ProfessionViewCell.identifire)
         
         view.addSubview(collectionView)
-        collectionView.anchor(left: view.leftAnchor,
+        collectionView.anchor(leading: view.leadingAnchor,
                               top: segmentedControl.bottomAnchor,
-                              right: view.rightAnchor,
+                              trailing: view.trailingAnchor,
                               bottom: view.bottomAnchor,
                               paddingTop: Constants.collectionViewPaddingTop)
         collectionView.backgroundColor = .white

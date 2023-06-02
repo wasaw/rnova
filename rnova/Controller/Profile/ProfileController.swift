@@ -75,7 +75,10 @@ final class ProfileController: UIViewController {
         
         registrationView.delegate = self
         registrationView.delegateShow = self
-        registrationView.anchor(left: view.leftAnchor, top: view.safeAreaLayoutGuide.topAnchor, right: view.rightAnchor, bottom: view.bottomAnchor)
+        registrationView.anchor(leading: view.leadingAnchor,
+                                top: view.safeAreaLayoutGuide.topAnchor,
+                                trailing: view.trailingAnchor,
+                                bottom: view.bottomAnchor)
         navigationItem.leftBarButtonItem = nil
 
         navigationController?.navigationBar.tintColor = .systemOrange
@@ -83,7 +86,10 @@ final class ProfileController: UIViewController {
     
     private func configureProfileView() {
         view.addSubview(profileView)
-        profileView.anchor(left: view.leftAnchor, top: view.safeAreaLayoutGuide.topAnchor, right: view.rightAnchor, bottom: view.bottomAnchor)
+        profileView.anchor(leading: view.leadingAnchor,
+                           top: view.safeAreaLayoutGuide.topAnchor,
+                           trailing: view.trailingAnchor,
+                           bottom: view.bottomAnchor)
 
         configureSideMenu()
     }

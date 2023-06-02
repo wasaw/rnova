@@ -48,9 +48,9 @@ final class MenuViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         view.addSubview(tableView)
-        tableView.anchor(left: view.leftAnchor,
+        tableView.anchor(leading: view.leadingAnchor,
                          top: view.safeAreaLayoutGuide.topAnchor,
-                         right: view.rightAnchor,
+                         trailing: view.trailingAnchor,
                          bottom: view.bottomAnchor,
                          paddingTop: Constants.tablePaddingTop)
     }

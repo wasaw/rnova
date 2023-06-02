@@ -13,7 +13,7 @@ private enum Constants {
     static let serviceNameLabelHeight: CGFloat = 45
     static let linePaddingTop: CGFloat = 5
     static let lineHeight: CGFloat = 1
-    static let serviceCostLabelPaddingLeft: CGFloat = 10
+    static let serviceCostLabelpaddingLeading: CGFloat = 10
     static let serviceCostLabelPaddingTop: CGFloat = 5
     static let serviceCostLabelHeight: CGFloat = 30
 }
@@ -58,21 +58,21 @@ final class ServiceCardView: UIView {
         addSubview(serviceNameLabel)
         addSubview(serviceCostLabel)
         addSubview(line)
-        serviceNameLabel.anchor(left: leftAnchor,
+        serviceNameLabel.anchor(leading: leadingAnchor,
                                 top: topAnchor,
-                                right: rightAnchor,
-                                paddingLeft: Constants.serviceNameLabelHorizontalPaddings,
+                                trailing: trailingAnchor,
+                                paddingLeading: Constants.serviceNameLabelHorizontalPaddings,
                                 paddingTop: Constants.serviceNameLabelPaddingTop,
-                                paddingRight: -Constants.serviceNameLabelHorizontalPaddings,
+                                paddingTrailing: -Constants.serviceNameLabelHorizontalPaddings,
                                 height: Constants.serviceNameLabelHeight)
-        line.anchor(left: leftAnchor,
+        line.anchor(leading: leadingAnchor,
                     top: serviceNameLabel.bottomAnchor,
-                    right: rightAnchor,
+                    trailing: trailingAnchor,
                     paddingTop: Constants.linePaddingTop,
                     height: Constants.lineHeight)
-        serviceCostLabel.anchor(left: leftAnchor,
+        serviceCostLabel.anchor(leading: leadingAnchor,
                                 top: line.bottomAnchor,
-                                paddingLeft: Constants.serviceCostLabelPaddingLeft,
+                                paddingLeading: Constants.serviceCostLabelpaddingLeading,
                                 paddingTop: Constants.serviceCostLabelPaddingTop,
                                 height: Constants.serviceCostLabelHeight)
         

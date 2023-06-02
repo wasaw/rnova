@@ -9,9 +9,9 @@ import UIKit
 
 private enum Constants {
     static let serviceNameLabelCenterPadding: CGFloat = 15
-    static let serviceNameLabelPaddingLeft: CGFloat = 10
+    static let serviceNameLabelpaddingLeading: CGFloat = 10
     static let serviceNameLabelHeight: CGFloat = 45
-    static let serviceCostLabelPaddingLeft: CGFloat = 10
+    static let serviceCostLabelpaddingLeading: CGFloat = 10
     static let serviceCostLabelPaddingTop: CGFloat = 5
     static let serviceCostLabelHeight: CGFloat = 20
     static let arrowImagePaddings: CGFloat = 10
@@ -68,20 +68,20 @@ final class SubServiceViewCell: UICollectionViewCell {
         addSubview(serviceCostLabel)
         addSubview(arrowImage)
         serviceNameLabel.centerYAnchor.constraint(equalTo: centerYAnchor, constant: -Constants.serviceNameLabelCenterPadding).isActive = true
-        serviceNameLabel.anchor(left: leftAnchor,
-                                paddingLeft: Constants.serviceNameLabelPaddingLeft,
+        serviceNameLabel.anchor(leading: leadingAnchor,
+                                paddingLeading: Constants.serviceNameLabelpaddingLeading,
                                 height: Constants.serviceNameLabelHeight)
 
-        serviceCostLabel.anchor(left: leftAnchor,
+        serviceCostLabel.anchor(leading: leadingAnchor,
                                 top: serviceNameLabel.bottomAnchor,
-                                paddingLeft: Constants.serviceCostLabelPaddingLeft,
+                                paddingLeading: Constants.serviceCostLabelpaddingLeading,
                                 paddingTop: Constants.serviceCostLabelPaddingTop,
                                 height: Constants.serviceCostLabelHeight)
         arrowImage.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
-        arrowImage.anchor(left: serviceNameLabel.rightAnchor,
-                          right: rightAnchor,
-                          paddingLeft: Constants.arrowImagePaddings,
-                          paddingRight: -Constants.arrowImagePaddings,
+        arrowImage.anchor(leading: serviceNameLabel.trailingAnchor,
+                          trailing: trailingAnchor,
+                          paddingLeading: Constants.arrowImagePaddings,
+                          paddingTrailing: -Constants.arrowImagePaddings,
                           width: Constants.arrowDimensions,
                           height: Constants.arrowDimensions)
     }

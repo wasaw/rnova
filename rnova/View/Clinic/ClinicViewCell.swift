@@ -97,13 +97,13 @@ final class ClinicViewCell: UICollectionViewCell {
         stack.axis = .vertical
         stack.spacing = 6
         addSubview(stack)
-        stack.anchor(left: leftAnchor,
+        stack.anchor(leading: leadingAnchor,
                      top: topAnchor,
-                     right: rightAnchor,
+                     trailing: trailingAnchor,
                      bottom: bottomAnchor,
-                     paddingLeft: Constants.stackPaddings,
+                     paddingLeading: Constants.stackPaddings,
                      paddingTop: Constants.stackPaddings,
-                     paddingRight: -Constants.stackPaddings,
+                     paddingTrailing: -Constants.stackPaddings,
                      paddingBottom: -Constants.stackPaddings)
     }
     

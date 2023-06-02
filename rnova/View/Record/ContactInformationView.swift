@@ -34,13 +34,13 @@ final class ContactInformationView: UIView {
         stack.distribution = .fillEqually
         addSubview(stack)
         
-        stack.anchor(left: leftAnchor,
+        stack.anchor(leading: leadingAnchor,
                      top: topAnchor,
-                     right: rightAnchor,
+                     trailing: trailingAnchor,
                      bottom: bottomAnchor,
-                     paddingLeft: Constants.stackHorizontalPaddings,
+                     paddingLeading: Constants.stackHorizontalPaddings,
                      paddingTop: Constants.stackVerticalPaddings,
-                     paddingRight: -Constants.stackHorizontalPaddings,
+                     paddingTrailing: -Constants.stackHorizontalPaddings,
                      paddingBottom: -Constants.stackVerticalPaddings)
         backgroundColor = .white
     }

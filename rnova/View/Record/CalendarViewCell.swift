@@ -37,9 +37,9 @@ final class CalendarViewCell: UICollectionViewCell {
     
     private func configureUI() {
         addSubview(calendarLabel)
-        calendarLabel.anchor(left: leftAnchor,
+        calendarLabel.anchor(leading: leadingAnchor,
                              top: topAnchor,
-                             right: rightAnchor,
+                             trailing: trailingAnchor,
                              bottom: bottomAnchor)
     }
     

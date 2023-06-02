@@ -89,26 +89,26 @@ final class ChoiceDateView: UIView {
         addSubview(rightButton)
         addSubview(dateDurationLabel)
         
-        choiceDateLabel.anchor(left: leftAnchor,
+        choiceDateLabel.anchor(leading: leadingAnchor,
                                top: topAnchor,
-                               right: rightAnchor,
+                               trailing: trailingAnchor,
                                paddingTop: Constants.choiceDateLabelPaddingTop)
-        leftButton.anchor(left: leftAnchor,
+        leftButton.anchor(leading: leadingAnchor,
                           top: choiceDateLabel.bottomAnchor,
                           paddingTop: Constants.buttonPaddingTop,
                           width: Constants.buttonDimensions,
                           height: Constants.buttonDimensions)
         rightButton.anchor(top: choiceDateLabel.bottomAnchor,
-                           right: rightAnchor,
+                           trailing: trailingAnchor,
                            paddingTop: Constants.buttonPaddingTop,
                            width: Constants.buttonDimensions,
                            height: Constants.buttonDimensions)
-        dateDurationLabel.anchor(left: leftButton.rightAnchor,
+        dateDurationLabel.anchor(leading: leftButton.trailingAnchor,
                                  top: choiceDateLabel.bottomAnchor,
-                                 right: rightButton.leftAnchor,
-                                 paddingLeft: Constants.dateDurationLabelPaddings,
+                                 trailing: rightButton.leadingAnchor,
+                                 paddingLeading: Constants.dateDurationLabelPaddings,
                                  paddingTop: Constants.dateDurationLabelPaddings,
-                                 paddingRight: -Constants.dateDurationLabelPaddings,
+                                 paddingTrailing: -Constants.dateDurationLabelPaddings,
                                  height: Constants.dateDurationLabelHeight)
     }
     

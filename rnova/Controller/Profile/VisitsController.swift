@@ -61,12 +61,12 @@ final class VisitsController: UIViewController {
     
     private func configureSegmentedControl() {
         view.addSubview(segmentedControl)
-        segmentedControl.anchor(left: view.leftAnchor,
+        segmentedControl.anchor(leading: view.leadingAnchor,
                                 top: view.safeAreaLayoutGuide.topAnchor,
-                                right: view.rightAnchor,
-                                paddingLeft: Constants.segmentedHorizontalPaddings,
+                                trailing: view.trailingAnchor,
+                                paddingLeading: Constants.segmentedHorizontalPaddings,
                                 paddingTop: Constants.segmentedPaddingTop,
-                                paddingRight: -Constants.segmentedHorizontalPaddings,
+                                paddingTrailing: -Constants.segmentedHorizontalPaddings,
                                 height: Constants.segmentedHeight)
         segmentedControl.selectedSegmentIndex = 0
         segmentedControl.layer.borderWidth = 1

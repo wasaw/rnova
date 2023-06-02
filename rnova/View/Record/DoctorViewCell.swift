@@ -8,9 +8,9 @@
 import UIKit
 
 private enum Constants {
-    static let profileImageViewPaddingLeft: CGFloat = 20
+    static let profileImageViewpaddingLeading: CGFloat = 20
     static let profileImageViewDimensions: CGFloat = 60
-    static let stackPaddingLeft: CGFloat = 30
+    static let stackpaddingLeading: CGFloat = 30
     static let stackPadding: CGFloat = 10
 }
 
@@ -60,18 +60,18 @@ final class DoctorViewCell: UICollectionViewCell {
         stack.distribution = .fillEqually
         addSubview(stack)
         profileImageView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor).isActive = true
-        profileImageView.anchor(left: leftAnchor,
-                                paddingLeft: Constants.profileImageViewPaddingLeft,
+        profileImageView.anchor(leading: leadingAnchor,
+                                paddingLeading: Constants.profileImageViewpaddingLeading,
                                 width: Constants.profileImageViewDimensions,
                                 height: Constants.profileImageViewDimensions)
         
-        stack.anchor(left: profileImageView.rightAnchor,
+        stack.anchor(leading: profileImageView.rightAnchor,
                      top: topAnchor,
-                     right: rightAnchor,
+                     trailing: trailingAnchor,
                      bottom: bottomAnchor,
-                     paddingLeft: Constants.stackPaddingLeft,
+                     paddingLeading: Constants.stackpaddingLeading,
                      paddingTop: Constants.stackPadding,
-                     paddingRight: -Constants.stackPadding,
+                     paddingTrailing: -Constants.stackPadding,
                      paddingBottom: -Constants.stackPadding)
         shadow()
         backgroundColor = .white

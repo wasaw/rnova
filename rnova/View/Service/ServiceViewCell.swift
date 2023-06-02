@@ -9,7 +9,7 @@ import UIKit
 
 private enum Constants {
     static let serviceLabelPaddings: CGFloat = 10
-    static let arrowImagePaddingRight: CGFloat = 20
+    static let arrowImagepaddingTrailing: CGFloat = 20
     static let arrowImageDimensions: CGFloat = 20
 }
 
@@ -56,15 +56,15 @@ final class ServiceViewCell: UICollectionViewCell {
         addSubview(serviceLabel)
         addSubview(arrowImageView)
         serviceLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
-        serviceLabel.anchor(left: leftAnchor,
-                            right: arrowImageView.leftAnchor,
-                            paddingLeft: Constants.serviceLabelPaddings,
-                            paddingRight: Constants.serviceLabelPaddings)
+        serviceLabel.anchor(leading: leadingAnchor,
+                            trailing: arrowImageView.leadingAnchor,
+                            paddingLeading: Constants.serviceLabelPaddings,
+                            paddingTrailing: Constants.serviceLabelPaddings)
         
         arrowImageView.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
-        arrowImageView.anchor(left: serviceLabel.rightAnchor,
-                              right: rightAnchor,
-                              paddingRight: -Constants.arrowImagePaddingRight,
+        arrowImageView.anchor(leading: serviceLabel.trailingAnchor,
+                              trailing: trailingAnchor,
+                              paddingTrailing: -Constants.arrowImagepaddingTrailing,
                               width: Constants.arrowImageDimensions,
                               height: Constants.arrowImageDimensions)
     }

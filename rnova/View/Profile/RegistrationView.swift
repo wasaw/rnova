@@ -74,33 +74,33 @@ final class RegistrationView: UIView {
         stack.alignment = .fill
         stack.distribution = .fillEqually
         addSubview(stack)
-        stack.anchor(left: leftAnchor,
+        stack.anchor(leading: leadingAnchor,
                      top: topAnchor,
-                     right: rightAnchor,
-                     paddingLeft: Constants.stackHorizontalPaddings,
+                     trailing: trailingAnchor,
+                     paddingLeading: Constants.stackHorizontalPaddings,
                      paddingTop: Constants.stackPaddingTop,
-                     paddingRight: -Constants.stackHorizontalPaddings,
+                     paddingTrailing: -Constants.stackHorizontalPaddings,
                      height: Constants.stackHeight)
         
         addSubview(registrationButton)
-        registrationButton.anchor(left: leftAnchor,
+        registrationButton.anchor(leading: leadingAnchor,
                                   top: stack.bottomAnchor,
-                                  right: rightAnchor,
-                                  paddingLeft: Constants.registrationButtonHorizontalPaddings,
+                                  trailing: trailingAnchor,
+                                  paddingLeading: Constants.registrationButtonHorizontalPaddings,
                                   paddingTop: Constants.registrationButtonPaddingTop,
-                                  paddingRight: -Constants.registrationButtonHorizontalPaddings,
+                                  paddingTrailing: -Constants.registrationButtonHorizontalPaddings,
                                   height: Constants.registrationButtonHeight)
         registrationButton.backgroundColor = UIColor.systemGreen
         registrationButton.setTitle("Зарегистрироваться", for: .normal)
         registrationButton.addTarget(self, action: #selector(registering), for: .touchUpInside)
         
         addSubview(enterButton)
-        enterButton.anchor(left: leftAnchor,
+        enterButton.anchor(leading: leadingAnchor,
                            top: registrationButton.bottomAnchor,
-                           right: rightAnchor,
-                           paddingLeft: Constants.enterButtonHorizontalPadding,
+                           trailing: trailingAnchor,
+                           paddingLeading: Constants.enterButtonHorizontalPadding,
                            paddingTop: Constants.enterButtonPaddingTop,
-                           paddingRight: -Constants.enterButtonHorizontalPadding,
+                           paddingTrailing: -Constants.enterButtonHorizontalPadding,
                            height: Constants.enterButtonHeight)
         enterButton.backgroundColor = UIColor.systemOrange
         enterButton.setTitle("Войти", for: .normal)

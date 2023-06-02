@@ -88,42 +88,42 @@ final class VisitCardViewCell: UICollectionViewCell {
         addSubview(doctorProfessionLabel)
         addSubview(clinicTitleLabel)
         addSubview(commentLabel)
-        dateLabel.anchor(left: leftAnchor,
+        dateLabel.anchor(leading: leadingAnchor,
                          top: topAnchor,
-                         right: rightAnchor,
-                         paddingLeft: Constants.dateLabelPaddings,
+                         trailing: trailingAnchor,
+                         paddingLeading: Constants.dateLabelPaddings,
                          paddingTop: Constants.dateLabelPaddings,
-                         paddingRight: -Constants.dateLabelPaddings,
+                         paddingTrailing: -Constants.dateLabelPaddings,
                          height: Constants.dateLabelHeight)
-        line.anchor(left: leftAnchor,
+        line.anchor(leading: leadingAnchor,
                     top: dateLabel.bottomAnchor,
-                    right: rightAnchor,
+                    trailing: trailingAnchor,
                     paddingTop: Constants.linePaddingTop,
                     height: Constants.lineHeight)
-        doctorFullNameLabel.anchor(left: leftAnchor,
+        doctorFullNameLabel.anchor(leading: leadingAnchor,
                                    top: line.bottomAnchor,
-                                   right: rightAnchor,
-                                   paddingLeft: Constants.doctorFullNameLabelPaddings,
+                                   trailing: trailingAnchor,
+                                   paddingLeading: Constants.doctorFullNameLabelPaddings,
                                    paddingTop: Constants.doctorFullNameLabelPaddings,
-                                   paddingRight: -Constants.doctorFullNameLabelPaddings,
+                                   paddingTrailing: -Constants.doctorFullNameLabelPaddings,
                                    height: Constants.doctorFullNameLabelHeight)
-        doctorProfessionLabel.anchor(left: leftAnchor,
+        doctorProfessionLabel.anchor(leading: leadingAnchor,
                                      top: doctorFullNameLabel.bottomAnchor,
-                                     right: rightAnchor,
-                                     paddingLeft: Constants.doctorProfessionLabelPaddings,
-                                     paddingRight: -Constants.doctorProfessionLabelPaddings,
+                                     trailing: trailingAnchor,
+                                     paddingLeading: Constants.doctorProfessionLabelPaddings,
+                                     paddingTrailing: -Constants.doctorProfessionLabelPaddings,
                                      height: Constants.doctorProfessionLabelHeight)
-        clinicTitleLabel.anchor(left: leftAnchor,
+        clinicTitleLabel.anchor(leading: leadingAnchor,
                                 top: doctorProfessionLabel.bottomAnchor,
-                                right: rightAnchor,
-                                paddingLeft: Constants.clinicTitleLabelHorizontalPaddings,
+                                trailing: trailingAnchor,
+                                paddingLeading: Constants.clinicTitleLabelHorizontalPaddings,
                                 paddingTop: Constants.clinicTitleLabelPaddingTop,
-                                paddingRight: -Constants.clinicTitleLabelHorizontalPaddings)
-        commentLabel.anchor(left: leftAnchor,
+                                paddingTrailing: -Constants.clinicTitleLabelHorizontalPaddings)
+        commentLabel.anchor(leading: leadingAnchor,
                             top: clinicTitleLabel.bottomAnchor,
-                            right: rightAnchor,
-                            paddingLeft: Constants.commentLabelPaddings,
-                            paddingRight: -Constants.commentLabelPaddings,
+                            trailing: trailingAnchor,
+                            paddingLeading: Constants.commentLabelPaddings,
+                            paddingTrailing: -Constants.commentLabelPaddings,
                             height: Constants.commentLabelHeight)
         line.layer.borderWidth = 1
         line.layer.borderColor = UIColor.lightGray.cgColor

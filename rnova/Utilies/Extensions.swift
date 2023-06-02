@@ -122,20 +122,20 @@ extension UILabel {
 //  MARK: - UIView
 
 extension UIView {
-    func anchor(left: NSLayoutXAxisAnchor? = nil, top: NSLayoutYAxisAnchor? = nil, right: NSLayoutXAxisAnchor? = nil, bottom: NSLayoutYAxisAnchor? = nil, paddingLeft: CGFloat = 0, paddingTop: CGFloat = 0, paddingRight: CGFloat = 0, paddingBottom: CGFloat = 0, width: CGFloat? = nil, height: CGFloat? = nil) {
+    func anchor(leading: NSLayoutXAxisAnchor? = nil, top: NSLayoutYAxisAnchor? = nil, trailing: NSLayoutXAxisAnchor? = nil, bottom: NSLayoutYAxisAnchor? = nil, paddingLeading: CGFloat = 0, paddingTop: CGFloat = 0, paddingTrailing: CGFloat = 0, paddingBottom: CGFloat = 0, width: CGFloat? = nil, height: CGFloat? = nil) {
         
         translatesAutoresizingMaskIntoConstraints = false
         
-        if let left = left {
-            leftAnchor.constraint(equalTo: left, constant: paddingLeft).isActive = true
+        if let leading = leading {
+            leadingAnchor.constraint(equalTo: leading, constant: paddingLeading).isActive = true
         }
         
         if let top = top {
             topAnchor.constraint(equalTo: top, constant: paddingTop).isActive = true
         }
         
-        if let right = right {
-            rightAnchor.constraint(equalTo: right, constant: paddingRight).isActive = true
+        if let trailing = trailing {
+            trailingAnchor.constraint(equalTo: trailing, constant: paddingTrailing).isActive = true
         }
         
         if let bottom = bottom {
@@ -172,7 +172,10 @@ extension UIView {
         
         let line = UIView()
         tf.addSubview(line)
-        line.anchor(left: tf.leftAnchor, top: tf.bottomAnchor, right: tf.rightAnchor, height: 1)
+        line.anchor(leading: tf.leadingAnchor,
+                    top: tf.bottomAnchor,
+                    trailing: tf.trailingAnchor,
+                    height: 1)
         line.backgroundColor = .lightGray
         return tf
     }

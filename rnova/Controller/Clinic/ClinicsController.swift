@@ -66,9 +66,9 @@ final class ClinicsController: UIViewController {
         collectionView.collectionViewLayout = layout
         collectionView.register(ClinicViewCell.self, forCellWithReuseIdentifier: ClinicViewCell.identifire)
         view.addSubview(collectionView)
-        collectionView.anchor(left: view.leftAnchor,
+        collectionView.anchor(leading: view.leadingAnchor,
                               top: view.safeAreaLayoutGuide.topAnchor,
-                              right: view.rightAnchor,
+                              trailing: view.trailingAnchor,
                               bottom: view.bottomAnchor)
         collectionView.backgroundColor = .white
     }

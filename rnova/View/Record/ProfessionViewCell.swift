@@ -41,7 +41,7 @@ final class ProfessionViewCell: UICollectionViewCell {
     private func configureUI() {
         self.addSubview(specialtyLabel)
         specialtyLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor).isActive = true
-        specialtyLabel.anchor(left: leftAnchor, paddingLeft: 20)
+        specialtyLabel.anchor(leading: leadingAnchor, paddingLeading: 20)
     }
     
     

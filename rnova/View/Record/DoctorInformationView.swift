@@ -8,9 +8,9 @@
 import UIKit
 
 private enum Constant {
-    static let profileImageViewPaddingLeft: CGFloat = 20
+    static let profileImageViewpaddingLeading: CGFloat = 20
     static let profileImageViewDimensions: CGFloat = 60
-    static let stackPaddingLeft: CGFloat = 30
+    static let stackpaddingLeading: CGFloat = 30
     static let stackPadding: CGFloat = 10
 }
 
@@ -65,8 +65,8 @@ final class DoctorInformationView: UIView {
     private func configureUI() {
         addSubview(profileImageView)
         profileImageView.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
-        profileImageView.anchor(left: leftAnchor,
-                                paddingLeft: Constant.profileImageViewPaddingLeft,
+        profileImageView.anchor(leading: leadingAnchor,
+                                paddingLeading: Constant.profileImageViewpaddingLeading,
                                 width: Constant.profileImageViewDimensions,
                                 height: Constant.profileImageViewDimensions)
         
@@ -75,13 +75,13 @@ final class DoctorInformationView: UIView {
         stack.distribution = .fillEqually
         stack.spacing = 5
         addSubview(stack)
-        stack.anchor(left: profileImageView.rightAnchor,
+        stack.anchor(leading: profileImageView.trailingAnchor,
                      top: topAnchor,
-                     right: rightAnchor,
+                     trailing: trailingAnchor,
                      bottom: bottomAnchor,
-                     paddingLeft: Constant.stackPaddingLeft,
+                     paddingLeading: Constant.stackpaddingLeading,
                      paddingTop: Constant.stackPadding,
-                     paddingRight: -Constant.stackPadding,
+                     paddingTrailing: -Constant.stackPadding,
                      paddingBottom: -Constant.stackPadding)
     }
     

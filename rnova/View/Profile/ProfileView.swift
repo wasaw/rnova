@@ -9,28 +9,28 @@ import UIKit
 
 private enum Constants {
     static let phoneLabelHeight: CGFloat = 60
-    static let lastnameTitleLabelPaddingLeft: CGFloat = 10
+    static let lastnameTitleLabelpaddingLeading: CGFloat = 10
     static let lastnameTitleLabelPaddingTop: CGFloat = 40
     static let lastnameTitleLabelHeight: CGFloat = 15
-    static let lastnameUserLabelPaddingLeft: CGFloat = 10
+    static let lastnameUserLabelpaddingLeading: CGFloat = 10
     static let lastnameUserLabelPaddingTop: CGFloat = 5
     static let lastnameUserLabelHeight: CGFloat = 30
-    static let firstnameTitleLabelPaddingLeft: CGFloat = 10
+    static let firstnameTitleLabelpaddingLeading: CGFloat = 10
     static let firstnameTitleLabelPaddingTop: CGFloat = 20
     static let firstnameTitleLabelHeight: CGFloat = 15
-    static let firstnameUserLabelPaddingLeft: CGFloat = 10
+    static let firstnameUserLabelpaddingLeading: CGFloat = 10
     static let firstnameUserLabelPaddingTop: CGFloat = 5
     static let firstnameUserLabelHeight: CGFloat = 30
-    static let surnameTitleLabelPaddingLeft: CGFloat = 10
+    static let surnameTitleLabelpaddingLeading: CGFloat = 10
     static let surnameTitleLabelPaddingTop: CGFloat = 20
     static let surnameTitleLabelHeight: CGFloat = 15
-    static let surnameUserLabelPaddingLeft: CGFloat = 10
+    static let surnameUserLabelpaddingLeading: CGFloat = 10
     static let surnameUserLabelPaddingTop: CGFloat = 5
     static let surnameUserLabelHeight: CGFloat = 30
-    static let dateTitleLabelPaddingLeft: CGFloat = 10
+    static let dateTitleLabelpaddingLeading: CGFloat = 10
     static let dateTitleLabelPaddingTop: CGFloat = 20
     static let dateTitleLabelHeight: CGFloat = 15
-    static let dateUserLabelPaddingLeft: CGFloat = 10
+    static let dateUserLabelpaddingLeading: CGFloat = 10
     static let dateUserLabelPaddingTop: CGFloat = 5
     static let dateUserLabelHeight: CGFloat = 30
 }
@@ -77,25 +77,25 @@ final class ProfileView: UIView {
     
     private func configurePhone() {
         addSubview(phoneLabel)
-        phoneLabel.anchor(left: leftAnchor,
+        phoneLabel.anchor(leading: leadingAnchor,
                           top: topAnchor,
-                          right: rightAnchor,
+                          trailing: trailingAnchor,
                           height: Constants.phoneLabelHeight)
     }
     
     private func configureLastname() {
         addSubview(lastnameTitleLabel)
         addSubview(lastnameUserLabel)
-        lastnameTitleLabel.anchor(left: leftAnchor,
+        lastnameTitleLabel.anchor(leading: leadingAnchor,
                                   top: phoneLabel.bottomAnchor,
-                                  right: rightAnchor,
-                                  paddingLeft: Constants.lastnameTitleLabelPaddingLeft,
+                                  trailing: trailingAnchor,
+                                  paddingLeading: Constants.lastnameTitleLabelpaddingLeading,
                                   paddingTop: Constants.lastnameTitleLabelPaddingTop,
                                   height: Constants.lastnameTitleLabelHeight)
-        lastnameUserLabel.anchor(left: leftAnchor,
+        lastnameUserLabel.anchor(leading: leadingAnchor,
                                  top: lastnameTitleLabel.bottomAnchor,
-                                 right: rightAnchor,
-                                 paddingLeft: Constants.lastnameUserLabelPaddingLeft,
+                                 trailing: trailingAnchor,
+                                 paddingLeading: Constants.lastnameUserLabelpaddingLeading,
                                  paddingTop: Constants.lastnameUserLabelPaddingTop,
                                  height: Constants.lastnameUserLabelHeight)
     }
@@ -103,16 +103,16 @@ final class ProfileView: UIView {
     private func configureFirstname() {
         addSubview(firstnameTitleLabel)
         addSubview(firstnameUserLabel)
-        firstnameTitleLabel.anchor(left: leftAnchor,
+        firstnameTitleLabel.anchor(leading: leadingAnchor,
                                    top: lastnameUserLabel.bottomAnchor,
-                                   right: rightAnchor,
-                                   paddingLeft: Constants.firstnameTitleLabelPaddingLeft,
+                                   trailing: trailingAnchor,
+                                   paddingLeading: Constants.firstnameTitleLabelpaddingLeading,
                                    paddingTop: Constants.firstnameTitleLabelPaddingTop,
                                    height: Constants.firstnameTitleLabelHeight)
-        firstnameUserLabel.anchor(left: leftAnchor,
+        firstnameUserLabel.anchor(leading: leadingAnchor,
                                   top: firstnameTitleLabel.bottomAnchor,
-                                  right: rightAnchor,
-                                  paddingLeft: Constants.firstnameUserLabelPaddingLeft,
+                                  trailing: trailingAnchor,
+                                  paddingLeading: Constants.firstnameUserLabelpaddingLeading,
                                   paddingTop: Constants.firstnameUserLabelPaddingTop,
                                   height: Constants.firstnameUserLabelHeight)
     }
@@ -120,16 +120,16 @@ final class ProfileView: UIView {
     private func configureSurname() {
         addSubview(surnameTitleLabel)
         addSubview(surnameUserLabel)
-        surnameTitleLabel.anchor(left: leftAnchor,
+        surnameTitleLabel.anchor(leading: leadingAnchor,
                                  top: firstnameUserLabel.bottomAnchor,
-                                 right: rightAnchor,
-                                 paddingLeft: Constants.surnameTitleLabelPaddingLeft,
+                                 trailing: trailingAnchor,
+                                 paddingLeading: Constants.surnameTitleLabelpaddingLeading,
                                  paddingTop: Constants.surnameTitleLabelPaddingTop,
                                  height: Constants.surnameTitleLabelHeight)
-        surnameUserLabel.anchor(left: leftAnchor,
+        surnameUserLabel.anchor(leading: leadingAnchor,
                                 top: surnameTitleLabel.bottomAnchor,
-                                right: rightAnchor,
-                                paddingLeft: Constants.surnameUserLabelPaddingLeft,
+                                trailing: trailingAnchor,
+                                paddingLeading: Constants.surnameUserLabelpaddingLeading,
                                 paddingTop: Constants.surnameUserLabelPaddingTop,
                                 height: Constants.surnameUserLabelHeight)
     }
@@ -137,16 +137,16 @@ final class ProfileView: UIView {
     private func configureDate() {
         addSubview(dateTitleLabel)
         addSubview(dateUserLabel)
-        dateTitleLabel.anchor(left: leftAnchor,
+        dateTitleLabel.anchor(leading: leadingAnchor,
                               top: surnameUserLabel.bottomAnchor,
-                              right: rightAnchor,
-                              paddingLeft: Constants.dateTitleLabelPaddingLeft,
+                              trailing: trailingAnchor,
+                              paddingLeading: Constants.dateTitleLabelpaddingLeading,
                               paddingTop: Constants.dateTitleLabelPaddingTop,
                               height: Constants.dateTitleLabelHeight)
-        dateUserLabel.anchor(left: leftAnchor,
+        dateUserLabel.anchor(leading: leadingAnchor,
                              top: dateTitleLabel.bottomAnchor,
-                             right: rightAnchor,
-                             paddingLeft: Constants.dateUserLabelPaddingLeft,
+                             trailing: trailingAnchor,
+                             paddingLeading: Constants.dateUserLabelpaddingLeading,
                              paddingTop: Constants.dateUserLabelPaddingTop,
                              height: Constants.dateUserLabelHeight)
     }
